@@ -1,11 +1,11 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 17:41:55
+//  Generert av admin-verktøyet 28.4.2026, 18:56:42
 // ============================================================
 
 const SITE_DATA = {
   "name": "Randi Bäckmark",
-  "title": "Grafisk designer/Innholdsprodusent",
+  "title": "Grafisk designer / Innholdsprodusent",
   "location": "Oslo-området",
   "email": "backmarkrandi@gmail.com",
   "phone": "97 72 03 15",
@@ -16,7 +16,7 @@ const SITE_DATA = {
   "categories": [
     {
       "title": "Om meg",
-      "desc": "Hvem er jeg og hva driver meg",
+      "desc": "Hvem er jeg og hvordan liker jeg å jobbe",
       "questions": [
         {
           "q": "Hvem er du, kort fortalt?",
@@ -33,25 +33,25 @@ const SITE_DATA = {
         {
           "q": "Hvorfor er du på jobbjakt?",
           "type": "text",
-          "text": "Jeg har jobbet i flere store bedrifter opp gjennom. Både i redaksjon, in-house byrå og markedsavdeling. Så ble det store organisasjonsendringer i Allente (min siste arbeidsplass), og ikke lenger plass til meg og mange av mine kollegaer videre. Så nå søker jeg min neste drømmejobb!",
+          "text": "Jeg har jobbet i flere store virksomheter, med erfaring fra redaksjon, in-house byrå og markedsavdelinger. Etter større organisasjonsendringer i Allente, hvor også min stilling ble berørt, er jeg nå klar for nye muligheter – og på jakt etter min neste drømmejobb.",
           "media": []
         },
         {
-          "q": "Hva slags designer er du?",
+          "q": "Hvordan er du som designer?",
           "type": "text",
-          "text": "Jeg er av den allsidige typen, som synes alt er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpassning til ulike kanaler. \n\nHer er en kort presentasjon:",
+          "text": "Jeg er av den allsidige typen, som synes det meste er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpasning til ulike kanaler. ",
           "media": []
         },
         {
           "q": "Hva sier andre om deg?",
           "type": "video",
-          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barna sier om meg. ",
+          "text": "Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer, venner og barna mine sier om meg. ",
           "media": []
         },
         {
           "q": " Klassikeren: Styrker og svakheter? ",
           "type": "text",
-          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design. <br> Tall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design. Fellesnevner: god og engasjerende historiefortelling, uansett kanal og målgruppe!\n\n\nTall - jeg kan følge med på dem og analysere dem, men jeg er ikke god på å huske dem. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
           "media": []
         }
       ]
@@ -116,14 +116,14 @@ const SITE_DATA = {
     {
       "title": "Visuell profil - Allente",
       "desc": "Kort beskrivelse",
-      "image": "",
+      "image": "images/Milkshake.jpg",
       "bg": "#D0EFE7",
       "url": ""
     },
     {
       "title": "Prosjekt 3",
       "desc": "Kort beskrivelse",
-      "image": "",
+      "image": "images/Milkshake.jpg",
       "bg": "#B8E5D9",
       "url": ""
     }
@@ -180,6 +180,10 @@ const SITE_DATA = {
     {
       "name": "Monday.com",
       "pct": 80
+    },
+    {
+      "name": "Figma",
+      "pct": 50
     }
   ],
   "showcaseVideoId": "uXaAgf8j-MI"
