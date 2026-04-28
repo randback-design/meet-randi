@@ -51,7 +51,7 @@ const SITE_DATA = {
         {
           "q": " Klassikeren: Styrker og svakheter? ",
           "type": "text",
-          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\n\nTall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design. <br> Tall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
           "media": []
         }
       ]
