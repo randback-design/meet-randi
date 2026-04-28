@@ -1,90 +1,195 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Rediger via admin/index.html — ikke direkte her
+//  Generert av admin-verktøyet 28.4.2026, 11:38:18
 // ============================================================
 
 const SITE_DATA = {
-
-  // ── Grunninfo ──────────────────────────────────────────────
-  name: "Randi Bäckmark",
-  title: "Grafisk designer",
-  location: "Oslo",
-  email: "din@epost.no",
-  phone: "+47 000 00 000",
-  linkedin: "https://linkedin.com/in/dittprofilnavn",
-  portfolioUrl: "https://dinportefolje.no",
-  contactImage: "",   // eks: "images/randi.jpg"
-
-  // ── YouTube video-IDer ────────────────────────────────────
-  heroVideoId: "",
-  showcaseVideoId: "uXaAgf8j-MI",
-
-  // ── Kategorier og spørsmål ────────────────────────────────
-  categories: [
+  "name": "Randi Bäckmark",
+  "title": "Grafisk designer/Innholdsprodusent",
+  "location": "Oslo-området",
+  "email": "backmarkrandi@gmail.com",
+  "portfolioUrl": "https://randback.portfoliobox.net/",
+  "heroVideoId": "",
+  "showcaseVideoId": "uXaAgf8j-MI",
+  "categories": [
     {
-      title: "Om meg",
-      desc: "Hvem er jeg og hva driver meg",
-      questions: [
-        { q: "Hvem er du, og hva er din designfilosofi?", type: "text", text: "Skriv svaret ditt her...", media: [] },
-        { q: "Hva skiller deg fra andre designere?", type: "text", text: "Skriv svaret ditt her...", media: [] }
+      "title": "Om meg",
+      "desc": "Hvem er jeg og hva driver meg",
+      "questions": [
+        {
+          "q": "Hvem er du, sånn kort fortalt?",
+          "type": "text",
+          "text": "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. \nOg mamma, kjæreste og hundeeier.",
+          "media": []
+        },
+        {
+          "q": "Hvorforsøker du jobb nå?",
+          "type": "text",
+          "text": "Jeg har jobbet i flere store bedrifter opp gjennom. Både i redaksjon, in-house byrå og markedsavdeling. Så ble det store organisasjonsendringer i Allente (min siste arbeidsplass), og ikke lenger plass til meg og mange av mine kollegaer videre. Så nå søker jeg min neste drømmejobb!",
+          "media": []
+        },
+        {
+          "q": "Hva slags designer er du da?",
+          "type": "text",
+          "text": "Jeg er av den allsidige typen, som synes alt er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpassning til ulike kanaler. ",
+          "media": []
+        },
+        {
+          "q": "Kjør klassikeren - styker og svakheter?",
+          "type": "text",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\nMine svakheter er at jeg synes det er vanskelig å huske viktige tall. Det må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre.",
+          "media": []
+        },
+        {
+          "q": "Hva sier tidligere kollegaer om deg?",
+          "type": "video",
+          "text": "Jeg har spurt noen av dem jeg. Og her er det de har å si.",
+          "media": []
+        }
       ]
     },
     {
-      title: "Prosjekter",
-      desc: "Arbeidsprøver og case studies",
-      questions: [
-        { q: "Kan du vise et prosjekt du er stolt av?", type: "sample", text: "Beskriv prosjektet her...", media: [
-          { type: "placeholder", label: "Legg til bilder eller video", bg: "#E3F4F0" }
-        ]}
+      "title": "Prosjekter",
+      "desc": "Arbeidsprøver og case studies",
+      "questions": [
+        {
+          "q": "Kan du vise et prosjekt du er stolt av?",
+          "type": "sample",
+          "text": "",
+          "media": [
+            {
+              "type": "placeholder",
+              "label": "Legg til bilder",
+              "bg": "#E6F7F3"
+            }
+          ]
+        }
       ]
     },
     {
-      title: "Erfaring",
-      desc: "Tidligere arbeidsplasser",
-      questions: [
-        { q: "Hva lærte du av din forrige arbeidsplass?", type: "text", text: "Skriv svaret ditt her...", media: [] }
+      "title": "Erfaring",
+      "desc": "Tidligere arbeidsplasser",
+      "questions": [
+        {
+          "q": "Hva lærte du av din forrige arbeidsplass?",
+          "type": "text",
+          "text": "",
+          "media": []
+        }
       ]
     },
     {
-      title: "Samarbeid",
-      desc: "Hvordan jeg jobber i team",
-      questions: [
-        { q: "Hvordan jobber du i team?", type: "text", text: "Skriv svaret ditt her...", media: [] },
-        { q: "Hva sier kollegaer om deg?", type: "video", text: "Her er noen ord fra folk jeg har jobbet med:", media: [
-          { type: "placeholder", label: "Legg til referansevideoer", bg: "#E3F4F0" }
-        ]}
+      "title": "Samarbeid",
+      "desc": "Hvordan jeg jobber i team",
+      "questions": [
+        {
+          "q": "Hvordan jobber du i team?",
+          "type": "text",
+          "text": "",
+          "media": []
+        },
+        {
+          "q": "Hva sier kollegaer om deg?",
+          "type": "video",
+          "text": "Her er noen ord fra folk jeg har jobbet med:",
+          "media": [
+            {
+              "type": "placeholder",
+              "label": "Legg til referansevideoer",
+              "bg": "#E6F7F3"
+            }
+          ]
+        }
       ]
     },
     {
-      title: "Verktøy",
-      desc: "Programvare og prosess",
-      questions: [
-        { q: "Hvilke verktøy bruker du daglig?", type: "text", text: "Skriv svaret ditt her...", media: [] }
+      "title": "Verktøy",
+      "desc": "Programvare og prosess",
+      "questions": [
+        {
+          "q": "Hvilke verktøy bruker du daglig?",
+          "type": "text",
+          "text": "",
+          "media": []
+        }
       ]
     }
   ],
-
-  // ── Utvalgte arbeid ───────────────────────────────────────
-  selectedWork: [
-    { title: "Prosjekt 1", desc: "Kort beskrivelse", image: "", bg: "#E3F4F0", url: "" },
-    { title: "Prosjekt 2", desc: "Kort beskrivelse", image: "", bg: "#D0EFE7", url: "" },
-    { title: "Prosjekt 3", desc: "Kort beskrivelse", image: "", bg: "#B8E5D9", url: "" }
+  "selectedWork": [
+    {
+      "title": "Prosjekt 1",
+      "desc": "Kort beskrivelse",
+      "image": "",
+      "bg": "#E6F7F3",
+      "url": ""
+    },
+    {
+      "title": "Prosjekt 2",
+      "desc": "Kort beskrivelse",
+      "image": "",
+      "bg": "#D0EFE7",
+      "url": ""
+    },
+    {
+      "title": "Prosjekt 3",
+      "desc": "Kort beskrivelse",
+      "image": "",
+      "bg": "#B8E5D9",
+      "url": ""
+    }
   ],
-
-  // ── Tidslinje ─────────────────────────────────────────────
-  timeline: [
-    { year: "2022 — nå", role: "Din stilling", place: "Firma, By", desc: "" },
-    { year: "2019 — 2022", role: "Din stilling", place: "Firma, By", desc: "" },
-    { year: "2016 — 2019", role: "Bachelor grafisk design", place: "Skole, By", desc: "" }
+  "timeline": [
+    {
+      "year": "2019 — 2016",
+      "role": "Grafisk Designer",
+      "place": "Allente ",
+      "desc": "Produksjon av visuelt innhold på tvers av digitale kanaler. Social, nyhetsbrev, web, partnerskap mm."
+    },
+    {
+      "year": "2015 — 2018",
+      "role": "Designer",
+      "place": "VG",
+      "desc": "Kreativ annonseproduksjon i in-house byrå. Annonser for VG og Schibsted sine annonsører."
+    },
+    {
+      "year": "2006 — 2014",
+      "role": "Digital designer, Web designer, Nettredaktør",
+      "place": "Egmont",
+      "desc": "Flere stillinger over mange år. Web design, innholdsproduksjon til web, nettredaktør for julia.no, annonseproduksjon mm."
+    }
   ],
-
-  // ── Ferdigheter ───────────────────────────────────────────
-  skills: [
-    { name: "Adobe Illustrator", pct: 95 },
-    { name: "Adobe InDesign",    pct: 92 },
-    { name: "Adobe Photoshop",   pct: 88 },
-    { name: "Figma",             pct: 85 },
-    { name: "After Effects",     pct: 70 }
+  "skills": [
+    {
+      "name": "Adobe Illustrator",
+      "pct": 80
+    },
+    {
+      "name": "Adobe InDesign",
+      "pct": 70
+    },
+    {
+      "name": "Adobe Photoshop",
+      "pct": 80
+    },
+    {
+      "name": "Adobe After Effects",
+      "pct": 60
+    },
+    {
+      "name": "Adobe Premiere",
+      "pct": 60
+    },
+    {
+      "name": "Bannerflow",
+      "pct": 85
+    },
+    {
+      "name": "Optimizely",
+      "pct": 80
+    },
+    {
+      "name": "Monday.com",
+      "pct": 80
+    }
   ]
-
 };
