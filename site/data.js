@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 12:49:44
+//  Generert av admin-verktøyet 28.4.2026, 15:59:03
 // ============================================================
 
 const SITE_DATA = {
@@ -11,17 +11,13 @@ const SITE_DATA = {
   "portfolioUrl": "https://randback.portfoliobox.net/",
   "heroVideoId": "",
   "showcaseVideoId": "uXaAgf8j-MI",
-  "contactImage": "images/randi.jpg",
-  "phone": "+47 97720315",
-"linkedin": "https://www.linkedin.com/in/randibackmark/",
-"contactImage": "images/randi.jpg",
   "categories": [
     {
       "title": "Om meg",
       "desc": "Hvem er jeg og hva driver meg",
       "questions": [
         {
-          "q": "Hvem er du, sånn kort fortalt?",
+          "q": "Hvem er du, kort fortalt?",
           "type": "video",
           "text": "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. \nOg mamma, kjæreste og hundeeier. Lær mer her:",
           "media": [
@@ -33,27 +29,27 @@ const SITE_DATA = {
           ]
         },
         {
-          "q": "Hvorforsøker du jobb nå?",
+          "q": "Hvorfor er du på jobbgjakt?",
           "type": "text",
           "text": "Jeg har jobbet i flere store bedrifter opp gjennom. Både i redaksjon, in-house byrå og markedsavdeling. Så ble det store organisasjonsendringer i Allente (min siste arbeidsplass), og ikke lenger plass til meg og mange av mine kollegaer videre. Så nå søker jeg min neste drømmejobb!",
           "media": []
         },
         {
-          "q": "Hva slags designer er du da?",
+          "q": "Hva slags designer er du?",
           "type": "video",
           "text": "Jeg er av den allsidige typen, som synes alt er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpassning til ulike kanaler. \n\nHer er en kort presentasjon:",
           "media": []
         },
         {
-          "q": "Kjør klassikeren - styrker og svakheter?",
+          "q": "Hva sier andre om deg?",
           "type": "text",
-          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\n\nMine svakheter er at jeg synes det er vanskelig å huske viktige tall. Det må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre.",
+          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barn sier om meg. ",
           "media": []
         },
         {
-          "q": "Hva sier tidligere kollegaer om deg?",
-          "type": "video",
-          "text": "Jeg har spurt noen av dem jeg. Og her er det de har å si.",
+          "q": " Klassikeren: Styrker og svakheter? ",
+          "type": "text",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\n\nTall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
           "media": []
         }
       ]
@@ -83,19 +79,31 @@ const SITE_DATA = {
         {
           "q": "Hva lærte du av din forrige arbeidsplass?",
           "type": "text",
+          "text": "Der lærte jeg hvor fint det kan være å jobbe på tvers av team. At det å bygge en ny merkevare fra bunnen av er en lang prosess med prøving og feiling, men at det også er veldig moro å se hvor bra det blir når man lærer, justerer, tilpasser og holder seg til en langsiktig plan.",
+          "media": []
+        },
+        {
+          "q": "",
+          "type": "text",
           "text": "",
           "media": []
         }
       ]
     },
     {
-      "title": "Frivillig",
+      "title": "Fritid",
       "desc": "Hvor bidrar jeg?",
       "questions": [
         {
-          "q": "Jobber du noe kreativt utenom jobbsituasjon?",
+          "q": "Engasjerer du deg i noe?",
           "type": "text",
           "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
+          "media": []
+        },
+        {
+          "q": "Noen fun-facts om deg, eller?",
+          "type": "text",
+          "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemmet\nJeg digger fargerike sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
           "media": []
         }
       ]
@@ -121,14 +129,14 @@ const SITE_DATA = {
   ],
   "selectedWork": [
     {
-      "title": "Prosjekt 1",
-      "desc": "Kort beskrivelse",
-      "image": "",
+      "title": "MIX Milkshake",
+      "desc": "Gamification på annonseplass",
+      "image": "images/Milkshake.jpg",
       "bg": "#E6F7F3",
       "url": ""
     },
     {
-      "title": "Prosjekt 2",
+      "title": "Visuell profil - Allente",
       "desc": "Kort beskrivelse",
       "image": "",
       "bg": "#D0EFE7",
