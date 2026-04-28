@@ -1,6 +1,5 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 15:59:03
 // ============================================================
 
 const SITE_DATA = {
@@ -8,12 +7,11 @@ const SITE_DATA = {
   "title": "Grafisk designer/Innholdsprodusent",
   "location": "Oslo-området",
   "email": "backmarkrandi@gmail.com",
+  "phone": "97 72 03 15",
+  "linkedin": "https://www.linkedin.com/in/randibackmark/",
   "portfolioUrl": "https://randback.portfoliobox.net/",
+  "contactImage": "images/randi.jpg",
   "heroVideoId": "",
-  "showcaseVideoId": "uXaAgf8j-MI",
-  "phone": "+47 97720315",
-"linkedin": "https://linkedin.com/in/dittprofilnavn",
-"contactImage": "images/randi.jpg",
   "categories": [
     {
       "title": "Om meg",
@@ -26,7 +24,7 @@ const SITE_DATA = {
           "media": [
             {
               "type": "video",
-             "vimeoId": "1187345684",
+              "vimeoId": "1187345684",
               "label": "En liten historiefortelling - hva lærer du om meg her?"
             }
           ]
@@ -46,13 +44,13 @@ const SITE_DATA = {
         {
           "q": "Hva sier andre om deg?",
           "type": "text",
-          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barn sier om meg. ",
+          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barn sier om meg.",
           "media": []
         },
         {
-          "q": " Klassikeren: Styrker og svakheter? ",
+          "q": "Klassikeren: Styrker og svakheter?",
           "type": "text",
-          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\n\nTall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\nTall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
           "media": []
         }
       ]
@@ -84,12 +82,6 @@ const SITE_DATA = {
           "type": "text",
           "text": "Der lærte jeg hvor fint det kan være å jobbe på tvers av team. At det å bygge en ny merkevare fra bunnen av er en lang prosess med prøving og feiling, men at det også er veldig moro å se hvor bra det blir når man lærer, justerer, tilpasser og holder seg til en langsiktig plan.",
           "media": []
-        },
-        {
-          "q": "",
-          "type": "text",
-          "text": "",
-          "media": []
         }
       ]
     },
@@ -104,7 +96,7 @@ const SITE_DATA = {
           "media": []
         },
         {
-          "q": "Noen fun-facts om deg, eller?",
+          "q": "Noen fun-facts om deg?",
           "type": "text",
           "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemmet\nJeg digger fargerike sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
           "media": []
@@ -118,13 +110,13 @@ const SITE_DATA = {
         {
           "q": "Hvilke verktøy bruker du daglig?",
           "type": "text",
-          "text": "Adobe Creative Cloud er min hovedverktøykasse, og her behersker jeg alle de største programmene, dvs: Illustrator, InDesign, Photoshop, Premiere og After Effects.\n\nJeg er også veldig glad i god struktur og arbeidsflyt, og digger prosjektstyringsverktøy som monday.com og annonseversjoinering med Bannerflow. \n\nOg så har jeg lang erfaring med å jobbe i CMS, hovedsakelig Optimizely (tidligere EPiserver)",
+          "text": "Adobe Creative Cloud er min hovedverktøykasse, og her behersker jeg alle de største programmene, dvs: Illustrator, InDesign, Photoshop, Premiere og After Effects.\n\nJeg er også veldig glad i god struktur og arbeidsflyt, og digger prosjektstyringsverktøy som monday.com og annonseversionering med Bannerflow. \n\nOg så har jeg lang erfaring med å jobbe i CMS, hovedsakelig Optimizely (tidligere EPiserver)",
           "media": []
         },
         {
-          "q": "Hva er du mest opptatt av å jobbe med på?",
+          "q": "Hva er du mest opptatt av å jobbe med?",
           "type": "text",
-          "text": "For tiden synes jeg det er veldig gøy å lære meg mer animasjon i After Effects, og jeg tester ut mye forskjellig. Å å til gode bevegelser ved hjelp av pluginen Rubber Hose er noe av det jeg leker meg med nå.",
+          "text": "For tiden synes jeg det er veldig gøy å lære meg mer animasjon i After Effects, og jeg tester ut mye forskjellig. Å få til gode bevegelser ved hjelp av pluginen Rubber Hose er noe av det jeg leker meg med nå.",
           "media": []
         }
       ]
@@ -157,7 +149,7 @@ const SITE_DATA = {
     {
       "year": "2019 — 2016",
       "role": "Grafisk Designer",
-      "place": "Allente ",
+      "place": "Allente",
       "desc": "Produksjon av visuelt innhold på tvers av digitale kanaler. Social, nyhetsbrev, web, partnerskap mm."
     },
     {
@@ -174,39 +166,13 @@ const SITE_DATA = {
     }
   ],
   "skills": [
-    {
-      "name": "Adobe Illustrator",
-      "pct": 80
-    },
-    {
-      "name": "Adobe InDesign",
-      "pct": 70
-    },
-    {
-      "name": "Adobe Photoshop",
-      "pct": 80
-    },
-    {
-      "name": "Adobe After Effects",
-      "pct": 60
-    },
-    {
-      "name": "Adobe Premiere",
-      "pct": 60
-    },
-    {
-      "name": "Bannerflow",
-      "pct": 85
-    },
-    {
-      "name": "Optimizely",
-      "pct": 80
-    },
-    {
-      "name": "Monday.com",
-      "pct": 80
-    }
-  ],
-  "phone": "97 72 03 15",
-  "linkedin": "https://www.linkedin.com/in/randibackmark/"
+    { "name": "Adobe Illustrator", "pct": 80 },
+    { "name": "Adobe InDesign", "pct": 70 },
+    { "name": "Adobe Photoshop", "pct": 80 },
+    { "name": "Adobe After Effects", "pct": 60 },
+    { "name": "Adobe Premiere", "pct": 60 },
+    { "name": "Bannerflow", "pct": 85 },
+    { "name": "Optimizely", "pct": 80 },
+    { "name": "Monday.com", "pct": 80 }
+  ]
 };
