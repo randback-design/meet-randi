@@ -26,7 +26,7 @@ const SITE_DATA = {
           "media": [
             {
               "type": "video",
-              "youtubeId": "uXaAgf8j-MI",
+             "vimeoId": "1187345684",
               "label": "En liten historiefortelling - hva lærer du om meg her?"
             }
           ]
