@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -151,8 +152,15 @@ input[type=range]{width:100%;accent-color:var(--t1)}
         <div class="field"><label>E-post</label><input type="email" id="email" placeholder="din@epost.no"></div>
       </div>
       <div class="row">
+        <div class="field"><label>Telefon</label><input type="text" id="phone" placeholder="+47 000 00 000"></div>
+        <div class="field"><label>LinkedIn URL</label><input type="text" id="linkedin" placeholder="https://linkedin.com/in/dittprofilnavn"></div>
+      </div>
+      <div class="row">
         <div class="field"><label>Porteføljelenke</label><input type="text" id="portfolioUrl" placeholder="https://dinportefolje.no"></div>
         <div class="field"><label>Hero video-ID (YouTube)</label><input type="text" id="heroVideoId" placeholder="La tom for placeholder"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Kontaktbilde filsti (eks: images/randi.jpg)</label><input type="text" id="contactImage" placeholder="images/randi.jpg"></div>
       </div>
     </div>
   </div>
@@ -210,7 +218,10 @@ let data = {
   title: "Grafisk designer",
   location: "Oslo",
   email: "din@epost.no",
+  phone: "",
+  linkedin: "",
   portfolioUrl: "",
+  contactImage: "",
   heroVideoId: "",
   showcaseVideoId: "uXaAgf8j-MI",
   categories: [
@@ -275,7 +286,7 @@ let activeCat = 0;
 
 // ── BIND GRUNNINFO ──────────────────────────────────────────────
 function bindBasic(){
-  ['name','title','location','email','portfolioUrl','heroVideoId'].forEach(id => {
+  ['name','title','location','email','phone','linkedin','portfolioUrl','contactImage','heroVideoId'].forEach(id => {
     const el = document.getElementById(id);
     el.value = data[id] || '';
     el.addEventListener('input', () => { data[id] = el.value; });
