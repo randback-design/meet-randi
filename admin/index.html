@@ -158,7 +158,7 @@ input[type=range]{width:100%;accent-color:var(--t1)}
       </div>
       <div class="row">
         <div class="field"><label>Porteføljelenke</label><input type="text" id="portfolioUrl" placeholder="https://dinportefolje.no"></div>
-        <div class="field"><label>Hero video-ID (YouTube)</label><input type="text" id="heroVideoId" placeholder="La tom for placeholder"></div>
+        <div class="field"><label>Hero video-ID (Vimeo)</label><input type="text" id="heroVideoId" placeholder="1187345684"></div>
       </div>
       <div class="row">
         <div class="field"><label>Kontaktbilde filsti (eks: images/randi.jpg)</label><input type="text" id="contactImage" placeholder="images/randi.jpg"></div>
@@ -379,7 +379,7 @@ function buildQuestions(){
         <div id="media_${activeCat}_${qi}"></div>
         <div style="display:flex;gap:8px;margin-top:8px">
           <button class="btn-add" style="flex:1" onclick="addMedia(${activeCat},${qi},'image')">+ Bilde</button>
-          <button class="btn-add" style="flex:1" onclick="addMedia(${activeCat},${qi},'video')">+ YouTube-video</button>
+          <button class="btn-add" style="flex:1" onclick="addMedia(${activeCat},${qi},'video')">+ Video</button>
         </div>
       </div>
     </div>`).join('');
@@ -420,9 +420,9 @@ function buildMediaList(ci, qi){
       <div class="media-item">
         <div><span class="media-type-badge badge-video">Video</span></div>
         <div class="field" style="margin:0">
-          <label>YouTube video-ID</label>
-          <input type="text" value="${escHtml(m.youtubeId||'')}" placeholder="uXaAgf8j-MI"
-            oninput="data.categories[${ci}].questions[${qi}].media[${mi}].youtubeId=this.value">
+          <label>Vimeo video-ID</label>
+          <input type="text" value="${escHtml(m.vimeoId||'')}" placeholder="1187345684"
+            oninput="data.categories[${ci}].questions[${qi}].media[${mi}].vimeoId=this.value">
           <label style="margin-top:8px">Bildetekst (eks: navn, stilling)</label>
           <input type="text" value="${escHtml(m.label||'')}" placeholder="Kari Nordmann, Designer"
             oninput="data.categories[${ci}].questions[${qi}].media[${mi}].label=this.value">
@@ -436,7 +436,7 @@ function buildMediaList(ci, qi){
 function addMedia(ci, qi, type){
   const item = type === 'image'
     ? {type:'image', src:'', label:''}
-    : {type:'video', youtubeId:'', label:''};
+    : {type:'video', vimeoId:'', label:''};
   // Remove placeholder if present
   data.categories[ci].questions[qi].media = data.categories[ci].questions[qi].media.filter(m => m.type !== 'placeholder');
   data.categories[ci].questions[qi].media.push(item);
