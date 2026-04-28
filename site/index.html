@@ -18,11 +18,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .nav-links a:hover{color:var(--t1)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
-.hero{width:100%;background:var(--white);aspect-ratio:16/9;max-height:500px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero{width:100%;background:#111;aspect-ratio:16/9;max-height:500px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .hero iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.hero-placeholder{display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--black);text-align:center;padding:0 24px;position:relative;z-index:1}
-.hero-eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-.hero-name{font-size:clamp(20px,4vw,32px);font-weight:300}
+.hero-placeholder{display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;text-align:center;padding:0 24px;position:relative;z-index:1}
+.hero-eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hero-name{font-size:clamp(20px,4vw,32px);font-weight:300;color:#fff}
 .hero-name strong{color:var(--t1);font-weight:700}
 .play-btn{width:72px;height:72px;border-radius:50%;border:2px solid var(--t1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s}
 .play-btn:hover{background:var(--t1)}
@@ -31,7 +31,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .wrap{max-width:1060px;margin:0 auto;padding:0 48px}
 .section{padding:72px 0}
 .section-eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
-.section-title{font-size:28px;font-weight:300;margin-bottom:40px}
+.section-title{font-size:28px;font-weight:700;margin-bottom:40px}
 .categories{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .cat-card{background:var(--card);border-radius:14px;padding:28px 20px 40px;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;gap:8px;position:relative}
 .cat-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.09)}
@@ -45,7 +45,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .qa-inner{max-width:1060px;margin:0 auto;padding:64px 48px}
 .qa-section-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;gap:24px}
 .qa-section-eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
-.qa-section-title{font-size:28px;font-weight:300}
+.qa-section-title{font-size:28px;font-weight:700}
 .qa-close-btn{display:flex;align-items:center;gap:8px;background:none;border:1.5px solid rgba(0,0,0,.12);border-radius:50px;padding:8px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:border-color .2s,color .2s;font-family:var(--font);white-space:nowrap}
 .qa-close-btn:hover{border-color:var(--t1);color:var(--t1)}
 .faq-group{margin-bottom:40px}
@@ -55,12 +55,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .faq-q:hover{color:var(--t1)}
 .faq-q-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .faq-q-text{flex:1}
-.faq-type-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center}
-.faq-type-icon.video{background:#111}.faq-type-icon.text{background:var(--bg)}
-.faq-type-icon.sample{background:var(--t3)}
-.faq-type-icon svg{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.faq-type-icon.video svg{stroke:#fff}.faq-type-icon.text svg{stroke:var(--muted)}
-.faq-type-icon.sample svg{stroke:var(--t2)}
+.faq-type-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:#B8E5D9}
+.faq-type-icon svg{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke:#409f89}
 .faq-chevron{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .3s}
 .faq-item.open .faq-chevron{background:var(--t1);transform:rotate(180deg)}
 .faq-chevron svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;stroke-linecap:round;transition:stroke .2s}
@@ -140,8 +136,8 @@ footer a:hover{color:var(--t1)}
   <a class="nav-logo" href="#">Randi Bäckmark<span>.</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#intervju">Intervju meg</a></li>
-    <li><a href="#arbeid">Utvalgte arbeid</a></li>
     <li><a href="#erfaring">Erfaring</a></li>
+    <li><a href="#arbeid">Utvalgte arbeid</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
@@ -172,18 +168,10 @@ footer a:hover{color:var(--t1)}
     <div id="qaList"></div>
   </div>
 </div>
-<div class="wrap" id="arbeid">
-  <div class="section">
-    <div class="section-eyebrow">Utvalgte arbeid</div>
-    <div class="section-title">Et knippe prosjekter</div>
-    <div class="work-grid" id="workGrid"></div>
-    <div class="work-portfolio-link" id="portfolioLinkWrap" style="display:none">Se all portefølje på <a href="#" id="portfolioLink" target="_blank"></a></div>
-  </div>
-</div>
-<div class="wrap">
+<div class="wrap" id="erfaring">
   <div class="section">
     <div class="two-col">
-      <div id="erfaring">
+      <div>
         <div class="section-eyebrow">Erfaring & utdanning</div>
         <div class="section-title">Tidslinje</div>
         <div class="timeline-wrap"><div class="timeline" id="timeline"></div></div>
@@ -194,6 +182,14 @@ footer a:hover{color:var(--t1)}
         <div class="skills-wrap" id="skillsWrap"><div id="skillsGrid"></div></div>
       </div>
     </div>
+  </div>
+</div>
+<div class="wrap" id="arbeid">
+  <div class="section">
+    <div class="section-eyebrow">Utvalgte arbeid</div>
+    <div class="section-title">Et knippe prosjekter</div>
+    <div class="work-grid" id="workGrid"></div>
+    <div class="work-portfolio-link" id="portfolioLinkWrap" style="display:none">Se all portefølje på <a href="#" id="portfolioLink" target="_blank"></a></div>
   </div>
 </div>
 <div class="kontakt-section" id="kontakt">
@@ -215,7 +211,7 @@ footer a:hover{color:var(--t1)}
 <script src="data.js"></script>
 <script>
 function loadHeroVideo(){if(!SITE_DATA.heroVideoId)return;document.getElementById('heroPlaceholder').style.display='none';const iframe=document.createElement('iframe');iframe.src=`https://www.youtube.com/embed/${SITE_DATA.heroVideoId}?autoplay=1&rel=0&modestbranding=1`;iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';iframe.allowFullscreen=true;document.getElementById('hero').appendChild(iframe)}
-const typeIcons={video:`<div class="faq-type-icon video"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>`,sample:`<div class="faq-type-icon sample"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`,text:`<div class="faq-type-icon text"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`};
+const typeIcons={video:`<div class="faq-type-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>`,sample:`<div class="faq-type-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`,text:`<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`};
 const carState={};
 function makeCarousel(items,id){carState[id]={total:items.length,current:0};const slides=items.map((item,i)=>{if(item.type==='image')return`<div class="carousel-slide"><img src="${item.src}" alt="${item.label||''}"></div>`;if(item.type==='video')return`<div class="carousel-slide"><iframe src="https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;return`<div class="carousel-slide"><div class="slide-placeholder" style="background:${item.bg||'#e3f4f0'}"><div class="slide-num">${String(i+1).padStart(2,'00')}</div><div class="slide-lbl">${item.label||''}</div></div></div>`}).join('');const dots=items.map((_,i)=>`<div class="car-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})"></div>`).join('');const controls=items.length>1?`<div class="car-controls"><button class="car-btn" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="car-dots" id="${id}dots">${dots}</div><button class="car-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="car-count" id="${id}count">1 / ${items.length}</div></div>`:'';return`<div class="carousel" id="${id}"><div class="carousel-track" id="${id}track">${slides}</div></div>${controls}`}
 function goSlide(id,idx){carState[id].current=idx;document.getElementById(id+'track').style.transform=`translateX(-${idx*100}%)`;document.querySelectorAll(`#${id}dots .car-dot`).forEach((d,i)=>d.classList.toggle('active',i===idx));document.getElementById(id+'count').textContent=`${idx+1} / ${carState[id].total}`}
@@ -227,8 +223,7 @@ function toggleFaq(btn){btn.parentElement.classList.toggle('open')}
 function buildWork(){document.getElementById('workGrid').innerHTML=SITE_DATA.selectedWork.map(w=>`<a class="work-card fade-in" href="${w.url||'#'}" target="_blank"><div class="work-thumb" style="background:${w.bg||'#e3f4f0'}">${w.image?`<img src="${w.image}" alt="${w.title}">`:`<span>${w.title}</span>`}</div><div class="work-info"><div class="work-title">${w.title}</div><div class="work-desc">${w.desc}</div><div class="work-link">Se prosjekt →</div></div></a>`).join('');if(SITE_DATA.portfolioUrl){const wrap=document.getElementById('portfolioLinkWrap');const link=document.getElementById('portfolioLink');wrap.style.display='block';link.href=SITE_DATA.portfolioUrl;link.textContent=SITE_DATA.portfolioUrl.replace(/^https?:\/\//,'')}}
 function buildTimeline(){document.getElementById('timeline').innerHTML=SITE_DATA.timeline.map(t=>`<div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-year">${t.year}</div><div class="tl-role">${t.role}</div><div class="tl-place">${t.place}</div><div class="tl-desc">${t.desc}</div></div>`).join('')}
 function buildSkills(){document.getElementById('skillsGrid').innerHTML=SITE_DATA.skills.map(s=>`<div class="skill-row"><div class="skill-name">${s.name}</div><div class="skill-track"><div class="skill-fill" data-p="${s.pct}"></div></div></div>`).join('')}
-function buildKontakt(){if(SITE_DATA.contactImage){document.getElementById('kontaktBilde').innerHTML=`<img src="${SITE_DATA.contactImage}" alt="${SITE_DATA.name}">`}const links=[];if(SITE_DATA.email)links.push(`<a class="kontakt-link" href="mailto:${SITE_DATA.email}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</a>`);if(SITE_DATA.phone)links.push(`<a class="kontakt-link" href="tel:${SITE_DATA.phone}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</a>`);if(SITE_DATA.linkedin)links.push(`<a class="kontakt-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
-  if(SITE_DATA.portfolioUrl)links.push(`<a class="kontakt-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);document.getElementById('kontaktLinks').innerHTML=links.join('');const fe=document.getElementById('footerEmail');if(fe){fe.href=`mailto:${SITE_DATA.email}`;fe.textContent=SITE_DATA.email}document.getElementById('footerName').textContent=SITE_DATA.name||'Randi Bäckmark';document.getElementById('heroName').textContent=SITE_DATA.name||'Randi Bäckmark';document.getElementById('heroSub').textContent=`${SITE_DATA.title||'Grafisk designer'} · ${SITE_DATA.location||'Oslo'}`}
+function buildKontakt(){if(SITE_DATA.contactImage){document.getElementById('kontaktBilde').innerHTML=`<img src="${SITE_DATA.contactImage}" alt="${SITE_DATA.name}">`}const links=[];if(SITE_DATA.email)links.push(`<a class="kontakt-link" href="mailto:${SITE_DATA.email}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</a>`);if(SITE_DATA.phone)links.push(`<a class="kontakt-link" href="tel:${SITE_DATA.phone}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</a>`);if(SITE_DATA.linkedin)links.push(`<a class="kontakt-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);if(SITE_DATA.portfolioUrl)links.push(`<a class="kontakt-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);document.getElementById('kontaktLinks').innerHTML=links.join('');const fe=document.getElementById('footerEmail');if(fe){fe.href=`mailto:${SITE_DATA.email}`;fe.textContent=SITE_DATA.email}document.getElementById('footerName').textContent=SITE_DATA.name||'Randi Bäckmark';document.getElementById('heroName').textContent=SITE_DATA.name||'Randi Bäckmark';document.getElementById('heroSub').textContent=`${SITE_DATA.title||'Grafisk designer'} · ${SITE_DATA.location||'Oslo'}`}
 buildCategories();buildWork();buildTimeline();buildSkills();buildKontakt();
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
