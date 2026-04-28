@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 16:49:46
+//  Generert av admin-verktøyet 28.4.2026, 16:51:03
 // ============================================================
 
 const SITE_DATA = {
@@ -30,7 +30,7 @@ const SITE_DATA = {
           ]
         },
         {
-          "q": "Hvorfor er du på jobbgjakt?",
+          "q": "Hvorfor er du på jobbjakt?",
           "type": "text",
           "text": "Jeg har jobbet i flere store bedrifter opp gjennom. Både i redaksjon, in-house byrå og markedsavdeling. Så ble det store organisasjonsendringer i Allente (min siste arbeidsplass), og ikke lenger plass til meg og mange av mine kollegaer videre. Så nå søker jeg min neste drømmejobb!",
           "media": []
