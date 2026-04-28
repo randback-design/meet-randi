@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 12:13:53
+//  Generert av admin-verktøyet 28.4.2026, 12:49:44
 // ============================================================
 
 const SITE_DATA = {
@@ -11,6 +11,9 @@ const SITE_DATA = {
   "portfolioUrl": "https://randback.portfoliobox.net/",
   "heroVideoId": "",
   "showcaseVideoId": "uXaAgf8j-MI",
+  "phone": "+47 97720315",
+"linkedin": "https://www.linkedin.com/in/randibackmark/",
+"contactImage": "images/randi.jpg",
   "categories": [
     {
       "title": "Om meg",
@@ -38,16 +41,10 @@ const SITE_DATA = {
           "q": "Hva slags designer er du da?",
           "type": "video",
           "text": "Jeg er av den allsidige typen, som synes alt er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpassning til ulike kanaler. \n\nHer er en kort presentasjon:",
-          "media": [
-            {
-              "type": "video",
-              "youtubeId": "",
-              "label": ""
-            }
-          ]
+          "media": []
         },
         {
-          "q": "Kjør klassikeren - styker og svakheter?",
+          "q": "Kjør klassikeren - styrker og svakheter?",
           "type": "text",
           "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\n\nMine svakheter er at jeg synes det er vanskelig å huske viktige tall. Det må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre.",
           "media": []
