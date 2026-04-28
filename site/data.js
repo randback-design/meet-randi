@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 16:55:42
+//  Generert av admin-verktøyet 28.4.2026, 17:02:50
 // ============================================================
 
 const SITE_DATA = {
@@ -9,7 +9,7 @@ const SITE_DATA = {
   "location": "Oslo-området",
   "email": "backmarkrandi@gmail.com",
   "portfolioUrl": "https://randback.portfoliobox.net/",
-  "heroVideoId": "",
+  "heroVideoId": "1187345684",
   "categories": [
     {
       "title": "Om meg",
@@ -22,7 +22,8 @@ const SITE_DATA = {
           "media": [
             {
               "type": "video",
-              "vimeoId": "1187345684",
+              "vimeoId": "",
+              "youtubeId": " ",
               "label": ""
             }
           ]
@@ -35,14 +36,14 @@ const SITE_DATA = {
         },
         {
           "q": "Hva slags designer er du?",
-          "type": "video",
+          "type": "text",
           "text": "Jeg er av den allsidige typen, som synes alt er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpassning til ulike kanaler. \n\nHer er en kort presentasjon:",
           "media": []
         },
         {
           "q": "Hva sier andre om deg?",
-          "type": "text",
-          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barn sier om meg. ",
+          "type": "video",
+          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barna sier om meg. ",
           "media": []
         },
         {
