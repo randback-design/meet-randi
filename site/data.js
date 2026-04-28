@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 19:25:46
+//  Generert av admin-verktøyet 28.4.2026, 19:32:27
 // ============================================================
 
 const SITE_DATA = {
@@ -81,19 +81,25 @@ const SITE_DATA = {
       ]
     },
     {
-      "title": "Fritid",
-      "desc": "Hvor bidrar jeg?",
+      "title": "Just for fun",
+      "desc": "Utenom jobb",
       "questions": [
         {
           "q": "Engasjerer du deg i noe?",
           "type": "sample",
           "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
-          "media": []
+          "media": [
+            {
+              "type": "image",
+              "src": "images/Programmer.png",
+              "label": ""
+            }
+          ]
         },
         {
           "q": "Noen fun-facts om deg, eller?",
           "type": "text",
-          "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemmet\nJeg digger fargerike sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
+          "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemme\nJeg liker fargerike klær og sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
           "media": [
             {
               "type": "image",
