@@ -24,7 +24,6 @@ const SITE_DATA = {
             {
               "type": "video",
               "vimeoId": "",
-              "youtubeId": " ",
               "label": ""
             }
           ]
