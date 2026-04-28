@@ -11,6 +11,7 @@ const SITE_DATA = {
   "portfolioUrl": "https://randback.portfoliobox.net/",
   "heroVideoId": "",
   "showcaseVideoId": "uXaAgf8j-MI",
+  "contactImage": "images/randi.jpg",
   "phone": "+47 97720315",
 "linkedin": "https://www.linkedin.com/in/randibackmark/",
 "contactImage": "images/randi.jpg",
