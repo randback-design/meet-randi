@@ -10,7 +10,6 @@ const SITE_DATA = {
   "email": "backmarkrandi@gmail.com",
   "portfolioUrl": "https://randback.portfoliobox.net/",
   "heroVideoId": "",
-  "showcaseVideoId": "uXaAgf8j-MI",
   "categories": [
     {
       "title": "Om meg",
@@ -23,7 +22,7 @@ const SITE_DATA = {
           "media": [
             {
               "type": "video",
-              "vimeoId": "",
+              "vimeoId": "1187345684",
               "label": ""
             }
           ]
