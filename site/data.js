@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 11:54:48
+//  Generert av admin-verktøyet 28.4.2026, 12:13:53
 // ============================================================
 
 const SITE_DATA = {
@@ -19,11 +19,11 @@ const SITE_DATA = {
         {
           "q": "Hvem er du, sånn kort fortalt?",
           "type": "video",
-          "text": "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. \nOg mamma, kjæreste og hundeeier.",
+          "text": "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. \nOg mamma, kjæreste og hundeeier. Lær mer her:",
           "media": [
             {
               "type": "video",
-              "youtubeId": "https://www.youtube.com/watch?v=uXaAgf8j-MI",
+              "youtubeId": "uXaAgf8j-MI",
               "label": "En liten historiefortelling - hva lærer du om meg her?"
             }
           ]
@@ -91,26 +91,14 @@ const SITE_DATA = {
       ]
     },
     {
-      "title": "Samarbeid",
-      "desc": "Hvordan jeg jobber i team",
+      "title": "Frivillig",
+      "desc": "Hvor bidrar jeg?",
       "questions": [
         {
-          "q": "Hvordan jobber du i team?",
+          "q": "Jobber du noe kreativt utenom jobbsituasjon?",
           "type": "text",
-          "text": "",
+          "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
           "media": []
-        },
-        {
-          "q": "Hva sier kollegaer om deg?",
-          "type": "video",
-          "text": "Her er noen ord fra folk jeg har jobbet med:",
-          "media": [
-            {
-              "type": "placeholder",
-              "label": "Legg til referansevideoer",
-              "bg": "#E6F7F3"
-            }
-          ]
         }
       ]
     },
@@ -121,7 +109,13 @@ const SITE_DATA = {
         {
           "q": "Hvilke verktøy bruker du daglig?",
           "type": "text",
-          "text": "",
+          "text": "Adobe Creative Cloud er min hovedverktøykasse, og her behersker jeg alle de største programmene, dvs: Illustrator, InDesign, Photoshop, Premiere og After Effects.\n\nJeg er også veldig glad i god struktur og arbeidsflyt, og digger prosjektstyringsverktøy som monday.com og annonseversjoinering med Bannerflow. \n\nOg så har jeg lang erfaring med å jobbe i CMS, hovedsakelig Optimizely (tidligere EPiserver)",
+          "media": []
+        },
+        {
+          "q": "Hva er du mest opptatt av å jobbe med på?",
+          "type": "text",
+          "text": "For tiden synes jeg det er veldig gøy å lære meg mer animasjon i After Effects, og jeg tester ut mye forskjellig. Å å til gode bevegelser ved hjelp av pluginen Rubber Hose er noe av det jeg leker meg med nå.",
           "media": []
         }
       ]
@@ -203,5 +197,7 @@ const SITE_DATA = {
       "name": "Monday.com",
       "pct": 80
     }
-  ]
+  ],
+  "phone": "97 72 03 15",
+  "linkedin": "https://www.linkedin.com/in/randibackmark/"
 };
