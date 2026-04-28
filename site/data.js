@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 19:32:27
+//  Generert av admin-verktøyet 28.4.2026, 19:43:45
 // ============================================================
 
 const SITE_DATA = {
@@ -117,7 +117,43 @@ const SITE_DATA = {
       "desc": "Gamification på annonseplass",
       "image": "images/Milkshake.jpg",
       "bg": "#E6F7F3",
-      "url": ""
+      "url": "",
+      "year": "2016",
+      "client": "MIX",
+      "channels": "Display og egen landingsside",
+      "employer": "VG",
+      "collage": [
+        {
+          "type": "image",
+          "src": "images/MIX3.png",
+          "tall": false,
+          "wide": false
+        },
+        {
+          "type": "image",
+          "src": "images/MIX2.gif",
+          "tall": false,
+          "wide": false
+        },
+        {
+          "type": "image",
+          "src": "images/MIX7.png",
+          "tall": false,
+          "wide": false
+        },
+        {
+          "type": "image",
+          "src": "",
+          "tall": false,
+          "wide": false
+        },
+        {
+          "type": "image",
+          "src": "images/Mix1.mov",
+          "tall": false,
+          "wide": false
+        }
+      ]
     },
     {
       "title": "Visuell profil - Allente",
