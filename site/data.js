@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 11:38:18
+//  Generert av admin-verktøyet 28.4.2026, 11:41:31
 // ============================================================
 
 const SITE_DATA = {
@@ -18,9 +18,15 @@ const SITE_DATA = {
       "questions": [
         {
           "q": "Hvem er du, sånn kort fortalt?",
-          "type": "text",
+          "type": "video",
           "text": "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. \nOg mamma, kjæreste og hundeeier.",
-          "media": []
+          "media": [
+            {
+              "type": "video",
+              "youtubeId": "https://www.youtube.com/watch?v=uXaAgf8j-MI",
+              "label": "En liten historiefortelling - hva lærer du om meg her?"
+            }
+          ]
         },
         {
           "q": "Hvorforsøker du jobb nå?",
@@ -37,7 +43,7 @@ const SITE_DATA = {
         {
           "q": "Kjør klassikeren - styker og svakheter?",
           "type": "text",
-          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\nMine svakheter er at jeg synes det er vanskelig å huske viktige tall. Det må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre.",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\n\nMine svakheter er at jeg synes det er vanskelig å huske viktige tall. Det må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre.",
           "media": []
         },
         {
