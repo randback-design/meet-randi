@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 11:49:24
+//  Generert av admin-verktøyet 28.4.2026, 11:53:25
 // ============================================================
 
 const SITE_DATA = {
