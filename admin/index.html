@@ -131,7 +131,8 @@ input[type=range]{width:100%;accent-color:var(--t1)}
 <header>
   <div class="header-logo">Admin<span>.</span></div>
   <div class="header-actions">
-    <span class="status" id="status">Lagret!</span>
+    <span class="status" id="status">✓ Lagret lokalt</span>
+    <button class="btn btn-ghost" onclick="importDataJs()">Importer data.js</button>
     <button class="btn btn-ghost" onclick="window.open('../site/index.html')">Forhåndsvis →</button>
     <button class="btn btn-primary" onclick="exportData()">Eksporter data.js</button>
   </div>
@@ -574,13 +575,65 @@ function showStatus(){
 // ── UTILS ──────────────────────────────────────────────────────
 function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
 
+// ── AUTOSAVE ───────────────────────────────────────────────────
+function saveToLocal(){
+  try { 
+    localStorage.setItem('meetRandiData', JSON.stringify(data));
+    showStatus();
+  } catch(e){}
+}
+
+function loadFromLocal(){
+  try {
+    const saved = localStorage.getItem('meetRandiData');
+    if(saved){ data = JSON.parse(saved); }
+  } catch(e){}
+}
+
+// Autosave every 3 seconds if data has changed
+let lastSaved = '';
+setInterval(() => {
+  const current = JSON.stringify(data);
+  if(current !== lastSaved){
+    saveToLocal();
+    lastSaved = current;
+  }
+}, 3000);
+
+// ── IMPORT DATA.JS ─────────────────────────────────────────────
+function importDataJs(){
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.js';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const text = ev.target.result;
+        const match = text.match(/const SITE_DATA = ({[\s\S]*});?\s*$/m) ||
+                      text.match(/const SITE_DATA = ([\s\S]+);?\s*$/);
+        if(match){
+          data = JSON.parse(match[1]);
+          saveToLocal();
+          location.reload();
+        } else { alert('Kunne ikke lese filen. Kontroller at det er en gyldig data.js'); }
+      } catch(e){ alert('Feil ved innlesing: ' + e.message); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
 // ── INIT ───────────────────────────────────────────────────────
+loadFromLocal();
 bindBasic();
 buildCatTabs();
 buildCatPanel();
 buildWork();
 buildTimeline();
 buildSkills();
+lastSaved = JSON.stringify(data);
 
 </script>
 </body>
