@@ -11,6 +11,9 @@ const SITE_DATA = {
   "portfolioUrl": "https://randback.portfoliobox.net/",
   "heroVideoId": "",
   "showcaseVideoId": "uXaAgf8j-MI",
+  "phone": "+47 97720315",
+"linkedin": "https://linkedin.com/in/dittprofilnavn",
+"contactImage": "images/randi.jpg",
   "categories": [
     {
       "title": "Om meg",
