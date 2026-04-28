@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 17:02:50
+//  Generert av admin-verktøyet 28.4.2026, 17:12:15
 // ============================================================
 
 const SITE_DATA = {
@@ -9,7 +9,8 @@ const SITE_DATA = {
   "location": "Oslo-området",
   "email": "backmarkrandi@gmail.com",
   "portfolioUrl": "https://randback.portfoliobox.net/",
-  "heroVideoId": "1187345684",
+  "heroVideoId": "",
+  "showcaseVideoId": "uXaAgf8j-MI",
   "categories": [
     {
       "title": "Om meg",
@@ -22,8 +23,7 @@ const SITE_DATA = {
           "media": [
             {
               "type": "video",
-              "vimeoId": "",
-              "youtubeId": " ",
+              "vimeoId": "1187345684",
               "label": ""
             }
           ]
@@ -96,15 +96,37 @@ const SITE_DATA = {
       "questions": [
         {
           "q": "Engasjerer du deg i noe?",
-          "type": "text",
+          "type": "sample",
           "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
-          "media": []
+          "media": [
+            {
+              "type": "image",
+              "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUBh71ib79V8FbMWOimgZwqCFlMdFoqFlCC_Ul4H22j09sV2MKuapEPfdI8RTnGjMxY73LA8UyPoIeg4-B14ozwUAHFu3jJJzj8wE7Xg-1qdv3cY6ppSKAgyXCq7ZwmX_84Daeik5ok69QS19a9AN_VbssjGSBoC5BI5yJddVsXYPeAKT3nzsm0OQJ_T7dBFgOF7mHW1ZzdPFNMU7z4I5-m_GOA9Fy7qe8m4=w1280",
+              "label": ""
+            },
+            {
+              "type": "image",
+              "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUDh12aRirfvyvMrOMJLbUpNYkepzzSGqKeA0RGAfOYoFSE3G9jVhOVswX1JwWLKzzFR608gATjkf80ZXbbgL0OYN9EAHHtOwkBnOF5zl8gorXydHPlqPrdypI2qJYXnoZkrrxI3jEAwq8VNCKWmkVPVp58u3Ipo3BSBzWc7kvK__fY3PL_OiFfDijDoS2xr9dj2jjprgkow9QDDA-cAMHIkL6ciuiUXHt0EEp8=w1280",
+              "label": ""
+            },
+            {
+              "type": "image",
+              "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUB3E83zNJ4kD0qMzygOupPcKc1oTwTfOL7QIdFIpjUX2a6-bgdQIifUc2I4JZQRTPWtyHT52LrUOB9C1sDdA3L-XsJQrOsOyRXutjZqiLGKzzdNXXyfa6P31lYeFytLg4vEc3ncLgAXfYCtILcIq1Su4gKsdHjf8qEbfF_Z1-tmQdlPml2erYFz1RPVYYm_vMQZG1zi_z_t6fp5_OfW72xJFkynCby1Jq14MRU=w1280",
+              "label": ""
+            }
+          ]
         },
         {
           "q": "Noen fun-facts om deg, eller?",
           "type": "text",
           "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemmet\nJeg digger fargerike sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
-          "media": []
+          "media": [
+            {
+              "type": "image",
+              "src": "images/Konsert.JPG",
+              "label": ""
+            }
+          ]
         }
       ]
     },
