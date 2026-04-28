@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 17:12:15
+//  Generert av admin-verktøyet 28.4.2026, 17:41:55
 // ============================================================
 
 const SITE_DATA = {
@@ -8,9 +8,11 @@ const SITE_DATA = {
   "title": "Grafisk designer/Innholdsprodusent",
   "location": "Oslo-området",
   "email": "backmarkrandi@gmail.com",
+  "phone": "97 72 03 15",
+  "linkedin": "https://www.linkedin.com/in/randibackmark/",
   "portfolioUrl": "https://randback.portfoliobox.net/",
+  "contactImage": "images/randi.jpg",
   "heroVideoId": "",
-  "showcaseVideoId": "uXaAgf8j-MI",
   "categories": [
     {
       "title": "Om meg",
@@ -55,24 +57,6 @@ const SITE_DATA = {
       ]
     },
     {
-      "title": "Prosjekter",
-      "desc": "Arbeidsprøver og case studies",
-      "questions": [
-        {
-          "q": "Kan du vise et prosjekt du er stolt av?",
-          "type": "sample",
-          "text": "",
-          "media": [
-            {
-              "type": "placeholder",
-              "label": "Legg til bilder",
-              "bg": "#E6F7F3"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "title": "Erfaring",
       "desc": "Tidligere arbeidsplasser",
       "questions": [
@@ -83,9 +67,15 @@ const SITE_DATA = {
           "media": []
         },
         {
-          "q": "",
+          "q": "Hvilke programmer jobber du i?",
           "type": "text",
-          "text": "",
+          "text": "Adobe Creative Cloud er min hovedverktøykasse, og der kan jeg de største programmene godt. Jeg liker både å illustrere, klippe video, redigere bilder og lage markedsmateriell både for digitalt og for trykk.\n\nJeg liker også orden og system, og digger derfor prosjektstyringsverktøy som Monday.com og annonseversjonering med Bannerflow. Jeg har vært med å velge ut og implementere flere verktøy i Allente.",
+          "media": []
+        },
+        {
+          "q": "Hva bidrar du med i et team?",
+          "type": "text",
+          "text": "Jeg bidrar med kreativitet, iver og humor. Man jobber så bra sammen når man har det litt gøy samtidig. Jeg tar gjerne på meg mange oppgaver, og bidar inn alle steder der det trengs, og tror jeg også er en god sparringspartner.",
           "media": []
         }
       ]
@@ -98,23 +88,7 @@ const SITE_DATA = {
           "q": "Engasjerer du deg i noe?",
           "type": "sample",
           "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
-          "media": [
-            {
-              "type": "image",
-              "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUBh71ib79V8FbMWOimgZwqCFlMdFoqFlCC_Ul4H22j09sV2MKuapEPfdI8RTnGjMxY73LA8UyPoIeg4-B14ozwUAHFu3jJJzj8wE7Xg-1qdv3cY6ppSKAgyXCq7ZwmX_84Daeik5ok69QS19a9AN_VbssjGSBoC5BI5yJddVsXYPeAKT3nzsm0OQJ_T7dBFgOF7mHW1ZzdPFNMU7z4I5-m_GOA9Fy7qe8m4=w1280",
-              "label": ""
-            },
-            {
-              "type": "image",
-              "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUDh12aRirfvyvMrOMJLbUpNYkepzzSGqKeA0RGAfOYoFSE3G9jVhOVswX1JwWLKzzFR608gATjkf80ZXbbgL0OYN9EAHHtOwkBnOF5zl8gorXydHPlqPrdypI2qJYXnoZkrrxI3jEAwq8VNCKWmkVPVp58u3Ipo3BSBzWc7kvK__fY3PL_OiFfDijDoS2xr9dj2jjprgkow9QDDA-cAMHIkL6ciuiUXHt0EEp8=w1280",
-              "label": ""
-            },
-            {
-              "type": "image",
-              "src": "https://lh3.googleusercontent.com/sitesv/AA5AbUB3E83zNJ4kD0qMzygOupPcKc1oTwTfOL7QIdFIpjUX2a6-bgdQIifUc2I4JZQRTPWtyHT52LrUOB9C1sDdA3L-XsJQrOsOyRXutjZqiLGKzzdNXXyfa6P31lYeFytLg4vEc3ncLgAXfYCtILcIq1Su4gKsdHjf8qEbfF_Z1-tmQdlPml2erYFz1RPVYYm_vMQZG1zi_z_t6fp5_OfW72xJFkynCby1Jq14MRU=w1280",
-              "label": ""
-            }
-          ]
+          "media": []
         },
         {
           "q": "Noen fun-facts om deg, eller?",
@@ -127,24 +101,6 @@ const SITE_DATA = {
               "label": ""
             }
           ]
-        }
-      ]
-    },
-    {
-      "title": "Verktøy",
-      "desc": "Programvare og prosess",
-      "questions": [
-        {
-          "q": "Hvilke verktøy bruker du daglig?",
-          "type": "text",
-          "text": "Adobe Creative Cloud er min hovedverktøykasse, og her behersker jeg alle de største programmene, dvs: Illustrator, InDesign, Photoshop, Premiere og After Effects.\n\nJeg er også veldig glad i god struktur og arbeidsflyt, og digger prosjektstyringsverktøy som monday.com og annonseversjoinering med Bannerflow. \n\nOg så har jeg lang erfaring med å jobbe i CMS, hovedsakelig Optimizely (tidligere EPiserver)",
-          "media": []
-        },
-        {
-          "q": "Hva er du mest opptatt av å jobbe med på?",
-          "type": "text",
-          "text": "For tiden synes jeg det er veldig gøy å lære meg mer animasjon i After Effects, og jeg tester ut mye forskjellig. Å å til gode bevegelser ved hjelp av pluginen Rubber Hose er noe av det jeg leker meg med nå.",
-          "media": []
         }
       ]
     }
@@ -226,6 +182,5 @@ const SITE_DATA = {
       "pct": 80
     }
   ],
-  "phone": "97 72 03 15",
-  "linkedin": "https://www.linkedin.com/in/randibackmark/"
+  "showcaseVideoId": "uXaAgf8j-MI"
 };
