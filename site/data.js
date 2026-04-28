@@ -51,8 +51,8 @@ const SITE_DATA = {
         {
           "q": " Klassikeren: Styrker og svakheter? ",
           "type": "text",
-          "text": <p>"Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design. </p><p> Fellesnevner: god og engasjerende historiefortelling, uansett kanal og målgruppe!
-            Tall - jeg kan følge med på dem og analysere dem, men jeg er ikke god på å huske dem. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)"</p>,
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design. </p><p> Fellesnevner: god og engasjerende historiefortelling, uansett kanal og målgruppe!
+            Tall - jeg kan følge med på dem og analysere dem, men jeg er ikke god på å huske dem. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
           "media": []
         }
       ]
