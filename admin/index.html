@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Randi Bäckmark portefølje</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --t1:#1BBFA0;--t2:#0D8C74;--t3:#E6F7F3;
+  --black:#111;--white:#fff;--bg:#F6F6F4;--card:#fff;
+  --muted:#777;--danger:#E24B4A;
+  --font:'Nunito Sans',sans-serif;
+}
+body{font-family:var(--font);font-size:14px;color:var(--black);background:var(--bg);line-height:1.6;padding-bottom:80px}
+
+/* HEADER */
+header{background:var(--black);padding:0 40px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header-logo{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.header-logo span{color:var(--t1)}
+.header-actions{display:flex;gap:10px;align-items:center}
+.btn{
+  padding:8px 18px;border-radius:6px;font-size:12px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  border:none;transition:background .2s,color .2s;font-family:var(--font);
+}
+.btn-primary{background:var(--t1);color:#fff}
+.btn-primary:hover{background:var(--t2)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+.btn-danger:hover{background:var(--danger);color:#fff}
+.btn-small{padding:5px 12px;font-size:11px}
+.btn-add{background:var(--t3);color:var(--t2);border:none;width:100%;padding:10px;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-family:var(--font)}
+.btn-add:hover{background:#C5EBE1}
+
+/* LAYOUT */
+.container{max-width:900px;margin:0 auto;padding:0 40px}
+.section{padding:40px 0 0}
+.section-title{
+  font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--t1);margin-bottom:20px;padding-bottom:10px;
+  border-bottom:2px solid var(--t3);
+}
+
+/* CARD */
+.card{background:var(--card);border-radius:10px;padding:24px;margin-bottom:12px}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px}
+.card-label{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* FORM */
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input[type=text],input[type=email],input[type=number],textarea,select{
+  width:100%;padding:10px 12px;
+  background:var(--bg);border:1.5px solid transparent;border-radius:7px;
+  font-family:var(--font);font-size:13px;color:var(--black);
+  transition:border-color .2s;resize:vertical;
+}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--t1)}
+textarea{min-height:80px}
+select{cursor:pointer}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row-3{display:grid;grid-template-columns:1fr 1fr 80px;gap:12px;align-items:end}
+
+/* SKILL RANGE */
+.skill-range{display:grid;grid-template-columns:1fr 120px 48px;gap:12px;align-items:center}
+input[type=range]{width:100%;accent-color:var(--t1)}
+.range-val{font-size:13px;font-weight:700;color:var(--t2);text-align:right}
+
+/* MEDIA ITEM */
+.media-item{
+  background:var(--bg);border-radius:8px;padding:14px;margin-bottom:8px;
+  display:grid;grid-template-columns:120px 1fr auto;gap:12px;align-items:start;
+}
+.media-type-badge{
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;display:inline-block;
+}
+.badge-image{background:#E6F7F3;color:var(--t2)}
+.badge-video{background:#111;color:#fff}
+.badge-placeholder{background:#F0F0EE;color:#777}
+
+/* TABS */
+.tabs{display:flex;gap:4px;margin-bottom:0;border-bottom:2px solid var(--t3)}
+.tab{
+  padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);cursor:pointer;
+  border-radius:8px 8px 0 0;transition:background .2s,color .2s;
+  border:none;background:transparent;font-family:var(--font);
+}
+.tab.active{background:var(--white);color:var(--t1);border:2px solid var(--t3);border-bottom:2px solid var(--white);margin-bottom:-2px}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* NOTICE */
+.notice{
+  background:var(--t3);border-radius:8px;padding:14px 18px;
+  font-size:12px;color:var(--t2);margin-bottom:20px;line-height:1.6;
+}
+.notice strong{font-weight:700}
+
+/* EXPORT */
+.export-box{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--white);padding:16px 40px;
+  box-shadow:0 -2px 16px rgba(0,0,0,.1);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  z-index:200;
+}
+.export-hint{font-size:12px;color:var(--muted)}
+.export-hint strong{color:var(--black)}
+
+/* STATUS */
+.status{font-size:12px;color:var(--t2);font-weight:600;opacity:0;transition:opacity .3s}
+.status.show{opacity:1}
+
+@media(max-width:640px){
+  .container{padding:0 20px}
+  header{padding:0 20px}
+  .export-box{padding:16px 20px;flex-direction:column;align-items:stretch}
+  .row,.row-3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">Admin<span>.</span></div>
+  <div class="header-actions">
+    <span class="status" id="status">Lagret!</span>
+    <button class="btn btn-ghost" onclick="window.open('../site/index.html')">Forhåndsvis →</button>
+    <button class="btn btn-primary" onclick="exportData()">Eksporter data.js</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- GRUNNINFO -->
+  <div class="section">
+    <div class="section-title">Grunninfo</div>
+    <div class="card">
+      <div class="row">
+        <div class="field"><label>Fullt navn</label><input type="text" id="name" placeholder="Randi Bäckmark"></div>
+        <div class="field"><label>Tittel</label><input type="text" id="title" placeholder="Grafisk designer"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>By</label><input type="text" id="location" placeholder="Oslo"></div>
+        <div class="field"><label>E-post</label><input type="email" id="email" placeholder="din@epost.no"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Porteføljelenke</label><input type="text" id="portfolioUrl" placeholder="https://dinportefolje.no"></div>
+        <div class="field"><label>Hero video-ID (YouTube)</label><input type="text" id="heroVideoId" placeholder="La tom for placeholder"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KATEGORIER -->
+  <div class="section">
+    <div class="section-title">Kategorier & spørsmål</div>
+    <div class="notice">
+      <strong>Tips:</strong> Hver kategori vises som et kort på forsiden. Under hvert spørsmål kan du ha tekst, bilder og videoer i karusell — i hvilken som helst kombinasjon.
+    </div>
+
+    <div class="tabs" id="catTabs"></div>
+    <div id="catPanels"></div>
+  </div>
+
+  <!-- UTVALGTE ARBEID -->
+  <div class="section">
+    <div class="section-title">Utvalgte arbeid</div>
+    <div class="notice"><strong>Tips:</strong> Vis 3–5 prosjekter her. De lenker videre til porteføljesiden din.</div>
+    <div id="workList"></div>
+    <button class="btn-add" onclick="addWork()">+ Legg til prosjekt</button>
+  </div>
+
+  <!-- TIDSLINJE -->
+  <div class="section">
+    <div class="section-title">Erfaring & utdanning</div>
+    <div id="timelineList"></div>
+    <button class="btn-add" onclick="addTimeline()">+ Legg til rad</button>
+  </div>
+
+  <!-- FERDIGHETER -->
+  <div class="section">
+    <div class="section-title">Ferdigheter</div>
+    <div class="card">
+      <div id="skillsList"></div>
+      <button class="btn-add" style="margin-top:12px" onclick="addSkill()">+ Legg til ferdighet</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- EXPORT BAR -->
+<div class="export-box">
+  <div class="export-hint">
+    Klikk <strong>Eksporter data.js</strong> → erstatt <strong>site/data.js</strong> → push til GitHub
+  </div>
+  <button class="btn btn-primary" onclick="exportData()">Eksporter data.js</button>
+</div>
+
+<script>
+
+// ── STATE ──────────────────────────────────────────────────────
+let data = {
+  name: "Randi Bäckmark",
+  title: "Grafisk designer",
+  location: "Oslo",
+  email: "din@epost.no",
+  portfolioUrl: "",
+  heroVideoId: "",
+  showcaseVideoId: "uXaAgf8j-MI",
+  categories: [
+    {
+      title: "Om meg", desc: "Hvem er jeg og hva driver meg",
+      questions: [
+        {q:"Hvem er du, og hva er din designfilosofi?", type:"text", text:"", media:[]},
+        {q:"Hva skiller deg fra andre designere?", type:"text", text:"", media:[]}
+      ]
+    },
+    {
+      title: "Prosjekter", desc: "Arbeidsprøver og case studies",
+      questions: [
+        {q:"Kan du vise et prosjekt du er stolt av?", type:"sample", text:"", media:[
+          {type:"placeholder", label:"Legg til bilder", bg:"#E6F7F3"}
+        ]}
+      ]
+    },
+    {
+      title: "Erfaring", desc: "Tidligere arbeidsplasser",
+      questions: [
+        {q:"Hva lærte du av din forrige arbeidsplass?", type:"text", text:"", media:[]}
+      ]
+    },
+    {
+      title: "Samarbeid", desc: "Hvordan jeg jobber i team",
+      questions: [
+        {q:"Hvordan jobber du i team?", type:"text", text:"", media:[]},
+        {q:"Hva sier kollegaer om deg?", type:"video", text:"Her er noen ord fra folk jeg har jobbet med:", media:[
+          {type:"placeholder", label:"Legg til referansevideoer", bg:"#E6F7F3"}
+        ]}
+      ]
+    },
+    {
+      title: "Verktøy", desc: "Programvare og prosess",
+      questions: [
+        {q:"Hvilke verktøy bruker du daglig?", type:"text", text:"", media:[]}
+      ]
+    }
+  ],
+  selectedWork: [
+    {title:"Prosjekt 1", desc:"Kort beskrivelse", image:"", bg:"#E6F7F3", url:""},
+    {title:"Prosjekt 2", desc:"Kort beskrivelse", image:"", bg:"#D0EFE7", url:""},
+    {title:"Prosjekt 3", desc:"Kort beskrivelse", image:"", bg:"#B8E5D9", url:""}
+  ],
+  timeline: [
+    {year:"2022 — nå", role:"Din stilling", place:"Firma, By", desc:""},
+    {year:"2019 — 2022", role:"Din stilling", place:"Firma, By", desc:""},
+    {year:"2016 — 2019", role:"Bachelor grafisk design", place:"Skole, By", desc:""}
+  ],
+  skills: [
+    {name:"Adobe Illustrator", pct:95},
+    {name:"Adobe InDesign", pct:92},
+    {name:"Adobe Photoshop", pct:88},
+    {name:"Figma", pct:85},
+    {name:"After Effects", pct:70},
+    {name:"Adobe XD", pct:75}
+  ]
+};
+
+let activeCat = 0;
+
+// ── BIND GRUNNINFO ──────────────────────────────────────────────
+function bindBasic(){
+  ['name','title','location','email','portfolioUrl','heroVideoId'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = data[id] || '';
+    el.addEventListener('input', () => { data[id] = el.value; });
+  });
+}
+
+// ── CATEGORIES ─────────────────────────────────────────────────
+function buildCatTabs(){
+  const tabs = document.getElementById('catTabs');
+  tabs.innerHTML = data.categories.map((c,i) => `
+    <button class="tab${i===activeCat?' active':''}" onclick="switchCat(${i})">${c.title}</button>
+  `).join('') + `<button class="tab" onclick="addCat()">+</button>`;
+}
+
+function switchCat(i){
+  activeCat = i;
+  buildCatTabs();
+  buildCatPanel();
+}
+
+function addCat(){
+  data.categories.push({title:"Ny kategori", desc:"", questions:[]});
+  activeCat = data.categories.length - 1;
+  buildCatTabs();
+  buildCatPanel();
+}
+
+function buildCatPanel(){
+  const panels = document.getElementById('catPanels');
+  const cat = data.categories[activeCat];
+  panels.innerHTML = `
+    <div class="card" style="border-radius:0 10px 10px 10px">
+      <div class="card-header">
+        <div class="card-label">Kategori ${activeCat+1}</div>
+        ${data.categories.length > 1 ? `<button class="btn btn-danger btn-small" onclick="deleteCat(${activeCat})">Slett kategori</button>` : ''}
+      </div>
+      <div class="row">
+        <div class="field"><label>Tittel</label>
+          <input type="text" value="${cat.title}" oninput="data.categories[${activeCat}].title=this.value;buildCatTabs()">
+        </div>
+        <div class="field"><label>Beskrivelse (kortkortet)</label>
+          <input type="text" value="${cat.desc}" oninput="data.categories[${activeCat}].desc=this.value">
+        </div>
+      </div>
+    </div>
+    <div id="questionsList"></div>
+    <button class="btn-add" onclick="addQuestion(${activeCat})">+ Legg til spørsmål</button>`;
+  buildQuestions();
+}
+
+function deleteCat(i){
+  if(!confirm('Slette denne kategorien?')) return;
+  data.categories.splice(i,1);
+  activeCat = Math.min(activeCat, data.categories.length-1);
+  buildCatTabs();
+  buildCatPanel();
+}
+
+// ── QUESTIONS ──────────────────────────────────────────────────
+function buildQuestions(){
+  const list = document.getElementById('questionsList');
+  const cat = data.categories[activeCat];
+  list.innerHTML = cat.questions.map((q,qi) => `
+    <div class="card" style="margin-top:8px">
+      <div class="card-header">
+        <div class="card-label">Spørsmål ${qi+1}</div>
+        <button class="btn btn-danger btn-small" onclick="deleteQuestion(${activeCat},${qi})">Slett</button>
+      </div>
+      <div class="field">
+        <label>Spørsmål</label>
+        <input type="text" value="${escHtml(q.q)}" oninput="data.categories[${activeCat}].questions[${qi}].q=this.value">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Svartype</label>
+          <select onchange="data.categories[${activeCat}].questions[${qi}].type=this.value">
+            <option value="text" ${q.type==='text'?'selected':''}>Tekst-svar</option>
+            <option value="video" ${q.type==='video'?'selected':''}>Video-svar</option>
+            <option value="sample" ${q.type==='sample'?'selected':''}>Arbeidsprøve</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Tekst (vises over karusell)</label>
+        <textarea oninput="data.categories[${activeCat}].questions[${qi}].text=this.value">${escHtml(q.text||'')}</textarea>
+      </div>
+      <div class="field">
+        <label>Medier i karusell</label>
+        <div id="media_${activeCat}_${qi}"></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn-add" style="flex:1" onclick="addMedia(${activeCat},${qi},'image')">+ Bilde</button>
+          <button class="btn-add" style="flex:1" onclick="addMedia(${activeCat},${qi},'video')">+ YouTube-video</button>
+        </div>
+      </div>
+    </div>`).join('');
+  cat.questions.forEach((_,qi) => buildMediaList(activeCat, qi));
+}
+
+function addQuestion(ci){
+  data.categories[ci].questions.push({q:"Nytt spørsmål", type:"text", text:"", media:[]});
+  buildQuestions();
+}
+
+function deleteQuestion(ci,qi){
+  data.categories[ci].questions.splice(qi,1);
+  buildQuestions();
+}
+
+// ── MEDIA ──────────────────────────────────────────────────────
+function buildMediaList(ci, qi){
+  const el = document.getElementById(`media_${ci}_${qi}`);
+  if(!el) return;
+  const media = data.categories[ci].questions[qi].media;
+  if(!media.length){ el.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:8px 0">Ingen medier ennå</div>'; return; }
+  el.innerHTML = media.map((m,mi) => {
+    if(m.type === 'image') return `
+      <div class="media-item">
+        <div><span class="media-type-badge badge-image">Bilde</span></div>
+        <div class="field" style="margin:0">
+          <label>Filsti (eks: images/logo.jpg)</label>
+          <input type="text" value="${escHtml(m.src||'')}" placeholder="images/filnavn.jpg"
+            oninput="data.categories[${ci}].questions[${qi}].media[${mi}].src=this.value">
+          <label style="margin-top:8px">Bildetekst</label>
+          <input type="text" value="${escHtml(m.label||'')}" placeholder="Logodesign"
+            oninput="data.categories[${ci}].questions[${qi}].media[${mi}].label=this.value">
+        </div>
+        <button class="btn btn-danger btn-small" onclick="deleteMedia(${ci},${qi},${mi})">×</button>
+      </div>`;
+    if(m.type === 'video') return `
+      <div class="media-item">
+        <div><span class="media-type-badge badge-video">Video</span></div>
+        <div class="field" style="margin:0">
+          <label>YouTube video-ID</label>
+          <input type="text" value="${escHtml(m.youtubeId||'')}" placeholder="uXaAgf8j-MI"
+            oninput="data.categories[${ci}].questions[${qi}].media[${mi}].youtubeId=this.value">
+          <label style="margin-top:8px">Bildetekst (eks: navn, stilling)</label>
+          <input type="text" value="${escHtml(m.label||'')}" placeholder="Kari Nordmann, Designer"
+            oninput="data.categories[${ci}].questions[${qi}].media[${mi}].label=this.value">
+        </div>
+        <button class="btn btn-danger btn-small" onclick="deleteMedia(${ci},${qi},${mi})">×</button>
+      </div>`;
+    return '';
+  }).join('');
+}
+
+function addMedia(ci, qi, type){
+  const item = type === 'image'
+    ? {type:'image', src:'', label:''}
+    : {type:'video', youtubeId:'', label:''};
+  // Remove placeholder if present
+  data.categories[ci].questions[qi].media = data.categories[ci].questions[qi].media.filter(m => m.type !== 'placeholder');
+  data.categories[ci].questions[qi].media.push(item);
+  buildMediaList(ci, qi);
+}
+
+function deleteMedia(ci, qi, mi){
+  data.categories[ci].questions[qi].media.splice(mi,1);
+  buildMediaList(ci, qi);
+}
+
+// ── SELECTED WORK ──────────────────────────────────────────────
+function buildWork(){
+  const list = document.getElementById('workList');
+  list.innerHTML = data.selectedWork.map((w,i) => `
+    <div class="card">
+      <div class="card-header">
+        <div class="card-label">Prosjekt ${i+1}</div>
+        <button class="btn btn-danger btn-small" onclick="deleteWork(${i})">Slett</button>
+      </div>
+      <div class="row">
+        <div class="field"><label>Tittel</label>
+          <input type="text" value="${escHtml(w.title)}" oninput="data.selectedWork[${i}].title=this.value">
+        </div>
+        <div class="field"><label>Kort beskrivelse</label>
+          <input type="text" value="${escHtml(w.desc)}" oninput="data.selectedWork[${i}].desc=this.value">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Bildefilsti (eks: images/prosjekt1.jpg)</label>
+          <input type="text" value="${escHtml(w.image||'')}" placeholder="images/..." oninput="data.selectedWork[${i}].image=this.value">
+        </div>
+        <div class="field"><label>Lenke til prosjekt</label>
+          <input type="text" value="${escHtml(w.url||'')}" placeholder="https://..." oninput="data.selectedWork[${i}].url=this.value">
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function addWork(){
+  data.selectedWork.push({title:"Nytt prosjekt", desc:"", image:"", bg:"#E6F7F3", url:""});
+  buildWork();
+}
+
+function deleteWork(i){
+  data.selectedWork.splice(i,1);
+  buildWork();
+}
+
+// ── TIMELINE ───────────────────────────────────────────────────
+function buildTimeline(){
+  const list = document.getElementById('timelineList');
+  list.innerHTML = data.timeline.map((t,i) => `
+    <div class="card">
+      <div class="card-header">
+        <div class="card-label">Rad ${i+1}</div>
+        <button class="btn btn-danger btn-small" onclick="deleteTimeline(${i})">Slett</button>
+      </div>
+      <div class="row-3">
+        <div class="field"><label>År / periode</label>
+          <input type="text" value="${escHtml(t.year)}" placeholder="2022 — nå" oninput="data.timeline[${i}].year=this.value">
+        </div>
+        <div class="field"><label>Stilling / grad</label>
+          <input type="text" value="${escHtml(t.role)}" oninput="data.timeline[${i}].role=this.value">
+        </div>
+        <div></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Firma / skole</label>
+          <input type="text" value="${escHtml(t.place)}" oninput="data.timeline[${i}].place=this.value">
+        </div>
+        <div class="field"><label>Beskrivelse</label>
+          <input type="text" value="${escHtml(t.desc)}" oninput="data.timeline[${i}].desc=this.value">
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function addTimeline(){
+  data.timeline.unshift({year:"", role:"", place:"", desc:""});
+  buildTimeline();
+}
+
+function deleteTimeline(i){
+  data.timeline.splice(i,1);
+  buildTimeline();
+}
+
+// ── SKILLS ─────────────────────────────────────────────────────
+function buildSkills(){
+  const list = document.getElementById('skillsList');
+  list.innerHTML = data.skills.map((s,i) => `
+    <div class="skill-range" style="margin-bottom:14px">
+      <input type="text" value="${escHtml(s.name)}" placeholder="Programnavn"
+        oninput="data.skills[${i}].name=this.value">
+      <input type="range" min="0" max="100" value="${s.pct}"
+        oninput="data.skills[${i}].pct=+this.value;this.nextElementSibling.textContent=this.value+'%'">
+      <span class="range-val">${s.pct}%</span>
+      <button class="btn btn-danger btn-small" onclick="deleteSkill(${i})" style="grid-column:4">×</button>
+    </div>`).join('');
+}
+
+function addSkill(){
+  data.skills.push({name:"", pct:80});
+  buildSkills();
+}
+
+function deleteSkill(i){
+  data.skills.splice(i,1);
+  buildSkills();
+}
+
+// ── EXPORT ─────────────────────────────────────────────────────
+function exportData(){
+  const js = `// ============================================================
+//  data.js — Alt innhold for ${data.name} sin porteføljeside
+//  Generert av admin-verktøyet ${new Date().toLocaleString('no-NO')}
+// ============================================================
+
+const SITE_DATA = ${JSON.stringify(data, null, 2)};
+`;
+  const blob = new Blob([js], {type:'text/javascript'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'data.js';
+  a.click();
+  showStatus();
+}
+
+function showStatus(){
+  const el = document.getElementById('status');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+// ── UTILS ──────────────────────────────────────────────────────
+function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
+// ── INIT ───────────────────────────────────────────────────────
+bindBasic();
+buildCatTabs();
+buildCatPanel();
+buildWork();
+buildTimeline();
+buildSkills();
+
+</script>
+</body>
+</html>
