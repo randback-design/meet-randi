@@ -224,7 +224,6 @@ let data = {
   portfolioUrl: "",
   contactImage: "",
   heroVideoId: "",
-  showcaseVideoId: "uXaAgf8j-MI",
   categories: [
     {
       title: "Om meg", desc: "Hvem er jeg og hva driver meg",
@@ -461,23 +460,109 @@ function buildWork(){
         <div class="field"><label>Tittel</label>
           <input type="text" value="${escHtml(w.title)}" oninput="data.selectedWork[${i}].title=this.value">
         </div>
-        <div class="field"><label>Kort beskrivelse</label>
+        <div class="field"><label>Kort beskrivelse (på kortet)</label>
           <input type="text" value="${escHtml(w.desc)}" oninput="data.selectedWork[${i}].desc=this.value">
         </div>
       </div>
       <div class="row">
-        <div class="field"><label>Bildefilsti (eks: images/prosjekt1.jpg)</label>
+        <div class="field"><label>Forsidebilde filsti</label>
           <input type="text" value="${escHtml(w.image||'')}" placeholder="images/..." oninput="data.selectedWork[${i}].image=this.value">
         </div>
         <div class="field"><label>Lenke til prosjekt</label>
           <input type="text" value="${escHtml(w.url||'')}" placeholder="https://..." oninput="data.selectedWork[${i}].url=this.value">
         </div>
       </div>
+      <div class="row">
+        <div class="field"><label>Årstall</label>
+          <input type="text" value="${escHtml(w.year||'')}" placeholder="2022" oninput="data.selectedWork[${i}].year=this.value">
+        </div>
+        <div class="field"><label>Kunde</label>
+          <input type="text" value="${escHtml(w.client||'')}" placeholder="Kundenavn" oninput="data.selectedWork[${i}].client=this.value">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Hvor jeg jobbet</label>
+          <input type="text" value="${escHtml(w.employer||'')}" placeholder="Allente" oninput="data.selectedWork[${i}].employer=this.value">
+        </div>
+        <div class="field"><label>Kanaler</label>
+          <input type="text" value="${escHtml(w.channels||'')}" placeholder="Digital, sosiale medier" oninput="data.selectedWork[${i}].channels=this.value">
+        </div>
+      </div>
+      <div class="field"><label>Prosjektbeskrivelse (tekst i utvidet visning)</label>
+        <textarea oninput="data.selectedWork[${i}].projectText=this.value">${escHtml(w.projectText||'')}</textarea>
+      </div>
+      <div class="field">
+        <label>Collage (bilder og video)</label>
+        <div id="collage_${i}"></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn-add" style="flex:1" onclick="addCollageItem(${i},'image')">+ Bilde</button>
+          <button class="btn-add" style="flex:1" onclick="addCollageItem(${i},'video')">+ Video</button>
+        </div>
+      </div>
     </div>`).join('');
+  data.selectedWork.forEach((_,i) => buildCollage(i));
+}
+
+function buildCollage(wi){
+  const el = document.getElementById(`collage_${wi}`);
+  if(!el) return;
+  const collage = data.selectedWork[wi].collage || [];
+  if(!collage.length){ el.innerHTML='<div style="font-size:12px;color:var(--muted);padding:8px 0">Ingen elementer ennå</div>'; return; }
+  el.innerHTML = collage.map((item,ci) => {
+    if(item.type === 'image') return `
+      <div class="media-item">
+        <div><span class="media-type-badge badge-image">Bilde</span></div>
+        <div class="field" style="margin:0">
+          <label>Filsti</label>
+          <input type="text" value="${escHtml(item.src||'')}" placeholder="images/bilde.jpg"
+            oninput="data.selectedWork[${wi}].collage[${ci}].src=this.value">
+          <div style="display:flex;gap:12px;margin-top:8px;align-items:center">
+            <label style="display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:13px;font-weight:400">
+              <input type="checkbox" ${item.tall?'checked':''} onchange="data.selectedWork[${wi}].collage[${ci}].tall=this.checked">
+              Høyt bilde (3:4)
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:13px;font-weight:400">
+              <input type="checkbox" ${item.wide?'checked':''} onchange="data.selectedWork[${wi}].collage[${ci}].wide=this.checked">
+              Full bredde
+            </label>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-small" onclick="deleteCollageItem(${wi},${ci})">×</button>
+      </div>`;
+    if(item.type === 'video') return `
+      <div class="media-item">
+        <div><span class="media-type-badge badge-video">Video</span></div>
+        <div class="field" style="margin:0">
+          <label>Vimeo video-ID</label>
+          <input type="text" value="${escHtml(item.vimeoId||'')}" placeholder="1187345684"
+            oninput="data.selectedWork[${wi}].collage[${ci}].vimeoId=this.value">
+          <label style="display:flex;align-items:center;gap:6px;margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;font-weight:400">
+            <input type="checkbox" ${item.wide?'checked':''} onchange="data.selectedWork[${wi}].collage[${ci}].wide=this.checked">
+            Full bredde
+          </label>
+        </div>
+        <button class="btn btn-danger btn-small" onclick="deleteCollageItem(${wi},${ci})">×</button>
+      </div>`;
+    return '';
+  }).join('');
+}
+
+function addCollageItem(wi, type){
+  if(!data.selectedWork[wi].collage) data.selectedWork[wi].collage = [];
+  data.selectedWork[wi].collage.push(
+    type === 'image' ? {type:'image', src:'', tall:false, wide:false}
+                     : {type:'video', vimeoId:'', wide:false}
+  );
+  buildCollage(wi);
+}
+
+function deleteCollageItem(wi, ci){
+  data.selectedWork[wi].collage.splice(ci, 1);
+  buildCollage(wi);
 }
 
 function addWork(){
-  data.selectedWork.push({title:"Nytt prosjekt", desc:"", image:"", bg:"#E6F7F3", url:""});
+  data.selectedWork.push({title:"Nytt prosjekt", desc:"", image:"", bg:"#E6F7F3", url:"", year:"", client:"", employer:"", channels:"", projectText:"", collage:[]});
   buildWork();
 }
 
@@ -586,7 +671,11 @@ function saveToLocal(){
 function loadFromLocal(){
   try {
     const saved = localStorage.getItem('meetRandiData');
-    if(saved){ data = JSON.parse(saved); }
+    if(saved){
+      const parsed = JSON.parse(saved);
+      // Always merge so new fields are never lost
+      data = Object.assign(data, parsed);
+    }
   } catch(e){}
 }
 
@@ -614,7 +703,14 @@ function importDataJs(){
         const match = text.match(/const SITE_DATA = ({[\s\S]*});?\s*$/m) ||
                       text.match(/const SITE_DATA = ([\s\S]+);?\s*$/);
         if(match){
-          data = JSON.parse(match[1]);
+          const imported = JSON.parse(match[1]);
+          // Merge with defaults so missing fields are never lost
+          data = Object.assign({
+            name:'', title:'', location:'', email:'',
+            phone:'', linkedin:'', portfolioUrl:'',
+            contactImage:'', heroVideoId:'',
+            categories:[], selectedWork:[], timeline:[], skills:[]
+          }, imported);
           saveToLocal();
           location.reload();
         } else { alert('Kunne ikke lese filen. Kontroller at det er en gyldig data.js'); }
