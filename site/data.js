@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 19:21:48
+//  Generert av admin-verktøyet 28.4.2026, 19:25:46
 // ============================================================
 
 const SITE_DATA = {
@@ -97,8 +97,8 @@ const SITE_DATA = {
           "media": [
             {
               "type": "image",
-              "src": "images/Konsert.JPG",
-              "label": ""
+              "src": "images/OsloEss.jpg",
+              "label": "Her fikk jeg og sønnen min hilse på et band vi virkelig digger!"
             }
           ]
         }
