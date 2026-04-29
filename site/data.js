@@ -1,6 +1,6 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 28.4.2026, 19:43:45
+//  Generert av admin-verktøyet 29.4.2026, 18:38:18
 // ============================================================
 
 const SITE_DATA = {
@@ -33,13 +33,13 @@ const SITE_DATA = {
         {
           "q": "Hvorfor er du på jobbjakt?",
           "type": "text",
-          "text": "Jeg har jobbet i flere store virksomheter, med erfaring fra redaksjon, in-house byrå og markedsavdelinger. Etter større organisasjonsendringer i Allente, hvor også min stilling ble berørt, er jeg nå klar for nye muligheter – og på jakt etter min neste drømmejobb.",
+          "text": "Jeg har jobbet i flere store bedrifter og har erfaring fra redaksjon, in-house byrå og markedsavdeling. Etter større organisasjonsendringer i Allente, hvor også min stilling ble berørt, er jeg nå klar for nye muligheter – og på jakt etter min neste drømmejobb.",
           "media": []
         },
         {
           "q": "Hvordan er du som designer?",
           "type": "text",
-          "text": "Jeg er av den allsidige typen, som synes det meste er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpasning til ulike kanaler. ",
+          "text": "Jeg er av den allsidige typen, som synes det meste er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun det ene eller det andre. Jeg liker en god miks, og er opptatt av helhet og god tilpasning til ulike kanaler. ",
           "media": []
         },
         {
@@ -153,14 +153,17 @@ const SITE_DATA = {
           "tall": false,
           "wide": false
         }
-      ]
+      ],
+      "projectText": "I xxxx hadde MIX en stor kampanje rundt det at de laget milkshake på ekte kuleis i sine kiosker. Det var mange smaker og mye tilbehør, og i VG fikk vi oppdraget med å skape litt ekstra oppmersommhet rundt dette. MIX var også på i andre kanaler.\n\nEtter noen innledende møter landet vi på at vi skulle få fram de utallige tilpassningsmulighetene for digg milkshake i form av et lite \"spill\" der man mikset sin egen milkshake, ga den et navn og postet den på Facebook. En konkurranse ble knyttet til det også.\n\nDet var ganske gøy å etter hvert kunne scrolle seg gjennom side på side med freshe milkshakes som folk satte sammen i spillet vårt.\n\nJeg var involvert i ideeprosessen, laget innsalgspresentasjon, illustrerte all grafikken, og jobbet tett med en utvikler på teamet for å få på plass funksjonen slik vi så den for oss."
     },
     {
       "title": "Visuell profil - Allente",
       "desc": "Kort beskrivelse",
       "image": "images/Milkshake.jpg",
       "bg": "#D0EFE7",
-      "url": ""
+      "url": "",
+      "year": "",
+      "projectText": "Å jobbe med visuell profil er veldig gøy. Da Allente i xxxx foretok et skifte i uttryk og begynte å rendyrke den kraftige oransje fargen, så vi en klar økning i kjennskap i markedet. Denne fargen, kombinert med konseptet Kongen av TV (som etter hvert ble til Kongen av Underholdning) ga mange muligheter for kreative uttak. \n\nJeg har hatt gleden av å være med å påvirke Allentes visuelle profil gjennom mange år, og har ikke mins vært tro mot den visuelle identiteten i alt jeg har produsert. Det har blitt mange forskjellige annonser og annet markedsmateriell, men det er liten tvil om hvem som er avsender i i for eksempel dette materiellet:"
     },
     {
       "title": "Prosjekt 3",
