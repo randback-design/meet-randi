@@ -1,11 +1,10 @@
 // ============================================================
 //  data.js — Alt innhold for Randi Bäckmark sin porteføljeside
-//  Generert av admin-verktøyet 29.4.2026, 18:38:18
 // ============================================================
 
 const SITE_DATA = {
   "name": "Randi Bäckmark",
-  "title": "Grafisk designer / Innholdsprodusent",
+  "title": "Grafisk designer/Innholdsprodusent",
   "location": "Oslo-området",
   "email": "backmarkrandi@gmail.com",
   "phone": "97 72 03 15",
@@ -16,7 +15,7 @@ const SITE_DATA = {
   "categories": [
     {
       "title": "Om meg",
-      "desc": "Hvem er jeg og hvordan liker jeg å jobbe",
+      "desc": "Hvem er jeg og hva driver meg",
       "questions": [
         {
           "q": "Hvem er du, kort fortalt?",
@@ -26,33 +25,51 @@ const SITE_DATA = {
             {
               "type": "video",
               "vimeoId": "1187345684",
-              "label": ""
+              "label": "En liten historiefortelling - hva lærer du om meg her?"
             }
           ]
         },
         {
-          "q": "Hvorfor er du på jobbjakt?",
+          "q": "Hvorfor er du på jobbgjakt?",
           "type": "text",
-          "text": "Jeg har jobbet i flere store bedrifter og har erfaring fra redaksjon, in-house byrå og markedsavdeling. Etter større organisasjonsendringer i Allente, hvor også min stilling ble berørt, er jeg nå klar for nye muligheter – og på jakt etter min neste drømmejobb.",
+          "text": "Jeg har jobbet i flere store bedrifter opp gjennom. Både i redaksjon, in-house byrå og markedsavdeling. Så ble det store organisasjonsendringer i Allente (min siste arbeidsplass), og ikke lenger plass til meg og mange av mine kollegaer videre. Så nå søker jeg min neste drømmejobb!",
           "media": []
         },
         {
-          "q": "Hvordan er du som designer?",
-          "type": "text",
-          "text": "Jeg er av den allsidige typen, som synes det meste er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun det ene eller det andre. Jeg liker en god miks, og er opptatt av helhet og god tilpasning til ulike kanaler. ",
+          "q": "Hva slags designer er du?",
+          "type": "video",
+          "text": "Jeg er av den allsidige typen, som synes alt er gøy og derfor gjerne setter meg inn i nye ting og bidrar der det trengs. For meg er det ikke så viktig å jobbe kun med sosiale medier, eller kun med trykksaker. Jeg liker en god miks, og er opptatt av helhet og god tilpassning til ulike kanaler. \n\nHer er en kort presentasjon:",
           "media": []
         },
         {
           "q": "Hva sier andre om deg?",
-          "type": "video",
-          "text": "Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer, venner og barna mine sier om meg. ",
+          "type": "text",
+          "text": "Jeg har spurt litt rundt jeg. Her er hva tidligere kollegaer, venner og barn sier om meg.",
           "media": []
         },
         {
-          "q": " Klassikeren: Styrker og svakheter? ",
+          "q": "Klassikeren: Styrker og svakheter?",
           "type": "text",
-          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design. Fellesnevner: god og engasjerende historiefortelling, uansett kanal og målgruppe!\n\n\nTall - jeg kan følge med på dem og analysere dem, men jeg er ikke god på å huske dem. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
+          "text": "Mine største stryker er nok at jeg er kreativ, engasjert, strukturert, liker å lære nye ferdigheter og systemer, og også synes det er gøy med tekst i tillegg til design.\n\nTall er ikke min sterkeste side. Jeg kan følge med på dem og analysere dem, men jeg husker de sjelden. Da må jeg skrive ned og sette i system. Og så er jeg født med null stedsans, og den ser ikke ut til å bli bedre. Men heldigvis finnes det GPS. ;)",
           "media": []
+        }
+      ]
+    },
+    {
+      "title": "Prosjekter",
+      "desc": "Arbeidsprøver og case studies",
+      "questions": [
+        {
+          "q": "Kan du vise et prosjekt du er stolt av?",
+          "type": "sample",
+          "text": "",
+          "media": [
+            {
+              "type": "placeholder",
+              "label": "Legg til bilder",
+              "bg": "#E6F7F3"
+            }
+          ]
         }
       ]
     },
@@ -65,48 +82,42 @@ const SITE_DATA = {
           "type": "text",
           "text": "Der lærte jeg hvor fint det kan være å jobbe på tvers av team. At det å bygge en ny merkevare fra bunnen av er en lang prosess med prøving og feiling, men at det også er veldig moro å se hvor bra det blir når man lærer, justerer, tilpasser og holder seg til en langsiktig plan.",
           "media": []
-        },
+        }
+      ]
+    },
+    {
+      "title": "Fritid",
+      "desc": "Hvor bidrar jeg?",
+      "questions": [
         {
-          "q": "Hvilke programmer jobber du i?",
+          "q": "Engasjerer du deg i noe?",
           "type": "text",
-          "text": "Adobe Creative Cloud er min hovedverktøykasse, og der kan jeg de største programmene godt. Jeg liker både å illustrere, klippe video, redigere bilder og lage markedsmateriell både for digitalt og for trykk.\n\nJeg liker også orden og system, og digger derfor prosjektstyringsverktøy som Monday.com og annonseversjonering med Bannerflow. Jeg har vært med å velge ut og implementere flere verktøy i Allente.",
+          "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
           "media": []
         },
         {
-          "q": "Hva bidrar du med i et team?",
+          "q": "Noen fun-facts om deg?",
           "type": "text",
-          "text": "Jeg bidrar med kreativitet, iver og humor. Man jobber så bra sammen når man har det litt gøy samtidig. Jeg tar gjerne på meg mange oppgaver, og bidar inn alle steder der det trengs, og tror jeg også er en god sparringspartner.",
+          "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemmet\nJeg digger fargerike sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
           "media": []
         }
       ]
     },
     {
-      "title": "Just for fun",
-      "desc": "Utenom jobb",
+      "title": "Verktøy",
+      "desc": "Programvare og prosess",
       "questions": [
         {
-          "q": "Engasjerer du deg i noe?",
-          "type": "sample",
-          "text": "Jada! Jeg har to barn som spiller i et barne- og ungdomsteater, og der er det mer enn nok jobb til alle foreldre. Jeg ble selvfølgelig plassert i PR-gruppa, og der har jeg ansvar for alt det grafiske. Det vil si plakater, SoMe-bilder, annonsering, program og mye mer. Det er masser av engasjerte foreldre i Trollskogen Teater, og det drives skikkelig profft.",
-          "media": [
-            {
-              "type": "image",
-              "src": "images/Programmer.png",
-              "label": ""
-            }
-          ]
+          "q": "Hvilke verktøy bruker du daglig?",
+          "type": "text",
+          "text": "Adobe Creative Cloud er min hovedverktøykasse, og her behersker jeg alle de største programmene, dvs: Illustrator, InDesign, Photoshop, Premiere og After Effects.\n\nJeg er også veldig glad i god struktur og arbeidsflyt, og digger prosjektstyringsverktøy som monday.com og annonseversionering med Bannerflow. \n\nOg så har jeg lang erfaring med å jobbe i CMS, hovedsakelig Optimizely (tidligere EPiserver)",
+          "media": []
         },
         {
-          "q": "Noen fun-facts om deg, eller?",
+          "q": "Hva er du mest opptatt av å jobbe med?",
           "type": "text",
-          "text": "Klart det!\nJeg elsker å gå på konserter og gjør det så mye jeg kan!\nJeg har alltid en backlog av kreative prosjekter i hjemme\nJeg liker fargerike klær og sko\nI hagen min bor det 8 høns\nJeg plystrer veldig mye",
-          "media": [
-            {
-              "type": "image",
-              "src": "images/OsloEss.jpg",
-              "label": "Her fikk jeg og sønnen min hilse på et band vi virkelig digger!"
-            }
-          ]
+          "text": "For tiden synes jeg det er veldig gøy å lære meg mer animasjon i After Effects, og jeg tester ut mye forskjellig. Å få til gode bevegelser ved hjelp av pluginen Rubber Hose er noe av det jeg leker meg med nå.",
+          "media": []
         }
       ]
     }
@@ -117,67 +128,28 @@ const SITE_DATA = {
       "desc": "Gamification på annonseplass",
       "image": "images/Milkshake.jpg",
       "bg": "#E6F7F3",
-      "url": "",
-      "year": "2016",
-      "client": "MIX",
-      "channels": "Display og egen landingsside",
-      "employer": "VG",
-      "collage": [
-        {
-          "type": "image",
-          "src": "images/MIX3.png",
-          "tall": false,
-          "wide": false
-        },
-        {
-          "type": "image",
-          "src": "images/MIX2.gif",
-          "tall": false,
-          "wide": false
-        },
-        {
-          "type": "image",
-          "src": "images/MIX7.png",
-          "tall": false,
-          "wide": false
-        },
-        {
-          "type": "image",
-          "src": "",
-          "tall": false,
-          "wide": false
-        },
-        {
-          "type": "image",
-          "src": "images/Mix1.mov",
-          "tall": false,
-          "wide": false
-        }
-      ],
-      "projectText": "I xxxx hadde MIX en stor kampanje rundt det at de laget milkshake på ekte kuleis i sine kiosker. Det var mange smaker og mye tilbehør, og i VG fikk vi oppdraget med å skape litt ekstra oppmersommhet rundt dette. MIX var også på i andre kanaler.\n\nEtter noen innledende møter landet vi på at vi skulle få fram de utallige tilpassningsmulighetene for digg milkshake i form av et lite \"spill\" der man mikset sin egen milkshake, ga den et navn og postet den på Facebook. En konkurranse ble knyttet til det også.\n\nDet var ganske gøy å etter hvert kunne scrolle seg gjennom side på side med freshe milkshakes som folk satte sammen i spillet vårt.\n\nJeg var involvert i ideeprosessen, laget innsalgspresentasjon, illustrerte all grafikken, og jobbet tett med en utvikler på teamet for å få på plass funksjonen slik vi så den for oss."
+      "url": ""
     },
     {
       "title": "Visuell profil - Allente",
       "desc": "Kort beskrivelse",
-      "image": "images/Milkshake.jpg",
+      "image": "",
       "bg": "#D0EFE7",
-      "url": "",
-      "year": "",
-      "projectText": "Å jobbe med visuell profil er veldig gøy. Da Allente i xxxx foretok et skifte i uttryk og begynte å rendyrke den kraftige oransje fargen, så vi en klar økning i kjennskap i markedet. Denne fargen, kombinert med konseptet Kongen av TV (som etter hvert ble til Kongen av Underholdning) ga mange muligheter for kreative uttak. \n\nJeg har hatt gleden av å være med å påvirke Allentes visuelle profil gjennom mange år, og har ikke mins vært tro mot den visuelle identiteten i alt jeg har produsert. Det har blitt mange forskjellige annonser og annet markedsmateriell, men det er liten tvil om hvem som er avsender i i for eksempel dette materiellet:"
+      "url": ""
     },
     {
       "title": "Prosjekt 3",
       "desc": "Kort beskrivelse",
-      "image": "images/Milkshake.jpg",
+      "image": "",
       "bg": "#B8E5D9",
       "url": ""
     }
   ],
   "timeline": [
     {
-      "year": "2019 — 2016",
+      "year": "2019 — 2026",
       "role": "Grafisk Designer",
-      "place": "Allente ",
+      "place": "Allente",
       "desc": "Produksjon av visuelt innhold på tvers av digitale kanaler. Social, nyhetsbrev, web, partnerskap mm."
     },
     {
@@ -194,42 +166,13 @@ const SITE_DATA = {
     }
   ],
   "skills": [
-    {
-      "name": "Adobe Illustrator",
-      "pct": 80
-    },
-    {
-      "name": "Adobe InDesign",
-      "pct": 70
-    },
-    {
-      "name": "Adobe Photoshop",
-      "pct": 80
-    },
-    {
-      "name": "Adobe After Effects",
-      "pct": 60
-    },
-    {
-      "name": "Adobe Premiere",
-      "pct": 60
-    },
-    {
-      "name": "Bannerflow",
-      "pct": 85
-    },
-    {
-      "name": "Optimizely",
-      "pct": 80
-    },
-    {
-      "name": "Monday.com",
-      "pct": 80
-    },
-    {
-      "name": "Figma",
-      "pct": 50
-    }
-  ],
-  "showcaseVideoId": "uXaAgf8j-MI"
+    { "name": "Adobe Illustrator", "pct": 80 },
+    { "name": "Adobe InDesign", "pct": 70 },
+    { "name": "Adobe Photoshop", "pct": 80 },
+    { "name": "Adobe After Effects", "pct": 60 },
+    { "name": "Adobe Premiere", "pct": 60 },
+    { "name": "Bannerflow", "pct": 85 },
+    { "name": "Optimizely", "pct": 80 },
+    { "name": "Monday.com", "pct": 80 }
+  ]
 };
