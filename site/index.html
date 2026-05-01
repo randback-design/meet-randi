@@ -71,6 +71,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .car-dot{width:6px;height:6px;border-radius:3px;background:#ddd;cursor:pointer;transition:background .2s,width .25s}
 .car-dot.active{width:16px;background:var(--t1)}
 .car-count{font-size:11px;color:var(--muted);white-space:nowrap}
+.media-small{max-width:50%;margin:12px 0}
+.media-small iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:10px;display:block}
+.media-caption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic}
 
 /* WORK */
 
@@ -230,7 +233,8 @@ const fikenQA = [
     q: "Er du god til å designe annonser?",
     type: "text",
     text: "Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde, lage kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også, for mange ulike kanaler.",
-    media: [{type:"youtube", youtubeId:"SPDlenG0axc"}]
+    media: [],
+    extraHtml: `<div class="media-small"><iframe src="https://www.youtube.com/embed/SPDlenG0axc?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="media-caption">Her er en litt artig sak jeg en gang laget for Axo Finans, på VG</div></div>`
   },
   {
     q: "Hva annet kan du?",
@@ -275,6 +279,7 @@ function buildFaq(){
   list.innerHTML = fikenQA.map(item => {
     const cid = 'c'+Math.random().toString(36).slice(2,7);
     let content = `<div class="faq-a-inner">${item.text||''}`;
+    if(item.extraHtml) content += item.extraHtml;
     if(item.media && item.media.length) content += makeCarousel(item.media, cid);
     content += '</div>';
     return `<div class="faq-item">
