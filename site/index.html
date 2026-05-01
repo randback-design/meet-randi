@@ -73,19 +73,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .car-count{font-size:11px;color:var(--muted);white-space:nowrap}
 
 /* WORK */
-.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.work-card{background:var(--card);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform .2s,box-shadow .2s}
-.work-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
-.work-thumb{aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.work-card:hover .work-thumb img{transform:scale(1.04)}
-.work-info{padding:18px 20px}
-.work-title{font-size:16px;font-weight:700;margin-bottom:4px}
-.work-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
-.work-link{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t1)}
-.work-portfolio-link{margin-top:20px;text-align:center;font-size:13px;color:var(--muted)}
-.work-portfolio-link a{color:var(--t1);text-decoration:none;font-weight:600}
-.work-portfolio-link a:hover{text-decoration:underline}
+
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
@@ -136,7 +124,6 @@ footer a:hover{color:var(--t1)}
   <ul class="nav-links" id="navLinks">
     <li><a href="#qa">Q&A</a></li>
     <li><a href="#erfaring">Erfaring</a></li>
-    <li><a href="#arbeid">Utvalgte arbeid</a></li>
   </ul>
   <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
 </nav>
@@ -146,8 +133,8 @@ footer a:hover{color:var(--t1)}
   <div class="hero-inner">
     <div class="hero-video">
       <iframe
-        src="https://drive.google.com/file/d/1Lv_YJypxWDn3_lwQAOWjiadGrfruLRQn/preview"
-        allow="autoplay"
+        src="https://www.youtube.com/embed/nHy4ph_fxHY?rel=0&modestbranding=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
@@ -182,15 +169,7 @@ footer a:hover{color:var(--t1)}
   </div>
 </div>
 
-<!-- UTVALGTE ARBEID -->
-<div class="wrap" id="arbeid">
-  <div class="section">
-    <div class="section-eyebrow">Utvalgte arbeid</div>
-    <div class="section-title">Et knippe prosjekter</div>
-    <div class="work-grid" id="workGrid"></div>
-    <div class="work-portfolio-link" id="portfolioLinkWrap" style="display:none">Se all portefølje på <a href="#" id="portfolioLink" target="_blank"></a></div>
-  </div>
-</div>
+
 
 
 
@@ -225,8 +204,8 @@ const fikenQA = [
   {
     q: "Så… hvem er du da?",
     type: "video",
-    text: "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. Og mamma, kjæreste og hundeeier. Lær mer her:",
-    media: [] // Legg inn vimeoId når du har den
+    text: "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. Og mamma, kjæreste og hundeeier.<br><br>Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",
+    media: [{type:"video", vimeoId:"1187345684", label:"Showcase"}]
   },
   {
     q: "Og hvorfor søker du på denne jobben?",
@@ -249,13 +228,13 @@ const fikenQA = [
   {
     q: "Er du god til å designe annonser?",
     type: "text",
-    text: "Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde — laget kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også — for mange ulike kanaler.",
+    text: "Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde, lage kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også, for mange ulike kanaler.",
     media: []
   },
   {
     q: "Hva annet kan du?",
     type: "text",
-    text: "Jeg kan klippe video, lage enkle animasjoner, illustrere, redigere bilder, lage konsepter, idémyldre, holde workshops, lage innsalgspresentasjoner, og mye mer. Og jeg deler gjerne musikktips og hjelper til å orge festligheter. 🎉",
+    text: "Jeg kan klippe video, lage enkle animasjoner, illustrere, redigere bilder, lage konsepter, idémyldre, holde workshops, lage innsalgspresentasjoner, og mye mer. Og jeg deler gjerne musikktips og hjelper til å orge festligheter. 🎉 Og så klarer jeg ta tunga opp på nesa.",
     media: []
   },
   {
@@ -273,7 +252,7 @@ const fikenQA = [
   {
     q: "Hvordan kontakter vi deg?",
     type: "text",
-    text: "Jeg sier som Gabrielle... <em>«Riiing meg»</em>. <a href='tel:97720315' style='color:var(--t1)'>97 72 03 15</a>. Eller send en mail til <a href='mailto:backmarkrandi@gmail.com' style='color:var(--t1)'>backmarkrandi@gmail.com</a><br><br>Håper å høre fra dere! 🤞",
+    text: "Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br>Håper å høre fra dere! 🤞",
     media: []
   },
   {
@@ -314,6 +293,7 @@ function toggleFaq(btn){btn.parentElement.classList.toggle('open')}
 
 // ── WORK ──
 function buildWork(){
+  if(!document.getElementById('workGrid')) return;
   document.getElementById('workGrid').innerHTML=SITE_DATA.selectedWork.map(w=>`
     <a class="work-card fade-in" href="${w.url||'#'}" target="_blank">
       <div class="work-thumb" style="background:${w.bg||'#e3f4f0'}">
@@ -357,6 +337,7 @@ function buildSkills(){
 
 // ── KONTAKT ──
 function buildKontakt(){
+  if(!document.getElementById('kontaktBilde')) return;
   if(SITE_DATA.contactImage) document.getElementById('kontaktBilde').innerHTML=`<img src="${SITE_DATA.contactImage}" alt="${SITE_DATA.name}">`;
   const links=[];
   if(SITE_DATA.email) links.push(`<a class="kontakt-link" href="mailto:${SITE_DATA.email}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</a>`);
@@ -371,7 +352,7 @@ function buildHeroContact(){
   const c = document.getElementById('heroContact');
   if(!c) return;
   const links = [];
-  if(SITE_DATA.email) links.push(`<a class="hero-contact-link" href="mailto:${SITE_DATA.email}"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</a>`);
+  if(SITE_DATA.email) links.push(`<a class="hero-contact-link" href="#"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</a>`);
   if(SITE_DATA.phone) links.push(`<a class="hero-contact-link" href="tel:${SITE_DATA.phone}"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</a>`);
   if(SITE_DATA.linkedin) links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
   if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
