@@ -8,7 +8,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--t1:#409f89;--t2:#2d7a68;--t3:#e3f4f0;--black:#111;--white:#fff;--bg:#F7F7F5;--card:#fff;--muted:#777;--font:'Nunito Sans','Myriad Pro',sans-serif}
+:root{--t1:#409f89;--t2:#2d7a68;--t3:#e3f4f0;--black:#111;--white:#fff;--bg:#F7F7F5;--card:#fff;--muted:#333;--font:'Nunito Sans','Myriad Pro',sans-serif}
 body{font-family:var(--font);font-size:16px;color:var(--black);background:var(--bg);line-height:1.7}
 nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:62px;box-shadow:0 1px 0 rgba(0,0,0,.07)}
 .nav-logo{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--black)}
@@ -31,7 +31,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .hero-contact-icon svg{width:15px;height:15px;stroke:var(--t1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 .wrap{max-width:1060px;margin:0 auto;padding:0 48px}
-.section{padding:48px 0}
+.section{padding:36px 0}
 .section-eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
 .section-title{font-size:28px;font-weight:700;margin-bottom:16px}
 .section-intro{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:40px}
@@ -85,8 +85,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .tl-dot{position:absolute;left:-24px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--t1);border:2px solid var(--white)}
 .tl-year{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--t2);margin-bottom:2px}
 .tl-role{font-size:16px;font-weight:700}
-.tl-place{font-size:13px;color:var(--muted);margin-bottom:4px}
-.tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.tl-place{font-size:14px;color:#333;margin-bottom:4px}
+.tl-desc{font-size:15px;color:#333;line-height:1.6}
 .skills-wrap{background:var(--card);border-radius:14px;padding:36px}
 .skill-row{margin-bottom:18px}
 .skill-row:last-child{margin-bottom:0}
@@ -114,7 +114,7 @@ footer a:hover{color:var(--t1)}
 .fade-in.visible{opacity:1;transform:none}
 
 @media(max-width:900px){.work-grid{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr;gap:24px}.kontakt-grid{grid-template-columns:1fr;gap:40px}.kontakt-bilde{aspect-ratio:4/3;max-width:300px}}
-@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:48px 0}.faq-section{padding:48px 0}.work-grid{grid-template-columns:1fr}.kontakt-section{padding:48px 0}footer{padding:24px 20px}.faq-a-inner{padding-left:0}}
+@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-section{padding:48px 0}.work-grid{grid-template-columns:1fr}.kontakt-section{padding:48px 0}footer{padding:24px 20px}.faq-a-inner{padding-left:0}}
 </style>
 </head>
 <body>
@@ -156,7 +156,7 @@ footer a:hover{color:var(--t1)}
   <div class="section">
     <div class="two-col">
       <div>
-        <div class="section-eyebrow">Erfaring & utdanning</div>
+        <div class="section-eyebrow">Arbeidserfaring</div>
         <div class="section-title">Tidslinje</div>
         <div class="timeline-wrap"><div class="timeline" id="timeline"></div></div>
       </div>
