@@ -174,5 +174,6 @@ const SITE_DATA = {
     { "name": "Bannerflow", "pct": 85 },
     { "name": "Optimizely", "pct": 80 },
     { "name": "Monday.com", "pct": 80 }
+    { "name": "Figma", "pct": 50 }
   ]
 };
