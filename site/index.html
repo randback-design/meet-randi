@@ -173,7 +173,7 @@ function buildQuoteCarousel(){
   const slides=referanser.map((r,i)=>{
     let inner=r.type==='quote'
       ?`<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
-      :`<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+      :`<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
     return`<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
   const dots=referanser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
@@ -193,8 +193,8 @@ let adIdx=0;
 function buildAdCarousel(){
   const slides=annonser.map((r,i)=>{
     let inner=r.type==='vimeo'
-      ?`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`
-      :`<div class="video-card"><img src="${r.src}" alt="${r.name}"><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+      ?`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
+      :`<div class="video-card"><img src="${r.src}" alt="${r.name}"></div>`;
     return`<div id="ad${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
   const dots=annonser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goAd(${i})"></div>`).join('');
