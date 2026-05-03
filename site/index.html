@@ -18,8 +18,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .nav-links a:hover{color:var(--t1)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
-
-/* HERO */
 .hero-outer{width:100%;background:#111;padding:48px 0}
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
 .hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
@@ -29,14 +27,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .hero-contact-link:hover{color:#fff}
 .hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hero-contact-icon svg{width:15px;height:15px;stroke:var(--t1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
 .wrap{max-width:1060px;margin:0 auto;padding:0 48px}
 .section{padding:36px 0}
 .section-eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
 .section-title{font-size:28px;font-weight:700;margin-bottom:8px}
 .section-intro{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:20px}
-
-/* FAQ — direkte synlig */
 .faq-section{background:var(--white);padding:0 0 32px}
 .faq-list{max-width:1060px;margin:0 auto;padding:0 48px}
 .faq-item{border-bottom:1px solid rgba(0,0,0,.07)}
@@ -44,17 +39,40 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .faq-q:hover{color:var(--t1)}
 .faq-q-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
 .faq-type-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:#B8E5D9}
-.faq-type-icon svg{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke:#409f89}.faq-type-icon.video-filled svg{fill:#409f89;stroke:none}
+.faq-type-icon svg{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke:#409f89}
 .faq-q-text{flex:1}
 .faq-chevron{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .3s}
 .faq-item.open .faq-chevron{background:var(--t1);transform:rotate(180deg)}
 .faq-chevron svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;stroke-linecap:round;transition:stroke .2s}
 .faq-item.open .faq-chevron svg{stroke:#fff}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.faq-item.open .faq-a{max-height:2000px}
+.faq-item.open .faq-a{max-height:3000px}
 .faq-a-inner{padding:4px 0 28px 40px;font-size:15px;color:var(--muted);line-height:1.8}
 
-/* CAROUSEL */
+/* QUOTE KARUSELL */
+.quote-carousel{margin-top:16px}
+
+.quote-slide{margin-bottom:12px}
+.quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
+.quote-text{font-size:16px;color:var(--black);line-height:1.7;margin-bottom:20px}
+.quote-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.quote-name{font-size:14px;font-weight:700;color:var(--black)}
+.quote-role{font-size:13px;color:var(--t2)}
+.video-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:10px}
+.video-card-footer{padding:16px 0 0}
+.video-card-name{font-size:14px;font-weight:700;color:var(--black)}
+.video-card-role{font-size:13px;color:var(--t2)}
+.quote-controls{display:flex;align-items:center;gap:10px;margin-top:12px}
+.quote-btn{width:30px;height:30px;border-radius:50%;background:var(--card);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.quote-btn:hover{background:var(--t1)}
+.quote-btn:hover svg path{stroke:#fff}
+.quote-dots{display:flex;gap:5px;flex:1}
+.quote-dot{width:6px;height:6px;border-radius:3px;background:#ddd;cursor:pointer;transition:background .2s,width .25s}
+.quote-dot.active{width:16px;background:var(--t1)}
+.quote-count{font-size:11px;color:var(--muted);white-space:nowrap}
+
 .carousel{border-radius:10px;overflow:hidden;background:var(--bg);margin-top:12px}
 .carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
 .carousel-slide{min-width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden}
@@ -74,11 +92,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .media-small{max-width:50%;margin:12px 0}
 .media-small iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:10px;display:block}
 .media-caption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic}
-
-/* WORK */
-
-
-/* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .timeline-wrap{background:var(--card);border-radius:14px;padding:36px}
 .timeline{position:relative;padding-left:24px}
@@ -96,32 +109,17 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .skill-name{font-size:14px;font-weight:700;margin-bottom:6px}
 .skill-track{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--t1),var(--t2));width:0;border-radius:3px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
-
-/* KONTAKT */
-.kontakt-section{background:var(--white);padding:80px 0}
-.kontakt-grid{display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start}
-.kontakt-bilde{border-radius:14px;overflow:hidden;aspect-ratio:3/4;background:var(--t3);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase;max-width:280px}
-.kontakt-bilde img{width:100%;height:100%;object-fit:cover}
-.kontakt-info{display:flex;flex-direction:column;gap:32px}
-.kontakt-links{display:flex;flex-direction:column;gap:14px}
-.kontakt-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--black);font-size:15px;transition:color .2s}
-.kontakt-link:hover{color:var(--t1)}
-.kontakt-link-icon{width:36px;height:36px;border-radius:9px;background:var(--t3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.kontakt-link-icon svg{width:16px;height:16px;stroke:var(--t1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
 footer{background:var(--black);color:rgba(255,255,255,.4);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px}
 footer strong{color:var(--t1)}
 footer a{color:rgba(255,255,255,.4);text-decoration:none}
 footer a:hover{color:var(--t1)}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
-
-@media(max-width:900px){.work-grid{grid-template-columns:1fr 1fr}.two-col{grid-template-columns:1fr;gap:24px}.kontakt-grid{grid-template-columns:1fr;gap:40px}.kontakt-bilde{aspect-ratio:4/3;max-width:300px}}
-@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-section{padding:48px 0}.work-grid{grid-template-columns:1fr}.kontakt-section{padding:48px 0}footer{padding:24px 20px}.faq-a-inner{padding-left:0}}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
+@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}.media-small{max-width:100%}footer{padding:24px 20px}}
 </style>
 </head>
 <body>
-
 <nav>
   <a class="nav-logo" href="#">Randi Bäckmark<span>.</span></a>
   <ul class="nav-links" id="navLinks">
@@ -130,31 +128,23 @@ footer a:hover{color:var(--t1)}
   </ul>
   <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
 </nav>
-
-<!-- HERO -->
 <div class="hero-outer">
   <div class="hero-inner">
     <div class="hero-video">
-      <iframe
-        src="https://www.youtube.com/embed/nHy4ph_fxHY?rel=0&modestbranding=1"
+      <iframe src="https://www.youtube.com/embed/nHy4ph_fxHY?rel=0&modestbranding=1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+        allowfullscreen></iframe>
     </div>
     <div class="hero-contact" id="heroContact"></div>
   </div>
 </div>
-
-<!-- Q&A INTRO + FAQ -->
 <div class="faq-section" id="qa">
   <div class="wrap" style="padding-top:24px;padding-bottom:16px">
     <div class="section-title" style="margin-bottom:12px">Finn ut så mye eller lite dere vil om meg her</div>
-    <div class="section-intro" style="white-space:normal">…men please se på de fine videoene og tekstene tidligere kollegaer og familie har bidratt med da. 🙏</div>
+    <div class="section-intro">…men please se på de fine videoene og tekstene tidligere kollegaer og familie har bidratt med da. 🙏</div>
   </div>
   <div class="faq-list" id="faqList"></div>
 </div>
-
-<!-- ERFARING + FERDIGHETER -->
 <div class="wrap" id="erfaring">
   <div class="section">
     <div class="two-col">
@@ -171,20 +161,60 @@ footer a:hover{color:var(--t1)}
     </div>
   </div>
 </div>
-
-
-
-
-
 <footer>
-  <div>&copy; 2025 <strong>Randi Bäckmark</strong> — Grafisk designer</div>
+  <div>&copy; 2026 <strong>Randi Bäckmark</strong> — Grafisk designer</div>
   <div><a href="mailto:backmarkrandi@gmail.com">backmarkrandi@gmail.com</a></div>
 </footer>
-
 <script src="data.js"></script>
 <script>
+// ── QUOTE KARUSELL DATA ──
+const referanser = [
+  {
+    type: "quote",
+    text: "Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",
+    name: "Simen Lysebo",
+    role: "Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"
+  },
+  {
+    type: "quote",
+    text: "Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",
+    name: "Benedicte Norderhaug",
+    role: "Content Producer, Allente — Tidligere kollega"
+  },
+  {
+    type: "video",
+    youtubeId: "ToDBqyfMAZ8",
+    name: "Maren",
+    role: "Datter"
+  },
+  {
+    type: "video",
+    youtubeId: "zRPfw77rPys",
+    name: "Kristoffer",
+    role: "Sønn"
+  }
+];
 
-// Hero video embedded directly
+let quoteIdx = 0;
+
+function buildQuoteCarousel(){
+  const slides = referanser.map((r,i) => {
+    let inner = '';
+    if(r.type === 'quote') inner = `<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`;
+    else inner = `<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+    return `<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
+  }).join('');
+  const dots = referanser.map((_,i) => `<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
+  return `<div class="quote-carousel">${slides}<div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${referanser.length}</div></div></div>`;
+}
+
+function goQuote(idx){
+  referanser.forEach((_,i)=>{const el=document.getElementById('qs'+i);if(el)el.style.display=i===idx?'block':'none';});
+  document.querySelectorAll('.quote-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  const c=document.getElementById('quoteCount');if(c)c.textContent=`${idx+1} / ${referanser.length}`;
+  quoteIdx=idx;
+}
+function stepQuote(dir){goQuote((quoteIdx+dir+referanser.length)%referanser.length)}
 
 // ── CAROUSEL ──
 const carState={};
@@ -205,67 +235,16 @@ function stepSlide(id,dir){const s=carState[id];goSlide(id,(s.current+dir+s.tota
 
 // ── FAQ ──
 const fikenQA = [
-  {
-    q: "Så… hvem er du da?",
-    type: "video",
-    text: "Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. Og mamma, kjæreste og hundeeier.<br><br>Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",
-    media: [{type:"video", vimeoId:"1187345684", label:"Showcase"}]
-  },
-  {
-    q: "Og hvorfor søker du på denne jobben?",
-    type: "text",
-    text: "Altså, den stillingsannonsen deres traff meg virkelig. Jeg digger måten dere tenker på om at det man holder på med skal være gøy, at man selv har ansvar for å se hva som trengs å gjøres, at det er rom for å teste nye ting, og alt det. Dere virker som en herlig gjeng, og at det er uhøytidelig og høyt under taket på jobb, er noe jeg setter stor pris på.<br><br>Og så kan jeg gjøre alt det dere etterspør! Med erfaring fra både in-house byrå og markedsavdeling, har jeg call på dette med å bygge merkevare, altså!",
-    media: []
-  },
-  {
-    q: "Hva sier andre om deg?",
-    type: "video",
-    text: "Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:",
-    media: [] // Legg inn vimeoId-er her
-  },
-  {
-    q: "Er du rå på regnskap da?",
-    type: "text",
-    text: "Hehe, nei… På russekortet mitt sto det: <em>«Det finnes tre typer mennesker. De som kan telle, og de som ikke kan det»</em>.<br><br>Jeg er jo akkurat den type menneske som absolutt trenger Fiken! Så da kan jeg jo sette meg lett inn i hva man trenger hjelp med, og forsøke å forklare det til nettopp sånne som meg. Jeg liker å visualisere komplekse ting, så de blir lettere å forstå.",
-    media: []
-  },
-  {
-    q: "Er du god til å designe annonser?",
-    type: "video",
-    text: "Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde, lage kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også, for mange ulike kanaler.",
-    media: [],
-    extraHtml: `<div class="media-small"><iframe src="https://www.youtube.com/embed/SPDlenG0axc?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="media-caption">Her er en litt artig sak jeg en gang laget for Axo Finans, på VG</div></div>`
-  },
-  {
-    q: "Hva annet kan du?",
-    type: "text",
-    text: "Jeg kan klippe video, lage enkle animasjoner, illustrere, redigere bilder, lage konsepter, idémyldre, holde workshops, lage innsalgspresentasjoner, og mye mer. Og jeg deler gjerne musikktips og hjelper til å orge festligheter. 🎉 Og så klarer jeg ta tunga opp på nesa.",
-    media: []
-  },
-  {
-    q: "Hvor god er du på Figma?",
-    type: "text",
-    text: "Jeg har laget litt annonser og annen grafikk i Figma, men har mer erfaring med å sette det opp i Photoshop, Bannerflow, eller direkte i samarbeid med utviklere (om det skulle være noe mer avansert). Men jeg synes det er gøy å lære nye programmer, og har ingen problemer med å lage annonser i Figma. Det er jo hva man fyller en annonserute med som betyr noe, og designe — det kan jeg!",
-    media: []
-  },
-  {
-    q: "Kan vi se noen arbeider du har gjort?",
-    type: "text",
-    text: "Sure! Ta en titt på porteføljesiden min. Den ligger her: <a href='https://randback.portfoliobox.net/' target='_blank' style='color:var(--t1)'>randback.portfoliobox.net</a>",
-    media: []
-  },
-  {
-    q: "Hvordan kontakter vi deg?",
-    type: "text",
-    text: "Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br>Håper å høre fra dere! 🤞<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a>",
-    media: []
-  },
-  {
-    q: "Hvordan slengte du sammen denne siden?",
-    type: "text",
-    text: "Vel, slengte og slengte… Claude og jeg har jobbet hardt med den, men det har vært skikkelig lærerikt også. Og nå håper jeg at dere skjønner at jeg har skikkelig lyst på å jobbe hos dere, siden jeg har lagt ned mye jobb. 😄",
-    media: []
-  }
+  {q:"Så… hvem er du da?",type:"video",text:"Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. Og mamma, kjæreste og hundeeier.<br><br>Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",media:[{type:"video",vimeoId:"1187345684"}]},
+  {q:"Og hvorfor søker du på denne jobben?",type:"text",text:"Altså, den stillingsannonsen deres traff meg virkelig. Jeg digger måten dere tenker på om at det man holder på med skal være gøy, at man selv har ansvar for å se hva som trengs å gjøres, at det er rom for å teste nye ting, og alt det. Dere virker som en herlig gjeng, og at det er uhøytidelig og høyt under taket på jobb, er noe jeg setter stor pris på.<br><br>Og så kan jeg gjøre alt det dere etterspør! Med erfaring fra både in-house byrå og markedsavdeling, har jeg call på dette med å bygge merkevare, altså!",media:[]},
+  {q:"Hva sier andre om deg?",type:"video",text:"Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:",quoteCarousel:true},
+  {q:"Er du rå på regnskap da?",type:"text",text:"Hehe, nei… På russekortet mitt sto det: <em>«Det finnes tre typer mennesker. De som kan telle, og de som ikke kan det»</em>.<br><br>Jeg er jo akkurat den type menneske som absolutt trenger Fiken! Så da kan jeg jo sette meg lett inn i hva man trenger hjelp med, og forsøke å forklare det til nettopp sånne som meg. Jeg liker å visualisere komplekse ting, så de blir lettere å forstå.",media:[]},
+  {q:"Er du god til å designe annonser?",type:"video",text:"Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde, lage kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også, for mange ulike kanaler.",media:[],extraHtml:`<div class="media-small"><iframe src="https://www.youtube.com/embed/SPDlenG0axc?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="media-caption">Her er en litt artig sak jeg en gang laget for Axo Finans, på VG</div></div>`},
+  {q:"Hva annet kan du?",type:"text",text:"Jeg kan klippe video, lage enkle animasjoner, illustrere, redigere bilder, lage konsepter, idémyldre, holde workshops, lage innsalgspresentasjoner, og mye mer. Og jeg deler gjerne musikktips og hjelper til å orge festligheter. 🎉 Og så klarer jeg ta tunga opp på nesa.",media:[]},
+  {q:"Hvor god er du på Figma?",type:"text",text:"Jeg har laget litt annonser og annen grafikk i Figma, men har mer erfaring med å sette det opp i Photoshop, Bannerflow, eller direkte i samarbeid med utviklere (om det skulle være noe mer avansert). Men jeg synes det er gøy å lære nye programmer, og har ingen problemer med å lage annonser i Figma. Det er jo hva man fyller en annonserute med som betyr noe, og designe — det kan jeg!",media:[]},
+  {q:"Kan vi se noen arbeider du har gjort?",type:"text",text:"Sure! Ta en titt på porteføljesiden min. Den ligger her: <a href='https://randback.portfoliobox.net/' target='_blank' style='color:var(--t1)'>randback.portfoliobox.net</a>",media:[]},
+  {q:"Hvordan kontakter vi deg?",type:"text",text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br>Håper å høre fra dere! 🤞<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a>",media:[]},
+  {q:"Hvordan slengte du sammen denne siden?",type:"text",text:"Vel, slengte og slengte… Claude og jeg har jobbet hardt med den, men det har vært skikkelig lærerikt også. Og nå håper jeg at dere skjønner at jeg har skikkelig lyst på å jobbe hos dere, siden jeg har lagt ned mye jobb. 😄",media:[]}
 ];
 
 const typeIcons={
@@ -275,103 +254,43 @@ const typeIcons={
 };
 
 function buildFaq(){
-  const list = document.getElementById('faqList');
-  list.innerHTML = fikenQA.map(item => {
-    const cid = 'c'+Math.random().toString(36).slice(2,7);
-    let content = `<div class="faq-a-inner">${item.text||''}`;
-    if(item.extraHtml) content += item.extraHtml;
-    if(item.media && item.media.length) content += makeCarousel(item.media, cid);
-    content += '</div>';
-    return `<div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <div class="faq-q-left">
-          ${typeIcons[item.type]||''}
-          <span class="faq-q-text">${item.q}</span>
-        </div>
-        <div class="faq-chevron"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div>
-      </div>
-      <div class="faq-a">${content}</div>
-    </div>`;
+  const list=document.getElementById('faqList');
+  list.innerHTML=fikenQA.map(item=>{
+    const cid='c'+Math.random().toString(36).slice(2,7);
+    let content=`<div class="faq-a-inner">${item.text||''}`;
+    if(item.quoteCarousel) content+=buildQuoteCarousel();
+    if(item.extraHtml) content+=item.extraHtml;
+    if(item.media&&item.media.length) content+=makeCarousel(item.media,cid);
+    content+='</div>';
+    return `<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-left">${typeIcons[item.type]||''}<span class="faq-q-text">${item.q}</span></div><div class="faq-chevron"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="faq-a">${content}</div></div>`;
   }).join('');
 }
 
 function toggleFaq(btn){btn.parentElement.classList.toggle('open')}
 
-// ── WORK ──
-function buildWork(){
-  if(!document.getElementById('workGrid')) return;
-  document.getElementById('workGrid').innerHTML=SITE_DATA.selectedWork.map(w=>`
-    <a class="work-card fade-in" href="${w.url||'#'}" target="_blank">
-      <div class="work-thumb" style="background:${w.bg||'#e3f4f0'}">
-        ${w.image?`<img src="${w.image}" alt="${w.title}">`:`<span>${w.title}</span>`}
-      </div>
-      <div class="work-info">
-        <div class="work-title">${w.title}</div>
-        <div class="work-desc">${w.desc}</div>
-        <div class="work-link">Se prosjekt →</div>
-      </div>
-    </a>`).join('');
-  if(SITE_DATA.portfolioUrl){
-    const wrap=document.getElementById('portfolioLinkWrap');
-    const link=document.getElementById('portfolioLink');
-    wrap.style.display='block';
-    link.href=SITE_DATA.portfolioUrl;
-    link.textContent=SITE_DATA.portfolioUrl.replace(/^https?:\/\//,'');
-  }
-}
-
-// ── TIMELINE ──
 function buildTimeline(){
-  document.getElementById('timeline').innerHTML=SITE_DATA.timeline.map(t=>`
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-year">${t.year}</div>
-      <div class="tl-role">${t.role}</div>
-      <div class="tl-place">${t.place}</div>
-      <div class="tl-desc">${t.desc}</div>
-    </div>`).join('');
+  document.getElementById('timeline').innerHTML=SITE_DATA.timeline.map(t=>`<div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-year">${t.year}</div><div class="tl-role">${t.role}</div><div class="tl-place">${t.place}</div><div class="tl-desc">${t.desc}</div></div>`).join('');
 }
 
-// ── SKILLS ──
 function buildSkills(){
-  document.getElementById('skillsGrid').innerHTML=SITE_DATA.skills.map(s=>`
-    <div class="skill-row">
-      <div class="skill-name">${s.name}</div>
-      <div class="skill-track"><div class="skill-fill" data-p="${s.pct}"></div></div>
-    </div>`).join('');
+  document.getElementById('skillsGrid').innerHTML=SITE_DATA.skills.map(s=>`<div class="skill-row"><div class="skill-name">${s.name}</div><div class="skill-track"><div class="skill-fill" data-p="${s.pct}"></div></div></div>`).join('');
 }
 
-// ── KONTAKT ──
-function buildKontakt(){
-  if(!document.getElementById('kontaktBilde')) return;
-  if(SITE_DATA.contactImage) document.getElementById('kontaktBilde').innerHTML=`<img src="${SITE_DATA.contactImage}" alt="${SITE_DATA.name}">`;
-  const links=[];
-  if(SITE_DATA.email) links.push(`<a class="kontakt-link" href="mailto:${SITE_DATA.email}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
-  if(SITE_DATA.phone) links.push(`<a class="kontakt-link" href="tel:${SITE_DATA.phone}"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
-  if(SITE_DATA.linkedin) links.push(`<a class="kontakt-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
-  if(SITE_DATA.portfolioUrl) links.push(`<a class="kontakt-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="kontakt-link-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
-  document.getElementById('kontaktLinks').innerHTML=links.join('');
-}
-
-// ── HERO CONTACT ──
 function buildHeroContact(){
-  const c = document.getElementById('heroContact');
+  const c=document.getElementById('heroContact');
   if(!c) return;
-  const links = [];
+  const links=[];
   if(SITE_DATA.email) links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
   if(SITE_DATA.phone) links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
   if(SITE_DATA.linkedin) links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
   if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
-  c.innerHTML = links.join('');
+  c.innerHTML=links.join('');
 }
 
-// ── INIT ──
 buildFaq();
 buildHeroContact();
-buildWork();
 buildTimeline();
 buildSkills();
-buildKontakt();
 
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
