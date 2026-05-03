@@ -194,7 +194,7 @@ function buildAdCarousel(){
   const slides=annonser.map((r,i)=>{
     let inner=r.type==='vimeo'
       ?`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
-      :`<div class="video-card" style="text-align:center;background:transparent;padding:0"><img src="${r.src}" alt="${r.name}" style="width:70%;border-radius:10px;display:inline-block"></div>`;
+      :`<div class="video-card" style="text-align:center"><img src="${r.src}" alt="${r.name}" style="width:70%;border-radius:10px;display:inline-block"></div>`;
     return`<div id="ad${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
   const dots=annonser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goAd(${i})"></div>`).join('');
