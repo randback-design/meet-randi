@@ -48,10 +48,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .faq-item.open .faq-a{max-height:3000px}
 .faq-a-inner{padding:4px 0 28px 40px;font-size:15px;color:var(--muted);line-height:1.8}
-
-/* QUOTE KARUSELL */
 .quote-carousel{margin-top:16px}
-
 .quote-slide{margin-bottom:12px}
 .quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
 .quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
@@ -61,6 +58,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .quote-role{font-size:13px;color:var(--t2)}
 .video-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
 .video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:10px}
+.video-card img{width:100%;border-radius:10px;display:block}
 .video-card-footer{padding:16px 0 0}
 .video-card-name{font-size:14px;font-weight:700;color:var(--black)}
 .video-card-role{font-size:13px;color:var(--t2)}
@@ -72,7 +70,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .quote-dot{width:6px;height:6px;border-radius:3px;background:#ddd;cursor:pointer;transition:background .2s,width .25s}
 .quote-dot.active{width:16px;background:var(--t1)}
 .quote-count{font-size:11px;color:var(--muted);white-space:nowrap}
-
 .carousel{border-radius:10px;overflow:hidden;background:var(--bg);margin-top:12px}
 .carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
 .carousel-slide{min-width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden}
@@ -89,9 +86,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .car-dot{width:6px;height:6px;border-radius:3px;background:#ddd;cursor:pointer;transition:background .2s,width .25s}
 .car-dot.active{width:16px;background:var(--t1)}
 .car-count{font-size:11px;color:var(--muted);white-space:nowrap}
-.media-small{max-width:50%;margin:12px 0}
-.media-small iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:10px;display:block}
-.media-caption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .timeline-wrap{background:var(--card);border-radius:14px;padding:36px}
 .timeline{position:relative;padding-left:24px}
@@ -116,7 +110,7 @@ footer a:hover{color:var(--t1)}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
 @media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
-@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}.media-small{max-width:100%}footer{padding:24px 20px}}
+@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}}
 </style>
 </head>
 <body>
@@ -141,7 +135,7 @@ footer a:hover{color:var(--t1)}
 <div class="faq-section" id="qa">
   <div class="wrap" style="padding-top:24px;padding-bottom:16px">
     <div class="section-title" style="margin-bottom:12px">Finn ut så mye eller lite dere vil om meg her</div>
-    <div class="section-intro">…men please se på de fine videoene og tekstene tidligere kollegaer og familie har bidratt med da. 🙏</div>
+    <div class="section-intro">men please se på de fine tekstene og videoene tidligere kollegaer og familie har bidratt med da.</div>
   </div>
   <div class="faq-list" id="faqList"></div>
 </div>
@@ -162,75 +156,60 @@ footer a:hover{color:var(--t1)}
   </div>
 </div>
 <footer>
-  <div>&copy; 2026 <strong>Randi Bäckmark</strong> — Grafisk designer</div>
+  <div>&copy; 2026 <strong>Randi Bäckmark</strong> &mdash; Grafisk designer</div>
   <div><a href="mailto:backmarkrandi@gmail.com">backmarkrandi@gmail.com</a></div>
 </footer>
 <script src="data.js"></script>
 <script>
-// ── QUOTE KARUSELL DATA ──
 const referanser = [
-  {
-    type: "quote",
-    text: "Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",
-    name: "Simen Lysebo",
-    role: "Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"
-  },
-  {
-    type: "quote",
-    text: "Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",
-    name: "Benedicte Norderhaug",
-    role: "Content Producer, Allente — Tidligere kollega i Allente"
-  },
-  {
-    type: "quote",
-    text: "Hvis jeg må velge meg én favoritt gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",
-    name: "Trine Grann",
-    role: "Tekstforfatter — Tidligere kollega i Allente"
-  },
-  {
-    type: "video",
-    youtubeId: "ToDBqyfMAZ8",
-    name: "Maren",
-    role: "Datter"
-  },
-  {
-    type: "video",
-    youtubeId: "zRPfw77rPys",
-    name: "Kristoffer",
-    role: "Sønn"
-  }
+  {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
+  {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
+  {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter — Tidligere kollega i Allente"},
+  {type:"video",youtubeId:"ToDBqyfMAZ8",name:"Maren",role:"Datter"},
+  {type:"video",youtubeId:"zRPfw77rPys",name:"Kristoffer",role:"Sønn"}
 ];
-
-let quoteIdx = 0;
-
+let quoteIdx=0;
 function buildQuoteCarousel(){
-  const slides = referanser.map((r,i) => {
-    let inner = '';
-    if(r.type === 'quote') inner = `<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`;
-    else inner = `<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
-    return `<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
+  const slides=referanser.map((r,i)=>{
+    let inner=r.type==='quote'
+      ?`<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
+      :`<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+    return`<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
-  const dots = referanser.map((_,i) => `<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
-  return `<div class="quote-carousel">${slides}<div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${referanser.length}</div></div></div>`;
+  const dots=referanser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
+  return`<div class="quote-carousel">${slides}<div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${referanser.length}</div></div></div>`;
 }
-
-function goQuote(idx){
-  referanser.forEach((_,i)=>{const el=document.getElementById('qs'+i);if(el)el.style.display=i===idx?'block':'none';});
-  document.querySelectorAll('.quote-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
-  const c=document.getElementById('quoteCount');if(c)c.textContent=`${idx+1} / ${referanser.length}`;
-  quoteIdx=idx;
-}
+function goQuote(idx){referanser.forEach((_,i)=>{const el=document.getElementById('qs'+i);if(el)el.style.display=i===idx?'block':'none';});document.querySelectorAll('.quote-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));const c=document.getElementById('quoteCount');if(c)c.textContent=`${idx+1} / ${referanser.length}`;quoteIdx=idx;}
 function stepQuote(dir){goQuote((quoteIdx+dir+referanser.length)%referanser.length)}
 
-// ── CAROUSEL ──
+const annonser=[
+  {type:"vimeo",vimeoId:"1188869881",name:"Annonse for Axo Finans",role:"Irriterende smålån"},
+  {type:"vimeo",vimeoId:"1188869866",name:"Annonse for Babylife Clinic",role:"En chattetjeneste for nybakte mødre"},
+  {type:"image",src:"images/Axo_Finans.png",name:"Axo Finans",role:"Annonsemateriell"},
+  {type:"image",src:"images/Babylife.png",name:"Babylife Clinic",role:"Annonsemateriell"},
+  {type:"image",src:"images/Norefjell.jpg",name:"Norefjell",role:"Annonsemateriell"}
+];
+let adIdx=0;
+function buildAdCarousel(){
+  const slides=annonser.map((r,i)=>{
+    let inner=r.type==='vimeo'
+      ?`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`
+      :`<div class="video-card"><img src="${r.src}" alt="${r.name}"><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+    return`<div id="ad${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
+  }).join('');
+  const dots=annonser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goAd(${i})"></div>`).join('');
+  return`<div style="margin-top:16px">${slides}<div class="quote-controls"><button class="quote-btn" onclick="stepAd(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="adDots">${dots}</div><button class="quote-btn" onclick="stepAd(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="adCount">1 / ${annonser.length}</div></div></div>`;
+}
+function goAd(idx){annonser.forEach((_,i)=>{const el=document.getElementById('ad'+i);if(el)el.style.display=i===idx?'block':'none';});document.querySelectorAll('#adDots .quote-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));const c=document.getElementById('adCount');if(c)c.textContent=`${idx+1} / ${annonser.length}`;adIdx=idx;}
+function stepAd(dir){goAd((adIdx+dir+annonser.length)%annonser.length)}
+
 const carState={};
 function makeCarousel(items,id){
   carState[id]={total:items.length,current:0};
   const slides=items.map((item,i)=>{
     if(item.type==='image') return`<div class="carousel-slide"><img src="${item.src}" alt="${item.label||''}"></div>`;
     if(item.type==='video'&&item.vimeoId) return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
-    if(item.type==='youtube'&&item.youtubeId) return`<div class="carousel-slide"><iframe src="https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-    return`<div class="carousel-slide"><div class="slide-placeholder" style="background:${item.bg||'#e3f4f0'}"><div class="slide-num">${String(i+1).padStart(2,'0')}</div><div class="slide-lbl">${item.label||''}</div></div></div>`;
+    return`<div class="carousel-slide"><div class="slide-placeholder" style="background:#e3f4f0"><div class="slide-num">${String(i+1).padStart(2,'0')}</div></div></div>`;
   }).join('');
   const dots=items.map((_,i)=>`<div class="car-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})"></div>`).join('');
   const controls=items.length>1?`<div class="car-controls"><button class="car-btn" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="car-dots" id="${id}dots">${dots}</div><button class="car-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="car-count" id="${id}count">1 / ${items.length}</div></div>`:'';
@@ -239,17 +218,65 @@ function makeCarousel(items,id){
 function goSlide(id,idx){carState[id].current=idx;document.getElementById(id+'track').style.transform=`translateX(-${idx*100}%)`;document.querySelectorAll(`#${id}dots .car-dot`).forEach((d,i)=>d.classList.toggle('active',i===idx));document.getElementById(id+'count').textContent=`${idx+1} / ${carState[id].total}`}
 function stepSlide(id,dir){const s=carState[id];goSlide(id,(s.current+dir+s.total)%s.total)}
 
-// ── FAQ ──
-const fikenQA = [
-  {q:"Så… hvem er du da?",type:"video",text:"Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. Og mamma, kjæreste og hundeeier.<br><br>Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",media:[{type:"video",vimeoId:"1187345684"}]},
+const fikenQA=[
+  {q:"Så\u2026 hvem er du da?",type:"video",text:"Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nyskjerrig. Arbeidsom. Positiv. Og mamma, kjæreste og hundeeier.<br><br>Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",media:[{type:"video",vimeoId:"1187345684"}]},
   {q:"Og hvorfor søker du på denne jobben?",type:"text",text:"Altså, den stillingsannonsen deres traff meg virkelig. Jeg digger måten dere tenker på om at det man holder på med skal være gøy, at man selv har ansvar for å se hva som trengs å gjøres, at det er rom for å teste nye ting, og alt det. Dere virker som en herlig gjeng, og at det er uhøytidelig og høyt under taket på jobb, er noe jeg setter stor pris på.<br><br>Og så kan jeg gjøre alt det dere etterspør! Med erfaring fra både in-house byrå og markedsavdeling, har jeg call på dette med å bygge merkevare, altså!",media:[]},
   {q:"Hva sier andre om deg?",type:"video",text:"Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:",quoteCarousel:true},
-  {q:"Er du rå på regnskap da?",type:"text",text:"Hehe, nei… På russekortet mitt sto det: <em>«Det finnes tre typer mennesker. De som kan telle, og de som ikke kan det»</em>.<br><br>Jeg er jo akkurat den type menneske som absolutt trenger Fiken! Så da kan jeg jo sette meg lett inn i hva man trenger hjelp med, og forsøke å forklare det til nettopp sånne som meg. Jeg liker å visualisere komplekse ting, så de blir lettere å forstå.",media:[]},
-  {q:"Er du god til å designe annonser?",type:"video",text:"Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde, lage kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også, for mange ulike kanaler.",media:[],extraHtml:`<div class="quote-carousel" style="margin-top:16px">
-  <div id="ad0" class="ad-slide" style="display:block"><div class="video-card"><iframe src="https://player.vimeo.com/video/1188869881?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">Annonse for Axo Finans</div><div class="video-card-role">Irriterende smålån</div></div></div></div>
-  <div id="ad1" class="ad-slide" style="display:none"><div class="video-card"><iframe src="https://player.vimeo.com/video/1188869866?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">Annonse for Babylife Clinic</div><div class="video-card-role">En chattetjeneste for nybakte mødre</div></div></div></div>
-  <div id="ad2" class="ad-slide" style="display:none"><div class="video-card" style="padding:28px 28px 24px"><img src="images/Axo_Finans.png" style="width:100%;border-radius:10px;display:block"><div class="video-card-footer"><div class="video-card-name">Axo Finans</div><div class="video-card-role">Annonsemateriell</div></div></div></div>
-  <div id="ad3" class="ad-slide" style="display:none"><div class="video-card" style="padding:28px 28px 24px"><img src="images/Babylife.png" style="width:100%;border-radius:10px;display:block"><div class="video-card-footer"><div class="video-card-name">Babylife Clinic</div><div class="video-card-role">Annonsemateriell</div></div></div></div>
-  <div id="ad4" class="ad-slide" style="display:none"><div class="video-card" style="padding:28px 28px 24px"><img src="images/Norefjell.jpg" style="width:100%;border-radius:10px;display:block"><div class="video-card-footer"><div class="video-card-name">Norefjell</div><div class="video-card-role">Annonsemateriell</div></div></div></div>
-  <div class="quote-controls"><button class="quote-btn" onclick="stepAd(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="adDots"><div class="quote-dot active" onclick="goAd(0)"></div><div class="quote-dot" onclick="goAd(1)"></div><div class="quote-dot" onclick="goAd(2)"></div><div class="quote-dot" onclick="goAd(3)"></div><div class="quote-dot" onclick="goAd(4)"></div></div><button class="quote-btn" onclick="stepAd(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="adCount">1 / 5</div></div>
-</div>`
+  {q:"Er du rå på regnskap da?",type:"text",text:"Hehe, nei\u2026 På russekortet mitt sto det: <em>\u00abDet finnes tre typer mennesker. De som kan telle, og de som ikke kan det\u00bb</em>.<br><br>Jeg er jo akkurat den type menneske som absolutt trenger Fiken! Så da kan jeg jo sette meg lett inn i hva man trenger hjelp med, og forsøke å forklare det til nettopp sånne som meg. Jeg liker å visualisere komplekse ting, så de blir lettere å forstå.",media:[]},
+  {q:"Er du god til å designe annonser?",type:"video",text:"Ja! Det har jeg masse erfaring med fra tiden min i VG, der det var alt vi gjorde, lage kreative annonser for VG sine annonsører. Og så har jeg laget mye markedsmateriell i Allente også, for mange ulike kanaler.",media:[],adCarousel:true},
+  {q:"Hva annet kan du?",type:"text",text:"Jeg kan klippe video, lage enkle animasjoner, illustrere, redigere bilder, lage konsepter, idémyldre, holde workshops, lage innsalgspresentasjoner, og mye mer. Og jeg deler gjerne musikktips og hjelper til å orge festligheter. 🎉 Og så klarer jeg ta tunga opp på nesa.",media:[]},
+  {q:"Hvor god er du på Figma?",type:"text",text:"Jeg har laget litt annonser og annen grafikk i Figma, men har mer erfaring med å sette det opp i Photoshop, Bannerflow, eller direkte i samarbeid med utviklere (om det skulle være noe mer avansert). Men jeg synes det er gøy å lære nye programmer, og har ingen problemer med å lage annonser i Figma. Det er jo hva man fyller en annonserute med som betyr noe, og designe — det kan jeg!",media:[]},
+  {q:"Kan vi se noen arbeider du har gjort?",type:"text",text:"Sure! Ta en titt på porteføljesiden min. Den ligger her: <a href='https://randback.portfoliobox.net/' target='_blank' style='color:var(--t1)'>randback.portfoliobox.net</a>",media:[]},
+  {q:"Hvordan kontakter vi deg?",type:"text",text:"Jeg sier som Gabrielle... <em>\u00abRiiing meg\u00bb</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br>Håper å høre fra dere! 🤞<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a>",media:[]},
+  {q:"Hvordan slengte du sammen denne siden?",type:"text",text:"Vel, slengte og slengte\u2026 Claude og jeg har jobbet hardt med den, men det har vært skikkelig lærerikt også. Og nå håper jeg at dere skjønner at jeg har skikkelig lyst på å jobbe hos dere, siden jeg har lagt ned mye jobb. 😄",media:[]}
+];
+
+const typeIcons={
+  video:`<div class="faq-type-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7" fill="#409f89" stroke="none"/><rect x="1" y="5" width="15" height="14" rx="2" fill="#409f89" stroke="none"/></svg></div>`,
+  sample:`<div class="faq-type-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`,
+  text:`<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`
+};
+
+function buildFaq(){
+  const list=document.getElementById('faqList');
+  list.innerHTML=fikenQA.map(item=>{
+    const cid='c'+Math.random().toString(36).slice(2,7);
+    let content=`<div class="faq-a-inner">${item.text||''}`;
+    if(item.quoteCarousel) content+=buildQuoteCarousel();
+    if(item.adCarousel) content+=buildAdCarousel();
+    if(item.media&&item.media.length) content+=makeCarousel(item.media,cid);
+    content+='</div>';
+    return`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-left">${typeIcons[item.type]||''}<span class="faq-q-text">${item.q}</span></div><div class="faq-chevron"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="faq-a">${content}</div></div>`;
+  }).join('');
+}
+function toggleFaq(btn){btn.parentElement.classList.toggle('open')}
+
+function buildTimeline(){
+  document.getElementById('timeline').innerHTML=SITE_DATA.timeline.map(t=>`<div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-year">${t.year}</div><div class="tl-role">${t.role}</div><div class="tl-place">${t.place}</div><div class="tl-desc">${t.desc}</div></div>`).join('');
+}
+function buildSkills(){
+  document.getElementById('skillsGrid').innerHTML=SITE_DATA.skills.map(s=>`<div class="skill-row"><div class="skill-name">${s.name}</div><div class="skill-track"><div class="skill-fill" data-p="${s.pct}"></div></div></div>`).join('');
+}
+function buildHeroContact(){
+  const c=document.getElementById('heroContact');
+  if(!c) return;
+  const links=[];
+  if(SITE_DATA.email) links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
+  if(SITE_DATA.phone) links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
+  if(SITE_DATA.linkedin) links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
+  if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
+  c.innerHTML=links.join('');
+}
+
+buildFaq();
+buildHeroContact();
+buildTimeline();
+buildSkills();
+
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+const so=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.skill-fill').forEach(b=>b.style.width=b.dataset.p+'%');so.unobserve(x.target)}})},{threshold:.3});
+so.observe(document.getElementById('skillsWrap'));
+</script>
+</body>
+</html>
