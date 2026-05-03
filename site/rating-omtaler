@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gi Randi en rating!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --t1:#409f89;--t2:#2d7a68;--t3:#e3f4f0;
+  --black:#111;--white:#fff;--bg:#F7F7F5;--card:#fff;--muted:#555;
+  --font:'Nunito Sans','Myriad Pro',sans-serif;
+}
+body{font-family:var(--font);font-size:16px;color:var(--black);background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+
+.card{
+  background:var(--white);border-radius:20px;
+  padding:48px;max-width:560px;width:100%;
+  box-shadow:0 8px 40px rgba(0,0,0,.08);
+}
+
+.logo{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:32px}
+.logo span{color:var(--t1)}
+
+h1{font-size:26px;font-weight:700;margin-bottom:8px}
+.intro{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:36px}
+
+/* STARS */
+.stars-wrap{margin-bottom:28px}
+.stars-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);margin-bottom:10px}
+.stars{display:flex;gap:8px;flex-direction:row-reverse;justify-content:flex-end}
+.stars input{display:none}
+.stars label{font-size:36px;cursor:pointer;color:#ddd;transition:color .15s}
+.stars label:hover,.stars label:hover~label,.stars input:checked~label{color:#f4c430}
+
+/* FIELDS */
+.field{margin-bottom:20px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);margin-bottom:7px}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px 14px;
+  background:var(--bg);border:1.5px solid transparent;
+  border-radius:9px;font-family:var(--font);font-size:15px;
+  color:var(--black);transition:border-color .2s;resize:none;
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--t1)}
+.field textarea{min-height:100px}
+.char-count{font-size:12px;color:var(--muted);text-align:right;margin-top:4px}
+.char-count.warn{color:#e07b3a}
+
+.submit{
+  width:100%;padding:14px;
+  background:var(--t1);color:#fff;border:none;
+  border-radius:9px;font-family:var(--font);
+  font-size:15px;font-weight:700;cursor:pointer;
+  transition:background .2s;margin-top:8px;
+}
+.submit:hover{background:var(--t2)}
+.submit:disabled{background:#ccc;cursor:not-allowed}
+
+/* SUCCESS */
+.success{display:none;text-align:center;padding:32px 0}
+.success-emoji{font-size:56px;margin-bottom:16px}
+.success h2{font-size:22px;font-weight:700;margin-bottom:8px}
+.success p{font-size:15px;color:var(--muted);line-height:1.6}
+
+@media(max-width:480px){.card{padding:32px 24px}.stars label{font-size:30px}}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">Randi Bäckmark<span>.</span></div>
+
+  <div id="formWrap">
+    <h1>Hvordan har det vært å jobbe med meg?</h1>
+    <p class="intro">Jeg tester ut kreative måter å søke ny jobb på, og har nå kommet til «egen nettside med Q&As». 😅 Vi sjekker jo alltid rating og omtaler før vi kjøper noe, så kanskje de som søker en ny ansatt kunne tenke seg å gjøre det og? Så: har du jobbet med meg og vil gi meg en rating og/eller en kort omtale som jeg kan bruke på nettsiden min? 🙏</p>
+
+    <form id="ratingForm" onsubmit="sendForm(event)">
+
+      <div class="stars-wrap">
+        <div class="stars-label">Din rating</div>
+        <div class="stars">
+          <input type="radio" name="stars" id="s5" value="5"><label for="s5" title="5 stjerner">★</label>
+          <input type="radio" name="stars" id="s4" value="4"><label for="s4" title="4 stjerner">★</label>
+          <input type="radio" name="stars" id="s3" value="3"><label for="s3" title="3 stjerner">★</label>
+          <input type="radio" name="stars" id="s2" value="2"><label for="s2" title="2 stjerner">★</label>
+          <input type="radio" name="stars" id="s1" value="1"><label for="s1" title="1 stjerne">★</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Ditt navn</label>
+        <input type="text" id="name" placeholder="Kari Nordmann" required>
+      </div>
+
+      <div class="field">
+        <label>Hvem er du?</label>
+        <select id="relation">
+          <option value="">Velg...</option>
+          <option value="Tidligere kollega">Tidligere kollega</option>
+          <option value="Tidligere leder">Tidligere leder</option>
+          <option value="Familie">Familie</option>
+          <option value="Venn">Venn</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Din omtale <span style="font-weight:400;text-transform:none;letter-spacing:0">(valgfri)</span></label>
+        <textarea id="comment" placeholder="Skriv en kort omtale…" maxlength="200" oninput="updateCount()"></textarea>
+        <div class="char-count" id="charCount">0 / 200</div>
+      </div>
+
+      <button class="submit" type="submit" id="submitBtn">Send! 🌟</button>
+    </form>
+  </div>
+
+  <div class="success" id="successMsg">
+    <div class="success-emoji">🌟</div>
+    <h2>Tusen takk!</h2>
+    <p>Du er gull! Omtalen din er sendt til Randi og vil snart dukke opp på siden hennes.</p>
+  </div>
+</div>
+
+<script>
+function updateCount(){
+  const ta = document.getElementById('comment');
+  const count = document.getElementById('charCount');
+  const len = ta.value.length;
+  count.textContent = `${len} / 200`;
+  count.classList.toggle('warn', len > 170);
+}
+
+async function sendForm(e){
+  e.preventDefault();
+  const stars = document.querySelector('input[name="stars"]:checked');
+  const name = document.getElementById('name').value.trim();
+  const relation = document.getElementById('relation').value;
+  const comment = document.getElementById('comment').value.trim();
+  const btn = document.getElementById('submitBtn');
+
+  if(!stars){ alert('Vennligst gi en rating! ⭐'); return; }
+  if(!relation){ alert('Vennligst velg hvem du er!'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Sender…';
+
+  const data = {
+    name,
+    relation,
+    stars: stars.value,
+    comment,
+    dato: new Date().toLocaleDateString('no-NO')
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/mdabayrp', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    if(res.ok){
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send! 🌟';
+      alert('Noe gikk galt. Prøv igjen!');
+    }
+  } catch(err){
+    btn.disabled = false;
+    btn.textContent = 'Send! 🌟';
+    alert('Noe gikk galt. Prøv igjen!');
+  }
+}
+</script>
+</body>
+</html>
