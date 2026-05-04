@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Randi Bäckmark — Hei, GroGro!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--t1:#409f89;--t2:#2d7a68;--t3:#e3f4f0;--black:#111;--white:#fff;--bg:#F7F7F5;--card:#fff;--muted:#333;--font:'Nunito Sans','Myriad Pro',sans-serif}
+body{font-family:var(--font);font-size:16px;color:var(--black);background:var(--bg);line-height:1.7}
+nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:62px;box-shadow:0 1px 0 rgba(0,0,0,.07)}
+.nav-logo{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--black)}
+.nav-logo span{color:var(--t1)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--t1)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
+.hero-outer{width:100%;background:#111;padding:48px 0}
+.hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
+.hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#222;display:flex;align-items:center;justify-content:center}
+.hero-video iframe{width:100%;height:100%;border:none;display:block}
+.hero-video-placeholder{color:rgba(255,255,255,.4);font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
+.hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;transition:color .2s}
+.hero-contact-link:hover{color:#fff}
+.hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-contact-icon svg{width:15px;height:15px;stroke:var(--t1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px}
+.section{padding:36px 0}
+.section-title{font-size:28px;font-weight:700;margin-bottom:8px}
+.section-intro{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.faq-section{background:var(--white);padding:0 0 32px}
+.faq-list{max-width:1060px;margin:0 auto;padding:0 48px}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.07)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;gap:16px;font-size:17px;font-weight:700;transition:color .2s;color:var(--black)}
+.faq-q:hover{color:var(--t1)}
+.faq-q-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.faq-type-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:#B8E5D9}
+.faq-type-icon svg{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke:#409f89}
+.faq-q-text{flex:1}
+.faq-chevron{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .3s}
+.faq-item.open .faq-chevron{background:var(--t1);transform:rotate(180deg)}
+.faq-chevron svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;stroke-linecap:round;transition:stroke .2s}
+.faq-item.open .faq-chevron svg{stroke:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:3000px}
+.faq-a-inner{padding:4px 0 28px 40px;font-size:15px;color:var(--muted);line-height:1.8}
+.quote-carousel{margin-top:16px}
+.quote-slide{margin-bottom:12px}
+.quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
+.quote-text{font-size:16px;color:var(--black);line-height:1.7;margin-bottom:20px}
+.quote-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.quote-name{font-size:14px;font-weight:700;color:var(--black)}
+.quote-role{font-size:13px;color:var(--t2)}
+.video-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:10px}
+.video-card img{width:100%;border-radius:10px;display:block}
+.video-card-footer{padding:16px 0 0}
+.video-card-name{font-size:14px;font-weight:700;color:var(--black)}
+.video-card-role{font-size:13px;color:var(--t2)}
+.quote-controls{display:flex;align-items:center;gap:10px;margin-top:12px}
+.quote-btn{width:30px;height:30px;border-radius:50%;background:var(--card);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.quote-btn:hover{background:var(--t1)}
+.quote-btn:hover svg path{stroke:#fff}
+.quote-dots{display:flex;gap:5px;flex:1}
+.quote-dot{width:6px;height:6px;border-radius:3px;background:#ddd;cursor:pointer;transition:background .2s,width .25s}
+.quote-dot.active{width:16px;background:var(--t1)}
+.quote-count{font-size:11px;color:var(--muted);white-space:nowrap}
+.carousel{border-radius:10px;overflow:hidden;background:var(--bg);margin-top:12px}
+.carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
+.carousel-slide{min-width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden}
+.carousel-slide iframe{width:100%;height:100%;border:none}
+.car-controls{display:flex;align-items:center;gap:10px;margin-top:10px}
+.car-btn{width:30px;height:30px;border-radius:50%;background:var(--card);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.car-btn:hover{background:var(--t1)}
+.car-btn:hover svg path{stroke:#fff}
+.car-dots{display:flex;gap:5px;flex:1}
+.car-dot{width:6px;height:6px;border-radius:3px;background:#ddd;cursor:pointer;transition:background .2s,width .25s}
+.car-dot.active{width:16px;background:var(--t1)}
+.car-count{font-size:11px;color:var(--muted);white-space:nowrap}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.timeline-wrap{background:var(--card);border-radius:14px;padding:36px}
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:4px;top:6px;bottom:0;width:2px;background:var(--t3);border-radius:2px}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-24px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--t1);border:2px solid var(--white)}
+.tl-year{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--t2);margin-bottom:2px}
+.tl-role{font-size:16px;font-weight:700}
+.tl-place{font-size:14px;color:#333;margin-bottom:4px}
+.tl-desc{font-size:15px;color:#333;line-height:1.6}
+.skills-wrap{background:var(--card);border-radius:14px;padding:36px}
+.skill-row{margin-bottom:18px}
+.skill-row:last-child{margin-bottom:0}
+.skill-name{font-size:14px;font-weight:700;margin-bottom:6px}
+.skill-track{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--t1),var(--t2));width:0;border-radius:3px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+footer{background:var(--black);color:rgba(255,255,255,.4);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px}
+footer strong{color:var(--t1)}
+footer a{color:rgba(255,255,255,.4);text-decoration:none}
+footer a:hover{color:var(--t1)}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.fade-in.visible{opacity:1;transform:none}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
+@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#">Randi Bäckmark<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#qa">Q&A</a></li>
+    <li><a href="#erfaring">Erfaring</a></li>
+  </ul>
+  <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+<div class="hero-outer">
+  <div class="hero-inner">
+    <div class="hero-video">
+      <!-- Bytt ut med YouTube-ID når video er klar -->
+      <div class="hero-video-placeholder">Video kommer snart 🎬</div>
+    </div>
+    <div class="hero-contact" id="heroContact"></div>
+  </div>
+</div>
+<div class="faq-section" id="qa">
+  <div class="wrap" style="padding-top:24px;padding-bottom:16px">
+    <div class="section-title" style="margin-bottom:12px">Alltid growing, sier dere. Jeg også.</div>
+    <div class="section-intro">Her er litt mer om hvem jeg er og hva jeg kan bidra med. 🌱</div>
+  </div>
+  <div class="faq-list" id="faqList"></div>
+</div>
+<div class="wrap" id="erfaring">
+  <div class="section">
+    <div class="two-col">
+      <div>
+        <div class="section-eyebrow" style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px">Arbeidserfaring</div>
+        <div class="section-title">Tidslinje</div>
+        <div class="timeline-wrap"><div class="timeline" id="timeline"></div></div>
+      </div>
+      <div>
+        <div class="section-eyebrow" style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px">Verktøy</div>
+        <div class="section-title">Ferdigheter</div>
+        <div class="skills-wrap" id="skillsWrap"><div id="skillsGrid"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div>&copy; 2026 <strong>Randi Bäckmark</strong> &mdash; Grafisk designer</div>
+  <div><a href="mailto:backmarkrandi@gmail.com">backmarkrandi@gmail.com</a></div>
+</footer>
+<script src="../data.js"></script>
+<script>
+const referanser = [
+  {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
+  {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
+  {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter — Tidligere kollega i Allente"},
+  {type:"video",youtubeId:"ToDBqyfMAZ8",name:"Maren",role:"Datter"},
+  {type:"video",youtubeId:"zRPfw77rPys",name:"Kristoffer",role:"Sønn"}
+];
+let quoteIdx=0;
+function buildQuoteCarousel(){
+  const slides=referanser.map((r,i)=>{
+    let inner=r.type==='quote'
+      ?`<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
+      :`<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+    return`<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
+  }).join('');
+  const dots=referanser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
+  return`<div class="quote-carousel">${slides}<div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${referanser.length}</div></div></div>`;
+}
+function goQuote(idx){referanser.forEach((_,i)=>{const el=document.getElementById('qs'+i);if(el)el.style.display=i===idx?'block':'none';});document.querySelectorAll('.quote-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));const c=document.getElementById('quoteCount');if(c)c.textContent=`${idx+1} / ${referanser.length}`;quoteIdx=idx;}
+function stepQuote(dir){goQuote((quoteIdx+dir+referanser.length)%referanser.length)}
+
+const carState={};
+function makeCarousel(items,id){
+  carState[id]={total:items.length,current:0};
+  const slides=items.map((item,i)=>{
+    if(item.type==='video'&&item.vimeoId) return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    return`<div class="carousel-slide"><div style="width:100%;height:100%;background:#e3f4f0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#777">${item.label||''}</div></div>`;
+  }).join('');
+  const dots=items.map((_,i)=>`<div class="car-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})"></div>`).join('');
+  const controls=items.length>1?`<div class="car-controls"><button class="car-btn" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="car-dots" id="${id}dots">${dots}</div><button class="car-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="car-count" id="${id}count">1 / ${items.length}</div></div>`:'';
+  return`<div class="carousel" id="${id}"><div class="carousel-track" id="${id}track">${slides}</div></div>${controls}`;
+}
+function goSlide(id,idx){carState[id].current=idx;document.getElementById(id+'track').style.transform=`translateX(-${idx*100}%)`;document.querySelectorAll(`#${id}dots .car-dot`).forEach((d,i)=>d.classList.toggle('active',i===idx));document.getElementById(id+'count').textContent=`${idx+1} / ${carState[id].total}`}
+function stepSlide(id,dir){const s=carState[id];goSlide(id,(s.current+dir+s.total)%s.total)}
+
+const grogroQA = [
+  {q:"Så\u2026 hvem er du da?",type:"video",text:"Jeg er Randi \u2013 grafisk designer med 7 års erfaring fra markedsavdeling, som liker å lage innhold som faktisk blir lagt merke til (og brukt). Kreativ, leken og ganske glad i tempo og mange baller i luften.<br><br>Også mamma, kjæreste og hundeeier og ivrig konsertgjenger. Mer om meg i denne animasjonsfilmen jeg har laget:",media:[{type:"video",vimeoId:"1187345684"}]},
+  {q:"Og hvorfor søker du på denne jobben?",type:"text",text:"Stillingsannonsen deres skilte seg ut med en gang \u2013 både i tone og i hvor mye ansvar rollen faktisk har.<br><br>Jeg liker spesielt godt at dere kombinerer en leken merkevare med et tydelig fokus på rene produkter. Det gir masse rom for å lage innhold som både engasjerer og betyr noe.<br><br>Jeg har lyst til å bidra med å utvikle innhold og kampanjer som gjør GroGro enda mer synlig \u2013 spesielt i SoMe, hvor jeg tror det er stort potensial.",media:[]},
+  {q:"Har du lang erfaring med markedsføring?",type:"text",text:"Ja, de siste 7 årene har jeg jobbet i markedsavdelingen i Allente.<br><br>Der har jeg jobbet med alt fra kampanjemateriell og SoMe-innhold til videreutvikling av visuell profil. Det betyr at jeg ikke bare lager ting som ser bra ut, men som også fungerer i en større sammenheng og er gjenkjennbart over tid.<br><br>Jeg er vant til å jobbe tett med markedsteam og levere på konkrete behov \u2013 ofte i høyt tempo.",media:[]},
+  {q:"Hva sier andre om deg?",type:"video",text:"Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:",quoteCarousel:true},
+  {q:"Er du helt rå på kjøkkenet da?",type:"text",text:"Hehe, vel\u2026 Det er samboeren min som lager de fleste middagene, men jeg elsker å bake, forsøker å lage sunn snacks til barna, og går rundt i butikken og scanner varer med \u201cTrygg mat\u201d-appen. Jeg føler jeg har fått byttet ut mange viktige basisvarer med et godt rentvare-alternativ i det siste.<br><br>Det ene barnet vårt sliter med matlysten, så jeg jobber også hardt hver morgen med å lage en matpakke som er enda mer fristende enn dagen før.<br><br>Jeg merker at jeg bryr meg mer og mer om hva vi faktisk spiser, og synes det høres skikkelig motiverende ut å jobbe med produkter som gjør det enklere å ta gode valg.",media:[]},
+  {q:"Hva er dine tanker om barnemat?",type:"text",text:"Som forelder har jeg kjent på hvor vanskelig det kan være å vite hva som faktisk er bra mat for barn.<br><br>Derfor treffer GroGro meg veldig \u2013 fordi dere gjør det enklere å ta gode valg, uten at det går på bekostning av smak eller opplevelse.<br><br>Jeg prøver selv å velge så rene og lite prosesserte råvarer som mulig i hverdagen, og har blitt mer og mer bevisst på hva vi faktisk spiser hjemme. Vi dyrker også litt selv og har høner i hagen, så jeg kjenner meg godt igjen i tankegangen bak produktene deres.<br><br>Det gjør også at jeg ikke bare har lyst til å jobbe med merkevaren deres \u2013 jeg tror på den.",media:[]},
+  {q:"Hva kan du bidra med som designer?",type:"text",text:"Jeg er en allsidig designer som kan bidra både kreativt og operativt.<br><br>Jeg lager innhold til SoMe, klipper video, lager enkle animasjoner og utvikler konsepter \u2013 og jeg liker best når ting går litt fort og man må finne gode løsninger underveis.<br><br>Målet mitt er alltid å lage kommunikasjon som ikke bare ser bra ut, men som faktisk fanger oppmerksomhet og fungerer i kanalene det publiseres i.",media:[]},
+  {q:"Kan vi se noen arbeider du har gjort?",type:"text",text:"Ja! Ta en titt her: <a href='https://randback.portfoliobox.net/' target='_blank' style='color:var(--t1)'>randback.portfoliobox.net</a><br><br>Der finner du et utvalg av arbeidene mine \u2013 blant annet arbeid for Allente under \u201cVisuell profil\u201d, hvor jeg har jobbet med å videreføre og bruke merkevaren i kampanjer og ulike flater.",media:[]},
+  {q:"Hva med det sosiale?",type:"text",text:"Jeg bidrar med humor, godt humør, tørre ordspill, musikktips og engasjement. I min forrige jobb satt jeg mange år i sosialkommiteen, og bidro til at miljøet på jobb var godt, og at det ble både sommerfest og julebord.",media:[]},
+  {q:"Hva tenker du om hjemmekontor?",type:"text",text:"Jeg er en sosial type, men er veldig vant til å sitte på hjemmekontor et par dager i uka, og jeg trives godt med det også. Jeg har en fin plass på loftet med skrivepult, en diger skjerm, og ellers alt jeg trenger. Og så digger jeg å høre på musikk mens jeg jobber.<br><br>Men jeg tenker og det er viktig å møtes ofte, om ikke bare fysisk, så over digitale møter, så man kjenner seg som en god gjeng som jobber sammen.",media:[]},
+  {q:"Hvordan kontakter vi deg?",type:"text",text:"Jeg sier som Gabrielle... <em>\u00abRiiing meg\u00bb</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a><br><br>Håper å høre fra dere! 🤞",media:[]},
+  {q:"Hvordan slengte du sammen denne siden?",type:"text",text:"Vel, slengte og slengte\u2026 Claude og jeg har jobbet hardt med den. Kanskje er det også et lite bevis på at jeg liker å teste nye måter å kommunisere på.",media:[]}
+];
+
+const typeIcons={
+  video:`<div class="faq-type-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7" fill="#409f89" stroke="none"/><rect x="1" y="5" width="15" height="14" rx="2" fill="#409f89" stroke="none"/></svg></div>`,
+  text:`<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`
+};
+
+function buildFaq(){
+  const list=document.getElementById('faqList');
+  list.innerHTML=grogroQA.map(item=>{
+    const cid='c'+Math.random().toString(36).slice(2,7);
+    let content=`<div class="faq-a-inner">${item.text||''}`;
+    if(item.quoteCarousel) content+=buildQuoteCarousel();
+    if(item.media&&item.media.length) content+=makeCarousel(item.media,cid);
+    content+='</div>';
+    return`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-left">${typeIcons[item.type]||''}<span class="faq-q-text">${item.q}</span></div><div class="faq-chevron"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="faq-a">${content}</div></div>`;
+  }).join('');
+}
+function toggleFaq(btn){btn.parentElement.classList.toggle('open')}
+
+function buildTimeline(){
+  document.getElementById('timeline').innerHTML=SITE_DATA.timeline.map(t=>`<div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-year">${t.year}</div><div class="tl-role">${t.role}</div><div class="tl-place">${t.place}</div><div class="tl-desc">${t.desc}</div></div>`).join('');
+}
+function buildSkills(){
+  document.getElementById('skillsGrid').innerHTML=SITE_DATA.skills.map(s=>`<div class="skill-row"><div class="skill-name">${s.name}</div><div class="skill-track"><div class="skill-fill" data-p="${s.pct}"></div></div></div>`).join('');
+}
+function buildHeroContact(){
+  const c=document.getElementById('heroContact');
+  if(!c) return;
+  const links=[];
+  if(SITE_DATA.email) links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
+  if(SITE_DATA.phone) links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
+  if(SITE_DATA.linkedin) links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
+  if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
+  c.innerHTML=links.join('');
+}
+
+buildFaq();
+buildHeroContact();
+buildTimeline();
+buildSkills();
+
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+const so=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.skill-fill').forEach(b=>b.style.width=b.dataset.p+'%');so.unobserve(x.target)}})},{threshold:.3});
+so.observe(document.getElementById('skillsWrap'));
+</script>
+</body>
+</html>
