@@ -105,7 +105,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
 footer a:hover{color:var(--t1)}
 .hat-btn{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--white);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .hat-btn-left{left:32px}.hat-btn-right{right:32px}
-@media(max-width:640px){.hat-btn{display:flex}#hatTrack{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.hat-strip-wrap{overflow:hidden}}
+@media(max-width:640px){.hat-btn{display:flex}#hatTrack{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.hat-strip-wrap{overflow:hidden}.hat-wrap{padding:0 20px!important}}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
 @media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
@@ -139,7 +139,7 @@ footer a:hover{color:var(--t1)}
 
 <!-- HAT STRIP -->
 <div style="background:var(--white);padding:0 0 48px">
-  <div style="max-width:1060px;margin:0 auto;padding:0 48px">
+  <div class="hat-wrap" style="max-width:1060px;margin:0 auto;padding:0 48px">
     <div style="background:var(--t3);border-radius:16px;padding:24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none">
       <div style="display:flex;gap:12px;width:max-content">
         <img src="/grogro/images/hatt1.jpg" style="height:220px;border-radius:10px;object-fit:cover">
