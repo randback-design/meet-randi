@@ -121,7 +121,7 @@ footer a:hover{color:var(--t1)}
 <div class="hero-outer">
   <div class="hero-inner">
     <div class="hero-video">
-      <iframe src="https://player.vimeo.com/video/1190097316?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://player.vimeo.com/video/1190097316?h=c5abe808c0&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="hero-contact" id="heroContact"></div>
   </div>
@@ -167,7 +167,7 @@ function buildQuoteCarousel(){
   const slides=referanser.map((r,i)=>{
     let inner=r.type==='quote'
       ?`<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
-      :`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+      :`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?${r.vimeoHash?'h='+r.vimeoHash+'&':''}&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
     return`<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
   const dots=referanser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
@@ -250,3 +250,4 @@ so.observe(document.getElementById('skillsWrap'));
 </script>
 </body>
 </html>
+
