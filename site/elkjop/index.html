@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -122,8 +121,7 @@ footer a:hover{color:var(--t1)}
 <div class="hero-outer">
   <div class="hero-inner">
     <div class="hero-video">
-      <!-- Bytt ut med: <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-      <div class="hero-video-placeholder">Video kommer snart 🎬</div>
+      <iframe src="https://player.vimeo.com/video/1190097316?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="hero-contact" id="heroContact"></div>
   </div>
@@ -161,15 +159,15 @@ const referanser = [
   {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
   {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
   {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter — Tidligere kollega i Allente"},
-  {type:"video",youtubeId:"ToDBqyfMAZ8",name:"Maren",role:"Datter"},
-  {type:"video",youtubeId:"zRPfw77rPys",name:"Kristoffer",role:"Sønn"}
+  {type:"vimeo",vimeoId:"1190098926",name:"Maren",role:"Datter"},
+  {type:"vimeo",vimeoId:"1190098897",name:"Kristoffer",role:"Sønn"}
 ];
 let quoteIdx=0;
 function buildQuoteCarousel(){
   const slides=referanser.map((r,i)=>{
     let inner=r.type==='quote'
       ?`<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
-      :`<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+      :`<div class="video-card"><iframe src="https://player.vimeo.com/video/${r.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
     return`<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
   const dots=referanser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
