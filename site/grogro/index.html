@@ -103,6 +103,9 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:28px 48px;disp
 footer strong{color:var(--t1)}
 footer a{color:rgba(255,255,255,.4);text-decoration:none}
 footer a:hover{color:var(--t1)}
+.hat-btn{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--white);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hat-btn-left{left:32px}.hat-btn-right{right:32px}
+@media(max-width:640px){.hat-btn{display:flex}#hatTrack{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.hat-strip-wrap{overflow:hidden}}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
 @media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
@@ -121,8 +124,7 @@ footer a:hover{color:var(--t1)}
 <div class="hero-outer">
   <div class="hero-inner">
     <div class="hero-video">
-      <!-- Bytt ut med YouTube-ID når video er klar -->
-      <div class="hero-video-placeholder">Video kommer snart 🎬</div>
+      <iframe src="https://player.vimeo.com/video/1190137336?h=ac411b6163&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="hero-contact" id="heroContact"></div>
   </div>
@@ -133,6 +135,27 @@ footer a:hover{color:var(--t1)}
     <div class="section-intro">Her er litt mer om hvem jeg er og hva jeg kan bidra med. 🌱</div>
   </div>
   <div class="faq-list" id="faqList"></div>
+</div>
+
+<!-- HAT STRIP -->
+<div style="background:var(--white);padding:0 0 48px">
+  <div style="max-width:1060px;margin:0 auto;padding:0 48px">
+    <div id="hatCarousel" style="position:relative;overflow:hidden;border-radius:16px;background:var(--t3);padding:24px">
+      <div id="hatTrack" style="display:flex;gap:12px;transition:transform .4s cubic-bezier(.25,1,.5,1)">
+        <img src="hatt1.JPG" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0">
+        <img src="hatt2.JPG" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0">
+        <img src="hatt3.JPG" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0">
+        <img src="hatt4.JPG" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0">
+        <img src="hatt5.JPG" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0">
+      </div>
+      <button class="hat-btn hat-btn-left" onclick="scrollHats(-1)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="hat-btn hat-btn-right" onclick="scrollHats(1)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
 </div>
 <div class="wrap" id="erfaring">
   <div class="section">
@@ -160,15 +183,15 @@ const referanser = [
   {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
   {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
   {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter — Tidligere kollega i Allente"},
-  {type:"video",youtubeId:"ToDBqyfMAZ8",name:"Maren",role:"Datter"},
-  {type:"video",youtubeId:"zRPfw77rPys",name:"Kristoffer",role:"Sønn"}
+  {type:"vimeo",vimeoUrl:"https://player.vimeo.com/video/1190098926?h=b81f1c42bb&badge=0&autopause=0&title=0&byline=0&portrait=0",name:"Maren",role:"Datter"},
+  {type:"vimeo",vimeoUrl:"https://player.vimeo.com/video/1190098897?h=b8396d5e72&badge=0&autopause=0&title=0&byline=0&portrait=0",name:"Kristoffer",role:"Sønn"}
 ];
 let quoteIdx=0;
 function buildQuoteCarousel(){
   const slides=referanser.map((r,i)=>{
     let inner=r.type==='quote'
       ?`<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
-      :`<div class="video-card"><iframe src="https://www.youtube.com/embed/${r.youtubeId}?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+      :`<div class="video-card"><iframe src="${r.vimeoUrl}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
     return`<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
   }).join('');
   const dots=referanser.map((_,i)=>`<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
@@ -193,7 +216,7 @@ function stepSlide(id,dir){const s=carState[id];goSlide(id,(s.current+dir+s.tota
 
 const grogroQA = [
   {q:"Så\u2026 hvem er du da?",type:"video",text:"Jeg er Randi \u2013 grafisk designer med 7 års erfaring fra markedsavdeling, som liker å lage innhold som faktisk blir lagt merke til (og brukt). Kreativ, leken og ganske glad i tempo og mange baller i luften.<br><br>Også mamma, kjæreste og hundeeier og ivrig konsertgjenger. Mer om meg i denne animasjonsfilmen jeg har laget:",media:[{type:"video",vimeoId:"1187345684"}]},
-  {q:"Og hvorfor søker du på denne jobben?",type:"text",text:"Stillingsannonsen deres skilte seg ut med en gang \u2013 både i tone og i hvor mye ansvar rollen faktisk har.<br><br>Jeg liker spesielt godt at dere kombinerer en leken merkevare med et tydelig fokus på rene produkter. Det gir masse rom for å lage innhold som både engasjerer og betyr noe.<br><br>Jeg har lyst til å bidra med å utvikle innhold og kampanjer som gjør GroGro enda mer synlig \u2013 spesielt i SoMe, hvor jeg tror det er stort potensial.<br><br>Jeg mener jeg har mye å bidra med hos dere, og er ikke minst veldig glad i å ha på ulike hatter. Det er ikke kanal som er viktigst for meg \u2013 det er budskapet, god historiefortelling, engasjerende innhold laget med godt samarbeid.",media:[],extraHtml:`<div style="background:var(--t3);border-radius:16px;padding:20px;margin-top:16px;overflow-x:auto"><div style="display:flex;gap:12px;min-width:max-content"><img src="../hatt1.JPG" style="height:200px;border-radius:10px;object-fit:cover"><img src="../hatt2.JPG" style="height:200px;border-radius:10px;object-fit:cover"><img src="../hatt3.JPG" style="height:200px;border-radius:10px;object-fit:cover"><img src="../hatt4.JPG" style="height:200px;border-radius:10px;object-fit:cover"><img src="../hatt5.JPG" style="height:200px;border-radius:10px;object-fit:cover"></div></div>`},
+  {q:"Og hvorfor søker du på denne jobben?",type:"text",text:"Stillingsannonsen deres skilte seg ut med en gang \u2013 både i tone og i hvor mye ansvar rollen faktisk har.<br><br>Jeg liker spesielt godt at dere kombinerer en leken merkevare med et tydelig fokus på rene produkter. Det gir masse rom for å lage innhold som både engasjerer og betyr noe.<br><br>Jeg har lyst til å bidra med å utvikle innhold og kampanjer som gjør GroGro enda mer synlig \u2013 spesielt i SoMe, hvor jeg tror det er stort potensial.<br><br>Jeg mener jeg har mye å bidra med hos dere, og er ikke minst veldig glad i å ha på ulike hatter. Det er ikke kanal som er viktigst for meg \u2013 det er budskapet, god historiefortelling, engasjerende innhold laget med godt samarbeid.",media:[]},
   {q:"Har du lang erfaring med markedsføring?",type:"text",text:"Ja, de siste 7 årene har jeg jobbet i markedsavdelingen i Allente.<br><br>Der har jeg jobbet med alt fra kampanjemateriell og SoMe-innhold til videreutvikling av visuell profil. Det betyr at jeg ikke bare lager ting som ser bra ut, men som også fungerer i en større sammenheng og er gjenkjennbart over tid.<br><br>Jeg er vant til å jobbe tett med markedsteam og levere på konkrete behov \u2013 ofte i høyt tempo.",media:[]},
   {q:"Hva sier andre om deg?",type:"video",text:"Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:",quoteCarousel:true},
   {q:"Er du helt rå på kjøkkenet da?",type:"text",text:"Hehe, vel\u2026 Det er samboeren min som lager de fleste middagene, men jeg elsker å bake, forsøker å lage sunn snacks til barna, og går rundt i butikken og scanner varer med \u201cTrygg mat\u201d-appen. Jeg føler jeg har fått byttet ut mange viktige basisvarer med et godt rentvare-alternativ i det siste.<br><br>Det ene barnet vårt sliter med matlysten, så jeg jobber også hardt hver morgen med å lage en matpakke som er enda mer fristende enn dagen før.<br><br>Jeg merker at jeg bryr meg mer og mer om hva vi faktisk spiser, og synes det høres skikkelig motiverende ut å jobbe med produkter som gjør det enklere å ta gode valg.",media:[]},
@@ -241,6 +264,16 @@ function buildHeroContact(){
   c.innerHTML=links.join('');
 }
 
+
+let hatOffset = 0;
+function scrollHats(dir){
+  const track = document.getElementById('hatTrack');
+  const imgs = track.querySelectorAll('img');
+  const imgW = imgs[0].offsetWidth + 12;
+  const maxOffset = -(imgW * (imgs.length - 4));
+  hatOffset = Math.max(maxOffset, Math.min(0, hatOffset + dir * -(imgW)));
+  track.style.transform = `translateX(${hatOffset}px)`;
+}
 buildFaq();
 buildHeroContact();
 buildTimeline();
