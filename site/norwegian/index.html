@@ -117,8 +117,15 @@ footer a:hover{color:var(--t1)}
 </nav>
 <div class="hero-outer">
   <div class="hero-inner">
-    <div class="hero-video">
-      <iframe src="https://player.vimeo.com/video/1191177715?h=c68ecafbd5&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <div class="hero-video" id="heroVideo" onclick="loadVideo()" style="cursor:pointer;position:relative">
+      <img src="randi-hero.jpg" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.1) 100%)"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+        <div style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7)">Se presentasjonsvideo</div>
+        <div style="width:72px;height:72px;border-radius:50%;border:2px solid #409f89;display:flex;align-items:center;justify-content:center;transition:background .25s">
+          <svg width="20" height="20" viewBox="0 0 20 20"><polygon points="5,2 17,10 5,18" fill="#409f89"/></svg>
+        </div>
+      </div>
     </div>
     <div class="hero-contact" id="heroContact"></div>
   </div>
@@ -152,6 +159,13 @@ footer a:hover{color:var(--t1)}
 </footer>
 <script src="../data.js"></script>
 <script>
+function loadVideo(){
+  const el = document.getElementById('heroVideo');
+  el.style.cursor = 'default';
+  el.onclick = null;
+  el.innerHTML = '<iframe src="https://player.vimeo.com/video/1191177715?h=c68ecafbd5&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>';
+}
+
 const referanser = [
   {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
   {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
