@@ -1,1 +1,668 @@
 
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Randi Bäckmark — Grafisk designer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--t1:#409f89;--t2:#2d7a68;--t3:#e3f4f0;--black:#111;--white:#fff;--bg:#F7F7F5;--card:#fff;--muted:#333;--font:'Nunito Sans','Myriad Pro',sans-serif}
+body{font-family:var(--font);font-size:16px;color:var(--black);background:var(--bg);line-height:1.7}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:62px;box-shadow:0 1px 0 rgba(0,0,0,.07)}
+.nav-logo{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--black)}
+.nav-logo span{color:var(--t1)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--t1)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
+
+/* ── HERO ── */
+.hero-outer{width:100%;background:#111;padding:48px 0}
+.hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
+.hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
+.hero-video iframe{width:100%;height:100%;border:none;display:block}
+.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
+.hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;transition:color .2s}
+.hero-contact-link:hover{color:#fff}
+.hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-contact-icon svg{width:15px;height:15px;stroke:var(--t1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── INTRO-BANNER ── */
+.intro-banner{background:var(--white);padding:48px 0 40px}
+.intro-banner .wrap{display:flex;flex-direction:column;gap:32px}
+.intro-tagline{font-size:36px;font-weight:700;line-height:1.25;margin-bottom:16px}
+.intro-tagline em{font-style:normal;color:var(--t1)}
+.intro-body{font-size:16px;color:var(--muted);line-height:1.8}
+.intro-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.pill{display:inline-block;background:var(--t3);color:var(--t2);font-size:12px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:50px}
+.intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
+.stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
+.stat-label{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px}
+.section{padding:36px 0}
+.section-eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
+.section-title{font-size:28px;font-weight:700;margin-bottom:8px}
+.section-intro{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+
+/* ── FAQ ── */
+.faq-section{background:var(--white);padding:0 0 32px}
+.faq-list{max-width:1060px;margin:0 auto;padding:0 48px}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.07)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;gap:16px;font-size:17px;font-weight:700;transition:color .2s;color:var(--black)}
+.faq-q:hover{color:var(--t1)}
+.faq-q-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.faq-type-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:#B8E5D9}
+.faq-type-icon svg{width:13px;height:13px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke:#409f89}
+.faq-q-text{flex:1}
+.faq-chevron{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .3s}
+.faq-item.open .faq-chevron{background:var(--t1);transform:rotate(180deg)}
+.faq-chevron svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2.5;stroke-linecap:round;transition:stroke .2s}
+.faq-item.open .faq-chevron svg{stroke:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:3000px}
+.faq-a-inner{padding:4px 0 28px 40px;font-size:15px;color:var(--muted);line-height:1.8}
+
+/* ── QUOTE CAROUSEL ── */
+.quote-carousel{margin-top:16px}
+.quote-slide{margin-bottom:12px}
+.quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
+.quote-text{font-size:16px;color:var(--black);line-height:1.7;margin-bottom:20px}
+.quote-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.quote-name{font-size:14px;font-weight:700;color:var(--black)}
+.quote-role{font-size:13px;color:var(--t2)}
+.video-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:10px}
+.video-card-footer{padding:16px 0 0}
+.video-card-name{font-size:14px;font-weight:700;color:var(--black)}
+.video-card-role{font-size:13px;color:var(--t2)}
+/* ── QUOTE KARUSELL ── */
+.quote-carousel{margin-top:16px}
+.quote-slide{margin-bottom:12px}
+.quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
+.quote-text{font-size:16px;color:var(--black);line-height:1.7;margin-bottom:20px}
+.quote-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.quote-name{font-size:14px;font-weight:700;color:var(--black)}
+.quote-role{font-size:13px;color:var(--t2)}
+.video-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:10px}
+.video-card-footer{padding:16px 0 0}
+.video-card-name{font-size:14px;font-weight:700;color:var(--black)}
+.video-card-role{font-size:13px;color:var(--t2)}
+
+/* Nav felles for alle karuseller */
+.car-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px}
+.car-nav-btn{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
+.car-nav-btn:hover{background:var(--t1);border-color:var(--t1)}
+.car-nav-btn:hover svg path{stroke:#fff}
+.car-nav-dots{display:flex;gap:7px;align-items:center}
+.car-nav-dot{width:9px;height:9px;border-radius:50%;background:#d0d0d0;cursor:pointer;transition:background .2s,transform .2s;border:none;padding:0}
+.car-nav-dot.active{background:var(--t1);transform:scale(1.2)}
+.car-nav-count{font-size:11px;color:var(--muted);white-space:nowrap;min-width:36px;text-align:center}
+
+/* ── VIDEO CAROUSEL (FAQ, animasjonsvideo etc) ── */
+.carousel-wrap{position:relative;margin-top:12px}
+.carousel{border-radius:10px;overflow:hidden;background:var(--bg)}
+.carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
+.carousel-slide{min-width:100%;aspect-ratio:16/9;overflow:hidden}
+.carousel-slide iframe{width:100%;height:100%;border:none;display:block}
+.carousel-slide img{width:100%;height:100%;object-fit:cover}
+/* Piler overlapp på sidene (desktop) */
+.carousel-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:background .2s;z-index:2}
+.carousel-arrow:hover{background:#fff}
+.carousel-arrow-left{left:10px}
+.carousel-arrow-right{right:10px}
+@media(min-width:641px){.carousel-arrow{display:flex}}
+
+/* ── PORTEFØLJE ── */
+.portfolio-section{padding:36px 0 48px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+.portfolio-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
+.portfolio-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.portfolio-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.portfolio-thumb-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.portfolio-thumb-placeholder svg{width:28px;height:28px;stroke:var(--t2);fill:none;stroke-width:1.5;opacity:.5}
+.portfolio-thumb-placeholder span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);opacity:.7}
+.portfolio-tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:50px;color:var(--t2)}
+.portfolio-body{padding:16px 20px 20px}
+.portfolio-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.portfolio-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.portfolio-meta{display:flex;gap:8px;flex-wrap:wrap}
+.portfolio-chip{font-size:11px;background:var(--t3);color:var(--t2);padding:2px 8px;border-radius:50px;font-weight:600}
+
+/* ── MODAL KARUSELL ── */
+.modal-carousel-wrap{margin-bottom:24px;position:relative}
+.modal-carousel-track-outer{border-radius:12px;overflow:hidden;background:var(--bg)}
+.modal-carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
+.modal-carousel-slide{min-width:100%;aspect-ratio:16/9;overflow:hidden}
+.modal-carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-carousel-slide iframe{width:100%;height:100%;border:none;display:block}
+.modal-carousel-slide .placeholder-slide{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--t3);font-size:13px;color:var(--t2);letter-spacing:.08em;text-transform:uppercase}
+
+/* ── PORTEFØLJE MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:flex-start;justify-content:center;padding:32px 20px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:20px;max-width:900px;width:100%;position:relative;margin:auto;padding:28px 28px 32px}
+.modal-close{position:sticky;top:12px;float:right;width:32px;height:32px;border:none;background:var(--bg);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:background .2s;line-height:1;z-index:10;margin-bottom:-32px;margin-left:8px}
+.modal-close:hover{background:var(--t3)}
+.modal-body-wrap{padding:0}
+.modal-media{aspect-ratio:16/9;background:var(--bg);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.modal-media img{width:100%;height:100%;object-fit:cover}
+.modal-media iframe{width:100%;height:100%;border:none}
+.modal-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t1);margin-bottom:6px}
+.modal-title{font-size:24px;font-weight:700;margin-bottom:12px}
+.modal-problem{background:var(--t3);border-radius:12px;padding:16px 20px;margin-bottom:16px}
+.modal-problem-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:4px}
+.modal-problem-text{font-size:14px;color:var(--muted);line-height:1.6}
+.modal-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.modal-result{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.modal-result::before{content:'✓';color:var(--t1);font-weight:700;flex-shrink:0}
+.modal-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+
+/* ── TIDSLINJE + SKILLS ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.timeline-wrap{background:var(--card);border-radius:14px;padding:36px}
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:4px;top:6px;bottom:0;width:2px;background:var(--t3);border-radius:2px}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-24px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--t1);border:2px solid var(--white)}
+.tl-year{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--t2);margin-bottom:2px}
+.tl-role{font-size:16px;font-weight:700}
+.tl-place{font-size:14px;color:#333;margin-bottom:4px}
+.tl-desc{font-size:15px;color:#333;line-height:1.6}
+.skills-wrap{background:var(--card);border-radius:14px;padding:36px}
+.skill-row{margin-bottom:18px}
+.skill-row:last-child{margin-bottom:0}
+.skill-name{font-size:14px;font-weight:700;margin-bottom:6px}
+.skill-track{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--t1),var(--t2));width:0;border-radius:3px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+
+/* ── FOOTER ── */
+footer{background:var(--black);color:rgba(255,255,255,.4);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:8px}
+footer strong{color:var(--t1)}
+footer a{color:rgba(255,255,255,.4);text-decoration:none}
+footer a:hover{color:var(--t1)}
+
+/* ── FADE IN ── */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .two-col{grid-template-columns:1fr;gap:24px}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .intro-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .wrap{padding:0 20px}
+  .faq-list{padding:0 20px}
+  .hero-inner{padding:0 20px}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+  .nav-links.open{display:flex}
+  .burger{display:flex}
+  .faq-a-inner{padding-left:0}
+  footer{padding:24px 20px}
+  .portfolio-grid{grid-template-columns:1fr}
+  .intro-tagline{font-size:24px}
+  .intro-stats{grid-template-columns:repeat(2,1fr)}
+  .stat-num{font-size:32px}
+  .modal{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Randi Bäckmark<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#om">Om meg</a></li>
+    <li><a href="#portefolje">Portefølje</a></li>
+    <li><a href="#erfaring">Erfaring</a></li>
+  </ul>
+  <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-outer">
+  <div class="hero-inner">
+    <div class="hero-video">
+      <!-- Bytt ut denne Vimeo-ID-en når du har laget den generiske videoen -->
+      <iframe src="https://player.vimeo.com/video/1187345684?badge=0&autopause=0&title=0&byline=0&portrait=0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="hero-contact" id="heroContact"></div>
+  </div>
+</div>
+
+<!-- INTRO BANNER -->
+<div class="intro-banner" id="om">
+  <div class="wrap">
+    <div>
+      <div class="intro-tagline">Grafisk designer med <em>20 år</em> erfaring og fortsatt like <em>nysgjerrig.</em></div>
+      <div class="intro-body">Jeg er en allsidig designer som liker å jobbe med alt fra SoMe-innhold og kampanjer til animasjon og konseptutvikling. Kreativitet, humor og god historiefortelling er det som driver meg — enten det er til en stor kampanje eller en morsom matpakkelapp.</div>
+      <div class="intro-pills">
+        <span class="pill">Kreativ</span>
+        <span class="pill">Allsidig</span>
+        <span class="pill">Løsningsorientert</span>
+        <span class="pill">Nittedal, Oslo</span>
+        <span class="pill">Tilgjengelig nå</span>
+      </div>
+    </div>
+    <div class="intro-stats">
+      <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i bransjen</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">arbeidsplasser, masse erfaring</div></div>
+      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">verktøy jeg kan fra innsiden</div></div>
+      <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">høner i hagen 🐔</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="wrap" style="padding-top:24px;padding-bottom:16px">
+    <div class="section-title" style="margin-bottom:12px">Vil du vite mer?</div>
+    <div class="section-intro">Klikk deg gjennom spørsmål og svar — eller scroll rett ned til portefølje og erfaring.</div>
+  </div>
+  <div class="faq-list" id="faqList"></div>
+</div>
+
+<!-- HATT-SEKSJON -->
+<div style="background:var(--white);padding:40px 0 48px">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="section-eyebrow">Allsidighet</div>
+    <div class="section-title">Jeg har gjerne på mange ulike hatter 🎩</div>
+  </div>
+  <div style="max-width:1060px;margin:0 auto;padding:0 48px">
+    <div style="background:var(--t3);border-radius:16px;padding:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+      <div style="display:flex;gap:12px;width:max-content">
+        <img src="/grogro/images/hatt2.jpg" style="height:220px;border-radius:10px;object-fit:cover">
+        <img src="/grogro/images/hatt3.jpg" style="height:220px;border-radius:10px;object-fit:cover">
+        <img src="/grogro/images/hatt4.jpg" style="height:220px;border-radius:10px;object-fit:cover">
+        <img src="/grogro/images/hatt5.jpg" style="height:220px;border-radius:10px;object-fit:cover">
+        <!-- Nytt bilde: <img src="/images/hatt-ny.jpg" style="height:220px;border-radius:10px;object-fit:cover"> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTEFØLJE -->
+<div class="wrap" id="portefolje">
+  <div class="portfolio-section">
+    <div class="section-eyebrow">Utvalgte arbeider</div>
+    <div class="section-title">Portefølje</div>
+    <div class="section-intro">Et knippe prosjekter — hva vi løste, hvordan, og hva som kom ut av det.</div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div>
+</div>
+
+<!-- ERFARING -->
+<div class="wrap" id="erfaring">
+  <div class="section">
+    <div class="two-col">
+      <div>
+        <div class="section-eyebrow">Arbeidserfaring</div>
+        <div class="section-title">Tidslinje</div>
+        <div class="timeline-wrap"><div class="timeline" id="timeline"></div></div>
+      </div>
+      <div>
+        <div class="section-eyebrow">Verktøy</div>
+        <div class="section-title">Ferdigheter</div>
+        <div class="skills-wrap" id="skillsWrap"><div id="skillsGrid"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>&copy; 2026 <strong>Randi Bäckmark</strong> &mdash; Grafisk designer</div>
+  <div><a href="mailto:backmarkrandi@gmail.com">backmarkrandi@gmail.com</a></div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-body-wrap" id="modalContent"></div>
+  </div>
+</div>
+
+<script src="../data.js"></script>
+<script>
+
+// ── REFERANSER (felles på tvers) ──
+const referanser = [
+  {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
+  {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
+  {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter — Tidligere kollega i Allente"},
+  {type:"quote",text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager — Tidligere kollega i Allente"},
+  {type:"vimeo",vimeoUrl:"https://player.vimeo.com/video/1190098926?h=b81f1c42bb&badge=0&autopause=0&title=0&byline=0&portrait=0",name:"Maren",role:"Datter"},
+  {type:"vimeo",vimeoUrl:"https://player.vimeo.com/video/1190098897?h=b8396d5e72&badge=0&autopause=0&title=0&byline=0&portrait=0",name:"Kristoffer",role:"Sønn"}
+];
+
+let quoteIdx = 0;
+function buildQuoteCarousel(){
+  const slides = referanser.map((r,i) => {
+    const inner = r.type==='quote'
+      ? `<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
+      : `<div class="video-card"><iframe src="${r.vimeoUrl}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
+    return `<div class="quote-slide" id="qs${i}" style="display:${i===0?'block':'none'}">${inner}</div>`;
+  }).join('');
+  const dots = referanser.map((_,i) => `<button class="car-nav-dot${i===0?' active':''}" onclick="goQuote(${i})" aria-label="Side ${i+1}"></button>`).join('');
+  return `<div class="quote-carousel">${slides}
+    <div class="car-nav">
+      <button class="car-nav-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="car-nav-dots" id="quoteDots">${dots}</div>
+      <button class="car-nav-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>`;
+}
+function goQuote(idx){
+  referanser.forEach((_,i) => { const el=document.getElementById('qs'+i); if(el) el.style.display=i===idx?'block':'none'; });
+  document.querySelectorAll('#quoteDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active',i===idx));
+  quoteIdx=idx;
+}
+function stepQuote(dir){ goQuote((quoteIdx+dir+referanser.length)%referanser.length) }
+
+// ── VIDEO CAROUSEL ──
+const carState = {};
+function makeCarousel(items, id){
+  carState[id] = {total:items.length, current:0};
+  const slides = items.map(item => {
+    if(item.type==='video') return `<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    if(item.type==='image') return `<div class="carousel-slide"><img src="${item.src}" alt="${item.label||''}"></div>`;
+    return `<div class="carousel-slide"><div style="width:100%;height:100%;background:var(--t3);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--t2)">${item.label||''}</div></div>`;
+  }).join('');
+  const dots = items.map((_,i) => `<button class="car-nav-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})" aria-label="Side ${i+1}"></button>`).join('');
+  const arrows = items.length > 1 ? `
+    <button class="carousel-arrow carousel-arrow-left" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="carousel-arrow carousel-arrow-right" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : '';
+  const nav = items.length > 1 ? `<div class="car-nav">
+    <button class="car-nav-btn" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="car-nav-dots" id="${id}dots">${dots}</div>
+    <button class="car-nav-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>` : '';
+  return `<div class="carousel-wrap"><div class="carousel" id="${id}"><div class="carousel-track" id="${id}track">${slides}</div>${arrows}</div>${nav}</div>`;
+}
+function goSlide(id,idx){
+  carState[id].current=idx;
+  document.getElementById(id+'track').style.transform=`translateX(-${idx*100}%)`;
+  document.querySelectorAll(`#${id}dots .car-nav-dot`).forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function stepSlide(id,dir){ const s=carState[id]; goSlide(id,(s.current+dir+s.total)%s.total); }
+
+// Swipe-støtte for karuseller
+function addSwipe(el, onLeft, onRight){
+  let sx=0;
+  el.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; }, {passive:true});
+  el.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - sx;
+    if(Math.abs(dx)>40){ dx<0 ? onLeft() : onRight(); }
+  }, {passive:true});
+}
+function initSwipe(){
+  Object.keys(carState).forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) addSwipe(el, ()=>stepSlide(id,1), ()=>stepSlide(id,-1));
+  });
+  // Quote-karusell swipe
+  const qc = document.querySelector('.quote-carousel');
+  if(qc) addSwipe(qc, ()=>stepQuote(1), ()=>stepQuote(-1));
+}
+
+// ── FAQ ──
+const mainQA = [
+  {q:"Hvem er du, egentlig?", type:"video", text:"Randi. Grafisk designer i 20 år. Allsidig, kreativ og glad i ordspill som ingen ler av unntatt meg selv. Mamma til tre, kjæreste, hundeeier og eier av 8 høner som ikke forstår hva helg er.<br><br>Denne animasjonsfilmen er laget av meg — og forteller ganske mye om hvem jeg er:", media:[{type:"video",vimeoId:"1187345684"}]},
+  {q:"Hva slags jobber passer deg?", type:"text", text:"Jeg trives best der det er høyt tempo, mange ulike oppgaver, og folk som vil hverandre vel. Jeg har bakgrunn fra både in-house byrå og markedsavdeling — og er vant til å jobbe med alt fra kampanjer og SoMe til video, animasjon og presentasjoner.<br><br>Jeg er ikke typen som sier «det er ikke min jobb» — jeg liker heller å se hva som trengs og bare ta tak.", media:[]},
+  {q:"Hva sier andre om deg?", type:"video", text:"Jeg har spurt litt rundt. Her er hva tidligere kollegaer og familie sier:", quoteCarousel:true},
+  {q:"Hva er du sterk på?", type:"text", text:"Kreativitet og konsepttenkning. Historiefortelling på tvers av kanaler. God på å sette meg raskt inn i nye ting — programmer, prosesser, merkevarer. Og tekst! Jeg liker å skrive, og synes det er gøy at design og ord jobber sammen.<br><br>Jeg er ikke rå på ett enkelt program — men jeg kan mye om ganske mye, og det er ofte det som trengs.", media:[]},
+  {q:"Og svakhetene?", type:"text", text:"Tall husker jeg ikke. Jeg kan følge med på dem og analysere, men de må skrives ned og settes i system for at det skal funke. Og stedsansen min er så dårlig at det nesten er et talent — men heldigvis finnes det Google Maps.", media:[]},
+  {q:"Hva er du opptatt av utenfor jobb?", type:"text", text:"Konserter — så mange jeg klarer. Kreative prosjekter i hjemmet som alltid er i kø. Fargerike sko. Og så er to av barna mine med i Trollskogen Teater, der jeg bidrar med alt det grafiske for foreldrenes PR-gruppe. Plakater, programmer, SoMe — det hele. 🎭<br><br>Og så plystrer jeg veldig mye.", media:[]},
+  {q:"Hvordan kontakter jeg deg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a>", media:[]}
+];
+
+const typeIcons = {
+  video: `<div class="faq-type-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7" fill="#409f89" stroke="none"/><rect x="1" y="5" width="15" height="14" rx="2" fill="#409f89" stroke="none"/></svg></div>`,
+  text:  `<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`
+};
+
+function buildFaq(){
+  const list = document.getElementById('faqList');
+  list.innerHTML = mainQA.map(item => {
+    const cid = 'c'+Math.random().toString(36).slice(2,7);
+    let content = `<div class="faq-a-inner">${item.text||''}`;
+    if(item.quoteCarousel) content += buildQuoteCarousel();
+    if(item.media && item.media.length) content += makeCarousel(item.media, cid);
+    content += '</div>';
+    return `<div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left">${typeIcons[item.type]||''}<span class="faq-q-text">${item.q}</span></div>
+        <div class="faq-chevron"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div>
+      </div>
+      <div class="faq-a">${content}</div>
+    </div>`;
+  }).join('');
+}
+function toggleFaq(btn){ btn.parentElement.classList.toggle('open') }
+
+// ── PORTEFØLJE ──
+// Fyll inn cases her. Støtter type: "image", "vimeo", "youtube"
+// For tekst-cases: sett type:"text" og la media stå tomt
+const portfolioCases = [
+  {
+    tag: "Animasjon",
+    title: "Hvem er Randi?",
+    desc: "En liten animasjonsfilm som forteller historien min — laget fra scratch i After Effects.",
+    problem: "Hvordan presenterer man seg selv på en måte som skiller seg ut og er morsom å se på?",
+    body: "Jeg ville lage noe annerledes enn en vanlig CV-video. Resultatet ble en animasjonsfilm med karakterer, humor og en tydelig tone of voice.",
+    results: ["Brukes på alle søknadssider som intro-video","Viser animasjonskompetanse i praksis","Fikk konkret tilbakemelding om at den skapte god førsteinntrykk"],
+    chips: ["After Effects","Illustrator","Manus"],
+    mediaType: "vimeo",
+    mediaSrc: "https://player.vimeo.com/video/1187345684?badge=0&autopause=0&title=0&byline=0&portrait=0",
+    thumbBg: "#e3f4f0"
+  },
+  {
+    tag: "Annonse",
+    title: "MIX Milkshake — gamification",
+    desc: "Interaktiv annonse for MIX der brukerne spilte seg til rabatt.",
+    problem: "Bannerannonser blir ignorert. Hvordan lager man en annonse folk faktisk vil stoppe opp for?",
+    body: "Konseptet var å gjøre annonsen til et lite spill — brukerne måtte trykke riktig antall ganger for å «mikse» en milkshake og vinne rabatt. Høy CTR og god engasjement.",
+    results: ["Over snittet CTR","Ble brukt som showcase-case internt i VG","Vant intern kreativitetspris"],
+    chips: ["Bannerflow","Animasjon","Konsept"],
+    mediaType: "image",
+    mediaSrc: "images/Milkshake.jpg",
+    thumbBg: "#d0efe7"
+  },
+  {
+    tag: "Visuell profil",
+    title: "Allente — merkevarebygging",
+    desc: "Fra Canal Digital til Allente — bidro i å bygge en helt ny merkevare fra bunnen.",
+    problem: "Allente var et nytt navn med et nytt uttrykk. Hva betyr det i praksis for alle de digitale flatene?",
+    body: "Jeg var med i markedsavdelingen gjennom hele merkevarebyggingen — og omsatte den nye visuelle profilen til kampanjer, SoMe, nyhetsbrev, web og partnermateriell over 7 år.",
+    results: ["Bidro til konsistent visuelt uttrykk på tvers av alle kanaler","Bygget opp maler og systemer som team bruker den dag i dag"],
+    chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
+    mediaType: "multi",
+    media: [
+      {type:"placeholder", label:"Kampanjemateriell", bg:"#b8e5d9"},
+      {type:"placeholder", label:"SoMe-innhold", bg:"#d0efe7"},
+      {type:"placeholder", label:"Nyhetsbrev", bg:"#e3f4f0"}
+    ],
+    thumbBg: "#b8e5d9"
+  },
+  {
+    tag: "SoMe",
+    title: "Placeholder — legg inn case",
+    desc: "Beskriv prosjektet kort her.",
+    problem: "Hvilket problem løste dere?",
+    body: "Hva gjorde du, og hvordan?",
+    results: ["Resultat 1","Resultat 2"],
+    chips: ["Verktøy","Kanal"],
+    mediaType: "placeholder",
+    mediaSrc: "",
+    thumbBg: "#e3f4f0"
+  },
+  {
+    tag: "Video",
+    title: "Placeholder — legg inn case",
+    desc: "Beskriv prosjektet kort her.",
+    problem: "Hvilket problem løste dere?",
+    body: "Hva gjorde du, og hvordan?",
+    results: ["Resultat 1","Resultat 2"],
+    chips: ["Verktøy","Kanal"],
+    mediaType: "placeholder",
+    mediaSrc: "",
+    thumbBg: "#d0efe7"
+  },
+  {
+    tag: "Tekst",
+    title: "Placeholder — legg inn case",
+    desc: "Beskriv prosjektet kort her.",
+    problem: "Hvilket problem løste dere?",
+    body: "Hva gjorde du, og hvordan?",
+    results: ["Resultat 1","Resultat 2"],
+    chips: ["Verktøy","Kanal"],
+    mediaType: "placeholder",
+    mediaSrc: "",
+    thumbBg: "#b8e5d9"
+  }
+];
+
+function buildPortfolio(){
+  const grid = document.getElementById('portfolioGrid');
+  grid.innerHTML = portfolioCases.map((c,i) => {
+    let thumb = '';
+    if(c.mediaType==='vimeo'){
+      // Thumbnail fra Vimeo — bruk et bilde eller bakgrunnsfarge
+      thumb = `<div class="portfolio-thumb-placeholder" style="background:${c.thumbBg}"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>${c.tag}</span></div>`;
+    } else if(c.mediaType==='image' && c.mediaSrc){
+      thumb = `<img src="${c.mediaSrc}" alt="${c.title}">`;
+    } else {
+      thumb = `<div class="portfolio-thumb-placeholder" style="background:${c.thumbBg}"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>${c.tag}</span></div>`;
+    }
+    return `<div class="portfolio-card fade-in" onclick="openModal(${i})">
+      <div class="portfolio-thumb">
+        ${thumb}
+        <div class="portfolio-tag">${c.tag}</div>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">${c.title}</div>
+        <div class="portfolio-desc">${c.desc}</div>
+        <div class="portfolio-meta">${c.chips.map(ch=>`<span class="portfolio-chip">${ch}</span>`).join('')}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+let modalCarIdx = 0;
+function openModal(i){
+  const c = portfolioCases[i];
+  let mediaHtml = '';
+
+  if(c.mediaType === 'multi' && c.media && c.media.length > 1){
+    modalCarIdx = 0;
+    const slides = c.media.map(m => {
+      let inner = '';
+      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
+      else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
+      return `<div class="modal-carousel-slide">${inner}</div>`;
+    }).join('');
+    const dots = c.media.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
+    mediaHtml = `<div class="modal-carousel-wrap">
+      <div class="modal-carousel-track-outer">
+        <div class="modal-carousel-track" id="modalCarTrack">${slides}</div>
+      </div>
+      <div class="car-nav">
+        <button class="car-nav-btn" onclick="stepModalSlide(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="car-nav-dots" id="modalCarDots">${dots}</div>
+        <button class="car-nav-btn" onclick="stepModalSlide(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>`;
+  } else if(c.mediaType==='vimeo'){
+    mediaHtml = `<div class="modal-media"><iframe src="${c.mediaSrc}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+  } else if(c.mediaType==='image' && c.mediaSrc){
+    mediaHtml = `<div class="modal-media"><img src="${c.mediaSrc}" alt="${c.title}"></div>`;
+  } else {
+    mediaHtml = `<div class="modal-media" style="background:${c.thumbBg};display:flex;align-items:center;justify-content:center"><span style="font-size:13px;color:var(--t2);letter-spacing:.1em;text-transform:uppercase">Bilde / video kommer</span></div>`;
+  }
+
+  document.getElementById('modalContent').innerHTML = `
+    ${mediaHtml}
+    <div class="modal-tag">${c.tag}</div>
+    <div class="modal-title">${c.title}</div>
+    <div class="modal-problem"><div class="modal-problem-label">Utfordringen</div><div class="modal-problem-text">${c.problem}</div></div>
+    <div class="modal-desc">${c.body}</div>
+    ${c.results.map(r=>`<div class="modal-result">${r}</div>`).join('')}
+    <div class="modal-chips">${c.chips.map(ch=>`<span class="portfolio-chip">${ch}</span>`).join('')}</div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  const mct = document.getElementById('modalCarTrack');
+  if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
+}
+
+function goModalSlide(idx){
+  modalCarIdx = idx;
+  const track = document.getElementById('modalCarTrack');
+  if(track) track.style.transform = `translateX(-${idx*100}%)`;
+  document.querySelectorAll('#modalCarDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+}
+function stepModalSlide(dir){
+  const total = document.querySelectorAll('#modalCarTrack .modal-carousel-slide').length;
+  if(total) goModalSlide((modalCarIdx + dir + total) % total);
+}
+function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalBtn(); }
+function closeModalBtn(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModalBtn(); });
+
+// ── KONTAKTINFO ──
+function buildHeroContact(){
+  const c = document.getElementById('heroContact');
+  if(!c) return;
+  const links = [];
+  if(SITE_DATA.email)        links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
+  if(SITE_DATA.phone)        links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
+  if(SITE_DATA.linkedin)     links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
+  if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
+  c.innerHTML = links.join('');
+}
+
+// ── TIDSLINJE + SKILLS ──
+function buildTimeline(){
+  document.getElementById('timeline').innerHTML = SITE_DATA.timeline.map(t =>
+    `<div class="tl-item fade-in"><div class="tl-dot"></div><div class="tl-year">${t.year}</div><div class="tl-role">${t.role}</div><div class="tl-place">${t.place}</div><div class="tl-desc">${t.desc}</div></div>`
+  ).join('');
+}
+function buildSkills(){
+  document.getElementById('skillsGrid').innerHTML = SITE_DATA.skills.map(s =>
+    `<div class="skill-row"><div class="skill-name">${s.name}</div><div class="skill-track"><div class="skill-fill" data-p="${s.pct}"></div></div></div>`
+  ).join('');
+}
+
+// ── INIT ──
+buildFaq();
+buildHeroContact();
+buildTimeline();
+buildSkills();
+buildPortfolio();
+initSwipe();
+
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible') }), {threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+const so = new IntersectionObserver(e => { e.forEach(x => { if(x.isIntersecting){ x.target.querySelectorAll('.skill-fill').forEach(b => b.style.width=b.dataset.p+'%'); so.unobserve(x.target) } }) }, {threshold:.3});
+so.observe(document.getElementById('skillsWrap'));
+</script>
+</body>
+</html>
