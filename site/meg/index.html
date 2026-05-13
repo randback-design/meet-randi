@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -251,21 +250,23 @@ footer a:hover{color:var(--t1)}
 <div class="intro-banner" id="om">
   <div class="wrap">
     <div>
-      <div class="intro-tagline">Grafisk designer med <em>20 år</em> erfaring og fortsatt like <em>nysgjerrig.</em></div>
-      <div class="intro-body">Jeg er en allsidig designer som liker å jobbe med alt fra SoMe-innhold og kampanjer til animasjon og konseptutvikling. Kreativitet, humor og god historiefortelling er det som driver meg — enten det er til en stor kampanje eller en morsom matpakkelapp.</div>
+      <div class="intro-tagline">Jeg gjør tekst, bilder og video til <em>levende historier</em></div>
+      <div class="intro-body">Randi er navnet, og jeg er en allsidig designer som liker å jobbe med alt fra SoMe-innhold og kampanjer til animasjon og konseptutvikling. Og jeg har 20 års erfaring med nettopp visuell kommunikasjon. 🙋‍♀️ For tiden jakter jeg på min nye drømmejobb. Finner jeg den i deres team?</div>
       <div class="intro-pills">
         <span class="pill">Kreativ</span>
         <span class="pill">Allsidig</span>
         <span class="pill">Løsningsorientert</span>
-        <span class="pill">Nittedal, Oslo</span>
-        <span class="pill">Tilgjengelig nå</span>
+        <span class="pill">Engasjert</span>
       </div>
     </div>
     <div class="intro-stats">
       <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i bransjen</div></div>
-      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">arbeidsplasser, masse erfaring</div></div>
-      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">verktøy jeg kan fra innsiden</div></div>
-      <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">høner i hagen 🐔</div></div>
+      <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
+      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">programmer jeg er god i</div></div>
+      <div class="stat-card">
+        <div class="stat-num" id="ideerTall">8</div>
+        <div class="stat-label" id="ideerLabel">høner i hagen 🐔</div>
+      </div>
     </div>
   </div>
 </div>
@@ -273,8 +274,8 @@ footer a:hover{color:var(--t1)}
 <!-- FAQ -->
 <div class="faq-section">
   <div class="wrap" style="padding-top:24px;padding-bottom:16px">
-    <div class="section-title" style="margin-bottom:12px">Vil du vite mer?</div>
-    <div class="section-intro">Klikk deg gjennom spørsmål og svar — eller scroll rett ned til portefølje og erfaring.</div>
+    <div class="section-title" style="margin-bottom:12px">Vil dere vite mer?</div>
+    <div class="section-intro">Klikk dere gjennom spørsmål og svar — eller scroll rett ned til portefølje og erfaring.</div>
   </div>
   <div class="faq-list" id="faqList"></div>
 </div>
@@ -303,7 +304,7 @@ footer a:hover{color:var(--t1)}
   <div class="portfolio-section">
     <div class="section-eyebrow">Utvalgte arbeider</div>
     <div class="section-title">Portefølje</div>
-    <div class="section-intro">Et knippe prosjekter — hva vi løste, hvordan, og hva som kom ut av det.</div>
+    <div class="section-intro">Her er noen utvalgte arbeider jeg er stolt av, og som viser bredden i hva jeg kan bidra med.</div>
     <div class="portfolio-grid" id="portfolioGrid"></div>
   </div>
 </div>
@@ -424,13 +425,13 @@ function initSwipe(){
 
 // ── FAQ ──
 const mainQA = [
-  {q:"Hvem er du, egentlig?", type:"video", text:"Randi. Grafisk designer i 20 år. Allsidig, kreativ og glad i ordspill som ingen ler av unntatt meg selv. Mamma til tre, kjæreste, hundeeier og eier av 8 høner som ikke forstår hva helg er.<br><br>Denne animasjonsfilmen er laget av meg — og forteller ganske mye om hvem jeg er:", media:[{type:"video",vimeoId:"1187345684"}]},
-  {q:"Hva slags jobber passer deg?", type:"text", text:"Jeg trives best der det er høyt tempo, mange ulike oppgaver, og folk som vil hverandre vel. Jeg har bakgrunn fra både in-house byrå og markedsavdeling — og er vant til å jobbe med alt fra kampanjer og SoMe til video, animasjon og presentasjoner.<br><br>Jeg er ikke typen som sier «det er ikke min jobb» — jeg liker heller å se hva som trengs og bare ta tak.", media:[]},
-  {q:"Hva sier andre om deg?", type:"video", text:"Jeg har spurt litt rundt. Her er hva tidligere kollegaer og familie sier:", quoteCarousel:true},
-  {q:"Hva er du sterk på?", type:"text", text:"Kreativitet og konsepttenkning. Historiefortelling på tvers av kanaler. God på å sette meg raskt inn i nye ting — programmer, prosesser, merkevarer. Og tekst! Jeg liker å skrive, og synes det er gøy at design og ord jobber sammen.<br><br>Jeg er ikke rå på ett enkelt program — men jeg kan mye om ganske mye, og det er ofte det som trengs.", media:[]},
-  {q:"Og svakhetene?", type:"text", text:"Tall husker jeg ikke. Jeg kan følge med på dem og analysere, men de må skrives ned og settes i system for at det skal funke. Og stedsansen min er så dårlig at det nesten er et talent — men heldigvis finnes det Google Maps.", media:[]},
-  {q:"Hva er du opptatt av utenfor jobb?", type:"text", text:"Konserter — så mange jeg klarer. Kreative prosjekter i hjemmet som alltid er i kø. Fargerike sko. Og så er to av barna mine med i Trollskogen Teater, der jeg bidrar med alt det grafiske for foreldrenes PR-gruppe. Plakater, programmer, SoMe — det hele. 🎭<br><br>Og så plystrer jeg veldig mye.", media:[]},
-  {q:"Hvordan kontakter jeg deg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a>", media:[]}
+  {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt). Kreativ, leken og ganske glad i tempo og mange baller i luften. 🎨<br><br>Også mamma, kjæreste og hundeeier og ivrig konsertgjenger. 🎵 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684"}]},
+  {q:"Hva slags jobber passer deg?", type:"text", text:"Jeg trives best der det er høyt tempo, mange ulike oppgaver, sammen med folk som vil hverandre vel og spiller hverandre gode. Jeg har bakgrunn fra både in-house byrå og markedsavdeling, og er vant til å jobbe med alt fra kampanjer og SoMe til video, animasjon og presentasjoner.<br><br>Jeg er ikke typen som sier «det er ikke min jobb» 🙅‍♀️ — jeg liker heller å bidra der det trengs, og synes bare det er gøy med variasjon i hverdagen.", media:[]},
+  {q:"Hva sier andre om deg?", type:"video", text:"Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:", quoteCarousel:true},
+  {q:"Hva er du ekstra god på?", type:"text", text:"Jeg er ganske kreativ, og lar meg lett engasjere. Da vil jeg også gjerne sette ideene ut i live temmelig fort og jobber hardt med det. 💪 Historiefortelling på tvers av kanaler er også en av mine styrker, samt at jeg kan en del om mye, framfor å være superspesialist på én bestemt ting.", media:[]},
+  {q:"Hva er du mindre god på?", type:"text", text:"Jeg er ikke så god på å huske tall. Da må jeg skrive dem ned og repetere det for meg selv. Jeg er vel mer typen som husker ting som blir presentert visuelt. 👀<br><br>Dessuten er jeg født med en håpløst dårlig stedssans. Men heldigvis finnes Google Maps og GPS, så da klarer jeg meg likevel. 🗺️", media:[]},
+  {q:"Hva liker du best å gjøre utenfor jobb?", type:"text", text:"Trene, gå på konserter (så mange som mulig! 🎤), jobbe med PR for teateret barna spiller i 🎭, spille brettspill med familien min, og av og til plukke opp gitaren. 🎸", media:[]},
+  {q:"Hvordan kontakter dere meg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com 📩<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg — Gabrielle</a>", media:[]}
 ];
 
 const typeIcons = {
@@ -658,6 +659,36 @@ buildTimeline();
 buildSkills();
 buildPortfolio();
 initSwipe();
+
+// Animert høner/ideer-kort
+(function(){
+  const numEl = document.getElementById('ideerTall');
+  const lblEl = document.getElementById('ideerLabel');
+  if(!numEl || !lblEl) return;
+  const states = [
+    {num: 8,  label: 'høner i hagen 🐔'},
+    {num: 26, label: 'ideer i hodet 💡'}
+  ];
+  let idx = 0;
+  setInterval(() => {
+    idx = (idx + 1) % states.length;
+    numEl.style.transition = 'opacity .3s, transform .3s';
+    lblEl.style.transition  = 'opacity .3s';
+    numEl.style.opacity = '0';
+    numEl.style.transform = 'translateY(-8px)';
+    lblEl.style.opacity = '0';
+    setTimeout(() => {
+      numEl.textContent = states[idx].num;
+      lblEl.textContent = states[idx].label;
+      numEl.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        numEl.style.opacity = '1';
+        numEl.style.transform = 'translateY(0)';
+        lblEl.style.opacity  = '1';
+      }, 50);
+    }, 300);
+  }, 2500);
+})();
 
 const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible') }), {threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
