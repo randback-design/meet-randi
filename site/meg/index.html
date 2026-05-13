@@ -40,7 +40,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .intro-body{font-size:16px;color:var(--muted);line-height:1.8}
 .intro-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .pill{display:inline-block;background:var(--t3);color:var(--t2);font-size:12px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:50px}
-.intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.intro-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
 .stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
 .stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
 .stat-label{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
@@ -202,7 +202,7 @@ footer a:hover{color:var(--t1)}
 @media(max-width:900px){
   .two-col{grid-template-columns:1fr;gap:24px}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-  .intro-stats{grid-template-columns:repeat(2,1fr)}
+  .intro-stats{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:640px){
   nav{padding:0 20px}
@@ -216,8 +216,9 @@ footer a:hover{color:var(--t1)}
   footer{padding:24px 20px}
   .portfolio-grid{grid-template-columns:1fr}
   .intro-tagline{font-size:24px}
-  .intro-stats{grid-template-columns:repeat(2,1fr)}
-  .stat-num{font-size:32px}
+  .intro-stats{grid-template-columns:repeat(3,1fr)}
+  .stat-num{font-size:28px}
+  .stat-label{font-size:11px}
   .modal{padding:24px}
 }
 </style>
@@ -263,10 +264,8 @@ footer a:hover{color:var(--t1)}
       <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i bransjen</div></div>
       <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
       <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">programmer jeg er god i</div></div>
-      <div class="stat-card">
-        <div class="stat-num" id="ideerTall">8</div>
-        <div class="stat-label" id="ideerLabel">høner i hagen 🐔</div>
-      </div>
+      <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">høner i hagen 🐔</div></div>
+      <div class="stat-card"><div class="stat-num" id="ideerTall">8</div><div class="stat-label">ideer i hodet 💡</div></div>
     </div>
   </div>
 </div>
@@ -303,8 +302,7 @@ footer a:hover{color:var(--t1)}
 <div class="wrap" id="portefolje">
   <div class="portfolio-section">
     <div class="section-eyebrow">Utvalgte arbeider</div>
-    <div class="section-title">Portefølje</div>
-    <div class="section-intro">Her er noen utvalgte arbeider jeg er stolt av, og som viser bredden i hva jeg kan bidra med.</div>
+    <div class="section-title" style="font-size:16px;font-weight:400;color:var(--muted);margin-bottom:16px">Her er noen utvalgte arbeider jeg er stolt av, og som viser bredden i hva jeg kan bidra med.</div>
     <div class="portfolio-grid" id="portfolioGrid"></div>
   </div>
 </div>
@@ -660,34 +658,52 @@ buildSkills();
 buildPortfolio();
 initSwipe();
 
-// Animert høner/ideer-kort
+// Animert ideer-tall
 (function(){
   const numEl = document.getElementById('ideerTall');
-  const lblEl = document.getElementById('ideerLabel');
-  if(!numEl || !lblEl) return;
-  const states = [
-    {num: 8,  label: 'høner i hagen 🐔'},
-    {num: 26, label: 'ideer i hodet 💡'}
-  ];
-  let idx = 0;
-  setInterval(() => {
-    idx = (idx + 1) % states.length;
-    numEl.style.transition = 'opacity .3s, transform .3s';
-    lblEl.style.transition  = 'opacity .3s';
-    numEl.style.opacity = '0';
-    numEl.style.transform = 'translateY(-8px)';
-    lblEl.style.opacity = '0';
-    setTimeout(() => {
-      numEl.textContent = states[idx].num;
-      lblEl.textContent = states[idx].label;
-      numEl.style.transform = 'translateY(8px)';
-      setTimeout(() => {
-        numEl.style.opacity = '1';
-        numEl.style.transform = 'translateY(0)';
-        lblEl.style.opacity  = '1';
-      }, 50);
-    }, 300);
-  }, 2500);
+  if(!numEl) return;
+  let current = 8;
+  let target = 26;
+  let direction = 1;
+  let flicker = 0;
+
+  function step(){
+    if(direction === 1){
+      // Teller opp mot 26
+      current += 1;
+      numEl.textContent = current;
+      if(current >= 26){
+        direction = 0; // hold og flimre
+        flicker = 0;
+        setTimeout(step, 800);
+      } else {
+        setTimeout(step, 60);
+      }
+    } else if(direction === 0){
+      // Flimrer mellom 15-26
+      flicker++;
+      current = Math.floor(Math.random() * 12) + 15;
+      numEl.textContent = current;
+      if(flicker >= 10){
+        direction = -1;
+        current = 26;
+        setTimeout(step, 600);
+      } else {
+        setTimeout(step, 180);
+      }
+    } else {
+      // Teller ned mot 8
+      current -= 1;
+      numEl.textContent = current;
+      if(current <= 8){
+        direction = 1;
+        setTimeout(step, 2000); // pause før neste runde
+      } else {
+        setTimeout(step, 60);
+      }
+    }
+  }
+  setTimeout(step, 2000);
 })();
 
 const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible') }), {threshold:.15});
