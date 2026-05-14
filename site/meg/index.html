@@ -474,12 +474,12 @@ const portfolioCases = [
   },
   {
     tag: "Annonse",
-    title: "MIX Milkshake — gamification",
-    desc: "Interaktiv annonse for MIX der brukerne spilte seg til rabatt.",
+    title: "Kreativ annonse — MIX",
+    desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
     problem: "Bannerannonser blir ignorert. Hvordan lager man en annonse folk faktisk vil stoppe opp for?",
-    body: "Konseptet var å gjøre annonsen til et lite spill — brukerne måtte trykke riktig antall ganger for å «mikse» en milkshake og vinne rabatt. Høy CTR og god engasjement.",
+    body: "Konseptet var å gjøre annonsen til et lite spill — brukerne laget sin egen milkshake ved å velge smaker og ingredienser, og fikk så en kupong de kunne løse inn i nærmeste MIX-kiosk.",
     results: ["Over snittet CTR","Ble brukt som showcase-case internt i VG","Vant intern kreativitetspris"],
-    chips: ["Bannerflow","Animasjon","Konsept"],
+    chips: ["Illustrasjon","Konsept","Gamification","Utvikling"],
     mediaType: "multi",
     media: [
       {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
@@ -490,7 +490,8 @@ const portfolioCases = [
       {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
     ],
-    thumbBg: "#d0efe7"
+    thumbBg: "#d0efe7",
+    thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
   },
   {
     tag: "Visuell profil",
@@ -550,8 +551,9 @@ function buildPortfolio(){
   const grid = document.getElementById('portfolioGrid');
   grid.innerHTML = portfolioCases.map((c,i) => {
     let thumb = '';
-    if(c.mediaType==='vimeo'){
-      // Thumbnail fra Vimeo — bruk et bilde eller bakgrunnsfarge
+    if(c.thumbImg){
+      thumb = `<img src="${c.thumbImg}" alt="${c.title}">`;
+    } else if(c.mediaType==='vimeo'){
       thumb = `<div class="portfolio-thumb-placeholder" style="background:${c.thumbBg}"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>${c.tag}</span></div>`;
     } else if(c.mediaType==='image' && c.mediaSrc){
       thumb = `<img src="${c.mediaSrc}" alt="${c.title}">`;
