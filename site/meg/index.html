@@ -40,10 +40,10 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .intro-body{font-size:16px;color:var(--muted);line-height:1.8}
 .intro-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .pill{display:inline-block;background:var(--t3);color:var(--t2);font-size:12px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:50px}
-.intro-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
 .stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
-.stat-label{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+.stat-label{font-size:16px;color:var(--muted);margin-top:6px;line-height:1.4}
 
 /* ── LAYOUT ── */
 .wrap{max-width:1060px;margin:0 auto;padding:0 48px}
@@ -261,10 +261,9 @@ footer a:hover{color:var(--t1)}
       </div>
     </div>
     <div class="intro-stats">
-      <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i bransjen</div></div>
+      <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i mediabransjen</div></div>
       <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
       <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">programmer jeg er god i</div></div>
-      <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">høner i hagen 🐔</div></div>
       <div class="stat-card"><div class="stat-num" id="ideerTall">8</div><div class="stat-label">ideer i hodet 💡</div></div>
     </div>
   </div>
@@ -663,47 +662,16 @@ initSwipe();
   const numEl = document.getElementById('ideerTall');
   if(!numEl) return;
   let current = 8;
-  let target = 26;
   let direction = 1;
-  let flicker = 0;
 
   function step(){
-    if(direction === 1){
-      // Teller opp mot 26
-      current += 1;
-      numEl.textContent = current;
-      if(current >= 26){
-        direction = 0; // hold og flimre
-        flicker = 0;
-        setTimeout(step, 800);
-      } else {
-        setTimeout(step, 60);
-      }
-    } else if(direction === 0){
-      // Flimrer mellom 15-26
-      flicker++;
-      current = Math.floor(Math.random() * 12) + 15;
-      numEl.textContent = current;
-      if(flicker >= 10){
-        direction = -1;
-        current = 26;
-        setTimeout(step, 600);
-      } else {
-        setTimeout(step, 180);
-      }
-    } else {
-      // Teller ned mot 8
-      current -= 1;
-      numEl.textContent = current;
-      if(current <= 8){
-        direction = 1;
-        setTimeout(step, 2000); // pause før neste runde
-      } else {
-        setTimeout(step, 60);
-      }
-    }
+    current += direction;
+    numEl.textContent = current;
+    if(current >= 26) direction = -1;
+    if(current <= 8)  direction = 1;
+    setTimeout(step, 80);
   }
-  setTimeout(step, 2000);
+  setTimeout(step, 1500);
 })();
 
 const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible') }), {threshold:.15});
