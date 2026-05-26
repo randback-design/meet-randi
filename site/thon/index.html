@@ -47,7 +47,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .faq-item.open .faq-a{max-height:3000px}
 .faq-a-inner{padding:4px 0 28px 40px;font-size:15px;color:var(--muted);line-height:1.8}
-.quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
+.quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px;display:flex;flex-direction:column;width:100%}
 .quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
 .quote-text{font-size:16px;color:var(--black);line-height:1.7;margin-bottom:20px}
 .quote-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -93,8 +93,8 @@ footer a:hover{color:var(--t1)}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
 .ref-track-outer{overflow:hidden;border-radius:16px}
-.ref-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
-.ref-slide{min-width:50%;padding:0 8px;box-sizing:border-box}
+.ref-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1);align-items:stretch}
+.ref-slide{min-width:50%;padding:0 8px;box-sizing:border-box;display:flex}
 .ref-slide:first-child{padding-left:0}
 .ref-slide:last-child{padding-right:0}
 @media(max-width:700px){.ref-slide{min-width:100%;padding:0}}
