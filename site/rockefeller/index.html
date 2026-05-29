@@ -106,8 +106,13 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
 footer a:hover{color:var(--t1)}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
-@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
-@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}}
+.intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px 0 8px}
+.stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
+.stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
+.stat-label{font-size:16px;color:var(--muted);margin-top:6px;line-height:1.4}
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}.intro-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}.intro-stats{grid-template-columns:repeat(2,1fr)}.stat-num{font-size:28px}.stat-label{font-size:13px}}
 </style>
 </head>
 <body>
@@ -129,6 +134,17 @@ footer a:hover{color:var(--t1)}
   </div>
 </div>
 
+<div style="background:var(--white);padding:40px 0 8px">
+  <div class="wrap">
+    <div class="intro-stats">
+      <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i mediabransjen</div></div>
+      <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
+      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">programmer jeg er god i</div></div>
+      <div class="stat-card"><div class="stat-num" id="ideerTall">8</div><div class="stat-label">ideer i hodet 💡</div></div>
+    </div>
+  </div>
+</div>
+
 <div class="faq-section" id="qa">
   <div class="wrap" style="padding-top:24px;padding-bottom:16px">
     <div class="section-title" style="margin-bottom:12px">Hei Rockefeller og co! Musikkfrelst markedsmedarbeider her! 👋</div>
@@ -139,14 +155,18 @@ footer a:hover{color:var(--t1)}
 
 <!-- HAT STRIP -->
 <div style="background:var(--white);padding:0 0 48px">
+  <div class="wrap" style="margin-bottom:20px;padding-top:40px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px">Allsidighet</div>
+    <div style="font-size:28px;font-weight:700;margin-bottom:20px">Jeg har gjerne på mange ulike hatter 🎩</div>
+  </div>
   <div style="max-width:1060px;margin:0 auto;padding:0 48px">
     <div style="background:var(--t3);border-radius:16px;padding:24px 0 24px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none">
       <div style="display:flex;gap:12px;width:max-content;padding-right:24px">
-        <img src="/grogro/images/hatt1.jpg" style="height:220px;border-radius:10px;object-fit:cover">
         <img src="/grogro/images/hatt2.jpg" style="height:220px;border-radius:10px;object-fit:cover">
         <img src="/grogro/images/hatt3.jpg" style="height:220px;border-radius:10px;object-fit:cover">
         <img src="/grogro/images/hatt4.jpg" style="height:220px;border-radius:10px;object-fit:cover">
         <img src="/grogro/images/hatt5.jpg" style="height:220px;border-radius:10px;object-fit:cover">
+        <img src="/grogro/images/hatt6.jpg" style="height:220px;border-radius:10px;object-fit:cover">
       </div>
     </div>
   </div>
@@ -259,7 +279,7 @@ const rockQA = [
   {
     q: "Siste konserten du var på?",
     type: "text",
-    text: `<p>Den er lett! Jeg tok med datteren min på Musit i Nationalteateret. For en opplevelse!</p>`,
+    text: `<p>Den er lett! Jeg tok med datteren min på Musti i Nationalteateret. For en opplevelse!</p>`,
     media: []
   },
   {
@@ -269,7 +289,7 @@ const rockQA = [
     media: []
   },
   {
-    q: "Men hallo, du sa jo du pleide å besøke oss?",
+    q: "Men hallo, du sa jo du pleide å besøke OSS?",
     type: "text",
     text: `<p>Ja! Det er litt tilfeldig at eksemplene over var/er hos noen andre, men jeg elsker å gå på konserter på Rockefeller, John Dee og Sentrum Scene. Siste jeg så på Rockefeller var Jon Ranes. Han er så flink! High as a Kite, rett før det. Helt gåsehud-bra!</p><p>Og så gøy med de nye illustrasjonene til Flu Hartberg på vei inn på Rockefeller da. Gratulerer med jubileumet, forresten! 🥳</p>`,
     media: []
@@ -277,7 +297,7 @@ const rockQA = [
   {
     q: "Hva ser du for deg at du kan bidra med hos nettopp oss?",
     type: "text",
-    text: `<p>Jeg kan brukes til veldig mye, og jeg trives også godt med en variert hverdag.</p><p>Dere ønsker en som kan InDesign, Photoshop og Premiere Pro. Jeg kan alle de, og en god del programmer og systemer til. Ta en titt lengre ned på siden her. 👇</p><p>Jeg liker å filme med mobilen, klipper video, kommer opp med nye idéer, illustrerer, publiserer på web, skriver tekster, lager annonser og trykksaker, og jobber med partnere.</p><p>Jeg har også jobbet som nettredaktør og er vant til å publisere på nett og sette meg raskt inn i nye CMSer. Jeg forstår litt kode, men skriver lite selv, nok til å skjønne hva som skjer og kommunisere godt med de som gjør det.</p><p>Jeg har erfaring med Google Analytics, og kjenner til grunnleggende SEO. Og nå som AIO – å skrive innhold som også blir plukket opp av AI-søk – er blitt viktigere, er det noe jeg følger godt med på.</p>`,
+    text: `<p>Jeg kan brukes til veldig mye, og jeg trives også godt med en variert hverdag.</p><p>Dere ønsker en som kan InDesign, Photoshop og Premiere Pro. Jeg kan alle de, og en god del programmer og systemer til. Ta en titt lengre ned på siden her. 👇</p><p>Jeg liker å filme med mobilen, klipper video, kommer opp med nye idéer, illustrerer, publiserer på web, skriver tekster, lager annonser og trykksaker, og jobber med partnere.</p><p>Jeg har også jobbet som nettredaktør og er vant til å publisere på nett og sette meg raskt inn i nye CMSer. Jeg forstår litt kode, skriver lite selv, men skjønner nok til å kommunisere godt med utviklere.</p><p>Jeg har erfaring med Google Analytics, og kjenner til grunnleggende SEO. Og nå som AIO – å skrive innhold som også blir plukket opp av AI-søk – er blitt viktigere, er det noe jeg følger godt med på.</p>`,
     media: []
   },
   {
@@ -355,6 +375,14 @@ buildFaq();
 buildHeroContact();
 buildTimeline();
 buildSkills();
+
+(function(){
+  const numEl = document.getElementById('ideerTall');
+  if(!numEl) return;
+  let current = 8, direction = 1;
+  function step(){ current += direction; numEl.textContent = current; if(current >= 26) direction = -1; if(current <= 8) direction = 1; setTimeout(step, 80); }
+  setTimeout(step, 1500);
+})();
 
 const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
