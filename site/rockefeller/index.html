@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -194,16 +193,17 @@ function buildQuoteCarousel() {
   for(let p = 0; p < totalPages; p++) {
     const pair = referanser.slice(p * QUOTES_PER_PAGE, p * QUOTES_PER_PAGE + QUOTES_PER_PAGE);
     const cards = pair.map(r =>
-      `<div class="quote-card" style="flex:1;display:flex;flex-direction:column;"><div class="quote-mark">"</div><div class="quote-text" style="flex:1;">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
+      `<div class="quote-card" style="flex:1;display:flex;flex-direction:column;min-width:0;"><div class="quote-mark">"</div><div class="quote-text" style="flex:1;">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
     ).join('');
-    slides += `<div class="quote-slide" id="qs${p}" style="display:${p===0?'flex':'none'};gap:16px;align-items:stretch;">${cards}</div>`;
+    slides += `<div class="qslide" style="display:flex;gap:16px;align-items:stretch;min-width:100%;">${cards}</div>`;
   }
   const dots = Array.from({length:totalPages}, (_,i) => `<div class="quote-dot${i===0?' active':''}" onclick="goQuote(${i})"></div>`).join('');
-  return `<div class="quote-carousel" style="margin-top:16px;">${slides}<div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${totalPages}</div></div></div>`;
+  return `<div class="quote-carousel" style="margin-top:16px;"><div style="overflow:hidden;border-radius:16px;"><div id="quoteTrack" style="display:flex;transition:transform .45s cubic-bezier(.25,1,.5,1);">${slides}</div></div><div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${totalPages}</div></div></div>`;
 }
 function goQuote(idx) {
   const totalPages = Math.ceil(referanser.length / QUOTES_PER_PAGE);
-  for(let p = 0; p < totalPages; p++) { const el = document.getElementById('qs'+p); if(el) el.style.display = p===idx ? 'flex' : 'none'; }
+  const track = document.getElementById('quoteTrack');
+  if(track) track.style.transform = `translateX(-${idx * 100}%)`;
   document.querySelectorAll('.quote-dot').forEach((d, i) => d.classList.toggle('active', i===idx));
   const c = document.getElementById('quoteCount'); if(c) c.textContent = `${idx+1} / ${totalPages}`;
   quoteIdx = idx;
