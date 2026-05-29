@@ -106,6 +106,9 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none}
 footer a:hover{color:var(--t1)}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
+.hatt-scroll{display:flex;gap:12px;}
+.hatt-img{flex:1;min-width:0;height:220px;border-radius:10px;object-fit:cover}
+@media(max-width:640px){.hatt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.hatt-img{flex:none;height:160px;width:140px}}
 .intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px 0 8px}
 .stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
 .stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
@@ -160,13 +163,13 @@ footer a:hover{color:var(--t1)}
     <div style="font-size:28px;font-weight:700;margin-bottom:20px">Jeg har gjerne på mange ulike hatter 🎩</div>
   </div>
   <div style="max-width:1060px;margin:0 auto;padding:0 48px">
-    <div style="background:var(--t3);border-radius:16px;padding:24px 0 24px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none">
-      <div style="display:flex;gap:12px;width:max-content;padding-right:24px">
-        <img src="/grogro/images/hatt2.jpg" style="height:220px;border-radius:10px;object-fit:cover">
-        <img src="/grogro/images/hatt3.jpg" style="height:220px;border-radius:10px;object-fit:cover">
-        <img src="/grogro/images/hatt4.jpg" style="height:220px;border-radius:10px;object-fit:cover">
-        <img src="/grogro/images/hatt5.jpg" style="height:220px;border-radius:10px;object-fit:cover">
-        <img src="/grogro/images/hatt6.jpg" style="height:220px;border-radius:10px;object-fit:cover">
+    <div style="background:var(--t3);border-radius:16px;padding:24px">
+      <div class="hatt-scroll">
+        <img src="/grogro/images/hatt2.jpg" class="hatt-img">
+        <img src="/grogro/images/hatt3.jpg" class="hatt-img">
+        <img src="/grogro/images/hatt4.jpg" class="hatt-img">
+        <img src="/grogro/images/hatt5.jpg" class="hatt-img">
+        <img src="/grogro/images/hatt6.jpg" class="hatt-img">
       </div>
     </div>
   </div>
