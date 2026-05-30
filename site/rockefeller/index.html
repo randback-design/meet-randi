@@ -220,17 +220,22 @@ const referanser = [
   {text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager — Tidligere kollega i Allente"},
   {text:"Dere burde ansette mammaen min fordi hun er kreativ, morsom og god på det hun driver med.",name:"Kristoffer",role:"Sønn"},
   {text:"Det jeg liker best med mamma er at hun legger så mye arbeid i det hun driver med, og alltid melder seg frivillig på ting på skolen og sånn...",name:"Maren",role:"Datter"},
-  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager — Tidligere kollega i Allente"}
+  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager — Tidligere kollega i Allente", hideOnMobile: true}
 ];
 
 let quoteIdx = 0;
 function getQuotesPerPage() { return window.innerWidth <= 640 ? 1 : 2; }
+function getVisibleReferanser() {
+  if(window.innerWidth <= 640) return referanser.filter(r => !r.hideOnMobile);
+  return referanser;
+}
 function buildQuoteCarousel() {
   const perPage = getQuotesPerPage();
-  const totalPages = Math.ceil(referanser.length / perPage);
+  const visible = getVisibleReferanser();
+  const totalPages = Math.ceil(visible.length / perPage);
   let slides = '';
   for(let p = 0; p < totalPages; p++) {
-    const pair = referanser.slice(p * perPage, p * perPage + perPage);
+    const pair = visible.slice(p * perPage, p * perPage + perPage);
     const cards = pair.map(r =>
       `<div class="quote-card" style="flex:1;display:flex;flex-direction:column;min-width:0;"><div class="quote-mark">"</div><div class="quote-text" style="flex:1;">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
     ).join('');
@@ -241,14 +246,15 @@ function buildQuoteCarousel() {
 }
 function goQuote(idx) {
   const perPage = getQuotesPerPage();
-  const totalPages = Math.ceil(referanser.length / perPage);
+  const visible = getVisibleReferanser();
+  const totalPages = Math.ceil(visible.length / perPage);
   const track = document.getElementById('quoteTrack');
   if(track) track.style.transform = `translateX(-${idx * 100}%)`;
   document.querySelectorAll('.quote-dot').forEach((d, i) => d.classList.toggle('active', i===idx));
   const c = document.getElementById('quoteCount'); if(c) c.textContent = `${idx+1} / ${totalPages}`;
   quoteIdx = idx;
 }
-function stepQuote(dir) { const perPage = getQuotesPerPage(); const totalPages = Math.ceil(referanser.length / perPage); goQuote((quoteIdx + dir + totalPages) % totalPages); }
+function stepQuote(dir) { const perPage = getQuotesPerPage(); const visible = getVisibleReferanser(); const totalPages = Math.ceil(visible.length / perPage); goQuote((quoteIdx + dir + totalPages) % totalPages); }
 
 const carState = {};
 function makeCarousel(items, id) {
