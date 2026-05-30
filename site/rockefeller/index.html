@@ -169,15 +169,22 @@ footer a:hover{color:var(--t1)}
     <div style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px">Allsidighet</div>
     <div style="font-size:28px;font-weight:700;margin-bottom:20px">Jeg har gjerne på mange ulike hatter 🎩</div>
   </div>
-  <div style="max-width:1060px;margin:0 auto;padding:0 48px">
+  <div class="wrap">
     <div style="background:var(--t3);border-radius:16px;padding:24px">
-      <div class="hatt-scroll">
+      <div class="hatt-scroll" id="hattScroll">
         <img src="/grogro/images/hatt2.jpg" class="hatt-img">
         <img src="/grogro/images/hatt3.jpg" class="hatt-img">
         <img src="/grogro/images/hatt4.jpg" class="hatt-img">
         <img src="/grogro/images/hatt5.jpg" class="hatt-img">
         <img src="/grogro/images/hatt6.jpg" class="hatt-img">
       </div>
+    </div>
+    <div class="hatt-nav" id="hattNav" style="display:none;justify-content:center;gap:6px;margin-top:12px;">
+      <div class="quote-dot active" onclick="hattScrollTo(0)"></div>
+      <div class="quote-dot" onclick="hattScrollTo(1)"></div>
+      <div class="quote-dot" onclick="hattScrollTo(2)"></div>
+      <div class="quote-dot" onclick="hattScrollTo(3)"></div>
+      <div class="quote-dot" onclick="hattScrollTo(4)"></div>
     </div>
   </div>
 </div>
@@ -217,12 +224,13 @@ const referanser = [
 ];
 
 let quoteIdx = 0;
-const QUOTES_PER_PAGE = 2;
+function getQuotesPerPage() { return window.innerWidth <= 640 ? 1 : 2; }
 function buildQuoteCarousel() {
-  const totalPages = Math.ceil(referanser.length / QUOTES_PER_PAGE);
+  const perPage = getQuotesPerPage();
+  const totalPages = Math.ceil(referanser.length / perPage);
   let slides = '';
   for(let p = 0; p < totalPages; p++) {
-    const pair = referanser.slice(p * QUOTES_PER_PAGE, p * QUOTES_PER_PAGE + QUOTES_PER_PAGE);
+    const pair = referanser.slice(p * perPage, p * perPage + perPage);
     const cards = pair.map(r =>
       `<div class="quote-card" style="flex:1;display:flex;flex-direction:column;min-width:0;"><div class="quote-mark">"</div><div class="quote-text" style="flex:1;">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
     ).join('');
@@ -232,14 +240,15 @@ function buildQuoteCarousel() {
   return `<div class="quote-carousel" style="margin-top:16px;"><div style="overflow:hidden;border-radius:16px;"><div id="quoteTrack" style="display:flex;transition:transform .45s cubic-bezier(.25,1,.5,1);">${slides}</div></div><div class="quote-controls"><button class="quote-btn" onclick="stepQuote(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-dots" id="quoteDots">${dots}</div><button class="quote-btn" onclick="stepQuote(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="quote-count" id="quoteCount">1 / ${totalPages}</div></div></div>`;
 }
 function goQuote(idx) {
-  const totalPages = Math.ceil(referanser.length / QUOTES_PER_PAGE);
+  const perPage = getQuotesPerPage();
+  const totalPages = Math.ceil(referanser.length / perPage);
   const track = document.getElementById('quoteTrack');
   if(track) track.style.transform = `translateX(-${idx * 100}%)`;
   document.querySelectorAll('.quote-dot').forEach((d, i) => d.classList.toggle('active', i===idx));
   const c = document.getElementById('quoteCount'); if(c) c.textContent = `${idx+1} / ${totalPages}`;
   quoteIdx = idx;
 }
-function stepQuote(dir) { const totalPages = Math.ceil(referanser.length / QUOTES_PER_PAGE); goQuote((quoteIdx + dir + totalPages) % totalPages); }
+function stepQuote(dir) { const perPage = getQuotesPerPage(); const totalPages = Math.ceil(referanser.length / perPage); goQuote((quoteIdx + dir + totalPages) % totalPages); }
 
 const carState = {};
 function makeCarousel(items, id) {
@@ -276,7 +285,7 @@ const rockQA = [
   },
   {
     q: "Hva sier andre om deg?",
-    type: "video",
+    type: "text",
     text: `<p>Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg.</p>`,
     quoteCarousel: true
   },
@@ -295,13 +304,13 @@ const rockQA = [
   {
     q: "Neste konserten du skal på?",
     type: "text",
-    text: `<p>Onsdagen på Tons of Rock er det neste som står for tur. Gleder meg til å se både DumDum Boys og Offspring. Da får eldste sønnen være med. Barneoppdragelse er viktig. 😄</p>`,
+    text: `<p>Onsdagen på Tons of Rock er det neste som står for tur. Gleder meg til å se både Dum Dum Boys og Offspring. Da får eldste sønnen være med. Barneoppdragelse er viktig. 😄</p>`,
     media: []
   },
   {
     q: "Men hallo, du sa jo du pleide å besøke OSS?",
     type: "text",
-    text: `<p>Ja! Det er litt tilfeldig at eksemplene over var/er hos noen andre, men jeg elsker å gå på konserter på Rockefeller, John Dee og Sentrum Scene. Siste jeg så på Rockefeller var Jon Ranes. Han er så flink! Highasakite, rett før det. Helt gåsehud-bra!</p><p>Og så gøy med de nye illustrasjonene til Flu Hartberg på vei inn på Rockefeller da. Gratulerer med jubileumet, forresten! 🥳</p>`,
+    text: `<p>Ja! Det er litt tilfeldig at eksemplene over var/er hos noen andre, men jeg elsker å gå på konserter på Rockefeller, John Dee og Sentrum Scene. Siste jeg så på Rockefeller var Jon Ranes. Han er så flink! High as a Kite, rett før det. Helt gåsehud-bra!</p><p>Og så gøy med de nye illustrasjonene til Flu Hartberg på vei inn på Rockefeller da. Gratulerer med jubileumet, forresten! 🥳</p>`,
     media: []
   },
   {
@@ -386,10 +395,35 @@ function playHeroVideo() {
   wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1196670297?h=a604e96ae5&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
 }
 
+// Hatt-navigasjon på mobil
+function initHattNav() {
+  const scroll = document.getElementById('hattScroll');
+  const nav = document.getElementById('hattNav');
+  if(!scroll || !nav) return;
+  if(window.innerWidth <= 640) {
+    nav.style.display = 'flex';
+    scroll.addEventListener('scroll', () => {
+      const imgs = scroll.querySelectorAll('.hatt-img');
+      const scrollLeft = scroll.scrollLeft;
+      const imgWidth = imgs[0] ? imgs[0].offsetWidth + 12 : 152;
+      const idx = Math.round(scrollLeft / imgWidth);
+      nav.querySelectorAll('.quote-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+    }, {passive:true});
+  }
+}
+function hattScrollTo(idx) {
+  const scroll = document.getElementById('hattScroll');
+  if(!scroll) return;
+  const imgs = scroll.querySelectorAll('.hatt-img');
+  const imgWidth = imgs[0] ? imgs[0].offsetWidth + 12 : 152;
+  scroll.scrollTo({left: idx * imgWidth, behavior: 'smooth'});
+}
+
 buildFaq();
 buildHeroContact();
 buildTimeline();
 buildSkills();
+initHattNav();
 
 (function(){
   const numEl = document.getElementById('ideerTall');
