@@ -19,7 +19,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
 .hero-outer{width:100%;background:#111;padding:48px 0;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('/nille/images/pexels-valeriya.jpg');background-size:cover;background-position:center;opacity:0.18}
+.hero-bg{position:absolute;inset:0;background-image:url('/nille/images/pexels-valeriya.jpg');background-size:cover;background-position:center;opacity:0.55}
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
 .hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#222;display:flex;align-items:center;justify-content:center}
 .hero-video iframe{width:100%;height:100%;border:none;display:block}
@@ -111,6 +111,7 @@ footer a:hover{color:var(--t1)}
 
 <div class="hero-outer">
   <div class="hero-bg"></div>
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.38);z-index:0"></div>
   <div class="hero-inner">
     <div class="hero-video" id="heroVideo" onclick="loadVideo()" style="cursor:pointer;position:relative">
       <img src="/nille/images/Randi_Nille.png" style="width:100%;height:100%;object-fit:cover;display:block">
