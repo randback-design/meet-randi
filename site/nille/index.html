@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -19,8 +18,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .nav-links a:hover{color:var(--t1)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
-.hero-outer{width:100%;background:#111;padding:48px 0}
-.hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
+.hero-outer{width:100%;background:#111;padding:48px 0;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('/nille/images/pexels-valeriya.jpg');background-size:cover;background-position:center;opacity:0.18}
+.hero-inner{max-width:1060px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
 .hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#222;display:flex;align-items:center;justify-content:center}
 .hero-video iframe{width:100%;height:100%;border:none;display:block}
 .hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
@@ -65,9 +65,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
 .carousel-slide{min-width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden}
 .carousel-slide iframe{width:100%;height:100%;border:none}
-.video-placeholder{width:100%;height:100%;background:#e3f4f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:10px}
-.video-placeholder svg{opacity:.4}
-.video-placeholder span{font-size:13px;color:#409f89;font-weight:600;opacity:.7}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .timeline-wrap{background:var(--card);border-radius:14px;padding:36px}
 .timeline{position:relative;padding-left:24px}
@@ -113,14 +110,15 @@ footer a:hover{color:var(--t1)}
 </nav>
 
 <div class="hero-outer">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-video" style="position:relative">
-      <img src="https://raw.githubusercontent.com/randback-design/meet-randi/main/site/images/Randi_generisk.png" style="width:100%;height:100%;object-fit:cover;display:block">
+    <div class="hero-video" id="heroVideo" onclick="loadVideo()" style="cursor:pointer;position:relative">
+      <img src="/nille/images/Randi_Nille.png" style="width:100%;height:100%;object-fit:cover;display:block">
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.1) 100%)"></div>
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
-        <div style="font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6)">Video kommer snart</div>
-        <div style="width:88px;height:88px;border-radius:50%;border:3px solid rgba(64,159,137,.4);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center">
-          <svg width="42" height="42" viewBox="0 0 20 20"><polygon points="5,2 17,10 5,18" fill="rgba(64,159,137,0.4)"/></svg>
+        <div style="font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85)">Se presentasjonsvideo</div>
+        <div style="width:88px;height:88px;border-radius:50%;border:3px solid #409f89;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center">
+          <svg width="42" height="42" viewBox="0 0 20 20"><polygon points="5,2 17,10 5,18" fill="#409f89"/></svg>
         </div>
       </div>
     </div>
@@ -130,13 +128,12 @@ footer a:hover{color:var(--t1)}
 
 <div class="faq-section" id="qa">
   <div class="wrap" style="padding-top:24px;padding-bottom:16px">
-    <div class="section-title" style="margin-bottom:12px">Hei, Nille! Randi her! Og jeg vil veldig gjerne bli deres nye Brand Manager. 🎨</div>
+    <div class="section-title" style="margin-bottom:12px">Hei, Nille! Jeg vil veldig gjerne bli deres nye Brand Manager!</div>
     <div class="section-intro">Her har jeg samlet svar på spørsmål jeg tenker er relevante for stillingen, litt om meg selv og hvordan jeg jobber – og ikke minst hva tidligere kollegaer har å si om å jobbe med meg.</div>
   </div>
   <div class="faq-list" id="faqList"></div>
 </div>
 
-<!-- REFERANSER -->
 <div style="background:var(--white);padding:48px 0 48px" id="referanser">
   <div class="wrap">
     <div class="section-eyebrow" style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--t1);margin-bottom:8px">Kollegaomtaler</div>
@@ -145,7 +142,6 @@ footer a:hover{color:var(--t1)}
   </div>
 </div>
 
-<!-- HAT STRIP -->
 <div style="background:var(--white);padding:0 0 48px">
   <div class="wrap" style="padding-bottom:16px"><div style="font-size:22px;font-weight:700">Jeg trives med å ha på mange ulike hatter</div></div>
   <div class="hat-wrap" style="max-width:1060px;margin:0 auto;padding:0 48px">
@@ -185,6 +181,13 @@ footer a:hover{color:var(--t1)}
 
 <script src="../data.js"></script>
 <script>
+function loadVideo(){
+  const el=document.getElementById('heroVideo');
+  el.style.cursor='default';
+  el.onclick=null;
+  el.innerHTML='<iframe src="https://player.vimeo.com/video/1200533412?h=ef8f3c9c51&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>';
+}
+
 const referanser = [
   {text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 – Tidligere kollega fra VG"},
   {text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente – Tidligere kollega i Allente"},
@@ -219,29 +222,32 @@ function stepRef(dir){goRef(refIdx+dir);}
 window.addEventListener('resize',updateRef);
 
 const carState={};
-function makeCarousel(items,id){
-  carState[id]={total:items.length,current:0};
-  const slides=items.map(item=>{
-    if(item.type==='video'&&item.vimeoId) return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
-    if(item.type==='placeholder') return`<div class="carousel-slide"><div class="video-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none"><polygon points="23 7 16 12 23 17 23 7" fill="#409f89"/><rect x="1" y="5" width="15" height="14" rx="2" fill="#409f89"/></svg><span>Video kommer snart</span></div></div>`;
-    return`<div class="carousel-slide"><div style="width:100%;height:100%;background:#e3f4f0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#777">${item.label||''}</div></div>`;
-  }).join('');
-  const dots=items.length>1?`<div class="car-nav">
-    <button class="car-nav-btn" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <div class="car-nav-dots" id="${id}dots">${items.map((_,i)=>`<button class="car-nav-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})" aria-label="Side ${i+1}"></button>`).join('')}</div>
-    <button class="car-nav-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  </div>`:'';
-  return`<div class="carousel" id="${id}"><div class="carousel-track" id="${id}track">${slides}</div></div>${dots}`;
+function makeVideoPlayer(vimeoId, hash, previewImg){
+  const pid='p'+Math.random().toString(36).slice(2,7);
+  return`<div class="carousel" id="${pid}" style="aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#222;cursor:pointer;position:relative" onclick="loadInlineVideo('${pid}','${vimeoId}','${hash}')">
+    <img src="${previewImg}" style="width:100%;height:100%;object-fit:cover;display:block">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.05) 100%)"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+      <div style="font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85)">Se video</div>
+      <div style="width:64px;height:64px;border-radius:50%;border:2px solid #409f89;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center">
+        <svg width="28" height="28" viewBox="0 0 20 20"><polygon points="5,2 17,10 5,18" fill="#409f89"/></svg>
+      </div>
+    </div>
+  </div>`;
 }
-function goSlide(id,idx){carState[id].current=idx;document.getElementById(id+'track').style.transform=`translateX(-${idx*100}%)`;document.querySelectorAll(`#${id}dots .car-nav-dot`).forEach((d,i)=>d.classList.toggle('active',i===idx));}
-function stepSlide(id,dir){const s=carState[id];goSlide(id,(s.current+dir+s.total)%s.total);}
+function loadInlineVideo(pid, vimeoId, hash){
+  const el=document.getElementById(pid);
+  el.style.cursor='default';
+  el.onclick=null;
+  el.innerHTML=`<iframe src="https://player.vimeo.com/video/${vimeoId}?h=${hash}&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block"></iframe>`;
+}
 
 const nilleQA = [
   {
     q: "Så… hvem er du da?",
     type: "video",
     text: `Jeg er Randi. Erfaren og allsidig grafisk designer. Kreativ. Humørfylt. Leken. Nysgjerrig. Arbeidsom. Positiv.<br><br>Og mamma, kjæreste og hundeeier. 🐶<br><br>Lær mer om meg i denne animasjonsfilmen jeg har laget:`,
-    media: [{type:"placeholder"}]
+    video: {id:"1187345684", hash:"", preview:"/site/images/The_Desktop_preview.png"}
   },
   {
     q: "Hvorfor søker du på denne jobben?",
@@ -252,18 +258,18 @@ const nilleQA = [
     q: "Hva er ditt førsteinntrykk av Nille?",
     type: "video",
     text: `Vel, førsteinntrykket er det jo lenge siden jeg har fått. Jeg har handlet hos dere i mange år!<br><br>Men jeg vil si at jeg har sett en tydelig endring de siste årene. Det har blitt mer fokus på interiør i butikkene, og jeg synes annonsene har fått et mer premium og inspirerende uttrykk enn hva jeg husker fra tidligere.<br><br>Mitt inntrykk er at Nille har det meste man trenger til hverdags og fest – og at et besøk i en av butikkene løser mye på kort tid, enten man skal arrangere sommerfest eller barnebursdag. 🎉`,
-    media: [{type:"placeholder"}]
+    video: {id:"1200533414", hash:"2f69ee6892", preview:"/nille/images/Randi_Nille.png"}
   },
   {
     q: "Hvilken merkevare inspirerer deg mest?",
     type: "video",
     text: `Å, det er mange merkevarer som inspirerer, på ulike måter. Jeg liker visuelle profiler som er varme, men også lekne – og så handler det mye om måten man kommuniserer med kundene på.<br><br>Av brands jeg følger med på av egen interesse vil jeg trekke fram <strong>Vossabia</strong>. De er utrolig nedpå og informative, og snakker til kundene sine som til en god venn. De skriver lange nyhetsbrev der man lærer mye, og er ellers veldig naturlige i alt de poster.<br><br>Jeg har også fått opp mange annonser for <strong>Høye</strong> i det siste. De har en tiltalende profil der man nesten kan kjenne lukten av sommer og rent, svalt sengetøy. Og så tør de likevel skrive ting som «Sommerkreppen» på en annonse. Jeg liker litt humor – og ikke minst et godt ordspill. 😄`,
-    media: [{type:"placeholder"}]
+    video: {id:"1200533411", hash:"bbd5ebaef5", preview:"/nille/images/Randi_Nille.png"}
   },
   {
     q: "Hva mener du er det viktigste du kan bidra med hos oss?",
     type: "text",
-    text: `Overblikk, struktur, og det at jeg kan sørge for at all kommunikasjon henger sammen – selv om man tilpasser til ulike kanaler.<br><br>Jeg har erfaring med å jobbe med visuell identitet, og var med å bygge en ny merkevare fra bunnen av i Allente, for så å videreutvikle den i tett samarbeid med kollegaer. Og ikke minst jobben med å forankre en visuell profil internt. Alle i en bedrift bør ha et forhold til hvordan man markedsfører seg.<br><br>Jeg bidrar også med kreativitet, ideer og humor, og er en utpreget lagspiller som liker godt å jobbe i team.`
+    text: `Overblikk, struktur, og det at jeg kan sørge for at all kommunikasjon henger sammen – selv om man tilpasser til ulike kanaler.<br><br>Jeg har erfaring med å jobbe med visuell identitet, og var med å bygge en ny merkevare fra bunnen av i Allente, for så å videreutvikle den i tett samarbeid med kollegaer. Og ikke minst jobben med å forankre en visuell profil internt – alle i en bedrift bør ha et forhold til hvordan man markedsfører seg.<br><br>Jeg bidrar også med kreativitet, ideer og humor, og er en utpreget lagspiller som liker godt å jobbe i team.`
   },
   {
     q: "Programmer?",
@@ -278,7 +284,7 @@ const nilleQA = [
   {
     q: "Og AI?",
     type: "text",
-    text: `Jeg skal innrømme at jeg lenge var skeptisk til AI. Alle rare bilder av mennesker som alle så helt like ut i ansiktet og hadde 6 fingre, som ble spredd rundt omkring. Nå er jo gamet blitt et helt annet, og jeg har innsett at man må hive seg på AI-toget. Det har jeg gjort, og nå ser jeg at om man bruker det riktig, kan det være en enorm ressurs. Jeg har for eksempel begynt å leke meg med å lage små apper for å forenkle ting i hverdagen hjemme.<br><br>AI-genererte videoer av dyr som gjør rare ting på Facebook synes jeg fortsatt er teit, bare så det er sagt. 🙈<br><br>Når det er sagt liker jeg å skrive, og vil fortsatt høres ut som meg – selv om AI kan bidra med korrektur, struktur og kanskje litt nedkorting. All teksten på denne siden er skrevet av meg, men selve nettsiden har jeg laget ved hjelp av Claude, og ganske mange timer med prompts for å få designet slik jeg ønsket det.`
+    text: `Jeg skal innrømme at jeg lenge var skeptisk til AI. Alle rare bilder av mennesker som alle så helt like ut i ansiktet og hadde 6 fingre, som ble spredd rundt omkring. Nå er jo gamet blitt et helt annet, og jeg har innsett at man må hive seg på AI-toget. Det har jeg gjort, og nå ser jeg at om man bruker det riktig, kan det være en enorm ressurs. Jeg har for eksempel begynt å leke meg med å lage små apper for å forenkle ting i hverdagen hjemme.<br><br>Jeg liker å skrive, og vil fortsatt høres ut som meg – selv om AI kan bidra med korrektur, struktur og kanskje litt nedkorting. All teksten på denne siden er skrevet av meg, men selve nettsiden har jeg laget ved hjelp av Claude, og ganske mange timer med prompts for å få designet slik jeg ønsket det.`
   },
   {
     q: "Hva med det sosiale?",
@@ -300,9 +306,11 @@ const typeIcons={
 function buildFaq(){
   const list=document.getElementById('faqList');
   list.innerHTML=nilleQA.map(item=>{
-    const cid='c'+Math.random().toString(36).slice(2,7);
     let content=`<div class="faq-a-inner">${item.text||''}`;
-    if(item.media&&item.media.length) content+=makeCarousel(item.media,cid);
+    if(item.video){
+      const hash = item.video.hash ? item.video.hash : '';
+      content += makeVideoPlayer(item.video.id, hash, item.video.preview);
+    }
     content+='</div>';
     return`<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><div class="faq-q-left">${typeIcons[item.type]||''}<span class="faq-q-text">${item.q}</span></div><div class="faq-chevron"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="faq-a">${content}</div></div>`;
   }).join('');
