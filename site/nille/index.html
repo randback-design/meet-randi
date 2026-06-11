@@ -111,14 +111,13 @@ footer a:hover{color:var(--t1)}
 
 <div class="hero-outer">
   <div class="hero-bg"></div>
-  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.38);z-index:0"></div>
   <div class="hero-inner">
     <div class="hero-video" id="heroVideo" onclick="loadVideo()" style="cursor:pointer;position:relative">
       <img src="/nille/images/Randi_Nille.png" style="width:100%;height:100%;object-fit:cover;display:block">
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.1) 100%)"></div>
       <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
-        <div style="font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85)">Se presentasjonsvideo</div>
-        <div style="width:88px;height:88px;border-radius:50%;border:3px solid #409f89;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center">
+        <div style="font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 6px rgba(0,0,0,.5)">Se presentasjonsvideo</div>
+        <div style="width:88px;height:88px;border-radius:50%;border:3px solid #409f89;background:rgba(255,255,255,.25);box-shadow:0 0 0 12px rgba(255,255,255,.12),0 4px 24px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center">
           <svg width="42" height="42" viewBox="0 0 20 20"><polygon points="5,2 17,10 5,18" fill="#409f89"/></svg>
         </div>
       </div>
@@ -229,8 +228,8 @@ function makeVideoPlayer(vimeoId, hash, previewImg){
     <img src="${previewImg}" style="width:100%;height:100%;object-fit:cover;display:block">
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.05) 100%)"></div>
     <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
-      <div style="font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85)">Se video</div>
-      <div style="width:64px;height:64px;border-radius:50%;border:2px solid #409f89;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center">
+      <div style="font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 6px rgba(0,0,0,.5)">Se video</div>
+      <div style="width:64px;height:64px;border-radius:50%;border:2px solid #409f89;background:rgba(255,255,255,.25);box-shadow:0 0 0 10px rgba(255,255,255,.12),0 4px 20px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center">
         <svg width="28" height="28" viewBox="0 0 20 20"><polygon points="5,2 17,10 5,18" fill="#409f89"/></svg>
       </div>
     </div>
