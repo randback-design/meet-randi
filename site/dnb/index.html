@@ -218,7 +218,7 @@ const carState={};
 function makeCarousel(items,id){
   carState[id]={total:items.length,current:0};
   const slides=items.map(item=>{
-    if(item.type==='video'&&item.vimeoId) return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    if(item.type==='video'&&item.vimeoId){const hash=item.vimeoHash?`&h=${item.vimeoHash}`:'';return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?${hash}&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;}
     return`<div class="carousel-slide"><div style="width:100%;height:100%;background:#e3f4f0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#777">${item.label||''}</div></div>`;
   }).join('');
   const dots=items.map((_,i)=>`<button class="car-nav-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})" aria-label="Side ${i+1}"></button>`).join('');
@@ -237,7 +237,7 @@ const dnbQA = [
     q: "Så... hvem er du da?",
     type: "video",
     text: "Jeg heter Randi, og har jobbet med design i snart 20 år. Mest som grafisk og digital designer, men egentlig litt alt mulig innen visuell kommunikasjon.<br><br>Mer om meg i denne animasjonsfilmen jeg har laget:",
-    media: [{type:"video",vimeoId:"1187345684"}]
+    media: [{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]
   },
   {
     q: "Hvorfor har du lyst til å jobbe med oss i DNB?",
