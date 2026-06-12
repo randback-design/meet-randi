@@ -220,7 +220,7 @@ const referanser = [
   {text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager — Tidligere kollega i Allente"},
   {text:"Dere burde ansette mammaen min fordi hun er kreativ, morsom og god på det hun driver med.",name:"Kristoffer",role:"Sønn"},
   {text:"Det jeg liker best med mamma er at hun legger så mye arbeid i det hun driver med, og alltid melder seg frivillig på ting på skolen og sånn...",name:"Maren",role:"Datter"},
-  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager — Tidligere kollega i Allente", hideOnMobile: true}
+  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager — Tidligere kollega i Allente",hideOnMobile:true}
 ];
 
 let quoteIdx = 0;
@@ -260,7 +260,10 @@ const carState = {};
 function makeCarousel(items, id) {
   carState[id] = {total: items.length, current: 0};
   const slides = items.map((item) => {
-    if(item.type === 'video' && item.vimeoId) return `<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    if(item.type === 'video' && item.vimeoId) {
+      const hash = item.vimeoHash ? `&h=${item.vimeoHash}` : '';
+      return `<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?${hash}&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    }
     return `<div class="carousel-slide"><div style="width:100%;height:100%;background:#e3f4f0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#777">${item.label||''}</div></div>`;
   }).join('');
   const dots = items.map((_, i) => `<div class="car-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})"></div>`).join('');
@@ -310,7 +313,7 @@ const rockQA = [
   {
     q: "Neste konserten du skal på?",
     type: "text",
-    text: `<p>Onsdagen på Tons of Rock er det neste som står for tur. Gleder meg til å se både Dum Dum Boys og Offspring. Da får eldste sønnen være med. Barneoppdragelse er viktig. 😄</p>`,
+    text: `<p>Onsdagen på Tons of Rock er det neste som står for tur. Gleder meg til å se både DumDum Boys og Offspring. Da får eldste sønnen være med. Barneoppdragelse er viktig. 😄</p>`,
     media: []
   },
   {
@@ -322,7 +325,7 @@ const rockQA = [
   {
     q: "Hva ser du for deg at du kan bidra med hos nettopp oss?",
     type: "text",
-    text: `<p>Jeg kan brukes til veldig mye, og jeg trives også godt med en variert hverdag.</p><p>Dere ønsker en som kan InDesign, Photoshop og Premiere Pro. Jeg kan alle de, og en god del programmer og systemer til. Ta en titt lengre ned på siden her. 👇</p><p>Jeg liker å filme med mobilen, klipper video, kommer opp med nye idéer, illustrerer, publiserer på web, skriver tekster, lager annonser og trykksaker, og jobber med partnere.</p><p>Jeg har også jobbet som nettredaktør og er vant til å publisere på nett og sette meg raskt inn i nye CMS. Jeg forstår litt html, men skriver lite selv. Derimot har jeg funnet stor hjelp i Claude til dette, og kan lage både nettsider (som denne) og apper ved hjelp av dette verktøyet. Og så er jeg ganske god til å samarbeide med utviklere.</p><p>Jeg har erfaring med Google Analytics, og kjenner til grunnleggende SEO. Og nå som AIO – å skrive innhold som også blir plukket opp av AI-søk – er blitt viktigere, er det noe jeg følger godt med på.</p>`,
+    text: `<p>Jeg kan brukes til veldig mye, og jeg trives også godt med en variert hverdag.</p><p>Dere ønsker en som kan InDesign, Photoshop og Premiere Pro. Jeg kan alle de, og en god del programmer og systemer til. Ta en titt lengre ned på siden her. 👇</p><p>Jeg liker å filme med mobilen, klipper video, kommer opp med nye idéer, illustrerer, publiserer på web, skriver tekster, lager annonser og trykksaker, og jobber med partnere.</p><p>Jeg har også jobbet som nettredaktør og er vant til å publisere på nett og sette meg raskt inn i nye CMS. Jeg forstår litt html, men skriver lite selv. Derimot har jeg funnet stor hjelp i Claude til dette, og kan lage både nettsider (som denne) og apper ved hjelp av dette verktøyet. Og så er jeg ganske god til å samarbeide med utviklere.</p><p>Jeg har erfaring med Google Analytics, og kjenner til grunnleggende SEO. Og nå som AEO, å skrive innhold som også blir plukket opp av AI-søk, er blitt viktigere, er det noe jeg følger godt med på.</p>`,
     media: []
   },
   {
@@ -401,7 +404,6 @@ function playHeroVideo() {
   wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1196670297?h=a604e96ae5&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>';
 }
 
-// Hatt-navigasjon på mobil
 function initHattNav() {
   const scroll = document.getElementById('hattScroll');
   const nav = document.getElementById('hattNav');
