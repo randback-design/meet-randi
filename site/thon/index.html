@@ -53,11 +53,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .quote-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .quote-name{font-size:14px;font-weight:700;color:var(--black)}
 .quote-role{font-size:13px;color:var(--t2)}
-.video-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
-.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:10px}
-.video-card-footer{padding:16px 0 0}
-.video-card-name{font-size:14px;font-weight:700;color:var(--black)}
-.video-card-role{font-size:13px;color:var(--t2)}
 .car-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px}
 .car-nav-btn{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
 .car-nav-btn:hover{background:var(--t1);border-color:var(--t1)}
@@ -221,7 +216,7 @@ const carState={};
 function makeCarousel(items,id){
   carState[id]={total:items.length,current:0};
   const slides=items.map(item=>{
-    if(item.type==='video'&&item.vimeoId) return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    if(item.type==='video'&&item.vimeoId){const hash=item.vimeoHash?`&h=${item.vimeoHash}`:'';return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?${hash}&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;}
     return`<div class="carousel-slide"><div style="width:100%;height:100%;background:#e3f4f0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#777">${item.label||''}</div></div>`;
   }).join('');
   const dots=items.map((_,i)=>`<button class="car-nav-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})" aria-label="Side ${i+1}"></button>`).join('');
@@ -240,7 +235,7 @@ const thonQA = [
     q: "Så... hvem er du da?",
     type: "video",
     text: `Jeg heter Randi, og har jobbet med design i snart 20 år. Mest som grafisk og digital designer, men egentlig litt alt mulig innen visuell kommunikasjon.<br><br>Mer om meg i denne animasjonsfilmen jeg har laget:`,
-    media: [{type:"video",vimeoId:"1187345684"}]
+    media: [{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]
   },
   {
     q: "Og hvorfor har du lyst til å jobbe hos oss?",
