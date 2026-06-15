@@ -91,9 +91,9 @@ footer a:hover{color:var(--t1)}
 .stat-label{font-size:16px;color:var(--muted);margin-top:6px;line-height:1.4}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
-.ref-track-outer{overflow:hidden;border-radius:16px}
+.ref-track-outer{overflow:hidden}
 .ref-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1);align-items:stretch}
-.ref-slide{min-width:50%;padding:0 8px;box-sizing:border-box;display:flex}
+.ref-slide{min-width:50%;box-sizing:border-box;display:flex;padding:0 8px}
 .ref-slide:first-child{padding-left:0}
 .ref-slide:last-child{padding-right:0}
 @media(max-width:700px){.ref-slide{min-width:100%;padding:0}}
@@ -204,11 +204,11 @@ function loadVideo(){
 const referanser = [
   {text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 – Tidligere kollega fra VG"},
   {text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente – Tidligere kollega i Allente"},
+  {text:"Det jeg liker best med mamma er at hun legger så mye arbeid i det hun driver med, og alltid melder seg frivillig på ting på skolen og sånn...",name:"Maren",role:"Datter"},
   {text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet, og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter – Tidligere kollega i Allente"},
   {text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"},
-  {text:"Dere burde ansette mammaen min fordi hun er kreativ, morsom og god på det hun driver med.",name:"Kristoffer",role:"Sønn"},
-  {text:"Det jeg liker best med mamma er at hun legger så mye arbeid i det hun driver med, og alltid melder seg frivillig på ting på skolen og sånn...",name:"Maren",role:"Datter"},
-  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager – Tidligere kollega i Allente",hideOnMobile:true}
+  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager – Tidligere kollega i Allente",hideOnMobile:true},
+  {text:"Dere burde ansette mammaen min fordi hun er kreativ, morsom og god på det hun driver med.",name:"Kristoffer",role:"Sønn"}
 ];
 
 let refIdx=0;
@@ -233,8 +233,12 @@ function updateRef(){
   const pct=100/vc;
   const refs=visibleRefs();
   document.querySelectorAll('.ref-slide').forEach(s=>{s.style.minWidth=pct+'%';});
-  refIdx=Math.min(refIdx,refs.length-vc);
-  document.getElementById('refTrack').style.transform=`translateX(-${refIdx*pct}%)`;
+  refIdx=Math.min(refIdx,Math.max(0,refs.length-vc));
+  const track=document.getElementById('refTrack');
+  if(track){
+    const slideW=track.parentElement.offsetWidth/vc;
+    track.style.transform=`translateX(-${refIdx*slideW}px)`;
+  }
   document.querySelectorAll('#refDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===refIdx));
 }
 function goRef(idx){const refs=visibleRefs();refIdx=Math.max(0,Math.min(idx,refs.length-visibleCount()));updateRef();}
@@ -367,3 +371,4 @@ so.observe(document.getElementById('skillsWrap'));
 </script>
 </body>
 </html>
+
