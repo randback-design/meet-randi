@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -19,14 +18,14 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .nav-links a:hover{color:var(--t1)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
-.hero-outer{width:100%;background:var(--t3);padding:48px 0;position:relative;overflow:hidden}
+.hero-outer{width:100%;background:var(--t2);padding:48px 0;position:relative;overflow:hidden}
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
 .hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#222;display:flex;align-items:center;justify-content:center}
 .hero-video iframe{width:100%;height:100%;border:none;display:block}
 .hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
-.hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--t2);font-size:14px;transition:color .2s}
-.hero-contact-link:hover{color:var(--t1)}
-.hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(64,159,137,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;transition:color .2s}
+.hero-contact-link:hover{color:#fff}
+.hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hero-contact-icon svg{width:15px;height:15px;stroke:var(--t1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .wrap{max-width:1060px;margin:0 auto;padding:0 48px}
 .section{padding:36px 0}
@@ -86,6 +85,10 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:28px 48px;disp
 footer strong{color:var(--t1)}
 footer a{color:rgba(255,255,255,.4);text-decoration:none}
 footer a:hover{color:var(--t1)}
+.intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px 0 8px}
+.stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
+.stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
+.stat-label{font-size:16px;color:var(--muted);margin-top:6px;line-height:1.4}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:none}
 .ref-track-outer{overflow:hidden;border-radius:16px}
@@ -94,8 +97,8 @@ footer a:hover{color:var(--t1)}
 .ref-slide:first-child{padding-left:0}
 .ref-slide:last-child{padding-right:0}
 @media(max-width:700px){.ref-slide{min-width:100%;padding:0}}
-@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}}
-@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:24px}.intro-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}.intro-stats{grid-template-columns:repeat(2,1fr)}.stat-num{font-size:28px}.stat-label{font-size:13px}}
 </style>
 </head>
 <body>
@@ -122,6 +125,17 @@ footer a:hover{color:var(--t1)}
       </div>
     </div>
     <div class="hero-contact" id="heroContact"></div>
+  </div>
+</div>
+
+<div style="background:var(--white);padding:40px 0 8px">
+  <div class="wrap">
+    <div class="intro-stats">
+      <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i mediebransjen</div></div>
+      <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
+      <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">programmer jeg er god i</div></div>
+      <div class="stat-card"><div class="stat-num" id="ideerTall">10</div><div class="stat-label">ideer i hodet 💡</div></div>
+    </div>
   </div>
 </div>
 
@@ -330,6 +344,14 @@ buildHeroContact();
 buildTimeline();
 buildSkills();
 buildRefSection();
+
+(function(){
+  const numEl = document.getElementById('ideerTall');
+  if(!numEl) return;
+  let current = 10, direction = 1;
+  function step(){ current += direction; numEl.textContent = current; if(current >= 26) direction = -1; if(current <= 10) direction = 1; setTimeout(step, 80); }
+  setTimeout(step, 1500);
+})();
 
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
