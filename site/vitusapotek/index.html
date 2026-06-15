@@ -18,7 +18,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .nav-links a:hover{color:var(--t1)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
-.hero-outer{width:100%;background:var(--t2);padding:48px 0;position:relative;overflow:hidden}
+.hero-outer{width:100%;background:#000;padding:48px 0;position:relative;overflow:hidden}
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
 .hero-video{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#222;display:flex;align-items:center;justify-content:center}
 .hero-video iframe{width:100%;height:100%;border:none;display:block}
@@ -205,16 +205,21 @@ const referanser = [
   {text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 – Tidligere kollega fra VG"},
   {text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente – Tidligere kollega i Allente"},
   {text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet, og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter – Tidligere kollega i Allente"},
-  {text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"}
+  {text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"},
+  {text:"Dere burde ansette mammaen min fordi hun er kreativ, morsom og god på det hun driver med.",name:"Kristoffer",role:"Sønn"},
+  {text:"Det jeg liker best med mamma er at hun legger så mye arbeid i det hun driver med, og alltid melder seg frivillig på ting på skolen og sånn...",name:"Maren",role:"Datter"},
+  {text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",name:"Jens Thorsen",role:"Customer Acquisition Manager – Tidligere kollega i Allente",hideOnMobile:true}
 ];
 
 let refIdx=0;
 const visibleCount=()=>window.innerWidth>=700?2:1;
+const visibleRefs=()=>window.innerWidth<=640?referanser.filter(r=>!r.hideOnMobile):referanser;
 function buildRefSection(){
   const wrap=document.getElementById('refCarouselWrap');
   if(!wrap) return;
-  const cards=referanser.map((r,i)=>`<div class="ref-slide" id="ref${i}"><div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div></div>`).join('');
-  const dots=referanser.map((_,i)=>`<button class="car-nav-dot${i===0?' active':''}" onclick="goRef(${i})" aria-label="Side ${i+1}"></button>`).join('');
+  const refs=visibleRefs();
+  const cards=refs.map((r,i)=>`<div class="ref-slide" id="ref${i}"><div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div></div>`).join('');
+  const dots=refs.map((_,i)=>`<button class="car-nav-dot${i===0?' active':''}" onclick="goRef(${i})" aria-label="Side ${i+1}"></button>`).join('');
   wrap.innerHTML=`<div class="ref-track-outer"><div class="ref-track" id="refTrack">${cards}</div></div>
     <div class="car-nav">
       <button class="car-nav-btn" onclick="stepRef(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -226,13 +231,15 @@ function buildRefSection(){
 function updateRef(){
   const vc=visibleCount();
   const pct=100/vc;
+  const refs=visibleRefs();
   document.querySelectorAll('.ref-slide').forEach(s=>{s.style.minWidth=pct+'%';});
+  refIdx=Math.min(refIdx,refs.length-vc);
   document.getElementById('refTrack').style.transform=`translateX(-${refIdx*pct}%)`;
   document.querySelectorAll('#refDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===refIdx));
 }
-function goRef(idx){refIdx=Math.max(0,Math.min(idx,referanser.length-visibleCount()));updateRef();}
+function goRef(idx){const refs=visibleRefs();refIdx=Math.max(0,Math.min(idx,refs.length-visibleCount()));updateRef();}
 function stepRef(dir){goRef(refIdx+dir);}
-window.addEventListener('resize',updateRef);
+window.addEventListener('resize',()=>{buildRefSection();});
 
 function makeVideoPlayer(vimeoId, hash, previewImg){
   const pid='p'+Math.random().toString(36).slice(2,7);
@@ -269,12 +276,12 @@ const vitusQA = [
   {
     q: "Hva mener du er det viktigste du kan bidra med hos oss?",
     type: "text",
-    text: `Overblikk, struktur, og det at jeg kan sørge for at all kommunikasjon henger sammen – selv om man tilpasser til ulike kanaler, er noe av det jeg ser for meg at jeg kan bidra med.<br><br>I tillegg jobber jeg mye operativt, og er vant til mange ulike typer oppgaver. Jeg illustrerer, lager landingssider, klipper video, skriver tekster, animerer, redigerer bilder, og lager annonser og trykksaker.`
+    text: `Overblikk, struktur, og det at jeg kan sørge for at all kommunikasjon henger sammen – selv om man tilpasser til ulike kanaler, er noe av det jeg ser for meg at jeg kan bidra med.<br><br>I tillegg jobber jeg mye operativt, og er vant til mange ulike typer oppgaver. Jeg illustrerer, lager landingssider, klipper video, skriver tekster, animerer, redigerer bilder, og lager digitale annonser og trykksaker.`
   },
   {
     q: "Hva synes du er mest inspirerende å jobbe med?",
     type: "text",
-    text: `Som nevnt liker jeg å bidra inn der det trengs, og jeg liker en variert hverdag. Jeg er veldig glad i å illustrere, og den siste tiden har jeg også begynt å interessere meg mer for animasjon.<br><br>Jeg blir ekstra gira når jeg får lov å klekke ut noe nytt og kreativt, gjerne i samarbeid med andre.`
+    text: `Som nevnt liker jeg å bidra inn der det trengs, og setter pris på en variert hverdag. Jeg er veldig glad i å illustrere, og den siste tiden har jeg også begynt å interessere meg for, og leke meg med, mer animasjon. Så det passer jo bra inn hos dere. 🎨<br><br>Jeg blir ekstra gira når jeg får lov å klekke ut noe nytt og kreativt, gjerne i samarbeid med andre.`
   },
   {
     q: "Programmer?",
