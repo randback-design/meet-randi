@@ -397,18 +397,27 @@ function buildRefCarousel(){
 }
 
 function renderRefDots(){
-  const vc = visibleCount();
-  const total = Math.ceil(referanser.length / vc);
-  document.getElementById('refDots').innerHTML = Array.from({length: total}, (_,i) =>
+  document.getElementById('refDots').innerHTML = referanser.map((_,i) =>
     `<button class="car-nav-dot${i===refIdx?' active':''}" onclick="goRef(${i})"></button>`
   ).join('');
+}
+
+function maxRefIdx(){
+  const vc = visibleCount();
+  return Math.max(0, referanser.length - vc);
 }
 
 function onRefScroll(){
   const track = document.getElementById('refTrack');
   const slideW = track.querySelector('.ref-slide').offsetWidth;
-  const vc = visibleCount();
-  const newIdx = Math.round(track.scrollLeft / (slideW * vc));
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  let newIdx;
+  if(track.scrollLeft >= maxScroll - 2){
+    // Ved enden: ikke nedgrader en bevisst valgt siste prikk
+    newIdx = refIdx >= maxRefIdx() ? refIdx : maxRefIdx();
+  } else {
+    newIdx = Math.round(track.scrollLeft / slideW);
+  }
   if(newIdx !== refIdx){
     refIdx = newIdx;
     renderRefDots();
@@ -416,16 +425,14 @@ function onRefScroll(){
 }
 
 function goRef(idx){
-  refIdx = idx;
+  refIdx = Math.max(0, Math.min(idx, referanser.length - 1));
   const track = document.getElementById('refTrack');
-  const vc = visibleCount();
   const slideW = track.querySelector('.ref-slide').offsetWidth;
-  track.scrollTo({left: idx * slideW * vc, behavior:'smooth'});
+  track.scrollTo({left: Math.min(refIdx, maxRefIdx()) * slideW, behavior:'smooth'});
   renderRefDots();
 }
 function stepRef(dir){
-  const vc = visibleCount();
-  const total = Math.ceil(referanser.length / vc);
+  const total = referanser.length;
   goRef((refIdx + dir + total) % total);
 }
 // ── HATT-NAVIGASJON (kun mobil) ──
