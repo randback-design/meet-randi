@@ -211,7 +211,14 @@ footer a:hover{color:var(--t1)}
   .stat-num{font-size:28px}
   .stat-label{font-size:11px}
   .modal{padding:24px}
+  .stat-markedsavdeling{display:none}
+  .hatt-outer{padding:0 20px}
+  .hatt-nav{display:flex}
 }
+.portfolio-tag{display:none}
+.portfolio-see-more{display:inline-block;margin-top:8px;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
+.portfolio-card:hover .portfolio-see-more{background:var(--t1);color:#fff}
+.hatt-nav{display:none;align-items:center;justify-content:center;gap:12px;margin-top:14px}
 </style>
 </head>
 <body>
@@ -254,7 +261,7 @@ footer a:hover{color:var(--t1)}
     </div>
     <div class="intro-stats">
       <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i mediabransjen</div></div>
-      <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
+      <div class="stat-card stat-markedsavdeling"><div class="stat-num">7</div><div class="stat-label">år i markedsavdeling</div></div>
       <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">programmer jeg er god i</div></div>
       <div class="stat-card"><div class="stat-num" id="ideerTall">8</div><div class="stat-label">ideer i hodet 💡</div></div>
     </div>
@@ -290,8 +297,8 @@ footer a:hover{color:var(--t1)}
     <div class="section-eyebrow">Allsidighet</div>
     <div class="section-title">Jeg har gjerne på mange ulike hatter 🎩</div>
   </div>
-  <div style="max-width:1060px;margin:0 auto;padding:0 48px">
-    <div style="background:var(--t3);border-radius:16px;padding:24px 0 24px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+  <div class="hatt-outer wrap">
+    <div style="background:var(--t3);border-radius:16px;padding:24px 0 24px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none" id="hattScroll">
       <div style="display:flex;gap:24px;width:max-content;padding-right:24px">
         <img src="/grogro/images/hatt2.jpg" style="height:220px;border-radius:10px;object-fit:cover">
         <img src="/grogro/images/hatt3.jpg" style="height:220px;border-radius:10px;object-fit:cover">
@@ -300,6 +307,11 @@ footer a:hover{color:var(--t1)}
         <img src="/grogro/images/hatt6.jpg" style="height:220px;border-radius:10px;object-fit:cover">
       </div>
     </div>
+  </div>
+  <div class="hatt-nav" id="hattNav">
+    <button class="car-nav-btn" onclick="stepHatt(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="car-nav-dots" id="hattDots"></div>
+    <button class="car-nav-btn" onclick="stepHatt(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </div>
 
@@ -359,10 +371,12 @@ function playHeroVideo(){
 const referanser = [
   {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 — Tidligere kollega fra VG"},
   {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente — Tidligere kollega i Allente"},
-  {type:"vimeo",vimeoUrl:"https://player.vimeo.com/video/1190098926?h=b81f1c42bb&badge=0&autopause=0&title=0&byline=0&portrait=0",name:"Maren",role:"Datter"},
   {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet — og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter — Tidligere kollega i Allente"},
   {type:"quote",text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager — Tidligere kollega i Allente"},
-  {type:"vimeo",vimeoUrl:"https://player.vimeo.com/video/1190098897?h=b8396d5e72&badge=0&autopause=0&title=0&byline=0&portrait=0",name:"Kristoffer",role:"Sønn"}
+  {type:"quote",
+   text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",
+   textMobile:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let.",
+   name:"Jens Thorsen",role:"Customer Acquisition Manager — Tidligere kollega i Allente"}
 ];
 
 let refIdx = 0;
@@ -370,9 +384,11 @@ function visibleCount(){ return window.innerWidth <= 640 ? 1 : 2; }
 
 function buildRefCarousel(){
   const track = document.getElementById('refTrack');
+  const isMobile = window.innerWidth <= 640;
   track.innerHTML = referanser.map(r => {
+    const txt = (isMobile && r.textMobile) ? r.textMobile : r.text;
     const inner = r.type === 'quote'
-      ? `<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
+      ? `<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${txt}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
       : `<div class="video-card"><iframe src="${r.vimeoUrl}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
     return `<div class="ref-slide">${inner}</div>`;
   }).join('');
@@ -412,7 +428,39 @@ function stepRef(dir){
   const total = Math.ceil(referanser.length / vc);
   goRef((refIdx + dir + total) % total);
 }
-window.addEventListener('resize', () => { refIdx = 0; renderRefDots(); });
+// ── HATT-NAVIGASJON (kun mobil) ──
+const hattCount = 5;
+let hattIdx = 0;
+function buildHattNav(){
+  const dots = document.getElementById('hattDots');
+  if(!dots) return;
+  dots.innerHTML = Array.from({length: hattCount}, (_,i) =>
+    `<button class="car-nav-dot${i===0?' active':''}" onclick="goHatt(${i})"></button>`
+  ).join('');
+}
+function goHatt(idx){
+  hattIdx = idx;
+  const scroll = document.getElementById('hattScroll');
+  if(!scroll) return;
+  const imgW = scroll.querySelector('img').offsetWidth + 24;
+  scroll.scrollTo({left: idx * imgW, behavior:'smooth'});
+  document.querySelectorAll('#hattDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+}
+function stepHatt(dir){
+  goHatt((hattIdx + dir + hattCount) % hattCount);
+}
+// Sync prikker ved manuell scroll
+(function(){
+  const s = document.getElementById('hattScroll');
+  if(s) s.addEventListener('scroll', ()=>{
+    const imgW = s.querySelector('img') ? s.querySelector('img').offsetWidth + 24 : 1;
+    const idx = Math.round(s.scrollLeft / imgW);
+    if(idx !== hattIdx){ hattIdx=idx; document.querySelectorAll('#hattDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx)); }
+  }, {passive:true});
+})();
+buildHattNav();
+
+window.addEventListener('resize', () => { refIdx = 0; renderRefDots(); buildRefCarousel(); });
 
 // ── VIDEO CAROUSEL (FAQ) ──
 const carState = {};
@@ -565,12 +613,12 @@ function buildPortfolio(){
     return `<div class="portfolio-card fade-in" onclick="openModal(${i})">
       <div class="portfolio-thumb">
         ${thumb}
-        <div class="portfolio-tag">${c.tag}</div>
       </div>
       <div class="portfolio-body">
         <div class="portfolio-title">${c.title}</div>
         <div class="portfolio-desc">${c.desc}</div>
         <div class="portfolio-meta">${c.chips.map(ch=>`<span class="portfolio-chip">${ch}</span>`).join('')}</div>
+        <span class="portfolio-see-more">Se mer</span>
       </div>
     </div>`;
   }).join('');
