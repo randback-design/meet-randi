@@ -117,19 +117,18 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 
 /* ── PORTEFØLJE ── */
 .portfolio-section{padding:36px 0 48px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
-.portfolio-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;align-items:stretch}
+.portfolio-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
 .portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
-.portfolio-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.portfolio-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .portfolio-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .portfolio-thumb-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
 .portfolio-thumb-placeholder svg{width:28px;height:28px;stroke:var(--t2);fill:none;stroke-width:1.5;opacity:.5}
 .portfolio-thumb-placeholder span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);opacity:.7}
-.portfolio-tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:50px;color:var(--t2)}
-.portfolio-body{padding:16px 20px 20px}
+.portfolio-body{padding:16px 20px 20px;display:flex;flex-direction:column;flex:1}
 .portfolio-title{font-size:16px;font-weight:700;margin-bottom:4px}
-.portfolio-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
-.portfolio-meta{display:flex;gap:8px;flex-wrap:wrap}
+.portfolio-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px;flex:1}
+.portfolio-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .portfolio-chip{font-size:11px;background:var(--t3);color:var(--t2);padding:2px 8px;border-radius:50px;font-weight:600}
 
 /* ── MODAL KARUSELL ── */
@@ -216,7 +215,7 @@ footer a:hover{color:var(--t1)}
   .hatt-nav{display:flex}
 }
 .portfolio-tag{display:none}
-.portfolio-see-more{display:inline-block;margin-top:8px;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
+.portfolio-see-more{display:inline-block;align-self:flex-start;margin-top:4px;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
 .portfolio-card:hover .portfolio-see-more{background:var(--t1);color:#fff}
 .hatt-nav{display:none;align-items:center;justify-content:center;gap:12px;margin-top:14px}
 </style>
@@ -617,7 +616,6 @@ function buildPortfolio(){
       <div class="portfolio-body">
         <div class="portfolio-title">${c.title}</div>
         <div class="portfolio-desc">${c.desc}</div>
-        <div class="portfolio-meta">${c.chips.map(ch=>`<span class="portfolio-chip">${ch}</span>`).join('')}</div>
         <span class="portfolio-see-more">Se mer</span>
       </div>
     </div>`;
