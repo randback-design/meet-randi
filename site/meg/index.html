@@ -73,11 +73,14 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 /* ── REFERANSE-SEKSJON ── */
 .ref-section{background:var(--white);padding:48px 0}
 .ref-outer{max-width:1060px;margin:0 auto;padding:0 48px}
-.ref-carousel-clip{overflow:hidden}
-.ref-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1);align-items:stretch}
-.ref-slide{flex-shrink:0;padding:0 8px;box-sizing:border-box}
+.ref-track{display:grid;grid-template-columns:repeat(6,calc(50% - 8px));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.ref-track::-webkit-scrollbar{display:none}
+.ref-slide{scroll-snap-align:start;min-width:0}
 .ref-slide .quote-card,.ref-slide .video-card{height:100%;display:flex;flex-direction:column}
 .ref-slide .quote-text{flex:1}
+@media(max-width:640px){
+  .ref-track{grid-template-columns:repeat(6,100%)}
+}
 .quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
 .quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
 .quote-text{font-size:16px;color:var(--black);line-height:1.7;margin-bottom:20px}
@@ -272,9 +275,7 @@ footer a:hover{color:var(--t1)}
   <div class="ref-outer">
     <div class="section-eyebrow" style="margin-bottom:6px">Referanser</div>
     <div class="section-title" style="margin-bottom:20px">Hva sier andre om meg?</div>
-    <div class="ref-carousel-clip">
-      <div class="ref-track" id="refTrack"></div>
-    </div>
+    <div class="ref-track" id="refTrack"></div>
     <div class="car-nav">
       <button class="car-nav-btn" onclick="stepRef(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="car-nav-dots" id="refDots"></div>
@@ -368,15 +369,14 @@ function visibleCount(){ return window.innerWidth <= 640 ? 1 : 2; }
 
 function buildRefCarousel(){
   const track = document.getElementById('refTrack');
-  const vc = visibleCount();
-  const pct = 100 / vc;
   track.innerHTML = referanser.map(r => {
     const inner = r.type === 'quote'
       ? `<div class="quote-card"><div class="quote-mark">"</div><div class="quote-text">${r.text}</div><div class="quote-footer"><div><div class="quote-name">${r.name}</div><div class="quote-role">${r.role}</div></div></div></div>`
       : `<div class="video-card"><iframe src="${r.vimeoUrl}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe><div class="video-card-footer"><div class="video-card-name">${r.name}</div><div class="video-card-role">${r.role}</div></div></div>`;
-    return `<div class="ref-slide" style="min-width:${pct}%;padding:0 8px;">${inner}</div>`;
+    return `<div class="ref-slide">${inner}</div>`;
   }).join('');
   renderRefDots();
+  track.addEventListener('scroll', onRefScroll, {passive:true});
 }
 
 function renderRefDots(){
@@ -387,28 +387,31 @@ function renderRefDots(){
   ).join('');
 }
 
-function updateRef(){
-  const vc = visibleCount();
-  const pct = 100 / vc;
-  document.querySelectorAll('.ref-slide').forEach(s => s.style.minWidth = pct + '%');
-  const maxIdx = Math.max(0, Math.ceil(referanser.length / vc) - 1);
-  refIdx = Math.min(refIdx, maxIdx);
+function onRefScroll(){
   const track = document.getElementById('refTrack');
-  const slideW = track.parentElement.offsetWidth / vc;
-  track.style.transform = `translateX(-${refIdx * slideW}px)`;
-  renderRefDots();
+  const slideW = track.querySelector('.ref-slide').offsetWidth;
+  const vc = visibleCount();
+  const newIdx = Math.round(track.scrollLeft / (slideW * vc));
+  if(newIdx !== refIdx){
+    refIdx = newIdx;
+    renderRefDots();
+  }
 }
 
 function goRef(idx){
   refIdx = idx;
-  updateRef();
+  const track = document.getElementById('refTrack');
+  const vc = visibleCount();
+  const slideW = track.querySelector('.ref-slide').offsetWidth;
+  track.scrollTo({left: idx * slideW * vc, behavior:'smooth'});
+  renderRefDots();
 }
 function stepRef(dir){
   const vc = visibleCount();
   const total = Math.ceil(referanser.length / vc);
   goRef((refIdx + dir + total) % total);
 }
-window.addEventListener('resize', updateRef);
+window.addEventListener('resize', () => { refIdx = 0; renderRefDots(); });
 
 // ── VIDEO CAROUSEL (FAQ) ──
 const carState = {};
@@ -451,8 +454,6 @@ function initSwipe(){
     const el = document.getElementById(id);
     if(el) addSwipe(el, ()=>stepSlide(id,1), ()=>stepSlide(id,-1));
   });
-  const refClip = document.querySelector('.ref-carousel-clip');
-  if(refClip) addSwipe(refClip, ()=>stepRef(1), ()=>stepRef(-1));
 }
 
 // ── FAQ ──
@@ -505,7 +506,7 @@ const portfolioCases = [
   },
   {
     tag: "Annonsering",
-    title: "Kreativ annonse — MIX",
+    title: "Kreativ annonse – MIX",
     desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
     problem: "MIX hadde en sommer med mye fokus på sin milkshake laget av ekte kuleis, og at man kunne velge smaker og ingredienser selv. Vår jobb var å få dette budskapet ut på en kreativ måte, slik at folk oppsøkte MIX-butikkene. Løsningen ble flere typer display-annonser, og en landingsside med et «spill».",
     body: "Jeg fikk ansvar med å svare på brief, og utarbeidet både illustrasjoner og forslag til uttak på VG. Selve spillet ble laget i tett samarbeid med en av utviklerne på teamet, og resultatet fløy skikkelig godt!",
@@ -526,7 +527,7 @@ const portfolioCases = [
   },
   {
     tag: "Illustrasjon",
-    title: "Finn roen",
+    title: "Illustrasjoner – Finn roen",
     desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
     problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
     body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
@@ -534,12 +535,12 @@ const portfolioCases = [
     chips: ["Illustrator"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"/portfolio/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"/portfolio/Te.jpg", label:"Te"},
-      {type:"image", src:"/portfolio/Yoga.jpg", label:"Yoga"}
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/Te.jpg", label:"Te"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/Yoga.jpg", label:"Yoga"}
     ],
     thumbBg: "#ffffff",
-    thumbImg: "/portfolio/Sacco_thumb.jpg"
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/Sacco_thumb.jpg"
   },
   {
     tag: "Visuell profil",
