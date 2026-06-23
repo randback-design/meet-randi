@@ -213,12 +213,14 @@ footer a:hover{color:var(--t1)}
   .stat-markedsavdeling{display:none}
   .pill-engasjert{display:none}
   .hatt-outer{padding:0 20px}
-  .hatt-nav{display:flex}
 }
 .portfolio-tag{display:none}
 .portfolio-see-more{display:inline-block;align-self:flex-start;margin-top:4px;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
 .portfolio-card:hover .portfolio-see-more{background:var(--t1);color:#fff}
 .hatt-nav{display:none;align-items:center;justify-content:center;gap:12px;margin-top:14px}
+@media(max-width:640px){
+  .hatt-nav{display:flex}
+}
 </style>
 </head>
 <body>
@@ -397,18 +399,27 @@ function buildRefCarousel(){
 }
 
 function renderRefDots(){
-  const vc = visibleCount();
-  const total = Math.ceil(referanser.length / vc);
-  document.getElementById('refDots').innerHTML = Array.from({length: total}, (_,i) =>
+  document.getElementById('refDots').innerHTML = referanser.map((_,i) =>
     `<button class="car-nav-dot${i===refIdx?' active':''}" onclick="goRef(${i})"></button>`
   ).join('');
+}
+
+function maxRefIdx(){
+  const vc = visibleCount();
+  return Math.max(0, referanser.length - vc);
 }
 
 function onRefScroll(){
   const track = document.getElementById('refTrack');
   const slideW = track.querySelector('.ref-slide').offsetWidth;
-  const vc = visibleCount();
-  const newIdx = Math.round(track.scrollLeft / (slideW * vc));
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  let newIdx;
+  if(track.scrollLeft >= maxScroll - 2){
+    // Ved enden: ikke nedgrader en bevisst valgt siste prikk
+    newIdx = refIdx >= maxRefIdx() ? refIdx : maxRefIdx();
+  } else {
+    newIdx = Math.round(track.scrollLeft / slideW);
+  }
   if(newIdx !== refIdx){
     refIdx = newIdx;
     renderRefDots();
@@ -416,16 +427,14 @@ function onRefScroll(){
 }
 
 function goRef(idx){
-  refIdx = idx;
+  refIdx = Math.max(0, Math.min(idx, referanser.length - 1));
   const track = document.getElementById('refTrack');
-  const vc = visibleCount();
   const slideW = track.querySelector('.ref-slide').offsetWidth;
-  track.scrollTo({left: idx * slideW * vc, behavior:'smooth'});
+  track.scrollTo({left: Math.min(refIdx, maxRefIdx()) * slideW, behavior:'smooth'});
   renderRefDots();
 }
 function stepRef(dir){
-  const vc = visibleCount();
-  const total = Math.ceil(referanser.length / vc);
+  const total = referanser.length;
   goRef((refIdx + dir + total) % total);
 }
 // ── HATT-NAVIGASJON (kun mobil) ──
@@ -511,8 +520,8 @@ const mainQA = [
   {q:"Hva slags jobber passer deg?", type:"text", text:"Jeg trives steder der tempoet er høyt, man har mange ulike oppgaver og jeg kan samarbeide med fine folk som vil hverandre vel og spiller hverandre gode. Jeg har bakgrunn fra både in-house byrå og markedsavdeling, og er vant til å jobbe med alt fra kampanjer og SoMe til video, animasjon og presentasjoner.<br><br>Jeg er ikke typen som sier «det er ikke min jobb» 🙅‍♀️ – jeg liker heller å bidra der det trengs, og synes bare det er gøy med variasjon i hverdagen.", media:[]},
   {q:"Hva er du ekstra god på?", type:"text", text:"Jeg er ganske kreativ, og lar meg lett engasjere. Da vil jeg også gjerne sette ideene ut i live temmelig fort og jobber hardt med det. Historiefortelling på tvers av kanaler er også en av mine styrker, samt at jeg kan en del om mye, framfor å være superspesialist på én bestemt ting.<br><br>Og så liker jeg å bidra der det trengs, og samarbeider godt med andre.", media:[]},
   {q:"Hva er du mindre god på?", type:"text", text:"Jeg er ikke så god på å huske tall. Da må jeg skrive dem ned og repetere det for meg selv. Jeg er vel mer typen som husker ting som blir presentert visuelt. 👀<br><br>Dessuten er jeg født med en håpløst dårlig stedssans. Men heldigvis finnes Google Maps og GPS, så da klarer jeg meg likevel. 🗺️", media:[]},
+  {q:"Dine tanker om AI?", type:"text", text:"Jeg skal innrømme at jeg lenge var skeptisk til AI. Alle rare bilder av mennesker som alle så helt like ut i ansiktet og hadde 6 fingre, som ble spredd rundt omkring. Nå er jo gamet blitt et helt annet, og jeg har innsett at man må hive seg på AI-toget. Det har jeg gjort, og nå ser jeg at om man bruker det riktig, kan det være en enorm ressurs. Jeg har for eksempel begynt å leke meg med å lage små apper for å forenkle ting i hverdagen hjemme.<br><br>Jeg liker å skrive, og vil fortsatt høres ut som meg – selv om AI kan bidra med korrektur, struktur og kanskje litt nedkorting. All teksten på denne siden er skrevet av meg, men selve nettsiden har jeg laget ved hjelp av Claude, og ganske mange timer med prompts for å få designet slik jeg ønsket det.", media:[]},
   {q:"Har du noen hobbyer/interesser?", type:"text", text:"Klart jeg har! Jeg elsker musikk, synes det er gøy å trene (alene og sammen med andre), og bruker også en del fritid på å videreutvikle ferdighetene mine i illustrasjon, animasjon og AI.<br><br>Og så er jeg glad i å finne på ting med familien min, så klart.", media:[]},
-  {q:"Og AI?", type:"text", text:"Jeg skal innrømme at jeg lenge var skeptisk til AI. Alle rare bilder av mennesker som alle så helt like ut i ansiktet og hadde 6 fingre, som ble spredd rundt omkring. Nå er jo gamet blitt et helt annet, og jeg har innsett at man må hive seg på AI-toget. Det har jeg gjort, og nå ser jeg at om man bruker det riktig, kan det være en enorm ressurs. Jeg har for eksempel begynt å leke meg med å lage små apper for å forenkle ting i hverdagen hjemme. Jeg liker å skrive, og vil fortsatt høres ut som meg – selv om AI kan bidra med korrektur, struktur og kanskje litt nedkorting. All teksten på denne siden er skrevet av meg, men selve nettsiden har jeg laget ved hjelp av Claude, og ganske mange timer med prompts for å få designet slik jeg ønsket det.", media:[]},
   {q:"Hvordan kontakter vi deg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com 📩<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg – Gabrielle</a>", media:[]}
 ];
 
