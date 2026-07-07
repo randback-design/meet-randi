@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -192,7 +193,10 @@ const carState={};
 function makeCarousel(items,id){
   carState[id]={total:items.length,current:0};
   const slides=items.map((item)=>{
-    if(item.type==='video'&&item.vimeoId) return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    if(item.type==='video'&&item.vimeoId){
+      const hash=item.vimeoHash?`&h=${item.vimeoHash}`:'';
+      return`<div class="carousel-slide"><iframe src="https://player.vimeo.com/video/${item.vimeoId}?${hash}&badge=0&autopause=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    }
     return`<div class="carousel-slide"><div style="width:100%;height:100%;background:#e3f4f0"></div></div>`;
   }).join('');
   const dots=items.map((_,i)=>`<div class="car-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})"></div>`).join('');
@@ -203,7 +207,7 @@ function goSlide(id,idx){carState[id].current=idx;document.getElementById(id+'tr
 function stepSlide(id,dir){const s=carState[id];goSlide(id,(s.current+dir+s.total)%s.total)}
 
 const norwegianQA = [
-  {q:"Så\u2026 hvem er du da?",type:"video",text:"Jeg er Randi. En erfaren og allsidig grafisk designer. Kreativ, humørfylt, leken, nysgjerrig, arbeidsom og positiv. Og mamma, kjæreste og hundeeier også. Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",media:[{type:"video",vimeoId:"1187345684"}]},
+  {q:"Så\u2026 hvem er du da?",type:"video",text:"Jeg er Randi. En erfaren og allsidig grafisk designer. Kreativ, humørfylt, leken, nysgjerrig, arbeidsom og positiv. Og mamma, kjæreste og hundeeier også. Lær mer om meg her, i denne animasjonsvideoen jeg har laget:",media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
   {q:"Og hvorfor søker du på denne jobben?",type:"text",text:"Å få jobbe med en så stor og kjent merkevare som Norwegian høres veldig gøy ut i seg selv. Jeg kjenner meg også godt igjen i arbeidsoppgavene dere beskriver, og tror jeg kunne bidratt med både erfaring, idéer og energi inn i teamet.<br><br>Etter mange år i Allente ser jeg nå etter nye utfordringer, etter en stor omorganisering og nedbemanning. Derfor føltes denne stillingen veldig riktig å søke på.<br><br>Og så må jeg innrømme at det virker ganske gøy å få jobbe med kommunikasjon som faktisk handler om reiselyst, opplevelser og folk på vei et sted.",media:[]},
   {q:"Hva sier andre om deg?",type:"video",text:"Jeg har spurt litt rundt, jeg. Her er hva tidligere kollegaer og familie sier om meg:",quoteCarousel:true},
   {q:"Hva slags design liker du å lage?",type:"text",text:"Jeg liker design som faktisk fungerer. Ting som får folk til å stoppe opp, forstå noe raskt, klikke videre, smile litt, eller kjenne igjen en merkevare med én gang.<br><br>Jeg trives spesielt godt med kampanjer, konsepter og digitalt innhold som skal fungere på mange flater samtidig.<br><br>Og jeg liker veldig godt når idé og design henger tett sammen.",media:[]},
