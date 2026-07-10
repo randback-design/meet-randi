@@ -199,7 +199,8 @@ const portfolioCases = [
     body: "Kommer tilbake med ferdige illustrasjoner så snart de er klare.",
     results: [],
     chips: ["Illustrasjon"],
-    thumbBg: "#d0efe7"
+    thumbBg: "#d0efe7",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.jpg"
   },
   {
     tag: "Visuell profil",
