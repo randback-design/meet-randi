@@ -200,7 +200,7 @@ const portfolioCases = [
     results: [],
     chips: ["Illustrasjon"],
     thumbBg: "#d0efe7",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.jpg"
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.png"
   },
   {
     tag: "Visuell profil",
