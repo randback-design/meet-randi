@@ -178,42 +178,27 @@ function toggleFaq(btn){ btn.parentElement.classList.toggle('open') }
 // ── PORTEFØLJE ──
 const portfolioCases = [
   {
-    tag: "Annonsering",
-    title: "Kreativ annonse – MIX",
-    desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
-    problem: "MIX hadde en sommer med mye fokus på sin milkshake laget av ekte kuleis, og at man kunne velge smaker og ingredienser selv. Vår jobb var å få dette budskapet ut på en kreativ måte, slik at folk oppsøkte MIX-butikkene. Løsningen ble flere typer display-annonser, og en landingsside med et «spill».",
-    body: "Jeg fikk ansvar med å svare på brief, og utarbeidet både illustrasjoner og forslag til uttak på VG. Selve spillet ble laget i tett samarbeid med en av utviklerne på teamet, og resultatet fløy skikkelig godt!",
-    results: ["Deling på SoMe","Konkurranse","Interaksjon"],
-    chips: ["Illustrasjon","Konsept","Gamification","Utvikling"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
-      {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
-      {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
-      {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
-    ],
-    thumbBg: "#d0efe7",
-    thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
+    tag: "Video",
+    title: "Showcase video – Allente",
+    desc: "Video for inspirasjon og deling av resultater etter gjennomført kampanje med nytt konsept.",
+    problem: "I Allente hadde vi kjørt kampanje med nytt konsept – King of Entertainment. For å dele de gode resultatene ble jeg bedt om å lage en presentasjonsvideo som viste bredden av innhold, sammen med viktig info som skulle være lett å huske.<br><br>(Denne videoen skal ikke deles av hensyn til rettighetshavere, og er satt som «embed only» på Vimeo, slik at den bare vises på denne siden)",
+    body: "Jeg klippet hele videoen og la på elementer og musikk.",
+    results: ["Videoredigering","Deling av resultater","Premiere Pro"],
+    chips: ["Video","Historiefortelling"],
+    mediaType: "vimeo",
+    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
+    thumbBg: "#e3f4f0",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
   },
   {
     tag: "Illustrasjon",
-    title: "Illustrasjoner – Finn roen",
-    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
-    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
-    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
-    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
-    chips: ["Illustrator"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
-    ],
-    thumbBg: "#ffffff",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
+    title: "Maskot-illustrasjoner",
+    desc: "Under arbeid – maskot-illustrasjoner kommer snart på plass her.",
+    problem: "Denne arbeidsprøven er under produksjon.",
+    body: "Kommer tilbake med ferdige illustrasjoner så snart de er klare.",
+    results: [],
+    chips: ["Illustrasjon"],
+    thumbBg: "#d0efe7"
   },
   {
     tag: "Visuell profil",
@@ -238,6 +223,23 @@ const portfolioCases = [
     ],
     thumbBg: "#b8e5d9",
     thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente_thumb.jpg"
+  },
+  {
+    tag: "Illustrasjon",
+    title: "Illustrasjoner – Finn roen",
+    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
+    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
+    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
+    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
+    chips: ["Illustrator"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+    ],
+    thumbBg: "#ffffff",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
   },
   {
     tag: "PR og markedsføring",
@@ -265,17 +267,25 @@ const portfolioCases = [
     thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_thumb.jpg"
   },
   {
-    tag: "Video",
-    title: "Showcase video – Allente",
-    desc: "Video for inspirasjon og deling av resultater etter gjennomført kampanje med nytt konsept.",
-    problem: "I Allente hadde vi kjørt kampanje med nytt konsept – King of Entertainment. For å dele de gode resultatene ble jeg bedt om å lage en presentasjonsvideo som viste bredden av innhold, sammen med viktig info som skulle være lett å huske.<br><br>(Denne videoen skal ikke deles av hensyn til rettighetshavere, og er satt som «embed only» på Vimeo, slik at den bare vises på denne siden)",
-    body: "Jeg klippet hele videoen og la på elementer og musikk.",
-    results: ["Videoredigering","Deling av resultater","Premiere Pro"],
-    chips: ["Video","Historiefortelling"],
-    mediaType: "vimeo",
-    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
-    thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
+    tag: "Annonsering",
+    title: "Kreativ annonse – MIX",
+    desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
+    problem: "MIX hadde en sommer med mye fokus på sin milkshake laget av ekte kuleis, og at man kunne velge smaker og ingredienser selv. Vår jobb var å få dette budskapet ut på en kreativ måte, slik at folk oppsøkte MIX-butikkene. Løsningen ble flere typer display-annonser, og en landingsside med et «spill».",
+    body: "Jeg fikk ansvar med å svare på brief, og utarbeidet både illustrasjoner og forslag til uttak på VG. Selve spillet ble laget i tett samarbeid med en av utviklerne på teamet, og resultatet fløy skikkelig godt!",
+    results: ["Deling på SoMe","Konkurranse","Interaksjon"],
+    chips: ["Illustrasjon","Konsept","Gamification","Utvikling"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
+      {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
+      {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
+      {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
+      {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
+    ],
+    thumbBg: "#d0efe7",
+    thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
   }
 ];
 
