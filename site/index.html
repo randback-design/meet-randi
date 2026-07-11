@@ -74,13 +74,13 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 /* ── REFERANSE-SEKSJON ── */
 .ref-section{background:var(--white);padding:48px 0}
 .ref-outer{max-width:1060px;margin:0 auto;padding:0 48px}
-.ref-track{display:grid;grid-template-columns:repeat(6,calc(50% - 8px));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.ref-track{display:grid;grid-template-columns:repeat(4,calc(50% - 8px));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
 .ref-track::-webkit-scrollbar{display:none}
 .ref-slide{scroll-snap-align:start;min-width:0}
 .ref-slide .quote-card,.ref-slide .video-card{height:100%;display:flex;flex-direction:column}
 .ref-slide .quote-text{flex:1}
 @media(max-width:640px){
-  .ref-track{grid-template-columns:repeat(6,100%)}
+  .ref-track{grid-template-columns:repeat(4,100%)}
 }
 .quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
 .quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
@@ -383,19 +383,24 @@ const referanser = [
   {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 – Tidligere kollega fra VG"},
   {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente – Tidligere kollega i Allente"},
   {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet – og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter – Tidligere kollega i Allente"},
-  {type:"quote",text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"},
-  {type:"quote",
-   text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",
-   textMobile:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let.",
-   name:"Jens Thorsen",role:"Customer Acquisition Manager – Tidligere kollega i Allente"}
+  {type:"quote",text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"}
 ];
 
 let refIdx = 0;
 function visibleCount(){ return window.innerWidth <= 640 ? 1 : 2; }
 
+function applyRefGridColumns(){
+  const track = document.getElementById('refTrack');
+  const isMobile = window.innerWidth <= 640;
+  track.style.gridTemplateColumns = isMobile
+    ? `repeat(${referanser.length},100%)`
+    : `repeat(${referanser.length},calc(50% - 8px))`;
+}
+
 function buildRefCarousel(){
   const track = document.getElementById('refTrack');
   const isMobile = window.innerWidth <= 640;
+  applyRefGridColumns();
   track.innerHTML = referanser.map(r => {
     const txt = (isMobile && r.textMobile) ? r.textMobile : r.text;
     const inner = r.type === 'quote'
@@ -408,8 +413,11 @@ function buildRefCarousel(){
 }
 
 function renderRefDots(){
-  document.getElementById('refDots').innerHTML = referanser.map((_,i) =>
-    `<button class="car-nav-dot${i===refIdx?' active':''}" onclick="goRef(${i})"></button>`
+  const vc = visibleCount();
+  const pages = Math.max(1, Math.ceil(referanser.length / vc));
+  const activePage = Math.floor(refIdx / vc);
+  document.getElementById('refDots').innerHTML = Array.from({length:pages}).map((_,i) =>
+    `<button class="car-nav-dot${i===activePage?' active':''}" onclick="goRef(${i*vc})"></button>`
   ).join('');
 }
 
@@ -420,32 +428,21 @@ function maxRefIdx(){
 
 function onRefScroll(){
   const track = document.getElementById('refTrack');
-  const slideW = track.querySelector('.ref-slide').offsetWidth;
-  const maxScroll = track.scrollWidth - track.clientWidth;
-  let newIdx;
-  if(track.scrollLeft >= maxScroll - 2){
-    // Ved enden: ikke nedgrader en bevisst valgt siste prikk
-    newIdx = refIdx >= maxRefIdx() ? refIdx : maxRefIdx();
-  } else {
-    newIdx = Math.round(track.scrollLeft / slideW);
-  }
-  if(newIdx !== refIdx){
-    refIdx = newIdx;
-    renderRefDots();
-  }
+  const vc = visibleCount();
+  const slideW = track.scrollWidth / referanser.length;
+  const idx = Math.round(track.scrollLeft / (slideW * vc)) * vc;
+  if(idx !== refIdx){ refIdx = Math.min(idx, maxRefIdx()); renderRefDots(); }
 }
 
-function goRef(idx){
-  refIdx = Math.max(0, Math.min(idx, referanser.length - 1));
+function goRef(i){
+  refIdx = Math.max(0, Math.min(i, maxRefIdx()));
   const track = document.getElementById('refTrack');
-  const slideW = track.querySelector('.ref-slide').offsetWidth;
-  track.scrollTo({left: Math.min(refIdx, maxRefIdx()) * slideW, behavior:'smooth'});
+  const vc = visibleCount();
+  const slideW = track.scrollWidth / referanser.length;
+  track.scrollTo({left: refIdx * slideW, behavior:'smooth'});
   renderRefDots();
 }
-function stepRef(dir){
-  const total = referanser.length;
-  goRef((refIdx + dir + total) % total);
-}
+function stepRef(dir){ goRef(refIdx + dir*visibleCount()); }
 // ── HATT-NAVIGASJON (kun mobil) ──
 const hattCount = 5;
 let hattIdx = 0;
