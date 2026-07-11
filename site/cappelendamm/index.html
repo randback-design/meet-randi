@@ -208,7 +208,7 @@ footer a:hover{color:var(--t1)}
   .portfolio-grid{grid-template-columns:1fr}
   .portfolio-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:16px;margin-top:24px;padding-bottom:4px;align-items:flex-start}
   .portfolio-grid::-webkit-scrollbar{display:none}
-  .portfolio-grid .portfolio-card{min-width:85%;scroll-snap-align:start;flex-shrink:0}
+  .portfolio-grid .portfolio-card{flex:0 0 85%;width:85%;max-width:85%;scroll-snap-align:start;min-width:0}
   .portfolio-nav{display:flex;margin-top:14px}
   .intro-tagline{font-size:24px}
   .tagline-break{display:none}
