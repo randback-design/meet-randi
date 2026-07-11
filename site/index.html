@@ -121,6 +121,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;align-items:stretch}
 .portfolio-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
 .portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
+.portfolio-nav{display:none}
 .portfolio-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .portfolio-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .portfolio-thumb-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
@@ -138,8 +139,10 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .modal-carousel-track-clip{overflow:hidden;border-radius:8px;width:100%}
 .modal-carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1);width:100%}
 .modal-carousel-slide{min-width:100%;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;min-height:300px;box-sizing:border-box}
+.modal-carousel-slide.video-slide{min-height:0}
 .modal-carousel-slide img{width:auto;height:auto;max-height:460px;max-width:100%;border-radius:8px;display:block}
 .modal-carousel-slide iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:8px}
+.modal-carousel-slide.portrait-video iframe{width:auto;height:min(460px,65vh);max-width:100%;aspect-ratio:9/16}
 .modal-carousel-slide .placeholder-slide{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t2);letter-spacing:.08em;text-transform:uppercase}
 
 /* ── PORTEFØLJE MODAL ── */
@@ -192,7 +195,6 @@ footer a:hover{color:var(--t1)}
 @media(max-width:900px){
   .two-col{grid-template-columns:1fr;gap:24px}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-  .intro-stats{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:640px){
   nav{padding:0 20px}
@@ -205,14 +207,14 @@ footer a:hover{color:var(--t1)}
   .burger{display:flex}
   .faq-a-inner{padding-left:0}
   footer{padding:24px 20px}
-  .portfolio-grid{grid-template-columns:1fr}
+  .portfolio-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:16px;margin-top:24px;padding-bottom:4px;align-items:stretch}
+  .portfolio-grid::-webkit-scrollbar{display:none}
+  .portfolio-grid .portfolio-card{flex:0 0 100%;width:100%;max-width:100%;scroll-snap-align:start;min-width:0}
+  .portfolio-nav{display:flex;margin-top:14px}
   .intro-tagline{font-size:24px}
-  .tagline-break{display:none}
-  .intro-stats{grid-template-columns:repeat(3,1fr)}
-  .stat-num{font-size:28px}
-  .stat-label{font-size:11px}
+  .intro-stats{display:none}
   .modal{padding:24px}
-  .stat-markedsavdeling{display:none}
+  .modal-carousel-track-outer{padding:10px}
   .pill-engasjert{display:none}
   .hatt-outer{padding:0 20px}
 }
@@ -254,7 +256,7 @@ footer a:hover{color:var(--t1)}
 <div class="intro-banner" id="om">
   <div class="wrap">
     <div>
-      <div class="intro-tagline">Erfaren og allsidig grafisk designer/markedsfører<br class="tagline-break"><em>søker ny drømmejobb!</em></div>
+      <div class="intro-tagline">Erfaren og allsidig grafisk designer/markedsfører <br class="tagline-break"><em>søker ny drømmejobb!</em></div>
       <div class="intro-body">Hei! Randi her. Etter en større endring og reorganisering i bedriften jeg har jobbet i de siste sju årene, er jeg nå på jakt etter min neste arbeidsplass. Jeg håper den består av hyggelige og engasjerte folk, på et sted der det finnes flust av spennende oppgaver å ta fatt på.<br><br>Jeg har så mye å bidra med på veldig mange felt; fengende historiefortelling, god og tydelig kommunikasjon, kreativ annonsering og det å bygge merkevare over tid.</div>
       <div class="intro-pills">
         <span class="pill">Kreativ</span>
@@ -326,6 +328,11 @@ footer a:hover{color:var(--t1)}
     <div class="section-title">Utvalgte arbeider</div>
     <div class="section-intro">Her er noen utvalgte arbeider jeg er stolt av, og som viser bredden i hva jeg kan bidra med.<br><br>Jeg har mengder med andre arbeider jeg kan vise fram. Video, annonser, merch osv. Men det kan vi ta under en eventuell prat. :)</div>
     <div class="portfolio-grid" id="portfolioGrid"></div>
+    <div class="car-nav portfolio-nav" id="portfolioNav">
+      <button class="car-nav-btn" onclick="stepPortfolio(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="car-nav-dots" id="portfolioDots"></div>
+      <button class="car-nav-btn" onclick="stepPortfolio(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
   </div>
 </div>
 
@@ -557,44 +564,29 @@ function toggleFaq(btn){ btn.parentElement.classList.toggle('open') }
 // ── PORTEFØLJE ──
 const portfolioCases = [
   {
-    tag: "Annonsering",
-    title: "Kreativ annonse – MIX",
-    desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
-    problem: "MIX hadde en sommer med mye fokus på sin milkshake laget av ekte kuleis, og at man kunne velge smaker og ingredienser selv. Vår jobb var å få dette budskapet ut på en kreativ måte, slik at folk oppsøkte MIX-butikkene. Løsningen ble flere typer display-annonser, og en landingsside med et «spill».",
-    body: "Jeg fikk ansvar med å svare på brief, og utarbeidet både illustrasjoner og forslag til uttak på VG. Selve spillet ble laget i tett samarbeid med en av utviklerne på teamet, og resultatet fløy skikkelig godt!",
-    results: ["Deling på SoMe","Konkurranse","Interaksjon"],
-    chips: ["Illustrasjon","Konsept","Gamification","Utvikling"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
-      {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
-      {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
-      {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
-    ],
-    thumbBg: "#d0efe7",
-    thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
+    tag: "Video",
+    title: "Showcase video – Allente",
+    desc: "Video for inspirasjon og deling av resultater etter gjennomført kampanje med nytt konsept.",
+    problem: "I Allente hadde vi kjørt kampanje med nytt konsept – King of Entertainment. For å dele de gode resultatene ble jeg bedt om å lage en presentasjonsvideo som viste bredden av innhold, sammen med viktig info som skulle være lett å huske.<br><br>(Denne videoen skal ikke deles av hensyn til rettighetshavere, og er satt som «embed only» på Vimeo, slik at den bare vises på denne siden)",
+    body: "Jeg klippet hele videoen og la på elementer og musikk.",
+    results: ["Videoredigering","Deling av resultater","Premiere Pro"],
+    chips: ["Video","Historiefortelling"],
+    mediaType: "vimeo",
+    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
+    thumbBg: "#e3f4f0",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
   },
   {
     tag: "Illustrasjon",
-    title: "Illustrasjoner – Finn roen",
-    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
-    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
-    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
-    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
-    chips: ["Illustrator"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
-    ],
-    thumbBg: "#ffffff",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
-  }
-,
+    title: "Maskot-illustrasjoner",
+    desc: "Under arbeid – maskot-illustrasjoner kommer snart på plass her.",
+    problem: "Denne arbeidsprøven er under produksjon.",
+    body: "Kommer tilbake med ferdige illustrasjoner så snart de er klare.",
+    results: [],
+    chips: ["Illustrasjon"],
+    thumbBg: "#d0efe7",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.png"
+  },
   {
     tag: "Visuell profil",
     title: "Merkevarebygging – Allente",
@@ -618,6 +610,69 @@ const portfolioCases = [
     ],
     thumbBg: "#b8e5d9",
     thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente_thumb.jpg"
+  },
+  {
+    tag: "Illustrasjon",
+    title: "Illustrasjoner – Finn roen",
+    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
+    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
+    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
+    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
+    chips: ["Illustrator"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+    ],
+    thumbBg: "#ffffff",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
+  },
+  {
+    tag: "PR og markedsføring",
+    title: "PR for teater – Trollskogen",
+    desc: "Jeg engasjerer meg veldig i Trollskogen teater, der jeg har to barn som spiller, og lager alt av grafisk materiell.",
+    problem: "Trollskogen teater har eksistert i over 40 år, og ble startet av «Trollmor» Mona Danielsen, som har mottatt både Kongens Fortjenstmedalje og Børreprisen for sitt arbeid med barneteater. For hver forestilling som settes opp, forsøker vi å fylle teatersalen med folk – og til det trengs det mye arbeid med markedsføringen, noe jeg bidrar sterkt til.",
+    body: "For Trollskogen teater lager jeg så å si alt det grafiske i forbindelse med hver nye forestilling; plakater, flyers, SoMe-innhold, programmer, annonser, fotografering.",
+    results: ["Helhetlig grafisk uttrykk","Sterkt bidrag til billettsalg","Ofte fulle saler på forestilling"],
+    chips: ["Teater","Markedsføring","Fotografering","PR"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan.jpg", label:"Peter Pan"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_980x300px.jpg", label:"Peter Pan banner"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_pan_barn.JPG", label:"Peter Pan – barn"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fortapte_gutter.jpg", label:"Fortapte gutter"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Bukk.JPG", label:"Bukkene Bruse"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/PR.JPG", label:"PR-arbeid"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fotografering.jpeg", label:"Fotografering"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Plakater.jpg", label:"Plakater"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Alladin_Earlybird_Insta.jpg", label:"Aladdin Earlybird"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Programmer.png", label:"Programmer"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/ULVEN_Trollskogen_teater_skjermer_1920x1080.jpg", label:"Skjermvisning"}
+    ],
+    thumbBg: "#e3f4f0",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_thumb.jpg"
+  },
+  {
+    tag: "Annonsering",
+    title: "Kreativ annonse – MIX",
+    desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
+    problem: "MIX hadde en sommer med mye fokus på sin milkshake laget av ekte kuleis, og at man kunne velge smaker og ingredienser selv. Vår jobb var å få dette budskapet ut på en kreativ måte, slik at folk oppsøkte MIX-butikkene. Løsningen ble flere typer display-annonser, og en landingsside med et «spill».",
+    body: "Jeg fikk ansvar med å svare på brief, og utarbeidet både illustrasjoner og forslag til uttak på VG. Selve spillet ble laget i tett samarbeid med en av utviklerne på teamet, og resultatet fløy skikkelig godt!",
+    results: ["Deling på SoMe","Konkurranse","Interaksjon"],
+    chips: ["Illustrasjon","Konsept","Gamification","Utvikling"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
+      {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
+      {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
+      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
+      {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
+      {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
+      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
+    ],
+    thumbBg: "#d0efe7",
+    thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
   }
 ];
 
@@ -643,7 +698,41 @@ function buildPortfolio(){
       </div>
     </div>`;
   }).join('');
+  buildPortfolioNav();
 }
+
+// ── PORTEFØLJE-KARUSELL (mobil) ──
+let portfolioIdx = 0;
+function buildPortfolioNav(){
+  const dotsEl = document.getElementById('portfolioDots');
+  if(!dotsEl) return;
+  dotsEl.innerHTML = portfolioCases.map((_,i) =>
+    `<button class="car-nav-dot${i===0?' active':''}" onclick="goPortfolio(${i})"></button>`
+  ).join('');
+  portfolioIdx = 0;
+}
+function goPortfolio(idx){
+  portfolioIdx = Math.max(0, Math.min(idx, portfolioCases.length-1));
+  const grid = document.getElementById('portfolioGrid');
+  const card = grid.querySelector('.portfolio-card');
+  if(!card) return;
+  const cardW = card.offsetWidth + 16;
+  grid.scrollTo({left: portfolioIdx * cardW, behavior:'smooth'});
+  document.querySelectorAll('#portfolioDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===portfolioIdx));
+}
+function stepPortfolio(dir){
+  goPortfolio((portfolioIdx + dir + portfolioCases.length) % portfolioCases.length);
+}
+(function(){
+  const grid = document.getElementById('portfolioGrid');
+  if(!grid) return;
+  grid.addEventListener('scroll', ()=>{
+    const card = grid.querySelector('.portfolio-card');
+    const cardW = card ? card.offsetWidth + 16 : 1;
+    const idx = Math.round(grid.scrollLeft / cardW);
+    if(idx !== portfolioIdx){ portfolioIdx=idx; document.querySelectorAll('#portfolioDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx)); }
+  }, {passive:true});
+})();
 
 let modalCarIdx = 0;
 function openModal(i){
@@ -656,7 +745,7 @@ function openModal(i){
       if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
-      return `<div class="modal-carousel-slide">${inner}</div>`;
+      return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}${m.portrait?' portrait-video':''}">${inner}</div>`;
     }).join('');
     const dots = c.media.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
     mediaHtml = `<div class="modal-carousel-wrap">
@@ -714,7 +803,6 @@ function buildHeroContact(){
   if(SITE_DATA.email)        links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
   if(SITE_DATA.phone)        links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
   if(SITE_DATA.linkedin)     links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
-  if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
   c.innerHTML = links.join('');
 }
 
