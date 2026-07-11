@@ -289,10 +289,10 @@ const portfolioCases = [
       {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
       {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
       {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
+      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
       {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
       {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
+      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
     ],
     thumbBg: "#d0efe7",
     thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
@@ -368,7 +368,7 @@ function openModal(i){
       if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
-      return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}">${inner}</div>`;
+      return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}${m.portrait?' portrait-video':''}">${inner}</div>`;
     }).join('');
     const dots = c.media.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
     mediaHtml = `<div class="modal-carousel-wrap">
