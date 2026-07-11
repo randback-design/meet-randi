@@ -310,7 +310,7 @@ function buildPortfolio(){
     } else {
       thumb = `<div class="portfolio-thumb-placeholder" style="background:${c.thumbBg}"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>${c.tag}</span></div>`;
     }
-    return `<div class="portfolio-card fade-in" onclick="openModal(${i})">
+    return `<div class="portfolio-card" onclick="openModal(${i})">
       <div class="portfolio-thumb">
         ${thumb}
       </div>
