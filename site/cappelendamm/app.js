@@ -155,7 +155,7 @@ const mainQA = [
   {q:"Få høre litt om innhold du har produsert da!", type:"text", text:"Jeg har produsert innhold for mange ulike målgrupper gjennom de siste 20 årene, men målet har alltid vært det samme: å få folk til å stoppe opp, lese, klikke eller komme tilbake.<br><br>I Egmont var jeg nettredaktør for Julia og jobbet også med donald.no. (Fun fact: Redaktøren for bladet var Kirsti Kristoffersen, som senere har gitt ut flere flotte ungdomsbøker hos dere.) Jeg skrev artikler, laget quizzer og konkurranser, modererte forum og utviklet innhold for barn og unge.<br><br>I VG jobbet jeg i et in-house-byrå, der vi utviklet kreative annonsekonsepter med animasjoner, spill og interaktive løsninger.<br><br>I Allente produserte jeg blant annet landingssider, nyhetsbrev, innhold til sosiale medier og video, og jobbet mye med A/B-testing for å finne de løsningene som fungerte best.<br><br><div style='background:var(--t3);border-radius:16px;padding:20px'><img src='https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Eksempler.png' alt='Eksempler på innhold' style='width:100%;border-radius:8px;display:block'></div>", media:[]},
   {q:"Alle snakker om AI. Hva er dine tanker om det?", type:"text", text:"Jeg var skeptisk til AI i starten. De første AI-bildene av folk med seks fingre gjorde meg ikke akkurat overbevist. 😅<br><br>I dag bruker jeg AI hver eneste dag. Det er et verktøy som hjelper meg med idéutvikling, research, korrektur og raske prototyper, slik at jeg kan bruke mer tid på kreativitet og historiefortelling.<br><br>Denne nettsiden er laget med hjelp av Claude, etter mange runder med prompting og finjustering. Jeg har også laget en liten app til datteren min, der måltider blir til poeng som får en hage til å vokse – et lite eksempel på hvordan jeg liker å kombinere teknologi, kreativitet og brukerinnsikt for å løse utfordringer og gjøre hverdagen litt enklere.<br><br>Ta gjerne en titt, og test den ut: <a href='https://mat-motivator.vercel.app/' target='_blank' style='color:var(--t1);font-weight:700'>mat-motivator.vercel.app →</a>", media:[]},
   {q:"Hvilke programmer jobber du i?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Mer om dette ser dere i en egen blokk lengre ned på denne siden. 👇<br><br>Jeg er også glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com (prosjektstyring) og Bannerflow (annonseproduksjon) på min siste arbeidsplass.", media:[]},
-  {q:"Er det noe du synes er spesielt gøy å jobbe med?", type:"text", text:"Jeg trives med en variert hverdag, men innrømmer gjerne at jeg blir litt ekstra glad når jeg får illustrere eller animere.<br><br>Da jeg leste stillingsannonsen, klarte jeg rett og slett ikke å la være å teste en idé: Hva om Skolen fra Cappelen Damm hadde en liten maskot?<br>Så jeg lagde \"Cappi\" – en capybara som kanskje kan gjøre læring litt morsommere. Se mer av Cappi under Arbeider. 😉", media:[]},
+  {q:"Er det noe du synes er spesielt gøy å jobbe med?", type:"text", text:"Jeg trives med en variert hverdag, men innrømmer gjerne at jeg blir litt ekstra glad når jeg får illustrere eller animere.<br><br>Da jeg leste stillingsannonsen, klarte jeg rett og slett ikke å la være å teste en idé: Hva om Skolen fra Cappelen Damm hadde en liten maskot? Så jeg lagde \"Cappi\" – en capybara som kanskje kan gjøre læring litt morsommere. Se mer av Cappi under Arbeider. 😉", media:[]},
   {q:"Hva med det sosiale?", type:"text", text:"Jeg bidrar med humor, godt humør, tørre ordspill, musikktips og engasjement.<br><br>I min forrige jobb satt jeg mange år i sosialkomitéen, og bidro til at miljøet på jobb var godt – og at det ble både sommerfest og julebord. 🎉", media:[]},
   {q:"Når kan du eventuelt starte i ny jobb?", type:"text", text:"Jeg er veldig fleksibel og kan starte allerede i august! 👋😊<br><br>Etter en større nedbemanning i Allente er jeg nå på jakt etter nye utfordringer. I mellomtiden fyller jeg dagene med å lære nye ting, blant annet AI og animasjon. Har dere lyst til å se en arbeidsprøve på noe spesielt, lager jeg gjerne det. 💻", media:[]},
   {q:"Hvordan kontakter vi deg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com 📩<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg – Gabrielle</a>", media:[]}
@@ -321,7 +321,41 @@ function buildPortfolio(){
       </div>
     </div>`;
   }).join('');
+  buildPortfolioNav();
 }
+
+// ── PORTEFØLJE-KARUSELL (mobil) ──
+let portfolioIdx = 0;
+function buildPortfolioNav(){
+  const dotsEl = document.getElementById('portfolioDots');
+  if(!dotsEl) return;
+  dotsEl.innerHTML = portfolioCases.map((_,i) =>
+    `<button class="car-nav-dot${i===0?' active':''}" onclick="goPortfolio(${i})"></button>`
+  ).join('');
+  portfolioIdx = 0;
+}
+function goPortfolio(idx){
+  portfolioIdx = Math.max(0, Math.min(idx, portfolioCases.length-1));
+  const grid = document.getElementById('portfolioGrid');
+  const card = grid.querySelector('.portfolio-card');
+  if(!card) return;
+  const cardW = card.offsetWidth + 16;
+  grid.scrollTo({left: portfolioIdx * cardW, behavior:'smooth'});
+  document.querySelectorAll('#portfolioDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===portfolioIdx));
+}
+function stepPortfolio(dir){
+  goPortfolio((portfolioIdx + dir + portfolioCases.length) % portfolioCases.length);
+}
+(function(){
+  const grid = document.getElementById('portfolioGrid');
+  if(!grid) return;
+  grid.addEventListener('scroll', ()=>{
+    const card = grid.querySelector('.portfolio-card');
+    const cardW = card ? card.offsetWidth + 16 : 1;
+    const idx = Math.round(grid.scrollLeft / cardW);
+    if(idx !== portfolioIdx){ portfolioIdx=idx; document.querySelectorAll('#portfolioDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx)); }
+  }, {passive:true});
+})();
 
 let modalCarIdx = 0;
 function openModal(i){
@@ -334,7 +368,7 @@ function openModal(i){
       if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
-      return `<div class="modal-carousel-slide">${inner}</div>`;
+      return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}">${inner}</div>`;
     }).join('');
     const dots = c.media.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
     mediaHtml = `<div class="modal-carousel-wrap">
