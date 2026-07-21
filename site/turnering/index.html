@@ -1,1 +1,976 @@
 
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Hageturnering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --grass:#5DAE58;
+    --grass-dark:#2E6B3D;
+    --chalk:#FFF8E6;
+    --sun:#FFC94A;
+    --sky:#7FCFE0;
+    --coral:#F2705C;
+    --line-red:#F2705C;
+    --ink:#2B3A1F;
+    --board:#204A2E;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Figtree',sans-serif;
+    color:var(--chalk);
+    background: linear-gradient(180deg, var(--grass) 0%, var(--grass-dark) 100%);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  #app{
+    max-width:520px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding-bottom:84px;
+  }
+  header.topbar{
+    position:relative;
+    padding:22px 18px 14px;
+    text-align:center;
+  }
+  header.topbar h1{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    letter-spacing:1.5px;
+    font-size:clamp(28px,8vw,38px);
+    margin:0;
+    color:var(--chalk);
+    text-shadow:2px 2px 0 var(--grass-dark);
+  }
+  header.topbar p{
+    margin:4px 0 0;
+    font-size:13px;
+    color:var(--sun);
+    font-weight:700;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+  }
+  .gear-btn{
+    position:absolute;
+    top:18px;
+    right:14px;
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    border:2px solid var(--sun);
+    background:var(--board);
+    color:var(--sun);
+    font-size:18px;
+    cursor:pointer;
+  }
+  .gear-btn:focus-visible{ outline:3px solid var(--line-red); outline-offset:2px; }
+  main{
+    flex:1;
+    padding:6px 14px 20px;
+  }
+  .match-meta{
+    font-size:11px;
+    color:var(--sun);
+    opacity:0.9;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    font-weight:700;
+    margin:0 4px 8px;
+  }
+  .card{
+    background:var(--chalk);
+    color:var(--ink);
+    border-radius:14px;
+    margin-bottom:12px;
+    box-shadow:0 3px 0 var(--grass-dark);
+    overflow:hidden;
+    border:2px solid var(--grass-dark);
+  }
+  .pair-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 14px;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .pair-row:focus-visible, .tabbar button:focus-visible, input:focus-visible{
+    outline:3px solid var(--line-red);
+    outline-offset:2px;
+  }
+  .pair-names{
+    font-weight:800;
+    font-size:15.5px;
+    line-height:1.3;
+  }
+  .pair-names span.vs{
+    font-weight:700;
+    color:#1F6E82;
+    font-size:11px;
+    display:block;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  .flip{
+    background:var(--board);
+    color:var(--sun);
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:20px;
+    min-width:46px;
+    text-align:center;
+    padding:6px 8px;
+    border-radius:6px;
+    border:1px solid #04150a;
+    box-shadow:inset 0 2px 4px rgba(0,0,0,0.4);
+  }
+  .flip.empty{
+    color:#4d5d51;
+    font-size:16px;
+  }
+  .attempts{
+    display:none;
+    padding:0 14px 16px;
+    border-top:1px dashed #E0CFA0;
+  }
+  .attempts.open{ display:block; }
+  .attempts-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(64px,1fr));
+    gap:8px;
+    margin-top:12px;
+  }
+  .attempt-field label{
+    display:block;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+    color:#4B5A38;
+    margin-bottom:3px;
+    font-weight:700;
+  }
+  .attempt-field input{
+    width:100%;
+    font-family:'Space Mono',monospace;
+    font-size:16px;
+    padding:8px 6px;
+    text-align:center;
+    border-radius:7px;
+    border:2px solid #E0CFA0;
+    background:#fff;
+    color:var(--ink);
+  }
+  .attempt-field input.is-best{
+    border-color:var(--sun);
+    background:#FFF6E0;
+    font-weight:700;
+  }
+  .unit-hint{
+    font-size:11px;
+    color:#4B5A38;
+    margin-top:8px;
+  }
+  .section-title{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    letter-spacing:0.5px;
+    font-size:20px;
+    color:var(--chalk);
+    text-shadow:1px 1px 0 var(--grass-dark);
+    margin:14px 4px 8px;
+  }
+  table.standings{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--chalk);
+    color:var(--ink);
+    border-radius:14px;
+    overflow:hidden;
+    border:2px solid var(--grass-dark);
+    margin-bottom:16px;
+  }
+  table.standings th, table.standings td{
+    padding:9px 8px;
+    text-align:left;
+    font-size:13.5px;
+  }
+  table.standings th{
+    background:var(--grass-dark);
+    color:var(--sun);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+  }
+  table.standings td.num, table.standings th.num{ text-align:center; font-family:'Space Mono',monospace; }
+  table.standings tr:nth-child(even) td{ background:#FBEFD3; }
+  table.standings tr.rank1 td:first-child{ color:var(--line-red); font-weight:800; }
+  .empty-note{
+    font-size:12.5px;
+    color:var(--sun);
+    text-align:center;
+    padding:6px 0 14px;
+    opacity:0.9;
+  }
+  nav.tabbar{
+    position:fixed;
+    bottom:0; left:0; right:0;
+    max-width:520px;
+    margin:0 auto;
+    display:flex;
+    background:var(--board);
+    border-top:3px solid var(--sun);
+  }
+  nav.tabbar button{
+    flex:1;
+    background:none;
+    border:none;
+    color:#8fa192;
+    font-family:'Figtree',sans-serif;
+    font-weight:700;
+    font-size:11.5px;
+    padding:12px 4px 10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+    cursor:pointer;
+  }
+  nav.tabbar button .ic{ font-size:19px; }
+  nav.tabbar button.active{ color:var(--sun); }
+
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(10,20,13,0.55);
+    display:flex;
+    align-items:flex-end;
+    z-index:50;
+  }
+  .modal{
+    background:var(--chalk);
+    color:var(--ink);
+    width:100%;
+    max-width:520px;
+    margin:0 auto;
+    border-radius:18px 18px 0 0;
+    max-height:82vh;
+    overflow-y:auto;
+    border-top:3px solid var(--sun);
+  }
+  .modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 18px 10px;
+    font-family:'Anton',sans-serif;
+    font-size:20px;
+    letter-spacing:0.5px;
+    position:sticky;
+    top:0;
+    background:var(--chalk);
+  }
+  .modal-header button{
+    background:none;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+    color:var(--ink);
+    padding:4px 8px;
+  }
+  .modal-body{ padding:4px 18px 26px; }
+  .section-title-small{
+    font-weight:800;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+    color:#5E6F45;
+    margin:14px 0 8px;
+  }
+  #playerChips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .chip{
+    background:#FBEFD3;
+    border:2px solid var(--grass-dark);
+    border-radius:20px;
+    padding:6px 6px 6px 12px;
+    font-size:13.5px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .chip button{
+    background:var(--line-red);
+    color:#fff;
+    border:none;
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    font-size:11px;
+    cursor:pointer;
+    line-height:1;
+  }
+  .add-player-row{
+    display:flex;
+    gap:8px;
+  }
+  .add-player-row input{
+    flex:1;
+    padding:10px 12px;
+    border-radius:9px;
+    border:2px solid #E0CFA0;
+    font-size:14.5px;
+    font-family:'Figtree',sans-serif;
+  }
+  .add-player-row button{
+    background:var(--grass-dark);
+    color:var(--sun);
+    border:none;
+    border-radius:9px;
+    padding:0 16px;
+    font-weight:800;
+    font-size:13.5px;
+    cursor:pointer;
+  }
+  .divider{
+    height:1px;
+    background:#E0CFA0;
+    margin:18px 0 16px;
+  }
+  .discipline-row{
+    background:#FBEFD3;
+    border:2px solid var(--grass-dark);
+    border-radius:12px;
+    padding:10px 12px;
+    margin-bottom:10px;
+  }
+  .discipline-row input[type="text"]{
+    width:100%;
+    font-size:15px;
+    font-weight:800;
+    border:none;
+    background:transparent;
+    color:var(--ink);
+    padding:2px 0 6px;
+    font-family:'Figtree',sans-serif;
+  }
+  .discipline-sub{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .discipline-sub label{
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
+    color:#4B5A38;
+    font-weight:700;
+  }
+  .discipline-sub input[type="number"]{
+    width:56px;
+    padding:6px;
+    border-radius:7px;
+    border:2px solid #E0CFA0;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+  }
+  .discipline-sub input[type="text"]{
+    flex:1;
+    min-width:90px;
+    padding:6px 8px;
+    border-radius:7px;
+    border:2px solid #E0CFA0;
+    font-size:13px;
+    font-family:'Figtree',sans-serif;
+  }
+  .discipline-sub button{
+    background:var(--coral);
+    color:#fff;
+    border:none;
+    border-radius:7px;
+    padding:6px 10px;
+    font-size:12px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  .add-discipline-form{
+    background:#fff;
+    border:2px dashed #E0CFA0;
+    border-radius:12px;
+    padding:12px;
+  }
+  .add-discipline-form input{
+    width:100%;
+    padding:9px 10px;
+    border-radius:8px;
+    border:2px solid #E0CFA0;
+    font-size:14px;
+    font-family:'Figtree',sans-serif;
+    margin-bottom:8px;
+  }
+  .add-discipline-row2{
+    display:flex;
+    gap:8px;
+  }
+  .add-discipline-row2 input:first-child{ width:70px; flex:none; }
+  .add-discipline-btn{
+    width:100%;
+    background:var(--grass-dark);
+    color:var(--sun);
+    border:none;
+    border-radius:8px;
+    padding:10px;
+    font-weight:800;
+    font-size:13.5px;
+    cursor:pointer;
+  }
+  .table-scroll{ overflow-x:auto; }
+  .danger-btn{
+    width:100%;
+    background:var(--line-red);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:13px;
+    font-weight:800;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    cursor:pointer;
+  }
+  .min-note{
+    font-size:12px;
+    color:#B5502F;
+    margin-top:6px;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .card{ transition:transform 0.12s ease; }
+    .pair-row:active{ transform:scale(0.99); }
+    .modal{ animation:slideUp 0.18s ease-out; }
+  }
+  @keyframes slideUp{
+    from{ transform:translateY(24px); opacity:0.4; }
+    to{ transform:translateY(0); opacity:1; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="gear-btn" onclick="openSettings()" aria-label="Åpne oppsett">⚙</button>
+    <h1>Hageturnering</h1>
+    <p id="subtitle">Alle mot alle · beste forsøk teller</p>
+  </header>
+  <main id="content"></main>
+  <nav class="tabbar"></nav>
+</div>
+
+<div id="settingsModal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeSettings()">
+  <div class="modal">
+    <div class="modal-header">
+      <span>Oppsett</span>
+      <button onclick="closeSettings()" aria-label="Lukk">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="section-title-small">Spillere</div>
+      <div id="playerChips"></div>
+      <div class="add-player-row">
+        <input id="newPlayerInput" type="text" placeholder="Nytt navn" maxlength="20" onkeypress="if(event.key==='Enter'){addPlayer();}">
+        <button onclick="addPlayer()">Legg til</button>
+      </div>
+      <div class="unit-hint">Nye kamper legges automatisk til. Tidligere resultater for uendrede par beholdes.</div>
+
+      <div class="divider"></div>
+
+      <div class="section-title-small">Grener</div>
+      <div id="disciplineList"></div>
+      <div class="add-discipline-form">
+        <input id="newDisciplineName" type="text" placeholder="Navn (f.eks. Yatzy)" maxlength="24">
+        <div class="add-discipline-row2">
+          <input id="newDisciplineRounds" type="number" min="1" placeholder="Runder" value="3">
+          <input id="newDisciplineUnit" type="text" placeholder="Hva telles (f.eks. poeng)" maxlength="24">
+        </div>
+        <button class="add-discipline-btn" onclick="addDiscipline()">Legg til gren</button>
+      </div>
+      <div class="unit-hint">Endre navn, antall runder eller hva som telles direkte i listen over.</div>
+
+      <div class="divider"></div>
+
+      <div class="section-title-small">Ny turnering</div>
+      <button class="danger-btn" onclick="startNewTournament()">Start ny turnering</button>
+      <div class="min-note">Nullstiller alle resultater for de nåværende spillerne og lager en ny, rettferdig kamprekkefølge.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DEFAULT_PLAYERS = ["Hogne","Randi","Gabriel","Kristoffer","Maren"];
+const DEFAULT_DISCIPLINES = [
+  { key:"badminton",  label:"Badminton",  attempts:5, unit:"sammenhengende treff" },
+  { key:"volleyball", label:"Volleyball", attempts:5, unit:"sammenhengende treff" },
+  { key:"ertepose",   label:"Ertepose",   attempts:3, unit:"poeng" }
+];
+const STORAGE_KEY = "hageturnering_state_v2";
+
+let state = { players: [], disciplines: [], schedule: {}, scores: {} };
+let openPair = {};
+let currentTab = null;
+
+function pairKey(a,b){ return [a,b].sort().join("__"); }
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function slugify(name){
+  const base = String(name).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  return base || 'gren';
+}
+function uniqueDisciplineKey(base){
+  let key = base, i = 2;
+  while(state.disciplines.some(d=>d.key===key)){ key = base + '-' + i; i++; }
+  return key;
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+// Standard circle-method round robin. Handles odd counts with a bye.
+function circleSchedule(players){
+  let arr = players.slice();
+  let n = arr.length;
+  if(n < 2) return [];
+  if(n % 2 !== 0){ arr.push(null); n++; }
+  const rounds = n - 1;
+  const half = n / 2;
+  const fixed = arr[0];
+  let rotating = arr.slice(1);
+  const roundsOut = [];
+  for(let r=0; r<rounds; r++){
+    const roundArr = [fixed, ...rotating];
+    const pairs = [];
+    for(let i=0; i<half; i++){
+      const a = roundArr[i], b = roundArr[n-1-i];
+      if(a !== null && b !== null) pairs.push([a,b]);
+    }
+    roundsOut.push(pairs);
+    rotating.unshift(rotating.pop());
+  }
+  return roundsOut;
+}
+
+// Flattens rounds into one sequence, preferring an order where consecutive
+// matches never share a player (avoids someone playing right after themself).
+function flattenAvoidingAdjacent(rounds){
+  const result = [];
+  let last = null;
+  rounds.forEach(roundPairs=>{
+    const candidates = roundPairs.slice();
+    candidates.sort((x,y)=>{
+      const xC = last && (x.includes(last[0]) || x.includes(last[1])) ? 1 : 0;
+      const yC = last && (y.includes(last[0]) || y.includes(last[1])) ? 1 : 0;
+      return xC - yC;
+    });
+    candidates.forEach(p=>{ result.push(p); last = p; });
+  });
+  return result;
+}
+
+function generateMatchOrder(players){
+  return flattenAvoidingAdjacent(circleSchedule(shuffle(players)));
+}
+
+function rebuildSchedules(){
+  const sched = {};
+  state.disciplines.forEach(d=>{
+    sched[d.key] = generateMatchOrder(state.players);
+  });
+  state.schedule = sched;
+}
+
+// Adds missing pair-score entries and drops entries for pairs/disciplines that
+// no longer exist, without touching valid ones.
+function ensureScoreEntries(){
+  const currentKeys = new Set(state.disciplines.map(d=>d.key));
+  Object.keys(state.schedule).forEach(k=>{ if(!currentKeys.has(k)) delete state.schedule[k]; });
+  Object.keys(state.scores).forEach(k=>{ if(!currentKeys.has(k)) delete state.scores[k]; });
+
+  state.disciplines.forEach(d=>{
+    if(!state.scores[d.key]) state.scores[d.key] = {};
+    const validKeys = new Set((state.schedule[d.key]||[]).map(([a,b])=>pairKey(a,b)));
+    validKeys.forEach(k=>{
+      if(!state.scores[d.key][k]){
+        state.scores[d.key][k] = new Array(d.attempts).fill(null);
+      }
+    });
+    Object.keys(state.scores[d.key]).forEach(k=>{
+      if(!validKeys.has(k)) delete state.scores[d.key][k];
+    });
+  });
+}
+
+function resizeDisciplineRounds(key, newCount){
+  const scoresForD = state.scores[key] || {};
+  Object.keys(scoresForD).forEach(pKey=>{
+    const arr = scoresForD[pKey];
+    if(arr.length < newCount){
+      while(arr.length < newCount) arr.push(null);
+    } else if(arr.length > newCount){
+      arr.length = newCount;
+    }
+  });
+}
+
+async function loadData(){
+  try{
+    const r = await window.storage.get(STORAGE_KEY, true);
+    if(r && r.value){
+      const parsed = JSON.parse(r.value);
+      state.players = (parsed.players && parsed.players.length >= 2) ? parsed.players : DEFAULT_PLAYERS.slice();
+      state.disciplines = Array.isArray(parsed.disciplines) ? parsed.disciplines : DEFAULT_DISCIPLINES.map(d=>({...d}));
+      state.schedule = parsed.schedule || {};
+      state.scores = parsed.scores || {};
+    } else {
+      state.players = DEFAULT_PLAYERS.slice();
+      state.disciplines = DEFAULT_DISCIPLINES.map(d=>({...d}));
+    }
+  }catch(e){
+    state.players = DEFAULT_PLAYERS.slice();
+    state.disciplines = DEFAULT_DISCIPLINES.map(d=>({...d}));
+  }
+  const scheduleMissing = !state.schedule || state.disciplines.some(d => !state.schedule[d.key] || state.schedule[d.key].length===0);
+  if(scheduleMissing) rebuildSchedules();
+  ensureScoreEntries();
+  currentTab = state.disciplines[0] ? state.disciplines[0].key : "stilling";
+  await saveData();
+}
+
+async function saveData(){
+  try{
+    await window.storage.set(STORAGE_KEY, JSON.stringify(state), true);
+  }catch(e){
+    console.error("Kunne ikke lagre:", e);
+  }
+}
+
+function bestOf(arr){
+  const vals = arr.filter(v=>v!==null && v!=="" && !isNaN(v)).map(Number);
+  if(vals.length===0) return null;
+  return Math.max(...vals);
+}
+function bestIndex(arr){
+  const best = bestOf(arr);
+  if(best===null) return -1;
+  return arr.findIndex(v=>Number(v)===best);
+}
+
+function renderDisciplineTab(key){
+  const d = state.disciplines.find(x=>x.key===key);
+  if(!d) return `<div class="empty-note">Denne grenen finnes ikke lenger.</div>`;
+  const matches = state.schedule[key] || [];
+  if(matches.length===0){
+    return `<div class="empty-note">Legg til minst 2 spillere under ⚙ Oppsett for å starte.</div>`;
+  }
+  let html = `<div class="match-meta">${matches.length} kamper · rekkefølgen gir alle ca. lik ventetid</div>`;
+  matches.forEach(([a,b], idx)=>{
+    const pKey = pairKey(a,b);
+    const arr = (state.scores[key] && state.scores[key][pKey]) || new Array(d.attempts).fill(null);
+    const best = bestOf(arr);
+    const isOpen = openPair[key] === pKey;
+    const bi = bestIndex(arr);
+    html += `
+      <div class="card">
+        <div class="pair-row" tabindex="0" role="button" aria-expanded="${isOpen}" onclick="toggleOpen('${key}','${pKey}')" onkeypress="if(event.key==='Enter')toggleOpen('${key}','${pKey}')">
+          <div class="pair-names">${escapeHtml(a)} &amp; ${escapeHtml(b)}<span class="vs">Kamp ${idx+1} av ${matches.length}</span></div>
+          <div class="flip ${best===null?'empty':''}">${best===null?'—':best}</div>
+        </div>
+        <div class="attempts ${isOpen?'open':''}">
+          <div class="unit-hint">Beste ${escapeHtml(d.unit)} registreres automatisk.</div>
+          <div class="attempts-grid">
+            ${arr.map((val,i)=>`
+              <div class="attempt-field">
+                <label>Runde ${i+1}</label>
+                <input type="number" inputmode="numeric" min="0"
+                  value="${val===null?'':val}"
+                  class="${i===bi && val!==null && val!=='' ? 'is-best':''}"
+                  onchange="updateScore('${key}','${pKey}',${i},this.value)">
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      </div>`;
+  });
+  return html;
+}
+
+function renderStandingsTab(){
+  if(state.players.length===0 || state.disciplines.length===0){
+    return `<div class="section-title">Sammenlagt</div><div class="empty-note">Legg til spillere og grener under ⚙ Oppsett.</div>`;
+  }
+  const totals = {};
+  state.players.forEach(p=>{
+    totals[p] = { total:0 };
+    state.disciplines.forEach(d=>{ totals[p][d.key] = 0; });
+  });
+
+  state.disciplines.forEach(d=>{
+    (state.schedule[d.key]||[]).forEach(([a,b])=>{
+      const pKey = pairKey(a,b);
+      const best = bestOf((state.scores[d.key] && state.scores[d.key][pKey]) || []);
+      if(best!==null){
+        totals[a][d.key] += best;
+        totals[b][d.key] += best;
+        totals[a].total += best;
+        totals[b].total += best;
+      }
+    });
+  });
+
+  const ranked = state.players.slice().sort((x,y)=>totals[y].total - totals[x].total);
+
+  let html = `<div class="section-title">Sammenlagt</div>`;
+  html += `<div class="table-scroll"><table class="standings"><thead><tr><th>Spiller</th>`;
+  state.disciplines.forEach(d=>{ html += `<th class="num">${escapeHtml(d.label)}</th>`; });
+  html += `<th class="num">Sum</th></tr></thead><tbody>`;
+  ranked.forEach((p,i)=>{
+    html += `<tr class="${i===0?'rank1':''}"><td>${escapeHtml(p)}</td>`;
+    state.disciplines.forEach(d=>{ html += `<td class="num">${totals[p][d.key]}</td>`; });
+    html += `<td class="num">${totals[p].total}</td></tr>`;
+  });
+  html += `</tbody></table></div>`;
+
+  state.disciplines.forEach(d=>{
+    const rows = (state.schedule[d.key]||[]).map(([a,b])=>{
+      const pKey = pairKey(a,b);
+      const best = bestOf((state.scores[d.key] && state.scores[d.key][pKey]) || []);
+      return { label:`${escapeHtml(a)} &amp; ${escapeHtml(b)}`, best };
+    }).filter(r=>r.best!==null).sort((x,y)=>y.best-x.best);
+
+    html += `<div class="section-title">${escapeHtml(d.label)} — par</div>`;
+    if(rows.length===0){
+      html += `<div class="empty-note">Ingen resultater registrert ennå.</div>`;
+    } else {
+      html += `<table class="standings"><thead><tr><th>Par</th><th class="num">Beste</th></tr></thead><tbody>`;
+      rows.forEach((r,i)=>{
+        html += `<tr class="${i===0?'rank1':''}"><td>${r.label}</td><td class="num">${r.best}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+  });
+
+  return html;
+}
+
+function toggleOpen(dKey, pKey){
+  openPair[dKey] = (openPair[dKey] === pKey) ? null : pKey;
+  render();
+}
+
+async function updateScore(dKey, pKey, idx, value){
+  const v = value === "" ? null : Number(value);
+  if(!state.scores[dKey]) state.scores[dKey] = {};
+  if(!state.scores[dKey][pKey]) state.scores[dKey][pKey] = [];
+  state.scores[dKey][pKey][idx] = v;
+  await saveData();
+  render();
+}
+
+function renderPlayerChips(){
+  const container = document.getElementById("playerChips");
+  container.innerHTML = state.players.map(p=>`
+    <span class="chip">${escapeHtml(p)} <button aria-label="Fjern ${escapeHtml(p)}" onclick="removePlayer('${p.replace(/'/g,"\\'")}')">✕</button></span>
+  `).join("");
+}
+
+function renderDisciplinesSettings(){
+  const container = document.getElementById("disciplineList");
+  if(!container) return;
+  container.innerHTML = state.disciplines.map(d=>`
+    <div class="discipline-row">
+      <input type="text" value="${escapeHtml(d.label)}" onchange="updateDisciplineField('${d.key}','label',this.value)" aria-label="Navn på gren">
+      <div class="discipline-sub">
+        <label>Runder</label>
+        <input type="number" min="1" max="15" value="${d.attempts}" onchange="updateDisciplineField('${d.key}','attempts',this.value)">
+        <input type="text" value="${escapeHtml(d.unit)}" placeholder="Hva telles" onchange="updateDisciplineField('${d.key}','unit',this.value)">
+        <button onclick="removeDiscipline('${d.key}')">✕ Fjern</button>
+      </div>
+    </div>
+  `).join("") || `<div class="empty-note" style="color:#B5502F;">Ingen grener ennå — legg til under.</div>`;
+}
+
+function openSettings(){
+  renderPlayerChips();
+  renderDisciplinesSettings();
+  document.getElementById("settingsModal").style.display = "flex";
+}
+function closeSettings(){
+  document.getElementById("settingsModal").style.display = "none";
+}
+
+async function addPlayer(){
+  const input = document.getElementById("newPlayerInput");
+  const name = input.value.trim();
+  if(!name) return;
+  if(state.players.some(p=>p.toLowerCase()===name.toLowerCase())){
+    alert("Denne spilleren er allerede med.");
+    return;
+  }
+  state.players.push(name);
+  rebuildSchedules();
+  ensureScoreEntries();
+  input.value = "";
+  await saveData();
+  renderPlayerChips();
+  render();
+}
+
+async function removePlayer(name){
+  if(state.players.length <= 2){
+    alert("Du må ha minst 2 spillere.");
+    return;
+  }
+  if(!confirm(`Fjerne ${name}? Alle resultater knyttet til ${name} sine par forsvinner.`)) return;
+  state.players = state.players.filter(p=>p!==name);
+  rebuildSchedules();
+  ensureScoreEntries();
+  await saveData();
+  renderPlayerChips();
+  render();
+}
+
+async function addDiscipline(){
+  const nameInput = document.getElementById("newDisciplineName");
+  const roundsInput = document.getElementById("newDisciplineRounds");
+  const unitInput = document.getElementById("newDisciplineUnit");
+  const name = nameInput.value.trim();
+  if(!name) return;
+  let rounds = parseInt(roundsInput.value, 10);
+  if(!rounds || rounds < 1) rounds = 3;
+  const unit = unitInput.value.trim() || "poeng";
+  const key = uniqueDisciplineKey(slugify(name));
+
+  state.disciplines.push({ key, label:name, attempts:rounds, unit });
+  state.schedule[key] = generateMatchOrder(state.players);
+  ensureScoreEntries();
+
+  nameInput.value = "";
+  roundsInput.value = "3";
+  unitInput.value = "";
+  await saveData();
+  renderDisciplinesSettings();
+  currentTab = key;
+  render();
+}
+
+async function removeDiscipline(key){
+  const d = state.disciplines.find(x=>x.key===key);
+  if(!d) return;
+  if(!confirm(`Fjerne grenen «${d.label}»? Alle resultater for denne grenen forsvinner.`)) return;
+  state.disciplines = state.disciplines.filter(x=>x.key!==key);
+  delete state.schedule[key];
+  delete state.scores[key];
+  if(currentTab === key){
+    currentTab = state.disciplines[0] ? state.disciplines[0].key : "stilling";
+  }
+  await saveData();
+  renderDisciplinesSettings();
+  render();
+}
+
+async function updateDisciplineField(key, field, value){
+  const d = state.disciplines.find(x=>x.key===key);
+  if(!d) return;
+  if(field === "label"){
+    const trimmed = value.trim();
+    if(trimmed) d.label = trimmed;
+  } else if(field === "unit"){
+    d.unit = value.trim() || "poeng";
+  } else if(field === "attempts"){
+    let n = parseInt(value, 10);
+    if(!n || n < 1) n = 1;
+    if(n > 15) n = 15;
+    resizeDisciplineRounds(key, n);
+    d.attempts = n;
+  }
+  await saveData();
+  renderDisciplinesSettings();
+  render();
+}
+
+async function startNewTournament(){
+  if(!confirm("Dette nullstiller ALLE registrerte resultater for gjeldende spillere. Er du sikker?")) return;
+  rebuildSchedules();
+  state.scores = {};
+  state.disciplines.forEach(d=>{ state.scores[d.key] = {}; });
+  ensureScoreEntries();
+  openPair = {};
+  await saveData();
+  closeSettings();
+  render();
+}
+
+function renderTabBar(){
+  const nav = document.querySelector("nav.tabbar");
+  let html = "";
+  state.disciplines.forEach(d=>{
+    html += `<button data-tab="${d.key}"><span class="ic">🎲</span>${escapeHtml(d.label)}</button>`;
+  });
+  html += `<button data-tab="stilling"><span class="ic">🏆</span>Stilling</button>`;
+  nav.innerHTML = html;
+  nav.querySelectorAll("button").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      currentTab = btn.dataset.tab;
+      render();
+    });
+  });
+}
+
+function render(){
+  renderTabBar();
+  const content = document.getElementById("content");
+  const subtitle = document.getElementById("subtitle");
+  document.querySelectorAll(".tabbar button").forEach(btn=>{
+    btn.classList.toggle("active", btn.dataset.tab === currentTab);
+  });
+  if(currentTab === "stilling"){
+    subtitle.textContent = "Stillingen i turneringen";
+    content.innerHTML = renderStandingsTab();
+  } else {
+    const d = state.disciplines.find(x=>x.key===currentTab);
+    if(d){
+      subtitle.textContent = `${d.label} · beste av ${d.attempts} teller`;
+      content.innerHTML = renderDisciplineTab(currentTab);
+    } else {
+      currentTab = "stilling";
+      subtitle.textContent = "Stillingen i turneringen";
+      content.innerHTML = renderStandingsTab();
+    }
+  }
+}
+
+(async function init(){
+  await loadData();
+  render();
+})();
+</script>
+</body>
+</html>
