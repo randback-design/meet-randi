@@ -210,7 +210,7 @@ const portfolioCases = [
     mediaType: "multi",
     media: [
       {type:"vimeo", src:"https://player.vimeo.com/video/1212105008?h=aff3049ef9&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_dumper.png", label:"Cappi dumper"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
       {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
     ],
     thumbBg: "#d0efe7",
