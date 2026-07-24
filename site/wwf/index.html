@@ -132,6 +132,24 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .portfolio-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .portfolio-chip{font-size:11px;background:var(--t3);color:var(--t2);padding:2px 8px;border-radius:50px;font-weight:600}
 
+/* ── TEKSTPRØVER ── */
+.text-sample-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+.text-sample-card{background:var(--card);border-radius:16px;padding:24px;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.text-sample-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
+.text-sample-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
+.text-sample-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.text-sample-context{font-size:13px;color:var(--muted);margin-bottom:14px}
+.text-sample-excerpt{font-size:14px;color:var(--black);line-height:1.6;font-style:italic;border-left:3px solid var(--t3);padding-left:14px;margin-bottom:14px;flex:1}
+.text-sample-see-more{display:inline-block;align-self:flex-start;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
+.text-sample-card:hover .text-sample-see-more{background:var(--t1);color:#fff}
+.text-sample-modal-body{font-size:15px;color:var(--muted);line-height:1.8;white-space:pre-line;background:var(--t3);border-radius:12px;padding:20px 24px;margin-top:16px}
+@media(max-width:900px){
+  .text-sample-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .text-sample-grid{grid-template-columns:1fr}
+}
+
 /* ── MODAL KARUSELL ── */
 .modal-carousel-wrap{margin-bottom:24px}
 .modal-carousel-track-outer{border-radius:12px;background:var(--t3);padding:20px}
@@ -235,6 +253,7 @@ footer a:hover{color:var(--t1)}
   <ul class="nav-links" id="navLinks">
     <li><a href="#om">Om meg</a></li>
     <li><a href="#portefolje">Portefølje</a></li>
+    <li><a href="#tekstprover">Tekstprøver</a></li>
     <li><a href="#erfaring">Erfaring</a></li>
   </ul>
   <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
@@ -293,11 +312,22 @@ footer a:hover{color:var(--t1)}
   </div>
 </div>
 
+<!-- TEKSTPRØVER -->
+<div class="wrap" id="tekstprover">
+  <div class="portfolio-section">
+    <div class="section-eyebrow">Tekstprøver</div>
+    <div class="section-title">Skriveeksempler</div>
+    <div class="section-intro">Noen eksempler på tekst jeg har skrevet – hentet fra caser og oppdrag. Enkelte er anonymisert av hensyn til oppdragsgiver.</div>
+    <div class="text-sample-grid" id="textSampleGrid"></div>
+  </div>
+</div>
+
 <!-- REFERANSER -->
 <div class="ref-section" id="referanser">
   <div class="ref-outer">
     <div class="section-eyebrow" style="margin-bottom:6px">Referanser</div>
     <div class="section-title" style="margin-bottom:20px">Hva sier andre om deg?</div>
+
     <div class="ref-track" id="refTrack"></div>
     <div class="car-nav">
       <button class="car-nav-btn" onclick="stepRef(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>

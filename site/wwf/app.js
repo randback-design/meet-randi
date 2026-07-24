@@ -410,6 +410,43 @@ function openModal(i){
   if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
 }
 
+// ── TEKSTPRØVER ──
+const textSamples = [
+  {
+    tag: "SoMe / Instagram",
+    title: "Lanseringstekst – bakemikser",
+    context: "Skrevet som del av en kreativ case-oppgave for en anonymisert barnematmerkevare, i forbindelse med lansering av en ny produktlinje.",
+    excerpt: "Vi vokser! Og det har jo vært planen hele veien. 🌱",
+    fullText: "Vi vokser! Og det har jo vært planen hele veien. 🌱\n\nVi vil være det sunne, økologiske og allergivennlige alternativet i barnemathylla – med produkter laget av rene råvarer og ingredienser man faktisk kjenner igjen.\n\nSamtidig håper vi å inspirere flere til å tenke litt annerledes om barnemat. Derfor deler vi også oppskrifter, tips og kunnskap underveis.\n\nOg nå har det kommet noe nytt i hylla fra oss 👀\n\nNemlig bakemikser! De fås i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nMed bare 2–3 ekstra ingredienser hjemme kan du lage sunn og smakfull bakst på under 30 minutter. Enklere for de voksne, skikkelig godt for mini – og perfekt både til frokost, matpakke og fest. 🎉"
+  }
+];
+
+function buildTextSamples(){
+  const grid = document.getElementById('textSampleGrid');
+  if(!grid) return;
+  grid.innerHTML = textSamples.map((t,i) => `
+    <div class="text-sample-card" onclick="openTextModal(${i})">
+      <div class="text-sample-tag">${t.tag}</div>
+      <div class="text-sample-title">${t.title}</div>
+      <div class="text-sample-context">${t.context}</div>
+      <div class="text-sample-excerpt">${t.excerpt}</div>
+      <span class="text-sample-see-more">Les hele teksten</span>
+    </div>
+  `).join('');
+}
+
+function openTextModal(i){
+  const t = textSamples[i];
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-tag">${t.tag}</div>
+    <div class="modal-title">${t.title}</div>
+    <div class="modal-problem"><div class="modal-problem-label">Kontekst</div><div class="modal-problem-text">${t.context}</div></div>
+    <div class="text-sample-modal-body">${t.fullText}</div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
 function goModalSlide(idx){
   modalCarIdx = idx;
   const track = document.getElementById('modalCarTrack');
@@ -453,6 +490,7 @@ buildHeroContact();
 buildTimeline();
 buildSkills();
 buildPortfolio();
+buildTextSamples();
 buildRefCarousel();
 initSwipe();
 
