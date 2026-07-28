@@ -76,7 +76,9 @@ function stepRef(dir){ goRef(refIdx + dir*visibleCount()); }
 let hattIdx = 0;
 const hattCount = 5;
 function buildHattNav(){
-  document.getElementById('hattDots').innerHTML = Array.from({length:hattCount}).map((_,i) =>
+  const dotsEl = document.getElementById('hattDots');
+  if(!dotsEl) return;
+  dotsEl.innerHTML = Array.from({length:hattCount}).map((_,i) =>
     `<button class="car-nav-dot${i===0?' active':''}" onclick="goHatt(${i})"></button>`
   ).join('');
 }
@@ -413,11 +415,64 @@ function openModal(i){
 // ── TEKSTPRØVER ──
 const textSamples = [
   {
-    tag: "SoMe / Instagram",
+    tag: "Filmanmeldelser",
+    title: "Anmeldelser – Ready Player One & Wonder Park",
+    context: "To filmanmeldelser skrevet i en mer resonnerende, personlig tone enn den kommersielle SoMe-teksten – viser en annen side av skrivestilen min.",
+    excerpt: "En film signert Steven Spielberg er ofte verdt en kikk. Og her blir man ikke skuffet.",
+    channels: [
+      {
+        label: "Ready Player One (2018)",
+        text: "Regissør: Steven Spielberg | IMDb: 7.5\n\nVirtuell virkelighet. Fremtid. Spill. Retro. Action. Vennskap\n\nEn film signert Steven Spielberg er ofte verdt en kikk. Og her blir man ikke skuffet. Det at handlingen er lagt litt fram i tid, til 2045, og at over halve filmens forløp foregår i en virtuell virkelighet plasserer den i Sci-fi-kategorien. Men vi er et godt stykke fra både Star Wars og X-Men her, altså. I bunn og grunn handler det om spillglede, ekte mennesker og ekte følelser.\n\nEn virtuell virkelighetsflukt\nDet har ikke gått så bra med verden fram til 2045. Folk bor nå i brakker, det er mye bråk og kriminalitet – i det hele tatt er livet ganske stusslig. Derfor rømmer menneskene så ofte de kan inn i den virtuelle verdenen Oasis, skapt av spill-geniene James Halliday og Ogden Morrow. I Oasis kan man være akkurat den man vil, og det er der man treffer venner, kjøper seg kule ting, og går på diskotek. Halliday var selve hjernen bak spillet. Han var ung på 80-tallet, og har bygget inn drøssevis av referanser fra sin ungdomstid i Oasis. Når den eksentriske grunnleggeren blir syk og dør, testamenterer han livsverket sitt til vinneren av et episk spill i Oasis.\n\nJakten på en arvtager\nEn av dem som lever livet sitt i Oasis, og elsker hver minste bit av spillets univers, er Wade Watts. Han er en foreldreløs ungdom som bor under dårlige kår hos tanten sin og hennes voldelige kjæreste. Han har flere venner i Oasis, og er blant de ivrigste når det gjelder kunnskap om spillet, dets grunnlegger, og 80-talls kultur. Wade, eller Parzival som han kaller seg i Oasis, drømmer selvfølgelig om å bli den som arver Hallidays livsverk. Han tilbringer så mye tid som mulig alene i et skur med VR-brillene og bodysuiten på. Men det er mange som ønsker å bli Oasis nye eier, og slett ikke alle har gode hensikter.\n\nProppfull av henvisninger\nDenne filmen er en actionfylt godtepose for den som liker gamle PC-spill, ikoniske filmer som «The Shining» og «Back to the Future», action og spenning. Det dukker opp kjente filmfigurer som Jernkjempen og King Kong, og spillkarakterer fra klassiske Street Fighter og nyere Overwatch.\n\nDet er ganske tøft egentlig, hvordan denne filmen evner å blande VR og framtidens teknologi, med 80- og 90-tallsklær, Duran Duran, og gamle PC-spill med pixlete grafikk, og få det hele til å framstå så helhetlig. Filmen er også mesterlig produsert, og animasjon, grafikk og ekte bilder er mikset sammen så sømløst at man knapt ofrer overgangene en tanke."
+      },
+      {
+        label: "Wonder Park (2019)",
+        text: "Regissør: Dylan Brown | IMDb: 5.8\n\nAnimasjon. Fantasi. Barndom. Eventyr. Sorg. Følelser\n\nWonder Park ser kanskje ut som en berg-og-dalbane med latter og moro på coveret, men den er så mye mer enn det, og langt fra så lystig som en skulle tro. Fornøyelsesparker har gjerne attraksjoner for både store og små, for den fartsgale, og for den som helst bare vil spise sukkerspinn og se seg rundt. Det samme kan man si om denne filmen. Den treffer godt både hos femåringen, 10-åringen, og mor og far – på ulike plan.\n\nAblegøyer, action og alvor\nJune er en fantasifull, livlig og kreativ jente. Det hun elsker mest her i verden er å leke fornøyelsespark sammen med mammaen sin, som er like full av ideer og påfunn som henne selv. De klipper, limer, monterer og finner på historier. Hele huset er fullt av deres karuseller, boder og vannsklier. Og i Junes hode blir parken og dyrene som driver den sprell levende og helt så ekte som det går an. Men så blir Junes mamma syk. Så alvorlig syk blir hun at hun er nødt til å reise fra June og pappaen i lang tid for å få behandling.\n\nVakkert om fantasi og følelser\nNår mammaen reiser, skjønner den voksne tilskuer at denne filmen ikke bare er en morsom tegnefilm, men at den har en alvorligere undertone. Og det blir mørkere – både i Junes sinn og i fornøyelsesparken. June klarer ikke komme på en eneste ny idé, og en dag pakker hun vekk alle modellene og utklippene som fyller huset. Hun vil passe på pappaen sin isteden. Bekymring og tungsinn har dyttet bort fantasien og skapetrangen. Det hjelper ikke hvor mye barna i gata maser om å bygge berg-og-dalbane i hagen.\n\nTrøbbel i liksomland\nUten Junes påfunn går det dårlig med fornøyelsesparken. Den er faktisk i ferd med å bli revet i fillebiter av onde skapninger. Heldigvis oppdager den lille jenta det i siste sekund og får ryddet opp, slik at dette blir en film som ender godt på alle vis.\n\nFor de minste barna er dette kanskje bare en film som er morsom og spennende, men de litt større vil nok også få med seg budskapet; følelsene våre virker inn på alt, og noen ganger må man selv gå grundig til verks for å få finne igjen gleden når livet byr på utfordringer."
+      }
+    ]
+  },
+  {
+    tag: "Barnematmerkevare (case)",
     title: "Lanseringstekst – bakemikser",
     context: "Skrevet som del av en kreativ case-oppgave for en anonymisert barnematmerkevare, i forbindelse med lansering av en ny produktlinje.",
     excerpt: "Vi vokser! Og det har jo vært planen hele veien. 🌱",
-    fullText: "Vi vokser! Og det har jo vært planen hele veien. 🌱\n\nVi vil være det sunne, økologiske og allergivennlige alternativet i barnemathylla – med produkter laget av rene råvarer og ingredienser man faktisk kjenner igjen.\n\nSamtidig håper vi å inspirere flere til å tenke litt annerledes om barnemat. Derfor deler vi også oppskrifter, tips og kunnskap underveis.\n\nOg nå har det kommet noe nytt i hylla fra oss 👀\n\nNemlig bakemikser! De fås i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nMed bare 2–3 ekstra ingredienser hjemme kan du lage sunn og smakfull bakst på under 30 minutter. Enklere for de voksne, skikkelig godt for mini – og perfekt både til frokost, matpakke og fest. 🎉"
+    channels: [
+      {
+        label: "LinkedIn",
+        text: "Vi vokser! Og det har jo vært planen hele veien. 🌱\n\nVi vil være det sunne, økologiske og allergivennlige alternativet i barnemathylla – med produkter laget av rene råvarer og ingredienser man faktisk kjenner igjen.\n\nSamtidig håper vi å inspirere flere til å tenke litt annerledes om barnemat. Derfor deler vi også oppskrifter, tips og kunnskap underveis.\n\nOg nå har det kommet noe nytt i hylla fra oss 👀\n\nNemlig bakemikser! De fås i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nMed bare 2–3 ekstra ingredienser hjemme kan du lage sunn og smakfull bakst på under 30 minutter. Enklere for de voksne, skikkelig godt for mini – og perfekt både til frokost, matpakke og fest. 🎉"
+      },
+      {
+        label: "Nyhetsbrev (før lansering)",
+        text: "Sunne, velsmakede nyheter på vei!\n\nDu kan tro vi gleder oss til noe som skal skje om bare noen få uker … Da lanserer vi nemlig en helt ny produktserie i barnemathylla!\n\nKan du gjette hva det er? 🔍🤗\n\nVi ville holdt et øye med innboksen framover, om vi var deg. Kanskje feirer vi nyheten med en konkurranse?"
+      },
+      {
+        label: "Nyhetsbrev (etter lansering)",
+        text: "Noen nyheter er så bra at de fortjener konfetti! 🎉\n\nEndelig kan vi slippe katta ut av sekken … eller rettere sagt bakemiksen ut av posen!\n\nNå er våre sunne, velsmakende og festlige nyheter å finne i barnemathylla, og du kan lage havremuffins, speltvafler og grøtpinner til mini (og resten av familien) på rekordtid.\n\nPosene er like fargerike og glade som alle våre andre produkter – og selvfølgelig like fulle av næring og smak. Du finner dem i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nVinn en fest-pakke 🥳\nHar du lyst til å teste bakemiksene, og nyte resultatet mens du har party-hatt på hodet og konfetti i sofaen?\n\nTipp på hvor lang tid det tar fra du åpner en pakke speltvafler til du kan servere den første vaffelplaten, og bli med i trekningen av denne supre fest-pakka.\n\n⚪ Ca 5 minutter ⚪ Ca 25 minutter ⚪ Ca 40 minutter\n\nSvar sendes til oss på e-post. Vi trekker 5 heldige vinnere, som blir kontaktet på e-post 18. september."
+      },
+      {
+        label: "SoMe (kort variant 1)",
+        text: "Endelig kan vi slippe katta... eller snarere bakemiksen ut av posen! Det er nemlig nyheten vi har gledet oss til å dele; bakemiks for sunn, enkel og ikke minst velsmakende snacks til de små (og store)"
+      },
+      {
+        label: "SoMe (kort variant 2)",
+        text: "Endelig kan vi slippe nyheten! Vi lanserer bakemikser, og snart kan du finne denne freshe pakken med muffinsmiks i barnemathyllen!"
+      }
+    ]
+  },
+  {
+    tag: "Allente (reell tekst)",
+    title: "Allente-stipendet",
+    context: "Skrevet i forbindelse med Allente-stipendet, en støtteordning for breddeidrett i Norge. Ikke anonymisert – dette er egne tekster skrevet i jobb hos Allente.",
+    excerpt: "De to store TV-distributørene Canal Digital og Viasat Consumer slo seg sammen i fjor, og har blitt til Allente.",
+    channels: [
+      {
+        label: "Programtekst (norsk)",
+        text: "De to store TV-distributørene Canal Digital og Viasat Consumer slo seg sammen i fjor, og har blitt til Allente. All Entertainment. De samler all underholdning på ett sted og tilbyr TV, streaming og bredbånd til over en million mennesker i hele Norden.\n\nI sommer startet de opp et helt nytt stipend, Allente-stipendet, med formål om å dele ut kjærkomne bidrag til breddeidretten i Norge.\n\nAlle idrettslag og klubber kan søke midler fra stipendet, uavhengig av idrettsgren, alder på utøvere eller funksjonsevne. Et lag drømmer kanskje om en varmepumpe til klubbhuset, et annet trenger nye drakter, eller ønsker å reise sammen på den cupen som vil bli et minne for livet. Behovene i idrettsnorge er mange.\n\nFørste frist for å søke Allente-stipendet var 1. september, og det kom inn massevis av gode søknader. En jury har valgt ut flere gode vinnere og her i (navn på program) vil vi følge opp disse og se hvordan midlene fra Allente vil bidra til å spre litt ekstra idrettsglede rundt om i Norge."
+      },
+      {
+        label: "Intranett (engelsk)",
+        text: "🏀👟ALLENTE-STIPENDET – Update ⚽🎾\n\nThe six winners of the first round of our new scholarship are now starting to get their projects going. It's so exciting to see! We will keep you posted about how Allente has supported the winners with tournament contributions, sports equipment, team building and even a brand new kitchen in the club house. Amedia is producing content articles and videos about the winners distributed in the local newspapers.\n\nHere's the first winner; Romerike Kyokushin Karateklubb. They had lost a lot of members during the pandemic, and needed some help with the recruiting. 🥋🥋🥋\n\nhttps://www.rb.no/vis/annonse/allente-romerike-karateklubb/"
+      }
+    ]
   }
 ];
 
@@ -430,21 +485,45 @@ function buildTextSamples(){
       <div class="text-sample-title">${t.title}</div>
       <div class="text-sample-context">${t.context}</div>
       <div class="text-sample-excerpt">${t.excerpt}</div>
-      <span class="text-sample-see-more">Les hele teksten</span>
+      <span class="text-sample-see-more">${t.channels.length > 1 ? `Se ${t.channels.length} kanalvarianter` : 'Les hele teksten'}</span>
     </div>
   `).join('');
 }
 
 function openTextModal(i){
   const t = textSamples[i];
+  let mediaHtml = '';
+  if(t.channels.length > 1){
+    modalCarIdx = 0;
+    const slides = t.channels.map(c =>
+      `<div class="modal-carousel-slide text-slide"><div class="text-channel-label">${c.label}</div><div class="text-sample-modal-body">${c.text}</div></div>`
+    ).join('');
+    const dots = t.channels.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
+    mediaHtml = `<div class="modal-carousel-wrap">
+      <div class="modal-carousel-track-outer">
+        <div class="modal-carousel-track-clip">
+          <div class="modal-carousel-track" id="modalCarTrack">${slides}</div>
+        </div>
+      </div>
+      <div class="car-nav">
+        <button class="car-nav-btn" onclick="stepModalSlide(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="car-nav-dots" id="modalCarDots">${dots}</div>
+        <button class="car-nav-btn" onclick="stepModalSlide(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>`;
+  } else {
+    mediaHtml = `<div class="text-channel-label">${t.channels[0].label}</div><div class="text-sample-modal-body">${t.channels[0].text}</div>`;
+  }
   document.getElementById('modalContent').innerHTML = `
     <div class="modal-tag">${t.tag}</div>
     <div class="modal-title">${t.title}</div>
     <div class="modal-problem"><div class="modal-problem-label">Kontekst</div><div class="modal-problem-text">${t.context}</div></div>
-    <div class="text-sample-modal-body">${t.fullText}</div>
+    ${mediaHtml}
   `;
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  const mct = document.getElementById('modalCarTrack');
+  if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
 }
 
 function goModalSlide(idx){
