@@ -493,7 +493,7 @@ function openTextModal(i){
   if(t.channels.length > 1){
     modalCarIdx = 0;
     const slides = t.channels.map(c =>
-      `<div class="modal-carousel-slide text-slide"><div class="text-channel-label">${c.label}</div><div class="text-sample-modal-body">${c.text}</div></div>`
+      `<div class="modal-carousel-slide text-slide"><div class="text-channel-label">${c.label}</div><div class="text-sample-modal-body">${c.text}</div><div class="scroll-hint hidden"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>Scroll for mer</div></div>`
     ).join('');
     const dots = t.channels.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
     mediaHtml = `<div class="modal-carousel-wrap">
@@ -509,7 +509,7 @@ function openTextModal(i){
       </div>
     </div>`;
   } else {
-    mediaHtml = `<div class="text-channel-label">${t.channels[0].label}</div><div class="text-sample-modal-body">${t.channels[0].text}</div>`;
+    mediaHtml = `<div class="text-channel-label">${t.channels[0].label}</div><div class="text-sample-modal-body">${t.channels[0].text}</div><div class="scroll-hint hidden"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>Scroll for mer</div>`;
   }
   document.getElementById('modalContent').innerHTML = `
     <div class="modal-tag">${t.tag}</div>
@@ -521,6 +521,21 @@ function openTextModal(i){
   document.body.style.overflow = 'hidden';
   const mct = document.getElementById('modalCarTrack');
   if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
+  initScrollHints();
+}
+
+function initScrollHints(){
+  document.querySelectorAll('#modalContent .text-sample-modal-body').forEach(box => {
+    const hint = box.nextElementSibling;
+    if(!hint || !hint.classList.contains('scroll-hint')) return;
+    const update = () => {
+      const overflowing = box.scrollHeight > box.clientHeight + 4;
+      const atBottom = box.scrollTop + box.clientHeight >= box.scrollHeight - 4;
+      hint.classList.toggle('hidden', !overflowing || atBottom);
+    };
+    update();
+    box.addEventListener('scroll', update, {passive:true});
+  });
 }
 
 function goModalSlide(idx){
