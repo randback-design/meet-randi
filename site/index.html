@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -670,6 +668,35 @@ const portfolioCases = [
     ],
     thumbBg: "#d0efe7",
     thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
+  },
+  {
+    tag: "Annonsering",
+    title: "Kreative annonser – VG",
+    desc: "Mange annonser laget for VG sine annonsører, ofte laget i samarbeid med utvikler.",
+    problem: "Mange av VG (og Schibsted sine) annonsører ønsket annonser med «noe ekstra» – for eksempel on-scroll-funksjon, animasjon eller interaksjon.",
+    body: "Jeg jobbet med å svare på briefer, skisse ut konsepter, og lage annonsene enten alene eller i samarbeid med en frontend-utvikler på teamet.",
+    results: ["Animasjon","Koding","Kreativitet"],
+    chips: ["Illustrasjon","Konsept","Utvikling","Innsalg"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213866188?h=21a240459e&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", ratio:"1992/1236"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213866189?h=566c5fe5fa&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", portrait:true, ratio:"750/1334"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
+      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865712?h=26ca1dc6eb&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Serla", ratio:"1920/1300"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1208078682?badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norli", portrait:true, ratio:"750/1334"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398"}
+    ],
+    thumbBg: "#e3f4f0",
+    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Annonser_thumb.jpg"
   }
 ];
 
@@ -739,7 +766,7 @@ function openModal(i){
     modalCarIdx = 0;
     const slides = c.media.map(m => {
       let inner = '';
-      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen${m.ratio?` style="aspect-ratio:${m.ratio}"`:''}></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
       return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}${m.portrait?' portrait-video':''}">${inner}</div>`;
