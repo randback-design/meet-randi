@@ -139,7 +139,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .modal-carousel-slide{min-width:100%;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;min-height:300px;box-sizing:border-box}
 .modal-carousel-slide.video-slide{min-height:0}
 .modal-carousel-slide img{width:auto;height:auto;max-height:460px;max-width:100%;border-radius:8px;display:block}
-.modal-carousel-slide iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:8px}
+.modal-carousel-slide iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:0}
 .modal-carousel-slide.portrait-video iframe{width:auto;height:min(460px,65vh);max-width:100%;aspect-ratio:9/16}
 .modal-carousel-slide .placeholder-slide{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t2);letter-spacing:.08em;text-transform:uppercase}
 
@@ -689,11 +689,11 @@ const portfolioCases = [
       {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
       {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
       {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865712?h=26ca1dc6eb&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Serla", ratio:"1920/1300"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1208078682?badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norli", portrait:true, ratio:"750/1334"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398"}
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398", maxWidth:380}
     ],
     thumbBg: "#e3f4f0",
     thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Annonser_thumb.jpg"
@@ -766,7 +766,7 @@ function openModal(i){
     modalCarIdx = 0;
     const slides = c.media.map(m => {
       let inner = '';
-      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen${m.ratio?` style="aspect-ratio:${m.ratio}"`:''}></iframe>`;
+      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen${(m.ratio||m.maxWidth)?` style="${m.ratio?`aspect-ratio:${m.ratio};`:''}${m.maxWidth?`max-width:${m.maxWidth}px;`:''}"`:''}></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
       return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}${m.portrait?' portrait-video':''}">${inner}</div>`;
