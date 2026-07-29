@@ -140,7 +140,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .text-sample-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
 .text-sample-title{font-size:16px;font-weight:700;margin-bottom:4px}
 .text-sample-context{font-size:13px;color:var(--muted);margin-bottom:14px}
-.text-sample-excerpt{font-size:14px;color:var(--black);line-height:1.6;font-style:italic;border-left:3px solid var(--t3);padding-left:14px;margin-bottom:14px;flex:1;display:flex;align-items:center}
+.text-sample-excerpt{font-size:14px;color:var(--black);line-height:1.6;font-style:italic;margin-bottom:14px;flex:1;display:flex;align-items:center}
+.text-sample-excerpt-inner{border-left:3px solid var(--t3);padding-left:14px;display:inline-block}
 .text-sample-see-more{display:inline-block;align-self:flex-start;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
 .text-sample-card:hover .text-sample-see-more{background:var(--t1);color:#fff}
 .text-sample-modal-body{font-size:15px;color:var(--muted);line-height:1.8;white-space:pre-line;background:var(--t3);border-radius:12px;padding:20px 24px;margin-top:16px;max-height:55vh;overflow-y:auto}
@@ -811,7 +812,7 @@ function buildTextSamples(){
       <div class="text-sample-tag">${t.tag}</div>
       <div class="text-sample-title">${t.title}</div>
       <div class="text-sample-context">${t.context}</div>
-      <div class="text-sample-excerpt">${t.excerpt}</div>
+      <div class="text-sample-excerpt"><span class="text-sample-excerpt-inner">${t.excerpt}</span></div>
       <span class="text-sample-see-more">${t.channels.length > 1 ? `Se ${t.channels.length} kanalvarianter` : 'Les hele teksten'}</span>
     </div>
   `).join('');
