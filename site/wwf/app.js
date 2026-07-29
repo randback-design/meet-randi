@@ -481,7 +481,7 @@ function buildTextSamples(){
       <div class="text-sample-tag">${t.tag}</div>
       <div class="text-sample-title">${t.title}</div>
       <div class="text-sample-context">${t.context}</div>
-      <div class="text-sample-excerpt">${t.excerpt}</div>
+      <div class="text-sample-excerpt"><span class="text-sample-excerpt-inner">${t.excerpt}</span></div>
       <span class="text-sample-see-more">${t.channels.length > 1 ? `Se ${t.channels.length} kanalvarianter` : 'Les hele teksten'}</span>
     </div>
   `).join('');
