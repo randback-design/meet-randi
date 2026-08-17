@@ -151,12 +151,12 @@ function initSwipe(){
 
 // ── FAQ ──
 const mainQA = [
-  {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer, og «markedsperson» med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell og tekstlig kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt), og jeg er også veldig glad i å skrive.<br><br>Dessuten er jeg kreativ, sosial, leken og ganske glad i tempo og mange baller i luften – uten at det går på bekostning av mitt behov for god orden, struktur og overblikk. 🎨 ✅<br><br>Og så er jeg mamma, kjæreste, hundeeier og en ivrig konsert- og teatergjenger. 🎵 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
-  {q:"Hvorfor søker du på denne jobben?", type:"text", text:"Apotek 1 når hundretusenvis av kunder hver eneste uke, og det å få bidra til at den kommunikasjonen faktisk hjelper folk å ta bedre valg for egen helse, synes jeg høres veldig meningsfullt ut.<br><br>Jeg har alltid vært opptatt av hvordan godt innhold kan engasjere mennesker og få dem til å handle – enten det er å åpne en e-post, klikke seg videre, eller huske et budskap. Gjennom 20 år i mediebransjen har jeg lært meg å skrive og formidle på måter som treffer ulike målgrupper, og jeg liker godt kombinasjonen av språklig teft og kommersiell forståelse som denne rollen ber om.<br><br>Jeg trives også godt med å teste og optimalisere underveis – ikke bare skrive og publisere, men se hva som faktisk fungerer, og justere deretter.", media:[]},
-  {q:"Få høre litt om innhold du har produsert da!", type:"text", text:"Jeg har produsert innhold for mange ulike målgrupper gjennom de siste 20 årene, men målet har alltid vært det samme: å få folk til å stoppe opp, lese, klikke eller komme tilbake.<br><br>I Egmont var jeg nettredaktør for Julia og jobbet også med donald.no. Jeg skrev artikler, laget quizzer og konkurranser, modererte forum og utviklet innhold for barn og unge. Mye av jobben handlet om å finne riktig tone for en ung målgruppe, og skrive tekster som faktisk ble lest til siste ord.<br><br>I VG jobbet jeg i et in-house-byrå, der vi utviklet kreative annonsekonsepter med animasjoner, spill og interaktive løsninger.<br><br>I Allente produserte jeg blant annet landingssider, nyhetsbrev, innhold til sosiale medier og video, og jobbet mye med A/B-testing for å finne de løsningene som fungerte best.", media:[]},
-  {q:"Hva mener du er det viktigste du kan bidra med hos oss?", type:"text", text:"Jeg har bred erfaring akkurat fra den typen arbeid dere beskriver. I Allente jobbet jeg med CRM og var med på å utvikle en ny mal for MessageGears, samtidig som jeg jobbet tett med A/B-testing på nettsiden og landingssider sammen med e-comm-teamet. Jeg har også laget annonser mot ulike målgrupper, både i Allente og VG.<br><br>Jeg kan det grunnleggende innen SEO, og følger med på hvordan feltet utvikler seg med AI-søk. Tverrfaglig samarbeid er jeg godt vant til, internt og med eksterne partnere – noe som startet allerede i min aller første jobb, med optimalisering av nettsider i det som senere ble Allente.", media:[]},
-  {q:"Er du god til å skrive?", type:"text", text:"Jeg har alltid likt å skrive, og selv om jeg ikke har noen formell utdanning innen akkurat det, har jeg jobbet mye med tekst gjennom de fleste stillinger jeg har hatt.<br><br>På min siste arbeidsplass, Allente, var jeg en del av et markedsteam der vi hadde flere tekstforfattere, så da ble det ikke fullt så mye behov for tekst fra meg, men jeg har likevel bidratt med mye tekst til for eksempel landingssider. Under «Tekstprøver» lenger ned finner dere noen eksempler på skrivestilen min.", media:[]},
-  {q:"Hvilke programmer jobber du i?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Mer om dette ser dere i en egen blokk lengre ned på denne siden.<br><br>Jeg har god erfaring med Episerver som CMS, og er også glad i å lære nye programmer og verktøy – jeg har blant annet bidratt til å implementere både Monday.com (prosjektstyring) og Bannerflow (annonseproduksjon) på min siste arbeidsplass.", media:[]},
+  {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer, og «markedsperson» med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell og tekstlig kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt), og jeg er også veldig glad i å skrive.<br><br>Dessuten er jeg kreativ, sosial, leken og ganske glad i tempo og mange baller i luften – uten at det går på bekostning av mitt behov for god orden, struktur og overblikk. 🎨 ✅<br><br>Og så er jeg mamma, kjæreste, hundeeier og en ivrig konsert- og teatergjenger. 🎵🐶 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
+  {q:"Hvorfor søker du på denne jobben?", type:"text", text:"Apotek 1 når hundretusenvis av kunder hver eneste uke, og det å få bidra til at den kommunikasjonen faktisk hjelper folk å ta bedre valg for egen helse, synes jeg høres veldig meningsfullt ut. 💊<br><br>Jeg har alltid vært opptatt av hvordan godt innhold kan engasjere mennesker og få dem til å handle – enten det er å åpne en e-post, klikke seg videre, eller huske et budskap. Gjennom 20 år i mediebransjen har jeg lært meg å skrive og formidle på måter som treffer ulike målgrupper, og jeg liker godt kombinasjonen av språklig teft og kommersiell forståelse som denne rollen ber om.<br><br>Jeg trives også godt med å teste og optimalisere underveis – ikke bare skrive og publisere, men se hva som faktisk fungerer, og justere deretter. 📈", media:[]},
+  {q:"Få høre litt om innhold du har produsert da!", type:"text", text:"Jeg har produsert innhold for mange ulike målgrupper gjennom de siste 20 årene, men målet har alltid vært det samme: å få folk til å stoppe opp, lese, klikke eller komme tilbake. ✍️<br><br>I Egmont var jeg nettredaktør for Julia og jobbet også med donald.no. Jeg skrev artikler, laget quizzer og konkurranser, modererte forum og utviklet innhold for barn og unge. Mye av jobben handlet om å finne riktig tone for en ung målgruppe, og skrive tekster som faktisk ble lest til siste ord.<br><br>I VG jobbet jeg i et in-house-byrå, der vi utviklet kreative annonsekonsepter med animasjoner, spill og interaktive løsninger.<br><br>I Allente produserte jeg blant annet landingssider, nyhetsbrev, innhold til sosiale medier og video, og jobbet mye med A/B-testing for å finne de løsningene som fungerte best.", media:[]},
+  {q:"Hva mener du er det viktigste du kan bidra med hos oss?", type:"text", text:"Jeg har bred erfaring akkurat fra den typen arbeid dere beskriver. I Allente jobbet jeg med CRM og var med på å utvikle en ny mal for MessageGears, samtidig som jeg jobbet tett med A/B-testing på nettsiden og landingssider sammen med e-comm-teamet. Jeg har også laget annonser mot ulike målgrupper, både i Allente og VG.<br><br>Jeg kan det grunnleggende innen SEO 🔍, og følger med på hvordan feltet utvikler seg med AI-søk. Tverrfaglig samarbeid er jeg godt vant til, internt og med eksterne partnere – noe jeg fikk god trening i helt fra starten i Canal Digital (som senere ble Allente), der jeg jobbet med optimalisering av nettsider.", media:[]},
+  {q:"Er du god til å skrive?", type:"text", text:"Jeg har alltid likt å skrive 📝, og selv om jeg ikke har noen formell utdanning innen akkurat det, har jeg jobbet mye med tekst gjennom de fleste stillinger jeg har hatt.<br><br>På min siste arbeidsplass, Allente, var jeg en del av et markedsteam der vi hadde flere tekstforfattere, så da ble det ikke fullt så mye behov for tekst fra meg, men jeg har likevel bidratt med mye tekst til for eksempel landingssider. Under «Tekstprøver» lenger ned finner dere noen eksempler på skrivestilen min. 👇", media:[]},
+  {q:"Hvilke programmer jobber du i?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Mer om dette ser dere i en egen blokk lengre ned på denne siden. 👇<br><br>Jeg har god erfaring med Episerver som CMS, og er også glad i å lære nye programmer og verktøy – jeg har blant annet bidratt til å implementere både Monday.com (prosjektstyring) og Bannerflow (annonseproduksjon) på min siste arbeidsplass.", media:[]},
   {q:"Når kan du eventuelt starte i ny jobb?", type:"text", text:"Jeg er veldig fleksibel og kan starte på veldig kort varsel!<br><br>Etter en større nedbemanning i Allente er jeg nå på jakt etter nye utfordringer. I mellomtiden fyller jeg dagene med å lære nye ting, blant annet AI og animasjon. Har dere lyst til å se en arbeidsprøve på noe spesielt, lager jeg gjerne det. 😊", media:[]},
   {q:"Hvordan kontakter vi deg?", type:"text", text:"Ring meg på 97 72 03 15 📱<br><br>... eller send en mail til backmarkrandi@gmail.com 📩<br><br>Jeg håper veldig på å høre fra dere.", media:[]}
 ];
@@ -197,7 +197,7 @@ const portfolioCases = [
     mediaType: "vimeo",
     mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
+    thumbImg: "/portfolio/video/Showcase.jpg"
   },
   {
     tag: "Visuell profil",
@@ -209,19 +209,19 @@ const portfolioCases = [
     chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente1.png", label:"Allente 1"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente2.jpg", label:"Allente 2"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente3.jpg", label:"Allente 3"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente4.jpg", label:"Allente 4"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente5.png", label:"Allente 5"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente6.jpg", label:"Allente 6"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente7.jpg", label:"Allente 7"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente8.jpg", label:"Allente 8"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente9.png", label:"Allente 9"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente10.jpg", label:"Allente 10"}
+      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
+      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
+      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
+      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
+      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
+      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
+      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
+      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
+      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
     ],
     thumbBg: "#b8e5d9",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente_thumb.jpg"
+    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
   },
   {
     tag: "Annonsering",
@@ -233,16 +233,16 @@ const portfolioCases = [
     chips: ["Illustrasjon","Konsept","Utvikling","Innsalg"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
+      {type:"image", src:"/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
+      {type:"image", src:"/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213866188?h=21a240459e&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", ratio:"1992/1236"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213866189?h=566c5fe5fa&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", portrait:true, ratio:"750/1334"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
+      {type:"image", src:"/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
+      {type:"image", src:"/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
+      {type:"image", src:"/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865712?h=26ca1dc6eb&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Serla", ratio:"1920/1300"},
@@ -250,7 +250,7 @@ const portfolioCases = [
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398", maxWidth:380}
     ],
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Annonser_thumb.jpg"
+    thumbImg: "/portfolio/annonser/Annonser_thumb.jpg"
   }
 ];
 
