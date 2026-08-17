@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -25,9 +26,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
 .hero-video-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;cursor:pointer}
 .hero-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
-.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:8px 0 8px;align-items:center}
-.hero-bottom-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-top:16px}
-.hero-pills-desktop{display:flex;gap:8px;flex-wrap:wrap}
+.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
 .hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;transition:color .2s}
 .hero-contact-link:hover{color:#fff}
 .hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -74,13 +73,13 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 /* ── REFERANSE-SEKSJON ── */
 .ref-section{background:var(--white);padding:48px 0}
 .ref-outer{max-width:1060px;margin:0 auto;padding:0 48px}
-.ref-track{display:grid;grid-template-columns:repeat(4,calc(50% - 8px));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.ref-track{display:grid;grid-template-columns:repeat(6,calc(50% - 8px));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
 .ref-track::-webkit-scrollbar{display:none}
 .ref-slide{scroll-snap-align:start;min-width:0}
 .ref-slide .quote-card,.ref-slide .video-card{height:100%;display:flex;flex-direction:column}
 .ref-slide .quote-text{flex:1}
 @media(max-width:640px){
-  .ref-track{grid-template-columns:repeat(4,100%)}
+  .ref-track{grid-template-columns:repeat(6,100%)}
 }
 .quote-card{background:var(--t3);border-radius:16px;padding:28px 28px 24px}
 .quote-mark{font-size:64px;line-height:0.8;color:var(--t1);font-weight:700;margin-bottom:8px;font-family:Georgia,serif}
@@ -96,11 +95,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 
 /* Nav felles */
 .car-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px}
-.car-nav-btn{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.car-nav-btn{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid rgba(0,0,0,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
 .car-nav-btn:hover{background:var(--t1);border-color:var(--t1)}
 .car-nav-btn:hover svg path{stroke:#fff}
 .car-nav-dots{display:flex;gap:7px;align-items:center}
-.car-nav-dot{width:9px;height:9px;border-radius:50%;background:#d0d0d0;cursor:pointer;transition:background .2s,transform .2s;border:none;padding:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.car-nav-dot{width:9px;height:9px;border-radius:50%;background:#d0d0d0;cursor:pointer;transition:background .2s,transform .2s;border:none;padding:0}
 .car-nav-dot.active{background:var(--t1);transform:scale(1.2)}
 
 /* ── VIDEO CAROUSEL (FAQ) ── */
@@ -121,7 +120,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;align-items:stretch}
 .portfolio-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
 .portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
-.portfolio-nav{display:none}
 .portfolio-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .portfolio-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .portfolio-thumb-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
@@ -133,45 +131,14 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .portfolio-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .portfolio-chip{font-size:11px;background:var(--t3);color:var(--t2);padding:2px 8px;border-radius:50px;font-weight:600}
 
-/* ── TEKSTPRØVER ── */
-.text-sample-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
-.text-sample-card{background:var(--card);border-radius:16px;padding:24px;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-.text-sample-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
-.text-sample-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);margin-bottom:8px}
-.text-sample-title{font-size:16px;font-weight:700;margin-bottom:4px}
-.text-sample-context{font-size:13px;color:var(--muted);margin-bottom:14px}
-.text-sample-excerpt{font-size:14px;color:var(--black);line-height:1.6;font-style:italic;margin-bottom:14px;flex:1;display:flex;align-items:center}
-.text-sample-excerpt-inner{border-left:3px solid var(--t3);padding-left:14px;display:inline-block}
-.text-sample-see-more{display:inline-block;align-self:flex-start;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
-.text-sample-card:hover .text-sample-see-more{background:var(--t1);color:#fff}
-.text-sample-modal-body{font-size:15px;color:var(--muted);line-height:1.8;white-space:pre-line;background:var(--t3);border-radius:12px;padding:20px 24px;margin-top:16px;max-height:55vh;overflow-y:auto}
-.scroll-hint{display:flex;align-items:center;gap:6px;justify-content:center;font-size:12px;font-weight:700;color:var(--t2);margin-top:8px;opacity:1;transition:opacity .3s;letter-spacing:.02em}
-.scroll-hint svg{width:11px;height:11px;stroke:var(--t2);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;animation:scrollBounce 1.4s ease-in-out infinite}
-.scroll-hint.hidden{opacity:0;pointer-events:none}
-@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
-.text-channel-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-top:16px}
-.text-sample-modal-body strong{font-weight:700;color:var(--black)}
-.text-sample-modal-body .text-title-lg{display:block;font-size:18px;font-weight:700;color:var(--black);margin-bottom:2px}
-.modal-carousel-slide.text-slide{align-items:flex-start;min-height:0;display:block;width:100%}
-.modal-carousel-slide.text-slide .text-channel-label{margin-top:0}
-.modal-carousel-slide.text-slide .text-sample-modal-body{margin-top:8px;max-height:50vh;overflow-y:auto;background:transparent;padding:0}
-@media(max-width:900px){
-  .text-sample-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:640px){
-  .text-sample-grid{grid-template-columns:1fr}
-}
-
 /* ── MODAL KARUSELL ── */
 .modal-carousel-wrap{margin-bottom:24px}
 .modal-carousel-track-outer{border-radius:12px;background:var(--t3);padding:20px}
 .modal-carousel-track-clip{overflow:hidden;border-radius:8px;width:100%}
 .modal-carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1);width:100%}
 .modal-carousel-slide{min-width:100%;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;min-height:300px;box-sizing:border-box}
-.modal-carousel-slide.video-slide{min-height:0}
-.modal-carousel-slide img{width:auto;height:auto;max-height:460px;max-width:100%;border-radius:8px;display:block}
-.modal-carousel-slide iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:0}
-.modal-carousel-slide.portrait-video iframe{width:auto;height:min(460px,65vh);max-width:100%;aspect-ratio:9/16}
+.modal-carousel-slide img{width:auto;height:auto;max-height:400px;max-width:100%;border-radius:8px;display:block}
+.modal-carousel-slide iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:8px}
 .modal-carousel-slide .placeholder-slide{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t2);letter-spacing:.08em;text-transform:uppercase}
 
 /* ── PORTEFØLJE MODAL ── */
@@ -224,6 +191,7 @@ footer a:hover{color:var(--t1)}
 @media(max-width:900px){
   .two-col{grid-template-columns:1fr;gap:24px}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .intro-stats{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:640px){
   nav{padding:0 20px}
@@ -236,15 +204,14 @@ footer a:hover{color:var(--t1)}
   .burger{display:flex}
   .faq-a-inner{padding-left:0}
   footer{padding:24px 20px}
-  .portfolio-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:16px;margin-top:24px;padding-bottom:4px;align-items:stretch}
-  .portfolio-grid::-webkit-scrollbar{display:none}
-  .portfolio-grid .portfolio-card{flex:0 0 100%;width:100%;max-width:100%;scroll-snap-align:start;min-width:0}
-  .portfolio-nav{display:flex;margin-top:14px}
+  .portfolio-grid{grid-template-columns:1fr}
   .intro-tagline{font-size:24px}
-  .intro-stats{display:none}
+  .intro-stats{grid-template-columns:repeat(3,1fr)}
+  .stat-num{font-size:28px}
+  .stat-label{font-size:11px}
   .modal{padding:24px}
-  .modal-carousel-track-outer{padding:10px}
-  .hero-pills-desktop{display:none}
+  .stat-markedsavdeling{display:none}
+  .pill-engasjert{display:none}
   .hatt-outer{padding:0 20px}
 }
 .portfolio-tag{display:none}
@@ -263,7 +230,6 @@ footer a:hover{color:var(--t1)}
   <ul class="nav-links" id="navLinks">
     <li><a href="#om">Om meg</a></li>
     <li><a href="#portefolje">Portefølje</a></li>
-    <li><a href="#tekstprover">Tekstprøver</a></li>
     <li><a href="#erfaring">Erfaring</a></li>
   </ul>
   <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
@@ -273,20 +239,12 @@ footer a:hover{color:var(--t1)}
 <div class="hero-outer">
   <div class="hero-inner">
     <div class="hero-video-wrap" id="heroVideoWrap" onclick="playHeroVideo()">
-      <img src="https://raw.githubusercontent.com/randback-design/meet-randi/main/site/images/Randi.png" alt="Randi Bäckmark" style="width:100%;height:100%;object-fit:cover;display:block">
+      <img src="/images/Randi_generisk.png" alt="Randi Bäckmark" style="width:100%;height:100%;object-fit:cover;display:block">
       <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.15);border:3px solid rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(255,255,255,.1),0 0 24px rgba(255,255,255,.15)">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
     </div>
-    <div class="hero-bottom-row">
-      <div class="hero-contact" id="heroContact"></div>
-      <div class="hero-pills-desktop">
-        <span class="pill">Kreativ</span>
-        <span class="pill">Allsidig</span>
-        <span class="pill">Løsningsorientert</span>
-        <span class="pill">Engasjert</span>
-      </div>
-    </div>
+    <div class="hero-contact" id="heroContact"></div>
   </div>
 </div>
 
@@ -294,8 +252,14 @@ footer a:hover{color:var(--t1)}
 <div class="intro-banner" id="om">
   <div class="wrap">
     <div>
-      <div class="intro-tagline">Erfaren og allsidig grafisk designer/markedsfører <br class="tagline-break"><em>søker ny drømmejobb!</em></div>
-      <div class="intro-body">Hei! Randi her. Etter en større endring og reorganisering i bedriften jeg har jobbet i de siste sju årene, er jeg nå på jakt etter min neste arbeidsplass. Jeg håper den består av hyggelige og engasjerte folk, på et sted der det finnes flust av spennende oppgaver å ta fatt på.<br><br>Jeg har så mye å bidra med på veldig mange felt; fengende historiefortelling, god og tydelig kommunikasjon, kreativ annonsering og det å bygge merkevare over tid.</div>
+      <div class="intro-tagline">Jeg brenner for god historiefortelling og <em>markedsføring som treffer!</em></div>
+      <div class="intro-body">Hei! Jeg er Randi – en allsidig og erfaren grafisk designer som liker å jobbe med alt fra SoMe-innhold og markedsmateriell, til animasjon, illustrasjon og konseptutvikling. Og jeg har 20 års erfaring med visuell kommunikasjon, og for tiden er jeg på jakt etter min nye drømmejobb. Finner jeg den hos dere?</div>
+      <div class="intro-pills">
+        <span class="pill">Kreativ</span>
+        <span class="pill">Allsidig</span>
+        <span class="pill">Løsningsorientert</span>
+        <span class="pill pill-engasjert">Engasjert</span>
+      </div>
     </div>
     <div class="intro-stats">
       <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i mediabransjen</div></div>
@@ -313,45 +277,6 @@ footer a:hover{color:var(--t1)}
     <div class="section-intro">Klikk dere gjennom spørsmål og svar – eller scroll rett ned til portefølje og erfaring.</div>
   </div>
   <div class="faq-list" id="faqList"></div>
-</div>
-
-<!-- PORTEFØLJE -->
-<div class="wrap" id="portefolje">
-  <div class="portfolio-section">
-    <div class="section-eyebrow">Portefølje</div>
-    <div class="section-title">Utvalgte arbeider</div>
-    <div class="section-intro">Her er noen utvalgte arbeider jeg er stolt av, og som viser bredden i hva jeg kan bidra med.<br><br>Jeg har mengder med andre arbeider jeg kan vise fram. Video, annonser, merch osv. Men det kan vi ta under en eventuell prat. :)</div>
-    <div class="portfolio-grid" id="portfolioGrid"></div>
-    <div class="car-nav portfolio-nav" id="portfolioNav">
-      <button class="car-nav-btn" onclick="stepPortfolio(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="car-nav-dots" id="portfolioDots"></div>
-      <button class="car-nav-btn" onclick="stepPortfolio(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-</div>
-
-<!-- TEKSTPRØVER -->
-<div class="wrap" id="tekstprover">
-  <div class="portfolio-section">
-    <div class="section-eyebrow">Tekstprøver</div>
-    <div class="section-title">Skriveeksempler</div>
-    <div class="section-intro">Noen eksempler på tekst jeg har skrevet – hentet fra caser og oppdrag. Enkelte er anonymisert av hensyn til oppdragsgiver.</div>
-    <div class="text-sample-grid" id="textSampleGrid"></div>
-  </div>
-</div>
-
-<!-- REFERANSER -->
-<div class="ref-section" id="referanser">
-  <div class="ref-outer">
-    <div class="section-eyebrow" style="margin-bottom:6px">Referanser</div>
-    <div class="section-title" style="margin-bottom:20px">Hva sier andre om meg?</div>
-    <div class="ref-track" id="refTrack"></div>
-    <div class="car-nav">
-      <button class="car-nav-btn" onclick="stepRef(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="car-nav-dots" id="refDots"></div>
-      <button class="car-nav-btn" onclick="stepRef(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
 </div>
 
 <!-- HATT-SEKSJON -->
@@ -375,6 +300,30 @@ footer a:hover{color:var(--t1)}
     <button class="car-nav-btn" onclick="stepHatt(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="car-nav-dots" id="hattDots"></div>
     <button class="car-nav-btn" onclick="stepHatt(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+
+<!-- REFERANSER -->
+<div class="ref-section" id="referanser">
+  <div class="ref-outer">
+    <div class="section-eyebrow" style="margin-bottom:6px">Referanser</div>
+    <div class="section-title" style="margin-bottom:20px">Hva sier andre om meg?</div>
+    <div class="ref-track" id="refTrack"></div>
+    <div class="car-nav">
+      <button class="car-nav-btn" onclick="stepRef(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="car-nav-dots" id="refDots"></div>
+      <button class="car-nav-btn" onclick="stepRef(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<!-- PORTEFØLJE -->
+<div class="wrap" id="portefolje">
+  <div class="portfolio-section">
+    <div class="section-eyebrow">Portefølje</div>
+    <div class="section-title">Utvalgte arbeider</div>
+    <div class="section-intro">Her er noen utvalgte arbeider jeg er stolt av, og som viser bredden i hva jeg kan bidra med.</div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
   </div>
 </div>
 
@@ -417,7 +366,7 @@ function playHeroVideo(){
   const wrap = document.getElementById('heroVideoWrap');
   wrap.style.cursor = 'default';
   wrap.onclick = null;
-  wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1206746454?h=a2432c89bf&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block"></iframe>';
+  wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1193523730?h=002080cc43&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block"></iframe>';
 }
 
 // ── REFERANSER ──
@@ -425,24 +374,19 @@ const referanser = [
   {type:"quote",text:"Jeg har hatt den store gleden av å samarbeide med Randi, som utvikler i VG i 4 år. Randi er faglig sterk, kreativ, produktiv og en særdeles trivelig person å jobbe med. Hun forstår det tekniske innen webutvikling og har derfor vært en meget god samarbeidspartner.",name:"Simen Lysebo",role:"Fullstack-utvikler, TV 2 – Tidligere kollega fra VG"},
   {type:"quote",text:"Randi er en man alltid er glad for å være på lag med, og jeg var så heldig at jeg var med på hennes i tre år i Allente. Snakk om driv og gjennomføringsevne, men også en helt egen evne til å stille opp for kollegaer. Randi deler raust, både av kunnskap, personlighet og omsorg.",name:"Benedicte Norderhaug",role:"Content Producer, Allente – Tidligere kollega i Allente"},
   {type:"quote",text:"Hvis jeg må velge meg én favorittkollega gjennom tidene ... da velger jeg Randi. Åpent, løsningsorientert hode med idésterk, kreativ kraft som alltid leverer over forventet – og en nydelig, omtenksom og varm personlighet som alle bare elsker å jobbe med.",name:"Trine Grann",role:"Tekstforfatter – Tidligere kollega i Allente"},
-  {type:"quote",text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"}
+  {type:"quote",text:"Randi er en person et hvert team bør ha på laget! Hun er løsningsorientert og leverer alltid som planlagt. Hun er god på å se nye muligheter og leverer kreative løsninger som blir lagt merke til! Hun er en lagspiller som bidrar både til å skape resultater og til god stemning på kontoret. 😊",name:"Andreas Hautau",role:"Marketing Manager – Tidligere kollega i Allente"},
+  {type:"quote",
+   text:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let – du er simpelthen en kollega, der gør både projekter og arbejdsdage bedre for dem omkring dig.",
+   textMobile:"Du er en af de mest pålidelige og behagelige personer, jeg har arbejdet sammen med. Uanset hvor mange projekter og opgaver der kom ind, kunne man altid regne med, at du leverede høj kvalitet, havde styr på detaljerne og samtidig bevarede overblikket. Det, jeg især husker, er din positive indstilling, din hjælpsomhed og den måde, du får samarbejdet til at glide let.",
+   name:"Jens Thorsen",role:"Customer Acquisition Manager – Tidligere kollega i Allente"}
 ];
 
 let refIdx = 0;
 function visibleCount(){ return window.innerWidth <= 640 ? 1 : 2; }
 
-function applyRefGridColumns(){
-  const track = document.getElementById('refTrack');
-  const isMobile = window.innerWidth <= 640;
-  track.style.gridTemplateColumns = isMobile
-    ? `repeat(${referanser.length},100%)`
-    : `repeat(${referanser.length},calc(50% - 8px))`;
-}
-
 function buildRefCarousel(){
   const track = document.getElementById('refTrack');
   const isMobile = window.innerWidth <= 640;
-  applyRefGridColumns();
   track.innerHTML = referanser.map(r => {
     const txt = (isMobile && r.textMobile) ? r.textMobile : r.text;
     const inner = r.type === 'quote'
@@ -455,11 +399,8 @@ function buildRefCarousel(){
 }
 
 function renderRefDots(){
-  const vc = visibleCount();
-  const pages = Math.max(1, Math.ceil(referanser.length / vc));
-  const activePage = Math.floor(refIdx / vc);
-  document.getElementById('refDots').innerHTML = Array.from({length:pages}).map((_,i) =>
-    `<button class="car-nav-dot${i===activePage?' active':''}" onclick="goRef(${i*vc})"></button>`
+  document.getElementById('refDots').innerHTML = referanser.map((_,i) =>
+    `<button class="car-nav-dot${i===refIdx?' active':''}" onclick="goRef(${i})"></button>`
   ).join('');
 }
 
@@ -470,21 +411,32 @@ function maxRefIdx(){
 
 function onRefScroll(){
   const track = document.getElementById('refTrack');
-  const vc = visibleCount();
-  const slideW = track.scrollWidth / referanser.length;
-  const idx = Math.round(track.scrollLeft / (slideW * vc)) * vc;
-  if(idx !== refIdx){ refIdx = Math.min(idx, maxRefIdx()); renderRefDots(); }
+  const slideW = track.querySelector('.ref-slide').offsetWidth;
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  let newIdx;
+  if(track.scrollLeft >= maxScroll - 2){
+    // Ved enden: ikke nedgrader en bevisst valgt siste prikk
+    newIdx = refIdx >= maxRefIdx() ? refIdx : maxRefIdx();
+  } else {
+    newIdx = Math.round(track.scrollLeft / slideW);
+  }
+  if(newIdx !== refIdx){
+    refIdx = newIdx;
+    renderRefDots();
+  }
 }
 
-function goRef(i){
-  refIdx = Math.max(0, Math.min(i, maxRefIdx()));
+function goRef(idx){
+  refIdx = Math.max(0, Math.min(idx, referanser.length - 1));
   const track = document.getElementById('refTrack');
-  const vc = visibleCount();
-  const slideW = track.scrollWidth / referanser.length;
-  track.scrollTo({left: refIdx * slideW, behavior:'smooth'});
+  const slideW = track.querySelector('.ref-slide').offsetWidth;
+  track.scrollTo({left: Math.min(refIdx, maxRefIdx()) * slideW, behavior:'smooth'});
   renderRefDots();
 }
-function stepRef(dir){ goRef(refIdx + dir*visibleCount()); }
+function stepRef(dir){
+  const total = referanser.length;
+  goRef((refIdx + dir + total) % total);
+}
 // ── HATT-NAVIGASJON (kun mobil) ──
 const hattCount = 5;
 let hattIdx = 0;
@@ -565,15 +517,11 @@ function initSwipe(){
 // ── FAQ ──
 const mainQA = [
   {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt). Kreativ, leken og ganske glad i tempo og mange baller i luften. 🎨<br><br>Også mamma, kjæreste og hundeeier og ivrig konsertgjenger. 🎵 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
-  {q:"Hva slags jobber passer deg?", type:"text", text:"Åh, det er mange ulike typer jobber som er spennende, og jeg har hatt flere ulike stillinger opp igjennom. Det er fordi jeg stadig er nysgjerrig på nye ting, og gjerne vil lære og utvikle meg.<br><br>Jeg ser etter en stilling som grafisk designer, senior designer, kommunikasjonsrådgiver, innholdsprodusent, webredaktør mm. Det viktigste for meg er ikke stillingstittelen, men hvilke oppgaver jobben byr på.<br><br>Jeg trives med ulike oppgaver, og motiveres ekstra når det er rom for kreativitet, humor og spennende prosjekter der man jobber i team mot et felles mål.<br><br><b>Sett meg gjerne til dette:</b><ul style='margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px'><li>Klipping av video</li><li>Animering</li><li>Illustrasjon</li><li>Produksjon av landingssider</li><li>Lage innhold til nyhetsbrev</li><li>Annonseproduksjon</li><li>Trykt materiell</li><li>Helhetlig kommunikasjon</li><li>Arbeid med visuell profil</li><li>Tekstarbeid</li></ul>", media:[]},
+  {q:"Hva slags jobber passer deg?", type:"text", text:"Jeg trives steder der tempoet er høyt, man har mange ulike oppgaver og jeg kan samarbeide med fine folk som vil hverandre vel og spiller hverandre gode. Jeg har bakgrunn fra både in-house byrå og markedsavdeling, og er vant til å jobbe med alt fra kampanjer og SoMe til video, animasjon og presentasjoner.<br><br>Jeg er ikke typen som sier «det er ikke min jobb» 🙅‍♀️ – jeg liker heller å bidra der det trengs, og synes bare det er gøy med variasjon i hverdagen.", media:[]},
   {q:"Hva er du ekstra god på?", type:"text", text:"Jeg er ganske kreativ, og lar meg lett engasjere. Da vil jeg også gjerne sette ideene ut i live temmelig fort og jobber hardt med det. Historiefortelling på tvers av kanaler er også en av mine styrker, samt at jeg kan en del om mye, framfor å være superspesialist på én bestemt ting.<br><br>Og så liker jeg å bidra der det trengs, og samarbeider godt med andre.", media:[]},
-  {q:"Hva synes du er mest inspirerende å jobbe med?", type:"text", text:"Jeg lar meg inspirere av veldig mye. Så selv om jeg for eksempel er litt hekta på illustrasjon og animasjon for tiden, så er det egentlig ikke programmene jeg jobber i eller en type arbeid som gjør at jeg blir engasjert.<br><br>Derimot er det det å løse et problem, eller finne en ny, morsom og kreativ vinkling på noe.<br><br>Så fellesnevneren er – ideer, konsept og nytenkning først, for så å velge kanaler og tilpasse budskapet deretter.", media:[]},
-  {q:"Har du noen gode resultater fra arbeid du har gjort?", type:"text", text:"Jeg skal innrømme at jeg ikke er den som dveler ved resultater, og har tall på dette notert i en Excel, men jeg er veldig opptatt av effekt, og har alltid ønsket å tilpasse, lære og forbedre – når det for eksempel kommer til besøk til landingssider, og effekten av annonsering.<br><br>I Allente jobbet jeg i markedsavdelingen, og var sånn sett tett på resultatene. Vi så at arbeidet vi gjorde med å bygge en ny visuell identitet og et konsistent uttrykk ga gode resultater på kjennskap og mental tilgjengelighet i markedet.<br><br>Den siste tiden i Allente jobbet jeg i et prosjekt for gode partnerskap. Det innebar mange landingssider, og mye testing. Ved hjelp av A/B-tester, og stadig justeringer av heros, tekster og mengde innhold på siden, ble det tydelig hva som fungerte, og vi tilpasset deretter.<br><br>Som nettredaktør for julia.no (Juliabladets tidligere nettside) hadde jeg ansvaret for videreutvikling av siden, samt trafikken, og i samarbeid med redaktøren sørget jeg for god vekst i trafikken og et høyt engasjement blant brukerne av siden.", media:[]},
-  {q:"Hvordan håndterer du prioriteringer og deadlines?", type:"text", text:"Yes, det er jo ofte noe en må forholde seg til i en travel hverdag. Jeg sparrer alltid med mine kollegaer, slik at vi i fellesskap kommer fram til hva som må prioriteres.<br><br>Og deadlines har jeg respekt for, og streber alltid etter å levere i tide, selv når det betyr å måtte jobbe ekstra hardt og legge inn noen lange dager/kvelder for å nå dem. Men når det er sagt er jeg heller ikke fremmed for å diskutere utsettelse dersom man ser at leveransen ikke blir god nok på grunn av tid. Noen ganger fungerer det å gå med noe som er 80%, mens andre ganger kan det være verdt å bruke to dager ekstra og få et produkt det virkelig skinner av.", media:[]},
-  {q:"Programmer?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects.<br><br>Jeg er glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com og Bannerflow i Allente (min siste arbeidsplass).", media:[]},
+  {q:"Hva er du mindre god på?", type:"text", text:"Jeg er ikke så god på å huske tall. Da må jeg skrive dem ned og repetere det for meg selv. Jeg er vel mer typen som husker ting som blir presentert visuelt. 👀<br><br>Dessuten er jeg født med en håpløst dårlig stedssans. Men heldigvis finnes Google Maps og GPS, så da klarer jeg meg likevel. 🗺️", media:[]},
   {q:"Dine tanker om AI?", type:"text", text:"Jeg skal innrømme at jeg lenge var skeptisk til AI. Alle rare bilder av mennesker som alle så helt like ut i ansiktet og hadde 6 fingre, som ble spredd rundt omkring. Nå er jo gamet blitt et helt annet, og jeg har innsett at man må hive seg på AI-toget. Det har jeg gjort, og nå ser jeg at om man bruker det riktig, kan det være en enorm ressurs. Jeg har for eksempel begynt å leke meg med å lage små apper for å forenkle ting i hverdagen hjemme.<br><br>Jeg liker å skrive, og vil fortsatt høres ut som meg – selv om AI kan bidra med korrektur, struktur og kanskje litt nedkorting. All teksten på denne siden er skrevet av meg, men selve nettsiden har jeg laget ved hjelp av Claude, og ganske mange timer med prompts for å få designet slik jeg ønsket det.", media:[]},
-  {q:"Hva med det sosiale?", type:"text", text:"Jeg bidrar med humor, godt humør, tørre ordspill, musikktips og engasjement.<br><br>I min forrige jobb satt jeg mange år i sosialkomitéen, og bidro til at miljøet på jobb var godt – og at det ble både sommerfest og julebord. 🎉", media:[]},
-  {q:"Når ser du for deg å kunne starte i ny jobb?", type:"text", text:"Jeg er ganske fleksibel når det kommer til oppstart. For noen måneder siden ble jeg rammet av en nedbemanning i min forrige jobb, da et eierskifte i Allente førte til at ca. halvparten måtte gå.<br><br>Nå er jeg superklar for nye utfordringer og oppgaver, og kan starte på relativt kort varsel. Nå går vi jo straks inn i sommerferie for de fleste, men jeg og familien skal holde oss i Norge i år, så jeg kan i grunn starte nesten når som helst.", media:[]},
+  {q:"Har du noen hobbyer/interesser?", type:"text", text:"Klart jeg har! Jeg elsker musikk, synes det er gøy å trene (alene og sammen med andre), og bruker også en del fritid på å videreutvikle ferdighetene mine i illustrasjon, animasjon og AI.<br><br>Og så er jeg glad i å finne på ting med familien min, så klart.", media:[]},
   {q:"Hvordan kontakter vi deg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com 📩<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg – Gabrielle</a>", media:[]}
 ];
 
@@ -603,96 +551,6 @@ function toggleFaq(btn){ btn.parentElement.classList.toggle('open') }
 // ── PORTEFØLJE ──
 const portfolioCases = [
   {
-    tag: "Video",
-    title: "Showcase video – Allente",
-    desc: "Video for inspirasjon og deling av resultater etter gjennomført kampanje med nytt konsept.",
-    problem: "I Allente hadde vi kjørt kampanje med nytt konsept – King of Entertainment. For å dele de gode resultatene ble jeg bedt om å lage en presentasjonsvideo som viste bredden av innhold, sammen med viktig info som skulle være lett å huske.<br><br>(Denne videoen skal ikke deles av hensyn til rettighetshavere, og er satt som «embed only» på Vimeo, slik at den bare vises på denne siden)",
-    body: "Jeg klippet hele videoen og la på elementer og musikk.",
-    results: ["Videoredigering","Deling av resultater","Premiere Pro"],
-    chips: ["Video","Historiefortelling"],
-    mediaType: "vimeo",
-    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
-    thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
-  },
-  {
-    tag: "Illustrasjon",
-    title: "Maskot-illustrasjoner",
-    desc: "Under arbeid – maskot-illustrasjoner kommer snart på plass her.",
-    problem: "Denne arbeidsprøven er under produksjon.",
-    body: "Kommer tilbake med ferdige illustrasjoner så snart de er klare.",
-    results: [],
-    chips: ["Illustrasjon"],
-    thumbBg: "#d0efe7",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.png"
-  },
-  {
-    tag: "Visuell profil",
-    title: "Merkevarebygging – Allente",
-    desc: "Da Canal Digital og Viasat slo seg sammen og ble Allente, begynte en stor jobb med å bygge et helt nytt brand.",
-    problem: "Da Allente ble lansert i 2020, måtte vi i markedsavdelingen bygge kjennskap til et helt nytt brand. Hvordan få folk til å skjønne at Canal Digital og Viasat nå er Allente?",
-    body: "Jeg jobbet som en av flere grafiske designere i markedsavdelingen gjennom hele merkevarebyggingen – og omsatte den nye visuelle profilen som ble til i tett samarbeid med byrå, til kampanjer, SoMe, nyhetsbrev, landingssider og partnermateriell. Det tok tid, prøving og justering, men i dag står Allente sterkt i markedet, som en av de store aktørene innen TV-distribusjon.",
-    results: ["Bidro til konsistent visuelt uttrykk på tvers av alle kanaler","Bygget opp maler og systemer som team bruker den dag i dag"],
-    chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente1.png", label:"Allente 1"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente2.jpg", label:"Allente 2"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente3.jpg", label:"Allente 3"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente4.jpg", label:"Allente 4"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente5.png", label:"Allente 5"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente6.jpg", label:"Allente 6"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente7.jpg", label:"Allente 7"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente8.jpg", label:"Allente 8"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente9.png", label:"Allente 9"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente10.jpg", label:"Allente 10"}
-    ],
-    thumbBg: "#b8e5d9",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente_thumb.jpg"
-  },
-  {
-    tag: "Illustrasjon",
-    title: "Illustrasjoner – Finn roen",
-    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
-    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
-    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
-    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
-    chips: ["Illustrator"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
-    ],
-    thumbBg: "#ffffff",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
-  },
-  {
-    tag: "PR og markedsføring",
-    title: "PR for teater – Trollskogen",
-    desc: "Jeg engasjerer meg veldig i Trollskogen teater, der jeg har to barn som spiller, og lager alt av grafisk materiell.",
-    problem: "Trollskogen teater har eksistert i over 40 år, og ble startet av «Trollmor» Mona Danielsen, som har mottatt både Kongens Fortjenstmedalje og Børreprisen for sitt arbeid med barneteater. For hver forestilling som settes opp, forsøker vi å fylle teatersalen med folk – og til det trengs det mye arbeid med markedsføringen, noe jeg bidrar sterkt til.",
-    body: "For Trollskogen teater lager jeg så å si alt det grafiske i forbindelse med hver nye forestilling; plakater, flyers, SoMe-innhold, programmer, annonser, fotografering.",
-    results: ["Helhetlig grafisk uttrykk","Sterkt bidrag til billettsalg","Ofte fulle saler på forestilling"],
-    chips: ["Teater","Markedsføring","Fotografering","PR"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan.jpg", label:"Peter Pan"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_980x300px.jpg", label:"Peter Pan banner"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_pan_barn.JPG", label:"Peter Pan – barn"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fortapte_gutter.jpg", label:"Fortapte gutter"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Bukk.JPG", label:"Bukkene Bruse"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/PR.JPG", label:"PR-arbeid"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fotografering.jpeg", label:"Fotografering"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Plakater.jpg", label:"Plakater"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Alladin_Earlybird_Insta.jpg", label:"Aladdin Earlybird"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Programmer.png", label:"Programmer"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/ULVEN_Trollskogen_teater_skjermer_1920x1080.jpg", label:"Skjermvisning"}
-    ],
-    thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_thumb.jpg"
-  },
-  {
     tag: "Annonsering",
     title: "Kreativ annonse – MIX",
     desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
@@ -705,169 +563,57 @@ const portfolioCases = [
       {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
       {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
       {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
-      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
       {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
       {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
-      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
+      {type:"vimeo", src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
     ],
     thumbBg: "#d0efe7",
     thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
   },
   {
-    tag: "Annonsering",
-    title: "Kreative annonser – VG",
-    desc: "Mange annonser laget for VG sine annonsører, ofte laget i samarbeid med utvikler.",
-    problem: "Mange av VG (og Schibsted sine) annonsører ønsket annonser med «noe ekstra» – for eksempel on-scroll-funksjon, animasjon eller interaksjon.",
-    body: "Jeg jobbet med å svare på briefer, skisse ut konsepter, og lage annonsene enten alene eller i samarbeid med en frontend-utvikler på teamet.",
-    results: ["Animasjon","Koding","Kreativitet"],
-    chips: ["Illustrasjon","Konsept","Utvikling","Innsalg"],
+    tag: "Illustrasjon",
+    title: "Illustrasjoner – Finn roen",
+    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
+    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
+    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
+    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
+    chips: ["Illustrator"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213866188?h=21a240459e&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", ratio:"1992/1236"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213866189?h=566c5fe5fa&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", portrait:true, ratio:"750/1334"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865712?h=26ca1dc6eb&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Serla", ratio:"1920/1300"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1208078682?badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norli", portrait:true, ratio:"750/1334"},
-      {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398", maxWidth:380}
+      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
     ],
-    thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Annonser_thumb.jpg"
+    thumbBg: "#ffffff",
+    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
+  }
+,
+  {
+    tag: "Visuell profil",
+    title: "Merkevarebygging – Allente",
+    desc: "Da Canal Digital og Viasat slo seg sammen og ble Allente, begynte en stor jobb med å bygge et helt nytt brand.",
+    problem: "Da Allente ble lansert i 2020, måtte vi i markedsavdelingen bygge kjennskap til et helt nytt brand. Hvordan få folk til å skjønne at Canal Digital og Viasat nå er Allente?",
+    body: "Jeg jobbet som en av flere grafiske designere i markedsavdelingen gjennom hele merkevarebyggingen – og omsatte den nye visuelle profilen som ble til i tett samarbeid med byrå, til kampanjer, SoMe, nyhetsbrev, landingssider og partnermateriell. Det tok tid, prøving og justering, men i dag står Allente sterkt i markedet, som en av de store aktørene innen TV-distribusjon.",
+    results: ["Bidro til konsistent visuelt uttrykk på tvers av alle kanaler","Bygget opp maler og systemer som team bruker den dag i dag"],
+    chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
+      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
+      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
+      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
+      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
+      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
+      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
+      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
+      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
+    ],
+    thumbBg: "#b8e5d9",
+    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
   }
 ];
-
-// ── TEKSTPRØVER ──
-const textSamples = [
-  {
-    tag: "Filmanmeldelser",
-    title: "Anmeldelser – Ready Player One & Wonder Park",
-    context: "To filmanmeldelser skrevet i en mer resonnerende, personlig tone enn den kommersielle SoMe-teksten – viser en annen side av skrivestilen min.",
-    excerpt: "En film signert Steven Spielberg er ofte verdt en kikk. Og her blir man ikke skuffet.",
-    channels: [
-      {
-        label: "Ready Player One (2018)",
-        text: "<span class='text-title-lg'>Ready Player One (2018)</span>\n\n<strong>Regissør:</strong> Steven Spielberg | IMDb: 7.5\n\nVirtuell virkelighet. Fremtid. Spill. Retro. Action. Vennskap\n\nEn film signert Steven Spielberg er ofte verdt en kikk. Og her blir man ikke skuffet. Det at handlingen er lagt litt fram i tid, til 2045, og at over halve filmens forløp foregår i en virtuell virkelighet plasserer den i Sci-fi-kategorien. Men vi er et godt stykke fra både Star Wars og X-Men her, altså. I bunn og grunn handler det om spillglede, ekte mennesker og ekte følelser.\n\n<strong>En virtuell virkelighetsflukt</strong>\nDet har ikke gått så bra med verden fram til 2045. Folk bor nå i brakker, det er mye bråk og kriminalitet – i det hele tatt er livet ganske stusslig. Derfor rømmer menneskene så ofte de kan inn i den virtuelle verdenen Oasis, skapt av spill-geniene James Halliday og Ogden Morrow. I Oasis kan man være akkurat den man vil, og det er der man treffer venner, kjøper seg kule ting, og går på diskotek. Halliday var selve hjernen bak spillet. Han var ung på 80-tallet, og har bygget inn drøssevis av referanser fra sin ungdomstid i Oasis. Når den eksentriske grunnleggeren blir syk og dør, testamenterer han livsverket sitt til vinneren av et episk spill i Oasis.\n\n<strong>Jakten på en arvtager</strong>\nEn av dem som lever livet sitt i Oasis, og elsker hver minste bit av spillets univers, er Wade Watts. Han er en foreldreløs ungdom som bor under dårlige kår hos tanten sin og hennes voldelige kjæreste. Han har flere venner i Oasis, og er blant de ivrigste når det gjelder kunnskap om spillet, dets grunnlegger, og 80-talls kultur. Wade, eller Parzival som han kaller seg i Oasis, drømmer selvfølgelig om å bli den som arver Hallidays livsverk. Han tilbringer så mye tid som mulig alene i et skur med VR-brillene og bodysuiten på. Men det er mange som ønsker å bli Oasis nye eier, og slett ikke alle har gode hensikter.\n\n<strong>Proppfull av henvisninger</strong>\nDenne filmen er en actionfylt godtepose for den som liker gamle PC-spill, ikoniske filmer som «The Shining» og «Back to the Future», action og spenning. Det dukker opp kjente filmfigurer som Jernkjempen og King Kong, og spillkarakterer fra klassiske Street Fighter og nyere Overwatch.\n\nDet er ganske tøft egentlig, hvordan denne filmen evner å blande VR og framtidens teknologi, med 80- og 90-tallsklær, Duran Duran, og gamle PC-spill med pixlete grafikk, og få det hele til å framstå så helhetlig. Filmen er også mesterlig produsert, og animasjon, grafikk og ekte bilder er mikset sammen så sømløst at man knapt ofrer overgangene en tanke."
-      },
-      {
-        label: "Wonder Park (2019)",
-        text: "<span class='text-title-lg'>Wonder Park (2019)</span>\n\n<strong>Regissør:</strong> Dylan Brown | IMDb: 5.8\n\nAnimasjon. Fantasi. Barndom. Eventyr. Sorg. Følelser\n\nWonder Park ser kanskje ut som en berg-og-dalbane med latter og moro på coveret, men den er så mye mer enn det, og langt fra så lystig som en skulle tro. Fornøyelsesparker har gjerne attraksjoner for både store og små, for den fartsgale, og for den som helst bare vil spise sukkerspinn og se seg rundt. Det samme kan man si om denne filmen. Den treffer godt både hos femåringen, 10-åringen, og mor og far – på ulike plan.\n\n<strong>Ablegøyer, action og alvor</strong>\nJune er en fantasifull, livlig og kreativ jente. Det hun elsker mest her i verden er å leke fornøyelsespark sammen med mammaen sin, som er like full av ideer og påfunn som henne selv. De klipper, limer, monterer og finner på historier. Hele huset er fullt av deres karuseller, boder og vannsklier. Og i Junes hode blir parken og dyrene som driver den sprell levende og helt så ekte som det går an. Men så blir Junes mamma syk. Så alvorlig syk blir hun at hun er nødt til å reise fra June og pappaen i lang tid for å få behandling.\n\n<strong>Vakkert om fantasi og følelser</strong>\nNår mammaen reiser, skjønner den voksne tilskuer at denne filmen ikke bare er en morsom tegnefilm, men at den har en alvorligere undertone. Og det blir mørkere – både i Junes sinn og i fornøyelsesparken. June klarer ikke komme på en eneste ny idé, og en dag pakker hun vekk alle modellene og utklippene som fyller huset. Hun vil passe på pappaen sin isteden. Bekymring og tungsinn har dyttet bort fantasien og skapetrangen. Det hjelper ikke hvor mye barna i gata maser om å bygge berg-og-dalbane i hagen.\n\n<strong>Trøbbel i liksomland</strong>\nUten Junes påfunn går det dårlig med fornøyelsesparken. Den er faktisk i ferd med å bli revet i fillebiter av onde skapninger. Heldigvis oppdager den lille jenta det i siste sekund og får ryddet opp, slik at dette blir en film som ender godt på alle vis.\n\nFor de minste barna er dette kanskje bare en film som er morsom og spennende, men de litt større vil nok også få med seg budskapet; følelsene våre virker inn på alt, og noen ganger må man selv gå grundig til verks for å få finne igjen gleden når livet byr på utfordringer."
-      }
-    ]
-  },
-  {
-    tag: "Barnematmerkevare (case)",
-    title: "Lanseringstekst – bakemikser",
-    context: "Skrevet som del av en kreativ case-oppgave for en anonymisert barnematmerkevare, i forbindelse med lansering av en ny produktlinje.",
-    excerpt: "Vi vokser! Og det har jo vært planen hele veien. 🌱",
-    channels: [
-      {
-        label: "LinkedIn",
-        text: "Vi vokser! Og det har jo vært planen hele veien. 🌱\n\nVi vil være det sunne, økologiske og allergivennlige alternativet i barnemathylla – med produkter laget av rene råvarer og ingredienser man faktisk kjenner igjen.\n\nSamtidig håper vi å inspirere flere til å tenke litt annerledes om barnemat. Derfor deler vi også oppskrifter, tips og kunnskap underveis.\n\nOg nå har det kommet noe nytt i hylla fra oss 👀\n\nNemlig bakemikser! De fås i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nMed bare 2–3 ekstra ingredienser hjemme kan du lage sunn og smakfull bakst på under 30 minutter. Enklere for de voksne, skikkelig godt for mini – og perfekt både til frokost, matpakke og fest. 🎉"
-      },
-      {
-        label: "Nyhetsbrev (før lansering)",
-        text: "<strong>Sunne, velsmakede nyheter på vei!</strong>\n\nDu kan tro vi gleder oss til noe som skal skje om bare noen få uker … Da lanserer vi nemlig en helt ny produktserie i barnemathylla!\n\nKan du gjette hva det er? 🔍🤗\n\nVi ville holdt et øye med innboksen framover, om vi var deg. Kanskje feirer vi nyheten med en konkurranse?"
-      },
-      {
-        label: "Nyhetsbrev (etter lansering)",
-        text: "<strong>Noen nyheter er så bra at de fortjener konfetti! 🎉</strong>\n\nEndelig kan vi slippe katta ut av sekken … eller rettere sagt bakemiksen ut av posen!\n\nNå er våre sunne, velsmakende og festlige nyheter å finne i barnemathylla, og du kan lage havremuffins, speltvafler og grøtpinner til mini (og resten av familien) på rekordtid.\n\nPosene er like fargerike og glade som alle våre andre produkter – og selvfølgelig like fulle av næring og smak. Du finner dem i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nVinn en fest-pakke 🥳\nHar du lyst til å teste bakemiksene, og nyte resultatet mens du har party-hatt på hodet og konfetti i sofaen?\n\nTipp på hvor lang tid det tar fra du åpner en pakke speltvafler til du kan servere den første vaffelplaten, og bli med i trekningen av denne supre fest-pakka.\n\n⚪ Ca 5 minutter ⚪ Ca 25 minutter ⚪ Ca 40 minutter\n\nSvar sendes til oss på e-post. Vi trekker 5 heldige vinnere, som blir kontaktet på e-post 18. september."
-      },
-      {
-        label: "SoMe (korte varianter)",
-        text: "<strong>Variant 1</strong>\nEndelig kan vi slippe katta... eller snarere bakemiksen ut av posen! Det er nemlig nyheten vi har gledet oss til å dele; bakemiks for sunn, enkel og ikke minst velsmakende snacks til de små (og store)\n\n<strong>Variant 2</strong>\nEndelig kan vi slippe nyheten! Vi lanserer bakemikser, og snart kan du finne denne freshe pakken med muffinsmiks i barnemathyllen!"
-      }
-    ]
-  },
-  {
-    tag: "Allente (reell tekst)",
-    title: "Allente-stipendet",
-    context: "Skrevet i forbindelse med Allente-stipendet, en støtteordning for breddeidrett i Norge. Ikke anonymisert – dette er egne tekster skrevet i jobb hos Allente.",
-    excerpt: "De to store TV-distributørene Canal Digital og Viasat Consumer slo seg sammen i fjor, og har blitt til Allente.",
-    channels: [
-      {
-        label: "Programtekst (norsk)",
-        text: "<strong>De to store TV-distributørene Canal Digital og Viasat Consumer slo seg sammen i fjor, og har blitt til Allente. All Entertainment. De samler all underholdning på ett sted og tilbyr TV, streaming og bredbånd til over en million mennesker i hele Norden.</strong>\n\nI sommer startet de opp et helt nytt stipend, Allente-stipendet, med formål om å dele ut kjærkomne bidrag til breddeidretten i Norge.\n\nAlle idrettslag og klubber kan søke midler fra stipendet, uavhengig av idrettsgren, alder på utøvere eller funksjonsevne. Et lag drømmer kanskje om en varmepumpe til klubbhuset, et annet trenger nye drakter, eller ønsker å reise sammen på den cupen som vil bli et minne for livet. Behovene i idrettsnorge er mange.\n\nFørste frist for å søke Allente-stipendet var 1. september, og det kom inn massevis av gode søknader. En jury har valgt ut flere gode vinnere og her i (navn på program) vil vi følge opp disse og se hvordan midlene fra Allente vil bidra til å spre litt ekstra idrettsglede rundt om i Norge."
-      },
-      {
-        label: "Intranett (engelsk)",
-        text: "<strong>🏀👟ALLENTE-STIPENDET – Update ⚽🎾</strong>\n\nThe six winners of the first round of our new scholarship are now starting to get their projects going. It's so exciting to see! We will keep you posted about how Allente has supported the winners with tournament contributions, sports equipment, team building and even a brand new kitchen in the club house. Amedia is producing content articles and videos about the winners distributed in the local newspapers.\n\nHere's the first winner; Romerike Kyokushin Karateklubb. They had lost a lot of members during the pandemic, and needed some help with the recruiting. 🥋🥋🥋\n\nhttps://www.rb.no/vis/annonse/allente-romerike-karateklubb/"
-      }
-    ]
-  }
-];
-
-function buildTextSamples(){
-  const grid = document.getElementById('textSampleGrid');
-  if(!grid) return;
-  grid.innerHTML = textSamples.map((t,i) => `
-    <div class="text-sample-card" onclick="openTextModal(${i})">
-      <div class="text-sample-tag">${t.tag}</div>
-      <div class="text-sample-title">${t.title}</div>
-      <div class="text-sample-context">${t.context}</div>
-      <div class="text-sample-excerpt"><span class="text-sample-excerpt-inner">${t.excerpt}</span></div>
-      <span class="text-sample-see-more">${t.channels.length > 1 ? `Se ${t.channels.length} kanalvarianter` : 'Les hele teksten'}</span>
-    </div>
-  `).join('');
-}
-
-function openTextModal(i){
-  const t = textSamples[i];
-  let mediaHtml = '';
-  if(t.channels.length > 1){
-    modalCarIdx = 0;
-    const slides = t.channels.map(c =>
-      `<div class="modal-carousel-slide text-slide"><div class="text-channel-label">${c.label}</div><div class="text-sample-modal-body">${c.text}</div><div class="scroll-hint hidden"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>Scroll for mer</div></div>`
-    ).join('');
-    const dots = t.channels.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
-    mediaHtml = `<div class="modal-carousel-wrap">
-      <div class="modal-carousel-track-outer">
-        <div class="modal-carousel-track-clip">
-          <div class="modal-carousel-track" id="modalCarTrack">${slides}</div>
-        </div>
-      </div>
-      <div class="car-nav">
-        <button class="car-nav-btn" onclick="stepModalSlide(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="car-nav-dots" id="modalCarDots">${dots}</div>
-        <button class="car-nav-btn" onclick="stepModalSlide(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-    </div>`;
-  } else {
-    mediaHtml = `<div class="text-channel-label">${t.channels[0].label}</div><div class="text-sample-modal-body">${t.channels[0].text}</div><div class="scroll-hint hidden"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>Scroll for mer</div>`;
-  }
-  document.getElementById('modalContent').innerHTML = `
-    <div class="modal-tag">${t.tag}</div>
-    <div class="modal-title">${t.title}</div>
-    <div class="modal-problem"><div class="modal-problem-label">Kontekst</div><div class="modal-problem-text">${t.context}</div></div>
-    ${mediaHtml}
-  `;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  const mct = document.getElementById('modalCarTrack');
-  if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
-  initScrollHints();
-}
-
-function initScrollHints(){
-  document.querySelectorAll('#modalContent .text-sample-modal-body').forEach(box => {
-    const hint = box.nextElementSibling;
-    if(!hint || !hint.classList.contains('scroll-hint')) return;
-    const update = () => {
-      const overflowing = box.scrollHeight > box.clientHeight + 4;
-      const atBottom = box.scrollTop + box.clientHeight >= box.scrollHeight - 4;
-      hint.classList.toggle('hidden', !overflowing || atBottom);
-    };
-    update();
-    box.addEventListener('scroll', update, {passive:true});
-  });
-}
 
 function buildPortfolio(){
   const grid = document.getElementById('portfolioGrid');
@@ -880,7 +626,7 @@ function buildPortfolio(){
     } else {
       thumb = `<div class="portfolio-thumb-placeholder" style="background:${c.thumbBg}"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>${c.tag}</span></div>`;
     }
-    return `<div class="portfolio-card" onclick="openModal(${i})">
+    return `<div class="portfolio-card fade-in" onclick="openModal(${i})">
       <div class="portfolio-thumb">
         ${thumb}
       </div>
@@ -891,41 +637,7 @@ function buildPortfolio(){
       </div>
     </div>`;
   }).join('');
-  buildPortfolioNav();
 }
-
-// ── PORTEFØLJE-KARUSELL (mobil) ──
-let portfolioIdx = 0;
-function buildPortfolioNav(){
-  const dotsEl = document.getElementById('portfolioDots');
-  if(!dotsEl) return;
-  dotsEl.innerHTML = portfolioCases.map((_,i) =>
-    `<button class="car-nav-dot${i===0?' active':''}" onclick="goPortfolio(${i})"></button>`
-  ).join('');
-  portfolioIdx = 0;
-}
-function goPortfolio(idx){
-  portfolioIdx = Math.max(0, Math.min(idx, portfolioCases.length-1));
-  const grid = document.getElementById('portfolioGrid');
-  const card = grid.querySelector('.portfolio-card');
-  if(!card) return;
-  const cardW = card.offsetWidth + 16;
-  grid.scrollTo({left: portfolioIdx * cardW, behavior:'smooth'});
-  document.querySelectorAll('#portfolioDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===portfolioIdx));
-}
-function stepPortfolio(dir){
-  goPortfolio((portfolioIdx + dir + portfolioCases.length) % portfolioCases.length);
-}
-(function(){
-  const grid = document.getElementById('portfolioGrid');
-  if(!grid) return;
-  grid.addEventListener('scroll', ()=>{
-    const card = grid.querySelector('.portfolio-card');
-    const cardW = card ? card.offsetWidth + 16 : 1;
-    const idx = Math.round(grid.scrollLeft / cardW);
-    if(idx !== portfolioIdx){ portfolioIdx=idx; document.querySelectorAll('#portfolioDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx)); }
-  }, {passive:true});
-})();
 
 let modalCarIdx = 0;
 function openModal(i){
@@ -935,10 +647,10 @@ function openModal(i){
     modalCarIdx = 0;
     const slides = c.media.map(m => {
       let inner = '';
-      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen${(m.ratio||m.maxWidth)?` style="${m.ratio?`aspect-ratio:${m.ratio};`:''}${m.maxWidth?`max-width:${m.maxWidth}px;`:''}"`:''}></iframe>`;
+      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
-      return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}${m.portrait?' portrait-video':''}">${inner}</div>`;
+      return `<div class="modal-carousel-slide">${inner}</div>`;
     }).join('');
     const dots = c.media.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
     mediaHtml = `<div class="modal-carousel-wrap">
@@ -996,6 +708,7 @@ function buildHeroContact(){
   if(SITE_DATA.email)        links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>${SITE_DATA.email}</span>`);
   if(SITE_DATA.phone)        links.push(`<span class="hero-contact-link"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>${SITE_DATA.phone}</span>`);
   if(SITE_DATA.linkedin)     links.push(`<a class="hero-contact-link" href="${SITE_DATA.linkedin}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>LinkedIn</a>`);
+  if(SITE_DATA.portfolioUrl) links.push(`<a class="hero-contact-link" href="${SITE_DATA.portfolioUrl}" target="_blank"><div class="hero-contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Portefølje</a>`);
   c.innerHTML = links.join('');
 }
 
@@ -1017,7 +730,6 @@ buildHeroContact();
 buildTimeline();
 buildSkills();
 buildPortfolio();
-buildTextSamples();
 buildRefCarousel();
 initSwipe();
 
