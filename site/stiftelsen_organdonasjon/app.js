@@ -164,7 +164,7 @@ const portfolioCases = [
     mediaType: "vimeo",
     mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
+    thumbImg: "/portfolio/video/Showcase.jpg"
   },
   {
     tag: "Visuell profil",
@@ -176,19 +176,19 @@ const portfolioCases = [
     chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente1.png", label:"Allente 1"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente2.jpg", label:"Allente 2"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente3.jpg", label:"Allente 3"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente4.jpg", label:"Allente 4"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente5.png", label:"Allente 5"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente6.jpg", label:"Allente 6"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente7.jpg", label:"Allente 7"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente8.jpg", label:"Allente 8"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente9.png", label:"Allente 9"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente10.jpg", label:"Allente 10"}
+      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
+      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
+      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
+      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
+      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
+      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
+      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
+      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
+      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
     ],
     thumbBg: "#b8e5d9",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente_thumb.jpg"
+    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
   },
   {
     tag: "Illustrasjon",
@@ -200,12 +200,12 @@ const portfolioCases = [
     chips: ["Illustrator"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
     ],
     thumbBg: "#ffffff",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
+    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
   },
   {
     tag: "PR og markedsføring",
@@ -217,20 +217,20 @@ const portfolioCases = [
     chips: ["Teater","Markedsføring","Fotografering","PR"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan.jpg", label:"Peter Pan"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_980x300px.jpg", label:"Peter Pan banner"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_pan_barn.JPG", label:"Peter Pan – barn"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fortapte_gutter.jpg", label:"Fortapte gutter"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Bukk.JPG", label:"Bukkene Bruse"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/PR.JPG", label:"PR-arbeid"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fotografering.jpeg", label:"Fotografering"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Plakater.jpg", label:"Plakater"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Alladin_Earlybird_Insta.jpg", label:"Aladdin Earlybird"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Programmer.png", label:"Programmer"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/ULVEN_Trollskogen_teater_skjermer_1920x1080.jpg", label:"Skjermvisning"}
+      {type:"image", src:"/portfolio/teater/Peter_Pan.jpg", label:"Peter Pan"},
+      {type:"image", src:"/portfolio/teater/Peter_Pan_980x300px.jpg", label:"Peter Pan banner"},
+      {type:"image", src:"/portfolio/teater/Peter_pan_barn.JPG", label:"Peter Pan – barn"},
+      {type:"image", src:"/portfolio/teater/Fortapte_gutter.jpg", label:"Fortapte gutter"},
+      {type:"image", src:"/portfolio/teater/Bukk.JPG", label:"Bukkene Bruse"},
+      {type:"image", src:"/portfolio/teater/PR.JPG", label:"PR-arbeid"},
+      {type:"image", src:"/portfolio/teater/Fotografering.jpeg", label:"Fotografering"},
+      {type:"image", src:"/portfolio/teater/Plakater.jpg", label:"Plakater"},
+      {type:"image", src:"/portfolio/teater/Alladin_Earlybird_Insta.jpg", label:"Aladdin Earlybird"},
+      {type:"image", src:"/portfolio/teater/Programmer.png", label:"Programmer"},
+      {type:"image", src:"/portfolio/teater/ULVEN_Trollskogen_teater_skjermer_1920x1080.jpg", label:"Skjermvisning"}
     ],
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_thumb.jpg"
+    thumbImg: "/portfolio/teater/Peter_Pan_thumb.jpg"
   },
   {
     tag: "Konsept",
@@ -243,11 +243,11 @@ const portfolioCases = [
     mediaType: "multi",
     media: [
       {type:"vimeo", src:"https://player.vimeo.com/video/1212105008?h=aff3049ef9&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
+      {type:"image", src:"/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
+      {type:"image", src:"/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
     ],
     thumbBg: "#d0efe7",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.png"
+    thumbImg: "/portfolio/cappi/Cappi_thumb.png"
   },
   {
     tag: "Annonsering",
@@ -259,16 +259,16 @@ const portfolioCases = [
     chips: ["Illustrasjon","Konsept","Utvikling","Innsalg"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
+      {type:"image", src:"/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
+      {type:"image", src:"/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213866188?h=21a240459e&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", ratio:"1992/1236"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213866189?h=566c5fe5fa&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", portrait:true, ratio:"750/1334"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
+      {type:"image", src:"/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
+      {type:"image", src:"/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
+      {type:"image", src:"/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865712?h=26ca1dc6eb&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Serla", ratio:"1920/1300"},
@@ -276,7 +276,7 @@ const portfolioCases = [
       {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398", maxWidth:380}
     ],
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/annonser/Annonser_thumb.jpg"
+    thumbImg: "/portfolio/annonser/Annonser_thumb.jpg"
   }
 ];
 
