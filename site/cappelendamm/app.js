@@ -152,10 +152,10 @@ const mainQA = [
   {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer, og \"markedsperson\" med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt), og jeg er også veldig glad i å skrive.<br><br>Dessuten er jeg kreativ, sosial, leken og ganske glad i tempo og mange baller i luften – uten at det går på bekostning av mitt behov for god orden, struktur og overblikk. 🎨 ✅<br><br>Og så er jeg mamma, kjæreste, hundeeier og en ivrig konsert- og teatergjenger. 🎵 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
   {q:"Hvorfor søker du på denne jobben?", type:"text", text:"For en «gammel» lesehest gir navnet Cappelen Damm gode assosiasjoner med én gang. Jeg leste masse under oppveksten, og gjør det fortsatt, selv om digitale medier naturlig nok tar en større del av tiden i dag.<br><br>Jeg har alltid vært opptatt av hvordan godt innhold kan engasjere mennesker – enten det er tekst, video, illustrasjoner eller digitale opplevelser. Tiden i Egmont som nettredaktør for Julia og innholdsprodusent for donald.no lærte meg mye om å skape innhold som treffer målgruppen og får dem til å komme tilbake.<br><br>Det er også spennende å se hvordan AI og andre digitale løsninger kan gjøre læring mer engasjerende og tilgjengelig. Derfor traff denne stillingen meg. Jeg har lyst til å bruke erfaringen min til å fortelle historiene rundt de digitale produktene deres og bidra til at enda flere lærere og elever får øynene opp for alt Skolen fra Cappelen Damm har å tilby.", media:[]},
   {q:"Hva mener du er det viktigste du kan bidra med hos oss?", type:"text", text:"Det viktigste jeg kan bidra med er å gjøre de digitale produktene deres synlige, relevante og engasjerende for lærere og elever. Jeg liker å finne historiene som viser hvorfor et produkt er nyttig, og formidle dem gjennom tekst, video, foto, illustrasjon og sosiale medier.<br><br>Jeg har bred erfaring med innholdsproduksjon, noe som gjør at jeg kan se helheten og produsere mye selv. Jeg kan skrive, illustrere, redigere bilder, lage landingssider, klippe video og animere – og trives aller best når disse fagområdene spiller sammen for å skape kommunikasjon som faktisk fungerer.<br><br>Jeg har også studert PPU og fått prøve meg som lærer både i barneskolen og på videregående. Det har gitt meg en nyttig forståelse for målgruppen deres, men det er først og fremst som innholdsprodusent og historieforteller jeg tror jeg kan gjøre den største forskjellen.", media:[]},
-  {q:"Få høre litt om innhold du har produsert da!", type:"text", text:"Jeg har produsert innhold for mange ulike målgrupper gjennom de siste 20 årene, men målet har alltid vært det samme: å få folk til å stoppe opp, lese, klikke eller komme tilbake.<br><br>I Egmont var jeg nettredaktør for Julia og jobbet også med donald.no. (Fun fact: Redaktøren for bladet var Kirsti Kristoffersen, som senere har gitt ut flere flotte ungdomsbøker hos dere.) Jeg skrev artikler, laget quizzer og konkurranser, modererte forum og utviklet innhold for barn og unge.<br><br>I VG jobbet jeg i et in-house-byrå, der vi utviklet kreative annonsekonsepter med animasjoner, spill og interaktive løsninger.<br><br>I Allente produserte jeg blant annet landingssider, nyhetsbrev, innhold til sosiale medier og video, og jobbet mye med A/B-testing for å finne de løsningene som fungerte best.<br><br><div style='background:var(--t3);border-radius:16px;padding:20px'><img src='https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Eksempler.png' alt='Eksempler på innhold' style='width:100%;border-radius:8px;display:block'></div>", media:[]},
+  {q:"Få høre litt om innhold du har produsert da!", type:"text", text:"Jeg har produsert innhold for mange ulike målgrupper gjennom de siste 20 årene, men målet har alltid vært det samme: å få folk til å stoppe opp, lese, klikke eller komme tilbake.<br><br>I Egmont var jeg nettredaktør for Julia og jobbet også med donald.no. (Fun fact: Redaktøren for bladet var Kirsti Kristoffersen, som senere har gitt ut flere flotte ungdomsbøker hos dere.) Jeg skrev artikler, laget quizzer og konkurranser, modererte forum og utviklet innhold for barn og unge.<br><br>I VG jobbet jeg i et in-house-byrå, der vi utviklet kreative annonsekonsepter med animasjoner, spill og interaktive løsninger.<br><br>I Allente produserte jeg blant annet landingssider, nyhetsbrev, innhold til sosiale medier og video, og jobbet mye med A/B-testing for å finne de løsningene som fungerte best.<br><br><div style='background:var(--t3);border-radius:16px;padding:20px'><img src='/cappelendamm/images/Eksempler.png' alt='Eksempler på innhold' style='width:100%;border-radius:8px;display:block'></div>", media:[]},
   {q:"Alle snakker om AI. Hva er dine tanker om det?", type:"text", text:"Jeg var skeptisk til AI i starten. De første AI-bildene av folk med seks fingre gjorde meg ikke akkurat overbevist. 😅<br><br>I dag bruker jeg AI hver eneste dag. Det er et verktøy som hjelper meg med idéutvikling, research, korrektur og raske prototyper, slik at jeg kan bruke mer tid på kreativitet og historiefortelling.<br><br>Denne nettsiden er laget med hjelp av Claude, etter mange runder med prompting og finjustering. Jeg har også laget en liten app til datteren min, der måltider blir til poeng som får en hage til å vokse – et lite eksempel på hvordan jeg liker å kombinere teknologi, kreativitet og brukerinnsikt for å løse utfordringer og gjøre hverdagen litt enklere.<br><br>Ta gjerne en titt, og test den ut: <a href='https://mat-motivator.vercel.app/' target='_blank' style='color:var(--t1);font-weight:700'>mat-motivator.vercel.app →</a>", media:[]},
   {q:"Hvilke programmer jobber du i?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Mer om dette ser dere i en egen blokk lengre ned på denne siden. 👇<br><br>Jeg er også glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com (prosjektstyring) og Bannerflow (annonseproduksjon) på min siste arbeidsplass.", media:[]},
-  {q:"Er det noe du synes er spesielt gøy å jobbe med?", type:"text", text:"Jeg trives med en variert hverdag, men innrømmer gjerne at jeg blir litt ekstra glad når jeg får illustrere eller animere.<br><br>Da jeg leste stillingsannonsen, klarte jeg rett og slett ikke å la være å teste en idé: Hva om Skolen fra Cappelen Damm hadde en liten maskot? Så jeg lagde \"Cappi\" – en capybara som kanskje kan gjøre læring litt morsommere. Se mer av Cappi under Arbeider. 😉<br><br><div style='background:var(--t3);border-radius:16px;padding:20px'><img src='https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_illustrasjon.png' alt='Cappi illustrasjon' style='width:100%;border-radius:8px;display:block'></div>", media:[]},
+  {q:"Er det noe du synes er spesielt gøy å jobbe med?", type:"text", text:"Jeg trives med en variert hverdag, men innrømmer gjerne at jeg blir litt ekstra glad når jeg får illustrere eller animere.<br><br>Da jeg leste stillingsannonsen, klarte jeg rett og slett ikke å la være å teste en idé: Hva om Skolen fra Cappelen Damm hadde en liten maskot? Så jeg lagde \"Cappi\" – en capybara som kanskje kan gjøre læring litt morsommere. Se mer av Cappi under Arbeider. 😉<br><br><div style='background:var(--t3);border-radius:16px;padding:20px'><img src='/cappelendamm/images/Cappi_illustrasjon.png' alt='Cappi illustrasjon' style='width:100%;border-radius:8px;display:block'></div>", media:[]},
   {q:"Hva med det sosiale?", type:"text", text:"Jeg bidrar med humor, godt humør, tørre ordspill, musikktips og engasjement.<br><br>I min forrige jobb satt jeg mange år i sosialkomitéen, og bidro til at miljøet på jobb var godt – og at det ble både sommerfest og julebord. 🎉", media:[]},
   {q:"Når kan du eventuelt starte i ny jobb?", type:"text", text:"Jeg er veldig fleksibel og kan starte allerede i august! 👋😊<br><br>Etter en større nedbemanning i Allente er jeg nå på jakt etter nye utfordringer. I mellomtiden fyller jeg dagene med å lære nye ting, blant annet AI og animasjon. Har dere lyst til å se en arbeidsprøve på noe spesielt, lager jeg gjerne det. 💻", media:[]},
   {q:"Hvordan kontakter vi deg?", type:"text", text:"Jeg sier som Gabrielle... <em>«Riiing meg»</em>. 97 72 03 15. Eller send en mail til backmarkrandi@gmail.com 📩<br><br><a href='https://open.spotify.com/track/5YMptWDgTevTRMyKGtR4Gv' target='_blank' style='display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#fff;text-decoration:none;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.04em'><svg width='16' height='16' viewBox='0 0 24 24' fill='white'><path d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'/></svg> Ring meg – Gabrielle</a>", media:[]}
@@ -197,7 +197,7 @@ const portfolioCases = [
     mediaType: "vimeo",
     mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/video/Showcase.jpg"
+    thumbImg: "/portfolio/video/Showcase.jpg"
   },
   {
     tag: "Konsept",
@@ -210,11 +210,11 @@ const portfolioCases = [
     mediaType: "multi",
     media: [
       {type:"vimeo", src:"https://player.vimeo.com/video/1212105008?h=aff3049ef9&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
+      {type:"image", src:"/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
+      {type:"image", src:"/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
     ],
     thumbBg: "#d0efe7",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/cappi/Cappi_thumb.png"
+    thumbImg: "/portfolio/cappi/Cappi_thumb.png"
   },
   {
     tag: "Visuell profil",
@@ -226,19 +226,19 @@ const portfolioCases = [
     chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente1.png", label:"Allente 1"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente2.jpg", label:"Allente 2"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente3.jpg", label:"Allente 3"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente4.jpg", label:"Allente 4"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente5.png", label:"Allente 5"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente6.jpg", label:"Allente 6"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente7.jpg", label:"Allente 7"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente8.jpg", label:"Allente 8"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente9.png", label:"Allente 9"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente10.jpg", label:"Allente 10"}
+      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
+      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
+      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
+      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
+      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
+      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
+      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
+      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
+      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
     ],
     thumbBg: "#b8e5d9",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/allente/Allente_thumb.jpg"
+    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
   },
   {
     tag: "Illustrasjon",
@@ -250,12 +250,12 @@ const portfolioCases = [
     chips: ["Illustrator"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Te.jpg", label:"Te"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
     ],
     thumbBg: "#ffffff",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/illustrasjon/Sacco_thumb.jpg"
+    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
   },
   {
     tag: "PR og markedsføring",
@@ -267,20 +267,20 @@ const portfolioCases = [
     chips: ["Teater","Markedsføring","Fotografering","PR"],
     mediaType: "multi",
     media: [
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan.jpg", label:"Peter Pan"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_980x300px.jpg", label:"Peter Pan banner"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_pan_barn.JPG", label:"Peter Pan – barn"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fortapte_gutter.jpg", label:"Fortapte gutter"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Bukk.JPG", label:"Bukkene Bruse"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/PR.JPG", label:"PR-arbeid"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Fotografering.jpeg", label:"Fotografering"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Plakater.jpg", label:"Plakater"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Alladin_Earlybird_Insta.jpg", label:"Aladdin Earlybird"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Programmer.png", label:"Programmer"},
-      {type:"image", src:"https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/ULVEN_Trollskogen_teater_skjermer_1920x1080.jpg", label:"Skjermvisning"}
+      {type:"image", src:"/portfolio/teater/Peter_Pan.jpg", label:"Peter Pan"},
+      {type:"image", src:"/portfolio/teater/Peter_Pan_980x300px.jpg", label:"Peter Pan banner"},
+      {type:"image", src:"/portfolio/teater/Peter_pan_barn.JPG", label:"Peter Pan – barn"},
+      {type:"image", src:"/portfolio/teater/Fortapte_gutter.jpg", label:"Fortapte gutter"},
+      {type:"image", src:"/portfolio/teater/Bukk.JPG", label:"Bukkene Bruse"},
+      {type:"image", src:"/portfolio/teater/PR.JPG", label:"PR-arbeid"},
+      {type:"image", src:"/portfolio/teater/Fotografering.jpeg", label:"Fotografering"},
+      {type:"image", src:"/portfolio/teater/Plakater.jpg", label:"Plakater"},
+      {type:"image", src:"/portfolio/teater/Alladin_Earlybird_Insta.jpg", label:"Aladdin Earlybird"},
+      {type:"image", src:"/portfolio/teater/Programmer.png", label:"Programmer"},
+      {type:"image", src:"/portfolio/teater/ULVEN_Trollskogen_teater_skjermer_1920x1080.jpg", label:"Skjermvisning"}
     ],
     thumbBg: "#e3f4f0",
-    thumbImg: "https://raw.githubusercontent.com/randback-design/meet-randi/main/site/portfolio/teater/Peter_Pan_thumb.jpg"
+    thumbImg: "/portfolio/teater/Peter_Pan_thumb.jpg"
   },
   {
     tag: "Annonsering",
