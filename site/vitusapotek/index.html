@@ -140,9 +140,20 @@ footer a:hover{color:var(--t1)}
 @media(max-width:640px){nav{padding:0 20px}.wrap{padding:0 20px}.faq-list{padding:0 20px}.hero-inner{padding:0 20px}.nav-links{display:none;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;padding:16px 20px;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.nav-links.open{display:flex}.burger{display:flex}.section{padding:36px 0}.faq-a-inner{padding-left:0}footer{padding:24px 20px}.intro-stats{grid-template-columns:repeat(2,1fr)}.stat-num{font-size:28px}.stat-label{font-size:13px}.portfolio-grid{grid-template-columns:1fr}.modal{padding:24px}}
 </style>
 <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  (function(){
+    var KEY = 'randi_no_analytics';
+    if (new URLSearchParams(location.search).has('noanalytics')) { localStorage.setItem(KEY, '1'); }
+    if (localStorage.getItem(KEY) === '1') {
+      window.va = function(){};
+    } else {
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      var s = document.createElement('script');
+      s.defer = true;
+      s.src = '/_vercel/insights/script.js';
+      document.head.appendChild(s);
+    }
+  })();
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <nav>
