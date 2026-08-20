@@ -72,36 +72,6 @@ function goRef(i){
 }
 function stepRef(dir){ goRef(refIdx + dir*visibleCount()); }
 
-// ── HATT-KARUSELL ──
-let hattIdx = 0;
-const hattCount = 5;
-function buildHattNav(){
-  document.getElementById('hattDots').innerHTML = Array.from({length:hattCount}).map((_,i) =>
-    `<button class="car-nav-dot${i===0?' active':''}" onclick="goHatt(${i})"></button>`
-  ).join('');
-}
-function goHatt(idx){
-  hattIdx = idx;
-  const scroll = document.getElementById('hattScroll');
-  if(!scroll) return;
-  const imgW = scroll.querySelector('img').offsetWidth + 24;
-  scroll.scrollTo({left: idx * imgW, behavior:'smooth'});
-  document.querySelectorAll('#hattDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
-}
-function stepHatt(dir){
-  goHatt((hattIdx + dir + hattCount) % hattCount);
-}
-// Sync prikker ved manuell scroll
-(function(){
-  const s = document.getElementById('hattScroll');
-  if(s) s.addEventListener('scroll', ()=>{
-    const imgW = s.querySelector('img') ? s.querySelector('img').offsetWidth + 24 : 1;
-    const idx = Math.round(s.scrollLeft / imgW);
-    if(idx !== hattIdx){ hattIdx=idx; document.querySelectorAll('#hattDots .car-nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx)); }
-  }, {passive:true});
-})();
-buildHattNav();
-
 window.addEventListener('resize', () => { refIdx = 0; renderRefDots(); buildRefCarousel(); });
 
 // ── VIDEO CAROUSEL (FAQ) ──
@@ -132,6 +102,26 @@ function goSlide(id,idx){
 }
 function stepSlide(id,dir){ const s=carState[id]; goSlide(id,(s.current+dir+s.total)%s.total); }
 
+// ── PROPORSJONAL BILDEKARUSELL (FAQ) — viser bilder uten beskjæring, uansett format ──
+function makePhotoCarousel(items, id){
+  carState[id] = {total:items.length, current:0};
+  const slides = items.map(item => `<div class="modal-carousel-slide"><img src="${item.src}" alt="${item.label||''}"></div>`).join('');
+  const dots = items.map((_,i) => `<button class="car-nav-dot${i===0?' active':''}" onclick="goSlide('${id}',${i})" aria-label="Side ${i+1}"></button>`).join('');
+  const nav = items.length > 1 ? `<div class="car-nav">
+    <button class="car-nav-btn" onclick="stepSlide('${id}',-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="car-nav-dots" id="${id}dots">${dots}</div>
+    <button class="car-nav-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>` : '';
+  return `<div class="modal-carousel-wrap" id="${id}" style="margin-bottom:0">
+    <div class="modal-carousel-track-outer">
+      <div class="modal-carousel-track-clip">
+        <div class="modal-carousel-track" id="${id}track">${slides}</div>
+      </div>
+    </div>
+    ${nav}
+  </div>`;
+}
+
 function addSwipe(el, onLeft, onRight){
   let sx=0;
   el.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; }, {passive:true});
@@ -151,6 +141,19 @@ function initSwipe(){
 const mainQA = [
   {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer, og \"markedsperson\" med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt), og jeg er også veldig glad i å skrive. Dessuten er jeg kreativ, sosial, leken og ganske glad i tempo og mange baller i luften – uten at det går på bekostning av mitt behov for god orden, struktur og overblikk. 🎨 ✅<br><br>Og så er jeg mamma, kjæreste, hundeeier og passe glad i å komme meg ut på tur. Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
   {q:"Og hvorfor søker du på denne jobben?", type:"text", text:"Jeg søker jobben hos dere fordi den høres innmari gøy ut! Det å kunne få reise rundt å filme og ta bilder, snakke med turglade folk, klappe hunder 🐶 og spise svartbrent grillpølse fra bål i arbeidstiden må jo være en drømmejobb!<br><br>Jeg synes det er kjempegøy å klekke ut gode vinklinger på nye historier som skal fortelles, skaffe massevis av råmateriale, for så å kose meg med videoklipp, bilderedigering, artikkelskriving og annonseproduksjon i etterkant. Det er en av mine styrker – jeg kan ta hele jobben fra idé, via produksjon og til ferdig publisert innhold alene (selv om jeg aller helst sparrer og samarbeider litt med andre på veien).<br><br>For tiden er jeg jobbsøkende, og jeg kjenner at det bobler i meg av lyst til å bruke kreativiteten min, humoren min, og skrivelysten min på å inspirere folk der ute til å gjøre noe bra for seg selv! 🌲", media:[]},
+  {q:"Få se bevis på at du liker naturen da, og ikke bare skryter på deg?", type:"image", text:"Joda! Både jeg, familien min, og vennene mine liker å være ute i skog og mark. Og jeg tar alltid masse bilder. Det synes jeg er så koselig. Her har jeg samlet et utvalg med både folk på tur, dyr, natur og god stemning, for å gi dere et inntrykk av hva slags bilder jeg kan ta.", media:[
+    {type:"image", src:"/portfolio/tur/tur01.jpg", label:"Sauer i kveldslys"},
+    {type:"image", src:"/portfolio/tur/tur03.jpg", label:"Snowboard"},
+    {type:"image", src:"/portfolio/tur/tur04.jpg", label:"Soloppgang over skyhav"},
+    {type:"image", src:"/portfolio/tur/tur05.jpg", label:"På tur i skogen"},
+    {type:"image", src:"/portfolio/tur/tur08.jpg", label:"På vei opp fjellet"},
+    {type:"image", src:"/portfolio/tur/tur09.jpg", label:"På fjelltopp"},
+    {type:"image", src:"/portfolio/tur/tur10.jpg", label:"Bålkos"},
+    {type:"image", src:"/portfolio/tur/tur17.jpg", label:"Soppsanking"},
+    {type:"image", src:"/portfolio/tur/tur20.jpg", label:"Skitur med pulk"},
+    {type:"image", src:"/portfolio/tur/tur21.jpg", label:"Snacks ved vannet"},
+    {type:"image", src:"/portfolio/tur/tur24.jpg", label:"På tur med venninne"}
+  ]},
   {q:"Har du lang erfaring med markedsføring?", type:"text", text:"Ja, de siste 7 årene har jeg jobbet i markedsavdelingen i Allente. Der har jeg jobbet med alt fra kampanjemateriell og SoMe-innhold til videreutvikling av visuell profil, men også nyhetsbrev og DM-er. Det betyr at jeg ikke bare lager ting som ser bra ut, men som også fungerer i en større sammenheng og er gjenkjennbart over tid. Jeg er vant til å jobbe tett i et markedsteam og levere på konkrete behov, ofte i høyt tempo. 🚀", media:[]},
   {q:"Programmer?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Jeg er glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com og Bannerflow i Allente (min siste arbeidsplass).<br><br>Jeg har ikke jobbet så mye i CapCut selv, men redigerer jevnlig i Premiere Pro og After Effects, som er langt mer avanserte verktøy – så det tar meg nok et par timer å sette meg inn i CapCut om det trengs, spesielt til rask redigering på mobil ute i felt. 📱", media:[]},
   {q:"Og AI/KI, som alle snakker om for tiden?", type:"text", text:"Jeg bruker AI som et arbeidsverktøy når det er hensiktsmessig – til idéutvikling, struktur, korrektur og effektivisering av arbeidsflyten. Den siste tiden har jeg dessuten blitt skikkelig hekta på vibe coding, og har brukt Claude til å lage både nyttige arbeidsverktøy og litt morsomme apper på fritiden. 🤖<br><br>Samtidig er jeg opptatt av at innholdet fortsatt skal ha et menneskelig preg og høres ut som meg. Denne nettsiden har jeg utviklet ved hjelp av Claude, gjennom mange timer med prompting for å få design og funksjonalitet slik jeg ønsket.", media:[]},
@@ -160,7 +163,8 @@ const mainQA = [
 
 const typeIcons = {
   video: `<div class="faq-type-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7" fill="#409f89" stroke="none"/><rect x="1" y="5" width="15" height="14" rx="2" fill="#409f89" stroke="none"/></svg></div>`,
-  text:  `<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`
+  text:  `<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg></div>`,
+  image: `<div class="faq-type-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#409f89" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`
 };
 
 function buildFaq(){
@@ -168,7 +172,7 @@ function buildFaq(){
   list.innerHTML = mainQA.map(item => {
     const cid = 'c'+Math.random().toString(36).slice(2,7);
     let content = `<div class="faq-a-inner">${item.text||''}`;
-    if(item.media && item.media.length) content += makeCarousel(item.media, cid);
+    if(item.media && item.media.length) content += (item.type==='image' ? makePhotoCarousel(item.media, cid) : makeCarousel(item.media, cid));
     content += '</div>';
     return `<div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
