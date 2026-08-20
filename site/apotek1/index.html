@@ -257,9 +257,20 @@ footer a:hover{color:var(--t1)}
 }
 </style>
 <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  (function(){
+    var KEY = 'randi_no_analytics';
+    if (new URLSearchParams(location.search).has('noanalytics')) { localStorage.setItem(KEY, '1'); }
+    if (localStorage.getItem(KEY) === '1') {
+      window.va = function(){};
+    } else {
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      var s = document.createElement('script');
+      s.defer = true;
+      s.src = '/_vercel/insights/script.js';
+      document.head.appendChild(s);
+    }
+  })();
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
