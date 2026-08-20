@@ -112,7 +112,7 @@ function makePhotoCarousel(items, id){
     <div class="car-nav-dots" id="${id}dots">${dots}</div>
     <button class="car-nav-btn" onclick="stepSlide('${id}',1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>` : '';
-  return `<div class="modal-carousel-wrap" id="${id}" style="margin-bottom:0">
+  return `<div class="modal-carousel-wrap" id="${id}" style="margin-bottom:0;margin-top:20px">
     <div class="modal-carousel-track-outer">
       <div class="modal-carousel-track-clip">
         <div class="modal-carousel-track" id="${id}track">${slides}</div>
