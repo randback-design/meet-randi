@@ -149,9 +149,12 @@ const mainQA = [
     {type:"image", src:"/portfolio/tur/tur08.jpg", label:"På vei opp fjellet"},
     {type:"image", src:"/portfolio/tur/tur09.jpg", label:"På fjelltopp"},
     {type:"image", src:"/portfolio/tur/tur10.jpg", label:"Bålkos"},
+    {type:"image", src:"/portfolio/tur/tur13.jpg", label:"Pinnebrød"},
     {type:"image", src:"/portfolio/tur/tur17.jpg", label:"Soppsanking"},
+    {type:"image", src:"/portfolio/tur/tur18.jpg", label:"På tur"},
     {type:"image", src:"/portfolio/tur/tur20.jpg", label:"Skitur med pulk"},
     {type:"image", src:"/portfolio/tur/tur21.jpg", label:"Snacks ved vannet"},
+    {type:"image", src:"/portfolio/tur/tur22.jpg", label:"På tur"},
     {type:"image", src:"/portfolio/tur/tur24.jpg", label:"På tur med venninne"}
   ]},
   {q:"Har du lang erfaring med markedsføring?", type:"text", text:"Ja, de siste 7 årene har jeg jobbet i markedsavdelingen i Allente. Der har jeg jobbet med alt fra kampanjemateriell og SoMe-innhold til videreutvikling av visuell profil, men også nyhetsbrev og DM-er. Det betyr at jeg ikke bare lager ting som ser bra ut, men som også fungerer i en større sammenheng og er gjenkjennbart over tid. Jeg er vant til å jobbe tett i et markedsteam og levere på konkrete behov, ofte i høyt tempo. 🚀", media:[]},
