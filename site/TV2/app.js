@@ -183,9 +183,9 @@ const portfolioCases = [
     media: [
       {type:"vimeo", src:"https://player.vimeo.com/video/1221133461?h=cdc5bc4fc1&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"TV 2", ratio:"1920/1080"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1221133462?h=2e221fda34&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"TV 2", portrait:true, ratio:"750/1334"},
-      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
       {type:"vimeo", src:"https://player.vimeo.com/video/1221133465?h=b766b53e00&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"TV 2", ratio:"1920/1080"},
       {type:"image", src:"/portfolio/allente/TV2_HGVM.jpg", label:"TV 2"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
       {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
       {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
       {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
