@@ -3,7 +3,7 @@ function playHeroVideo(){
   const wrap = document.getElementById('heroVideoWrap');
   wrap.style.cursor = 'default';
   wrap.onclick = null;
-  wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1193523732?h=a78c1b6f57&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block"></iframe>';
+  wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1221053644?h=2c41b011b0&badge=0&autopause=0&autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;display:block"></iframe>';
 }
 
 // ── REFERANSER ──
