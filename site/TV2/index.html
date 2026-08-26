@@ -26,7 +26,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
 .hero-video-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;cursor:pointer}
 .hero-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
-.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
+.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:8px 0 8px;align-items:center}
+.hero-bottom-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-top:16px}
+.hero-pills-desktop{display:flex;gap:8px;flex-wrap:wrap}
 .hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;transition:color .2s}
 .hero-contact-link:hover{color:#fff}
 .hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -218,6 +220,7 @@ footer a:hover{color:var(--t1)}
   .hatt-section{display:none}
   .pill-engasjert{display:none}
   .hatt-outer{padding:0 20px}
+  .hero-pills-desktop{display:none}
 }
 .portfolio-tag{display:none}
 .portfolio-see-more{display:inline-block;align-self:flex-start;margin-top:4px;background:var(--t3);color:var(--t2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;letter-spacing:.04em;transition:background .2s}
@@ -264,7 +267,15 @@ footer a:hover{color:var(--t1)}
         <svg width="26" height="26" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
     </div>
-    <div class="hero-contact" id="heroContact"></div>
+    <div class="hero-bottom-row">
+      <div class="hero-contact" id="heroContact"></div>
+      <div class="hero-pills-desktop">
+        <span class="pill">Strukturert</span>
+        <span class="pill">Relasjonsbygger</span>
+        <span class="pill">Visuell</span>
+        <span class="pill">Proaktiv</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -273,7 +284,7 @@ footer a:hover{color:var(--t1)}
   <div class="wrap">
     <div>
       <div class="intro-tagline">Hei! Jeg vil gjerne bli deres nye <em>ansvarlig for kundekommunikasjon</em></div>
-      <div class="intro-body">Jeg har sittet på den andre siden av bordet i syv år, og vet hva som skal til for at et samarbeid med en distributør fungerer godt. Nå har jeg lyst til å bruke den erfaringen hos dere.</div>
+      <div class="intro-body">Jeg har sittet på den andre siden av bordet i syv år, og vet hva som skal til for at et samarbeid med en distributør fungerer godt. Nå har jeg lyst til å bruke den erfaringen hos dere. I meg får dere en kollega som er vant til å tenke visuelt, holde mange baller i luften, og som ikke er redd for å ta initiativ.</div>
     </div>
     <div class="intro-stats">
       <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">år i mediebransjen</div></div>
