@@ -26,7 +26,10 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .hero-inner{max-width:1060px;margin:0 auto;padding:0 48px}
 .hero-video-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;cursor:pointer}
 .hero-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
-.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:24px 0 8px;align-items:center}
+.hero-contact{display:flex;gap:28px;flex-wrap:wrap;padding:8px 0 8px;align-items:center}
+.hero-bottom-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-top:16px}
+.hero-pills-desktop{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-block;background:rgba(255,255,255,.1);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:50px;border:1px solid rgba(255,255,255,.35)}
 .hero-contact-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;transition:color .2s}
 .hero-contact-link:hover{color:#fff}
 .hero-contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -39,7 +42,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 .intro-tagline em{font-style:normal;color:var(--t1)}
 .intro-body{font-size:16px;color:var(--muted);line-height:1.8}
 .intro-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.pill{display:inline-block;background:var(--t3);color:var(--t2);font-size:12px;font-weight:700;letter-spacing:.08em;padding:5px 12px;border-radius:50px}
 .intro-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .stat-card{background:var(--bg);border-radius:14px;padding:24px;text-align:center}
 .stat-num{font-size:40px;font-weight:700;color:var(--t1);line-height:1}
@@ -117,7 +119,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);display:flex;align
 
 /* ── PORTEFØLJE ── */
 .portfolio-section{padding:36px 0 48px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;align-items:stretch}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px;align-items:stretch}
 .portfolio-card{background:var(--card);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
 .portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.09)}
 .portfolio-nav{display:none}
@@ -246,6 +248,7 @@ footer a:hover{color:var(--t1)}
   .modal-carousel-track-outer{padding:10px}
   .hatt-section{display:none}
   .pill-engasjert{display:none}
+  .hero-pills-desktop{display:none}
   .hatt-outer{padding:0 20px}
 }
 .portfolio-tag{display:none}
@@ -294,7 +297,15 @@ footer a:hover{color:var(--t1)}
         <svg width="26" height="26" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
     </div>
-    <div class="hero-contact" id="heroContact"></div>
+    <div class="hero-bottom-row">
+      <div class="hero-contact" id="heroContact"></div>
+      <div class="hero-pills-desktop">
+        <span class="pill">Kreativ</span>
+        <span class="pill">Allsidig</span>
+        <span class="pill">Løsningsorientert</span>
+        <span class="pill">Engasjert</span>
+      </div>
+    </div>
   </div>
 </div>
 
