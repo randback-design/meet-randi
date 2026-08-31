@@ -153,10 +153,12 @@ function initSwipe(){
 // ── FAQ ──
 const mainQA = [
   {q:"Så... hvem er du da?", type:"video", text:"Jeg heter Randi, og har jobbet med design i snart 20 år. Mest som grafisk og digital designer, men egentlig litt alt mulig innen visuell kommunikasjon og markedsføring.<br><br>Dessuten er jeg kreativ, sosial, leken og ganske glad i tempo og mange baller i luften – uten at det går på bekostning av mitt behov for god orden, struktur og overblikk. 🎨 ✅<br><br>Og så er jeg mamma, samboer, hundeeier og en ivrig konsert- og teatergjenger. 🎵 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
-  {q:"Hvorfor søker du denne stillingen?", type:"text", text:"Jeg vil veldig gjerne jobbe sammen med dere og bidra til den fantastiske jobben dere gjør. Med tre ungdommer i hus har jeg fått et innblikk i MOT sitt arbeid ute i skolen, og jeg synes det er SÅ viktig den rollen dere har for barn og unge.<br><br>Jeg har en lang og bred erfaring som grafisk designer, innholdsprodusent, digital designer og markedsførings-person, og mener jeg kan bidra veldig positivt i denne rollen. Mine største styrker er at jeg kan en del om ganske mye, er idérik, kreativ og positiv. Og så er jeg veldig glad i nettopp denne fine målgruppen som dere har!", media:[]},
-  {q:"Hvordan kan du bidra for barn og unge?", type:"text", text:"Barn og unges oppvekst er noe jeg brenner for, og jeg har så lyst til å kunne være med å påvirke skoler og fritidsmiljøer slik at unge skal føle seg trygge til å både kunne være seg selv, og til å være der for andre. Og mest av alt er jeg opptatt av at ingen skal gå rundt med en klump i magen av redsel for å ikke være god nok, eller at noen skal le av en.<br><br>Jeg synes det er gøy å prate med denne målgruppen, følge med på deres interesser og hverdag, og ikke minst lære av dem. Det er også grunnen til at jeg en stund vurderte å bli lærer. Jeg har studert praktisk pedagogikk, men ønsket om å jobbe visuelt og kreativt var sterkere enn ønsket om å undervise den gangen.<br><br>Jeg tror jeg kan være et godt eksempel i møte med barn og ungdom, og jeg tror det er viktig å være «nedpå» og åpen, og kunne vise at voksne heller ikke vet og kan alt. Og det er helt greit.", media:[]},
-  {q:"Hva er din erfaring med sosiale medier?", type:"text", text:"Jeg har jobbet mye med innhold til sosiale medier i min tid i Allente. Alt fra organisk innhold til betalt annonsering i mange ulike formater. Ofte har min rolle vært å klippe og komprimere video til bruk i disse kanalene.<br><br>Jeg er opptatt av at det man publiserer i sosiale medier har noen gjenkjennende elementer, men utover det liker jeg å eksperimentere, være kreativ og gjerne bruke litt humor. Målet er jo å engasjere! Og for å få oppmerksomheten til barn og ungdom må det fenge!<br><br>To av mine ungdommer spiller teater. Det er et foreldredrevet barne- og ungdomsteater, der alle foreldre må bidra i en gruppe. I Trollskogen Teater sitter jeg i PR-gruppa, og har ansvar for alt det grafiske, fra bildetaging, innhold til sosiale medier, plakater, annonser, flyers og programmer.", media:[]},
-  {q:"Er du komfortabel foran kamera?", type:"text", text:"Jeg liker aller best å filme andre, for så å klippe sammen en god video etterpå, men jeg kan også synes det kan være gøy å stå foran kameraet, og øver gjerne mer på det. Det kommer litt an på situasjonen, og hvordan det skal brukes.", media:[]},
+  {q:"Hvorfor søker du denne stillingen?", type:"text", text:"Jeg vil veldig gjerne jobbe sammen med dere og bidra til den fantastiske jobben dere gjør. Med tre ungdommer i hus har jeg fått et innblikk i MOT sitt arbeid ute i skolen, og jeg synes det er SÅ viktig den rollen dere har for barn og unge.<br><br>Jeg har en lang og bred erfaring som grafisk designer, innholdsprodusent, digital designer og markedsførings-person, og mener jeg kan bidra veldig positivt i denne rollen. Mine største styrker er at jeg kan en del om ganske mye, er idérik, kreativ og positiv. Og så er jeg veldig glad i nettopp denne fine målgruppen som dere har! 💛", media:[]},
+  {q:"Hvordan kan du bidra for barn og unge?", type:"text", text:"Barn og unges oppvekst er noe jeg brenner for, og jeg har så lyst til å kunne være med å påvirke skoler og fritidsmiljøer slik at unge skal føle seg trygge til å både kunne være seg selv, og til å være der for andre. Og mest av alt er jeg opptatt av at ingen skal gå rundt med en klump i magen av redsel for å ikke være god nok, eller at noen skal le av en.<br><br>Jeg synes det er gøy å prate med denne målgruppen, følge med på deres interesser og hverdag, og ikke minst lære av dem. Det er også grunnen til at jeg en stund vurderte å bli lærer. Jeg har studert praktisk pedagogikk, men ønsket om å jobbe visuelt og kreativt var sterkere enn ønsket om å undervise den gangen. 🎨<br><br>Jeg tror jeg kan være et godt eksempel i møte med barn og ungdom, og jeg tror det er viktig å være «nedpå» og åpen, og kunne vise at voksne heller ikke vet og kan alt, og at det er helt greit.", media:[]},
+  {q:"Hva er din erfaring med sosiale medier?", type:"text", text:"Jeg har jobbet mye med innhold til sosiale medier i min tid i Allente. Alt fra organisk innhold til betalt annonsering i mange ulike formater. Ofte har min rolle vært å klippe og komprimere video til bruk i disse kanalene.<br><br>Jeg er opptatt av at det man publiserer i sosiale medier har noen gjenkjennende elementer, men utover det liker jeg å eksperimentere, være kreativ og gjerne bruke litt humor. Målet er jo å engasjere! Og for å få oppmerksomheten til barn og ungdom må det fenge! 🔥<br><br>To av mine ungdommer spiller teater i et foreldredrevet barne- og ungdomsteater, der alle foreldre må bidra i en gruppe. I Trollskogen Teater sitter jeg i PR-gruppa, og har ansvar for alt det grafiske, fra bildetaging, innhold til sosiale medier, plakater, annonser, flyers og programmer. Det er gøy og givende å kunne bidra til at skuespillerne får spille for fulle saler. Og det har gitt meg ytterligere erfaring med innholdsproduksjon.", media:[]},
+  {q:"Hvordan tilpasser du kommunikasjon til ulike målgrupper?", type:"text", text:"Den siste tiden i Allente jobbet jeg i et team som hadde ansvar for partnerskap og samarbeid med eksterne aktører. Jeg var ofte i møter med nye partnere, og hadde ansvar for at de fikk den infoen og grafikken de trengte fra oss – i tillegg til å sette opp landingssider og optimalisere dem basert på hva testingen viste.<br><br>Den erfaringen har lært meg at ungdom og voksne samarbeidspartnere krever ganske ulik tilnærming. Til ungdom handler det om å fenge raskt der de er, som på Instagram og TikTok. Til voksne samarbeidspartnere og beslutningstakere handler det mer om tillit og en tydelig, profesjonell tone, gjerne på LinkedIn eller Facebook. Jeg trives godt med å veksle mellom disse registrene.", media:[]},
+  {q:"Har du erfaring med presse og mediehåndtering?", type:"text", text:"Jeg har ikke jobbet direkte med presse tidligere, så det skal jeg være ærlig på. Men å skrive en pressemelding, eller forfatte et godt svar på en henvendelse, tror jeg vil gå fint – det handler jo i bunn og grunn om det jeg allerede kan godt: å finne riktig tone, formidle et budskap klart, og tilpasse det til mottakeren. Jeg er komfortabel med å ta kontakt med mennesker, enten det er på telefon eller e-post, og ser på relasjonsbygging som en naturlig del av kommunikasjonsarbeidet.<br><br>Dette er faktisk noe jeg synes høres spennende ut å få prøve meg på, og jeg lærer fort når jeg først er i gang.", media:[]},
+  {q:"Er du komfortabel foran kamera?", type:"text", text:"Jeg liker aller best å filme andre, for så å klippe sammen en god video etterpå, men jeg kan også synes det kan være gøy å stå foran kameraet, og øver gjerne mer på det. Det kommer litt an på situasjonen, og hvordan det skal brukes. Har jeg kommet opp med en idé jeg brenner for fikser jeg stort sett det som må til for å teste den i praksis. 🎥", media:[]},
   {q:"Programmer?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Jeg er glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com og Bannerflow i Allente (min siste arbeidsplass).", media:[]},
   {q:"Og AI, som alle snakker om for tiden?", type:"text", text:"Jeg skal innrømme at jeg lenge var skeptisk til AI. Alle rare bilder av mennesker som alle så helt like ut i ansiktet og hadde 6 fingre, som ble spredd rundt omkring. Nå er jo gamet blitt et helt annet, og jeg har innsett at man må hive seg på AI-toget. Det har jeg gjort, og nå ser jeg at om man bruker det riktig, kan det være en enorm ressurs.<br><br>Jeg har for eksempel begynt å leke meg med å lage små apper for å forenkle ting i hverdagen hjemme. Jeg liker å skrive, og vil fortsatt høres ut som meg – selv om AI kan bidra med korrektur, struktur og kanskje litt nedkorting. All teksten på denne siden er skrevet av meg, men selve nettsiden har jeg laget ved hjelp av Claude, og ganske mange timer med prompts for å få designet slik jeg ønsket det.", media:[]},
   {q:"Hva med det sosiale?", type:"text", text:"Jeg bidrar med humor, godt humør, tørre ordspill, musikktips og engasjement.<br><br>I min forrige jobb satt jeg mange år i sosialkomitéen, og bidro til at miljøet på jobb var godt – og at det ble både sommerfest og julebord. 🎉", media:[]},
@@ -190,6 +192,19 @@ function toggleFaq(btn){ btn.parentElement.classList.toggle('open') }
 // ── PORTEFØLJE ──
 const portfolioCases = [
   {
+    tag: "Video",
+    title: "Showcase video – Allente",
+    desc: "Video for inspirasjon og deling av resultater etter gjennomført kampanje med nytt konsept.",
+    problem: "I Allente hadde vi kjørt kampanje med nytt konsept – King of Entertainment. For å dele de gode resultatene ble jeg bedt om å lage en presentasjonsvideo som viste bredden av innhold, sammen med viktig info som skulle være lett å huske.<br><br>(Denne videoen skal ikke deles av hensyn til rettighetshavere, og er satt som «embed only» på Vimeo, slik at den bare vises på denne siden)",
+    body: "Jeg klippet hele videoen og la på elementer og musikk.",
+    results: ["Videoredigering","Deling av resultater","Premiere Pro"],
+    chips: ["Video","Historiefortelling"],
+    mediaType: "vimeo",
+    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
+    thumbBg: "#e3f4f0",
+    thumbImg: "/portfolio/video/Showcase.jpg"
+  },
+  {
     tag: "PR og markedsføring",
     title: "PR for teater – Trollskogen",
     desc: "Jeg engasjerer meg veldig i Trollskogen teater, der jeg har to barn som spiller, og lager alt av grafisk materiell.",
@@ -215,6 +230,69 @@ const portfolioCases = [
     thumbImg: "/portfolio/teater/Peter_Pan_thumb.jpg"
   },
   {
+    tag: "Illustrasjon",
+    title: "Illustrasjoner – Finn roen",
+    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
+    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
+    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
+    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
+    chips: ["Illustrator"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+    ],
+    thumbBg: "#ffffff",
+    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
+  },
+  {
+    tag: "Annonsering",
+    title: "Kreative annonser – VG",
+    desc: "Mange annonser laget for VG sine annonsører, ofte laget i samarbeid med utvikler.",
+    problem: "Mange av VG (og Schibsted sine) annonsører ønsket annonser med «noe ekstra» – for eksempel on-scroll-funksjon, animasjon eller interaksjon.",
+    body: "Jeg jobbet med å svare på briefer, skisse ut konsepter, og lage annonsene enten alene eller i samarbeid med en frontend-utvikler på teamet.",
+    results: ["Animasjon","Koding","Kreativitet"],
+    chips: ["Illustrasjon","Konsept","Utvikling","Innsalg"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/annonser/CirlcleK_VG.jpg", label:"Circle K"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_1920x1080_pauseplakat.jpg", label:"Norefjell – pauseplakat"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_580x400_1.jpg", label:"Norefjell"},
+      {type:"image", src:"/portfolio/annonser/Norefjell_hestesko_wallpaper.jpg", label:"Norefjell – hestesko"},
+      {type:"image", src:"/portfolio/annonser/Norwegian_netboard_Bodo.jpg", label:"Norwegian – Bodø"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213866188?h=21a240459e&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", ratio:"1992/1236"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213866189?h=566c5fe5fa&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norwegian", portrait:true, ratio:"750/1334"},
+      {type:"image", src:"/portfolio/annonser/Obs_bygg_wallpaper.png", label:"Obs Bygg"},
+      {type:"image", src:"/portfolio/annonser/Thon_valg_wallpaper_comfort.jpg", label:"Thon"},
+      {type:"image", src:"/portfolio/annonser/Toyota_wallpaper.png", label:"Toyota"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865713?h=b8b31390a9&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865714?h=5e4b406454&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Babylife Clinic", ratio:"580/400", maxWidth:380},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865712?h=26ca1dc6eb&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Serla", ratio:"1920/1300"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1208078682?badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Norli", portrait:true, ratio:"750/1334"},
+      {type:"vimeo", src:"https://player.vimeo.com/video/1213865715?h=5e75488883&badge=0&autopause=0&title=0&byline=0&portrait=0", label:"Axo Finans", ratio:"580/398", maxWidth:380}
+    ],
+    thumbBg: "#e3f4f0",
+    thumbImg: "/portfolio/annonser/Annonser_thumb.jpg"
+  },
+  {
+    tag: "Konsept",
+    title: "Maskot-konsept – Cappi",
+    desc: "En liten personlig testcase, bare for å vise fram hvordan jeg jobber fra idé til ferdig animasjon.",
+    problem: "Jeg ville teste ut en idé: hvordan bygge en enkel, søt figur som kan brukes til å skape gjenkjennelse og litt ekstra liv i kommunikasjon.<br><br>Valget falt på en Capybara – flodsvin er visst in for tiden.",
+    body: "Jeg har utviklet figuren, tegnet den i Illustrator, og animert den i After Effects. En slik enkel figur har utallige muligheter for å spilles ut i ulike situasjoner.",
+    results: ["Maskot","Illustrator","After Effects"],
+    chips: ["Historiefortelling","Animasjon","Konsept"],
+    mediaType: "multi",
+    media: [
+      {type:"vimeo", src:"https://player.vimeo.com/video/1212105008?h=aff3049ef9&badge=0&autopause=0&title=0&byline=0&portrait=0"},
+      {type:"image", src:"/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
+      {type:"image", src:"/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
+    ],
+    thumbBg: "#d0efe7",
+    thumbImg: "/portfolio/cappi/Cappi_thumb.png"
+  },
+  {
     tag: "Visuell profil",
     title: "Merkevarebygging – Allente",
     desc: "Da Canal Digital og Viasat slo seg sammen og ble Allente, begynte en stor jobb med å bygge et helt nytt brand.",
@@ -237,74 +315,6 @@ const portfolioCases = [
     ],
     thumbBg: "#b8e5d9",
     thumbImg: "/portfolio/allente/Allente_thumb.jpg"
-  },
-  {
-    tag: "Video",
-    title: "Showcase video – Allente",
-    desc: "Video for inspirasjon og deling av resultater etter gjennomført kampanje med nytt konsept.",
-    problem: "I Allente hadde vi kjørt kampanje med nytt konsept – King of Entertainment. For å dele de gode resultatene ble jeg bedt om å lage en presentasjonsvideo som viste bredden av innhold, sammen med viktig info som skulle være lett å huske.<br><br>(Denne videoen skal ikke deles av hensyn til rettighetshavere, og er satt som «embed only» på Vimeo, slik at den bare vises på denne siden)",
-    body: "Jeg klippet hele videoen og la på elementer og musikk.",
-    results: ["Videoredigering","Deling av resultater","Premiere Pro"],
-    chips: ["Video","Historiefortelling"],
-    mediaType: "vimeo",
-    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
-    thumbBg: "#e3f4f0",
-    thumbImg: "/portfolio/video/Showcase.jpg"
-  },
-  {
-    tag: "Konsept",
-    title: "Maskot-konsept – Cappi",
-    desc: "En liten personlig testcase, bare for å vise fram hvordan jeg jobber fra idé til ferdig animasjon.",
-    problem: "Jeg ville teste ut en idé: hvordan bygge en enkel, søt figur som kan brukes til å skape gjenkjennelse og litt ekstra liv i kommunikasjon.<br><br>Valget falt på en Capybara – flodsvin er visst in for tiden.",
-    body: "Jeg har utviklet figuren, tegnet den i Illustrator, og animert den i After Effects. En slik enkel figur har utallige muligheter for å spilles ut i ulike situasjoner.",
-    results: ["Maskot","Illustrator","After Effects"],
-    chips: ["Historiefortelling","Animasjon","Konsept"],
-    mediaType: "multi",
-    media: [
-      {type:"vimeo", src:"https://player.vimeo.com/video/1212105008?h=aff3049ef9&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
-      {type:"image", src:"/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
-    ],
-    thumbBg: "#d0efe7",
-    thumbImg: "/portfolio/cappi/Cappi_thumb.png"
-  },
-  {
-    tag: "Illustrasjon",
-    title: "Illustrasjoner – Finn roen",
-    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
-    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
-    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
-    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
-    chips: ["Illustrator"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
-      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
-      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
-    ],
-    thumbBg: "#ffffff",
-    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
-  },
-  {
-    tag: "Annonsering",
-    title: "Kreativ annonse – MIX",
-    desc: "Interaktiv annonse og lite «spill» for MIX, der brukerne laget sin egen milkshake de også kunne gå og lage seg i nærmeste MIX-kiosk.",
-    problem: "MIX hadde en sommer med mye fokus på sin milkshake laget av ekte kuleis, og at man kunne velge smaker og ingredienser selv. Vår jobb var å få dette budskapet ut på en kreativ måte, slik at folk oppsøkte MIX-butikkene. Løsningen ble flere typer display-annonser, og en landingsside med et «spill».",
-    body: "Jeg fikk ansvar med å svare på brief, og utarbeidet både illustrasjoner og forslag til uttak på VG. Selve spillet ble laget i tett samarbeid med en av utviklerne på teamet, og resultatet fløy skikkelig godt!",
-    results: ["Deling på SoMe","Konkurranse","Interaksjon"],
-    chips: ["Illustrasjon","Konsept","Gamification","Utvikling"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"/portfolio/milkshake/Mix1.png", label:"Mix 1"},
-      {type:"image", src:"/portfolio/milkshake/Mix2.png", label:"Mix 2"},
-      {type:"image", src:"/portfolio/milkshake/Mix3.png", label:"Mix 3"},
-      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205368?h=ddd6a990cf&badge=0&autopause=0&title=0&byline=0&portrait=0"},
-      {type:"image", src:"/portfolio/milkshake/Mix6.png", label:"Mix 6"},
-      {type:"image", src:"/portfolio/milkshake/Mix7.png", label:"Mix 7"},
-      {type:"vimeo", portrait:true, src:"https://player.vimeo.com/video/1192205370?h=9278ed34e1&badge=0&autopause=0&title=0&byline=0&portrait=0"}
-    ],
-    thumbBg: "#f4e8d0",
-    thumbImg: "/portfolio/milkshake/Mix_thumb.jpg"
   }
 ];
 
