@@ -162,7 +162,7 @@ const portfolioCases = [
     results: ["Videoredigering","Deling av resultater","Premiere Pro"],
     chips: ["Video","Historiefortelling"],
     mediaType: "vimeo",
-    mediaSrc: "https://player.vimeo.com/video/1208066919?badge=0&autopause=0&title=0&byline=0&portrait=0",
+    mediaSrc: "https://player.vimeo.com/video/1208066919?h=4d79e07ced&badge=0&autopause=0&title=0&byline=0&portrait=0",
     thumbBg: "#e3f4f0",
     thumbImg: "/portfolio/video/Showcase.jpg"
   },
