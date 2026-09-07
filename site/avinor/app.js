@@ -297,6 +297,23 @@ const portfolioCases = [
     ],
     thumbBg: "#ffffff",
     thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
+  },
+  {
+    tag: "Konsept",
+    title: "Maskot-konsept – Cappi",
+    desc: "En liten personlig testcase, bare for å vise fram hvordan jeg jobber fra idé til ferdig animasjon.",
+    problem: "Jeg ville teste ut en idé: hvordan bygge en enkel, søt figur som kan brukes til å skape gjenkjennelse og litt ekstra liv i kommunikasjon.<br><br>Valget falt på en Capybara – flodsvin er visst in for tiden.",
+    body: "Jeg har utviklet figuren, tegnet den i Illustrator, og animert den i After Effects. En slik enkel figur har utallige muligheter for å spilles ut i ulike situasjoner.",
+    results: ["Maskot","Illustrator","After Effects"],
+    chips: ["Historiefortelling","Animasjon","Konsept"],
+    mediaType: "multi",
+    media: [
+      {type:"vimeo", src:"https://player.vimeo.com/video/1212105008?h=aff3049ef9&badge=0&autopause=0&title=0&byline=0&portrait=0"},
+      {type:"image", src:"/cappelendamm/images/Cappi_dumpe.png", label:"Cappi dumper"},
+      {type:"image", src:"/cappelendamm/images/Cappi_jobber.png", label:"Cappi jobber"}
+    ],
+    thumbBg: "#d0efe7",
+    thumbImg: "/portfolio/cappi/Cappi_thumb.png"
   }
 ];
 
