@@ -1,1 +1,725 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norsk Brannvern – app</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#ED1C24;
+    --red-dark:#B01319;
+    --ink:#333333;
+    --ink-soft:#767676;
+    --paper:#F5F5F5;
+    --card:#FFFFFF;
+    --line:#E2E2E2;
+    --green:#2F7A4E;
+    --green-bg:#E7F1E9;
+    --amber:#B4790F;
+    --amber-bg:#FBF1DF;
+    --grey:#767676;
+    --grey-bg:#EFEFEF;
+    --navy:#00205B;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:#DEDBD3;
+    display:flex;
+    justify-content:center;
+    padding:24px 12px;
+    min-height:100vh;
+  }
+  h1,h2,.display{font-family:'Barlow Semi Condensed','Inter',sans-serif;}
+  .phone{
+    position:relative;
+    width:100%;
+    max-width:400px;
+    min-height:700px;
+    background:var(--paper);
+    border-radius:26px;
+    border:1px solid var(--line);
+    padding:20px;
+    overflow:hidden;
+  }
+  button{font-family:inherit;}
+  .press:active{transform:scale(0.97);}
+  input[type="date"], input[type="text"]{
+    width:100%;
+    box-sizing:border-box;
+    padding:9px 10px;
+    border-radius:9px;
+    border:1px solid var(--line);
+    font-size:14.5px;
+    background:var(--card);
+    color:var(--ink);
+    font-family:inherit;
+  }
+  .field-label{font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:5px;}
+  .field{display:block;margin-bottom:12px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:12px;font-weight:600;padding:3px 9px;border-radius:100px;
+    white-space:nowrap;
+  }
+  .icon-box{
+    width:40px;height:40px;border-radius:11px;background:var(--paper);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .feature-row{
+    display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:13px 14px;cursor:pointer;margin-bottom:10px;
+  }
+  .feature-row .title{font-size:15px;font-weight:700;}
+  .feature-row .subtitle{font-size:12.5px;color:var(--ink-soft);}
+  .feature-row-accent{
+    display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+    background:var(--navy);border:1px solid var(--navy);border-radius:14px;
+    padding:13px 14px;cursor:pointer;margin-bottom:10px;
+  }
+  .feature-row-accent .title{font-size:15px;font-weight:700;color:#fff;}
+  .feature-row-accent .subtitle{font-size:12.5px;color:rgba(255,255,255,0.75);}
+  .feature-row-accent .icon-box{background:rgba(255,255,255,0.16);color:#fff;}
+  .toggle3{display:flex;gap:8px;}
+  .toggle3 button{
+    flex:1;padding:9px 8px;border-radius:10px;cursor:pointer;
+    font-size:13.5px;font-weight:600;border:1px solid var(--line);
+    background:var(--card);color:var(--ink-soft);
+  }
+  .toggle3 button.active{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .sheet-backdrop{
+    position:absolute;inset:0;background:rgba(27,26,23,0.55);
+    display:none;align-items:flex-end;z-index:30;border-radius:26px;
+  }
+  .sheet-backdrop.open{display:flex;}
+  .sheet{
+    width:100%;background:var(--paper);border-radius:22px 22px 0 0;
+    padding:22px 20px 26px;box-sizing:border-box;
+  }
+  .drag-handle{width:36px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 18px;}
+  .icon-btn{
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer;
+  }
+  .section-header{display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+  .section-header h2{font-size:21px;font-weight:700;margin:0;}
+  .eyebrow{font-size:12.5px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;}
+  .order-card{
+    display:flex;align-items:center;justify-content:space-between;text-decoration:none;
+    background:var(--amber-bg);border:1px solid #E9CE9A;border-radius:12px;padding:13px 14px;margin-top:4px;
+  }
+  .order-card span{font-size:14px;font-weight:600;color:#7A5209;}
+  .onboard-option{
+    display:flex;align-items:center;gap:12px;text-align:left;
+    padding:13px 14px;border-radius:13px;border:1px solid var(--line);
+    background:var(--card);cursor:pointer;width:100%;margin-bottom:10px;
+  }
+  .onboard-option .label{font-size:15px;font-weight:700;}
+  .onboard-option .desc{font-size:12.5px;color:var(--ink-soft);}
+  .hidden{display:none !important;}
+  .dashed-btn{
+    width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+    border:1px dashed var(--line);border-radius:13px;padding:13px;background:transparent;
+    cursor:pointer;font-size:14px;font-weight:600;color:var(--ink-soft);
+  }
+  .detector-name{
+    flex:1;font-size:15px;font-weight:700;border:none;border-bottom:1px dashed var(--line);
+    outline:none;background:transparent;padding:0 0 4px 0;color:var(--ink);
+  }
+  .detector-name:focus{border-bottom:1px solid var(--ink);}
+  .link-btn{background:transparent;border:none;cursor:pointer;padding:0;font-size:12.5px;font-weight:600;color:var(--ink-soft);text-decoration:underline;margin-bottom:10px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .spin{animation:spin 0.8s linear infinite;}
+</style>
+</head>
+<body>
 
+<div class="phone" id="phone">
+
+  <div id="view-home"></div>
+  <div id="view-smoke" class="hidden"></div>
+  <div id="view-powder" class="hidden"></div>
+  <div id="view-blanket" class="hidden"></div>
+  <div id="view-foam" class="hidden"></div>
+  <div id="view-tips" class="hidden"></div>
+  <div id="view-common" class="hidden"></div>
+
+  <div class="sheet-backdrop" id="onboarding">
+    <div class="sheet">
+      <div class="drag-handle"></div>
+      <h1 style="font-size:23px;font-weight:700;margin:0 0 4px;">Hvem er du her på vegne av?</h1>
+      <p style="font-size:14px;color:var(--ink-soft);margin:0 0 18px;">Dette huskes til neste gang du åpner appen.</p>
+      <button class="onboard-option press" data-profile="borettslag">
+        <div class="icon-box"></div>
+        <div><div class="label">Borettslag</div><div class="desc">Felles brannsikkerhet for hele bygget</div></div>
+      </button>
+      <button class="onboard-option press" data-profile="sameie">
+        <div class="icon-box"></div>
+        <div><div class="label">Sameie / velforening</div><div class="desc">Styret har ansvar for oppfølging</div></div>
+      </button>
+      <button class="onboard-option press" data-profile="privat">
+        <div class="icon-box"></div>
+        <div><div class="label">Privatperson</div><div class="desc">Egen bolig eller hytte</div></div>
+      </button>
+    </div>
+  </div>
+
+  <div class="sheet-backdrop" id="emergency" style="z-index:40;">
+    <div class="sheet">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+        <div>
+          <h1 style="font-size:22px;font-weight:700;margin:0;">Er det brann?</h1>
+          <p style="font-size:13.5px;color:var(--ink-soft);margin:4px 0 0;">Ring 110 og del posisjonen din med nødetatene.</p>
+        </div>
+        <button class="icon-btn press" id="closeEmergency" style="width:30px;height:30px;flex-shrink:0;" aria-label="Lukk">✕</button>
+      </div>
+      <a href="tel:110" class="press" style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;border-radius:14px;padding:16px 18px;font-size:19px;font-weight:700;">
+        📞 Ring 110 nå
+      </a>
+      <button id="sharePosition" class="press" style="margin-top:10px;width:100%;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:13px 18px;font-size:15px;font-weight:600;cursor:pointer;">
+        📍 <span id="posLabel">Del posisjon med nødetatene</span>
+      </button>
+      <p style="font-size:12px;color:var(--grey);margin-top:12px;line-height:1.5;">I den ferdige appen sendes posisjon og adresse automatisk til nødsentralen sammen med samtalen.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const ICONS = {
+  flame: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a2.5 2.5 0 0 0 2.5-2.5c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7.5 7.5 0 1 1-15 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+  phone: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  mappin: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+  settings: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
+  chevronRight: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>',
+  chevronLeft: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
+  bell: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.3 14.8C20.1 15.8 21 17 21 17H3s3-2 3-9a6 6 0 0 1 12 0c0 1.5.2 2.7.5 3.7"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/><path d="m2 2 20 20"/></svg>',
+  gauge: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>',
+  square: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>',
+  spray: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 3 1.6 1.6"/><path d="M13 5h4"/><path d="M16 3v4"/><path d="M21 12h.01"/><path d="M12.6 8.6a2 2 0 0 0-2.83 0L3 15.34V21h5.66l6.77-6.77a2 2 0 0 0 0-2.83z"/></svg>',
+  book: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  trash: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+  plus: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>',
+  bag: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+  building: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01"/></svg>',
+  users: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  home: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>',
+  waves: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.5 0 2.5 2 5 2s2.5-2 5-2c1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/></svg>',
+  exit: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>',
+  archive: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><line x1="10" y1="13" x2="14" y2="13"/></svg>',
+  battery: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="16" height="10" rx="2"/><line x1="21" y1="10" x2="21" y2="14"/><polyline points="8 8 6 12 10 12 8 16"/></svg>',
+  pencil: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>',
+};
+
+// ---------- state & storage ----------
+const STORE_KEY = 'nb_app_state_v1';
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(!parsed.commonChecks){
+        parsed.commonChecks = {
+          brannslange: { lastChecked:'', ok:null, note:'' },
+          escape: { lastChecked:'', ok:null, note:'' },
+          storage: { lastChecked:'', ok:null, note:'' },
+          escooter: { lastChecked:'', ok:null, note:'' },
+        };
+      }
+      if(!parsed.powderExtinguishers){
+        if(parsed.powder && (parsed.powder.lastFlipped || parsed.powder.pressureOk || parsed.powder.lastService)){
+          parsed.powderExtinguishers = [{ id: uid(), name:'', lastFlipped: parsed.powder.lastFlipped||'', pressureOk: parsed.powder.pressureOk||null, lastService: parsed.powder.lastService||'' }];
+        } else {
+          parsed.powderExtinguishers = [];
+        }
+        delete parsed.powder;
+      }
+      return parsed;
+    }
+  }catch(e){}
+  return {
+    profileType: null,
+    smokeDetectors: [],
+    powderExtinguishers: [],
+    blanket: { knows:null, location:'' },
+    foam: { knows:null, location:'', purchased:'', expires:'' },
+    commonChecks: {
+      brannslange: { lastChecked:'', ok:null, note:'' },
+      escape: { lastChecked:'', ok:null, note:'' },
+      storage: { lastChecked:'', ok:null, note:'' },
+      escooter: { lastChecked:'', ok:null, note:'' },
+    },
+  };
+}
+let state = loadState();
+function persist(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+// ---------- helpers ----------
+function uid(){ return Math.random().toString(36).slice(2,10); }
+function fmtDate(iso){
+  if(!iso) return 'Ikke satt';
+  const p = iso.split('-');
+  if(p.length!==3) return iso;
+  return p[2]+'.'+p[1]+'.'+p[0];
+}
+function addYears(iso, years){
+  if(!iso) return '';
+  const d = new Date(iso+'T00:00:00');
+  if(isNaN(d.getTime())) return '';
+  d.setFullYear(d.getFullYear()+years);
+  return d.toISOString().slice(0,10);
+}
+function daysUntil(iso){
+  const target = new Date(iso+'T00:00:00');
+  const now = new Date(); now.setHours(0,0,0,0);
+  return Math.round((target.getTime()-now.getTime())/86400000);
+}
+function addMonths(iso, months){
+  if(!iso) return '';
+  const d = new Date(iso+'T00:00:00');
+  if(isNaN(d.getTime())) return '';
+  d.setMonth(d.getMonth()+months);
+  return d.toISOString().slice(0,10);
+}
+function statusFrom(iso){
+  if(!iso) return {label:'Ikke satt', fg:'var(--grey)', bg:'var(--grey-bg)'};
+  const d = daysUntil(iso);
+  if(d<0) return {label:'Forfalt', fg:'var(--red)', bg:'#FBE7E7'};
+  if(d<=30) return {label:'Snart', fg:'var(--amber)', bg:'var(--amber-bg)'};
+  return {label:'OK', fg:'var(--green)', bg:'var(--green-bg)'};
+}
+function commonCheckStatus(c, months){
+  if(c.ok==='nei') return {label:'Avvik', fg:'var(--red)', bg:'#FBE7E7'};
+  if(!c.lastChecked) return {label:'Ikke sjekket', fg:'var(--grey)', bg:'var(--grey-bg)'};
+  return statusFrom(addMonths(c.lastChecked, months));
+}
+function pillHtml(status){
+  return '<span class="pill" style="color:'+status.fg+';background:'+status.bg+';">'+status.label+'</span>';
+}
+const PROFILE_LABEL = { borettslag:'Borettslag', sameie:'Sameie / velforening', privat:'Privatperson' };
+const RESPONSIBILITY = {
+  borettslag: 'Styret har ansvar for brannsikkerheten i fellesarealene.',
+  sameie: 'Styret har ansvar for brannsikkerheten i fellesarealene.',
+  privat: 'Du har ansvar for brannsikkerheten i boligen din.',
+};
+const COMMON_CHECKS = [
+  { key:'brannslange', title:'Brannslange', icon:'waves', desc:'Sjekk jevnlig at brannslangen er tilgjengelig og i god stand.', question:'Er brannslangen i orden og lett tilgjengelig?', months:12 },
+  { key:'escape', title:'Rømningsveier', icon:'exit', desc:'Sjekk at trapper, ganger og nødutganger er fri for hindringer.', question:'Er rømningsveiene fri for hindringer?', months:3 },
+  { key:'storage', title:'Boder', icon:'archive', desc:'Sjekk at boder og fellesareal er ryddet og fri for brannfarlig opplagring.', question:'Er bodene ryddet og fri for brannfarlig opplagring?', months:3 },
+  { key:'escooter', title:'Elsparkesykler og lading', icon:'battery', desc:'Sjekk at lading skjer trygt – ikke i rømningsvei, og ikke uten tilsyn over natten.', question:'Er ladeplassen i orden?', months:1 },
+];
+
+// ---------- render ----------
+function showView(id){
+  ['home','smoke','powder','blanket','foam','tips','common'].forEach(v=>{
+    document.getElementById('view-'+v).classList.toggle('hidden', v!==id);
+  });
+  render();
+}
+let currentView = 'home';
+let activeCommonCheck = null;
+function nav(id, param){ currentView = id; if(id==='common') activeCommonCheck = param; showView(id); }
+
+function render(){
+  if(currentView==='home') renderHome();
+  if(currentView==='smoke') renderSmoke();
+  if(currentView==='powder') renderPowder();
+  if(currentView==='blanket') renderBlanket();
+  if(currentView==='foam') renderFoam();
+  if(currentView==='tips') renderTips();
+  if(currentView==='common') renderCommon();
+
+  document.getElementById('onboarding').classList.toggle('open', state.profileType==null);
+}
+
+function renderHome(){
+  const el = document.getElementById('view-home');
+  const sd = state.smokeDetectors;
+  let worstSmoke = 'Ingen lagt til';
+  if(sd.length>0){
+    const statuses = sd.map(d=>statusFrom(d.lastChanged?addYears(d.lastChanged,1):''));
+    if(statuses.some(s=>s.label==='Forfalt')) worstSmoke = 'En eller flere er forfalt';
+    else if(statuses.some(s=>s.label==='Snart')) worstSmoke = 'En eller flere bør sjekkes snart';
+    else worstSmoke = sd.length+' registrert – alt OK';
+  }
+  const pw = state.powderExtinguishers;
+  let worstPowder = 'Ingen lagt til';
+  if(pw.length>0){
+    const statuses = pw.map(p=>statusFrom(p.lastService?addYears(p.lastService,5):''));
+    if(statuses.some(s=>s.label==='Forfalt')) worstPowder = 'En eller flere er forfalt';
+    else if(statuses.some(s=>s.label==='Snart')) worstPowder = 'En eller flere bør sjekkes snart';
+    else worstPowder = pw.length+' registrert – alt OK';
+  }
+  const blanketStatus = state.blanket.knows===true ? 'Vet hvor det er' : state.blanket.knows===false ? 'Bør bestilles' : 'Ikke svart';
+  const foamStatus = state.foam.knows===false ? 'Bør bestilles' : state.foam.expires ? statusFrom(state.foam.expires).label : 'Ikke registrert';
+
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;background:#FFFFFF;margin:-20px -20px 20px -20px;padding:16px 20px;border-radius:26px 26px 0 0;">
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4gPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTguNDMgOTMuMjkiIHdpZHRoPSIzMDAiIGhlaWdodD0iMTQzIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzAwMjA1Yjt9LmNscy0ye2ZpbGw6I2JhMGMyZjt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9IkxhZ2VyXzIiIGRhdGEtbmFtZT0iTGFnZXIgMiI+PGcgaWQ9IkxhZ2VyXzEtMiIgZGF0YS1uYW1lPSJMYWdlciAxIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTEuNjEsOTMuMTVsLTEuOTItMi43M0gxMDh2Mi43M2gtMS4zOFY4NS4zaDMuNWMxLjgsMCwyLjkxLDEsMi45MSwyLjQ5YTIuMzUsMi4zNSwwLDAsMS0xLjg3LDIuMzlsMi4xMiwzWk0xMTAsODYuNTZoLTJ2Mi42M2gyYzEsMCwxLjYxLS41MSwxLjYxLTEuMzJTMTExLDg2LjU2LDExMCw4Ni41NloiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMTguOSw5My4yOUE0LjA2LDQuMDYsMCwxLDEsMTIzLDg5LjIyLDQsNCwwLDAsMSwxMTguOSw5My4yOVptMC02Ljg1YTIuNjUsMi42NSwwLDAsMC0yLjY1LDIuNzgsMi42OSwyLjY5LDAsMCwwLDIuNjcsMi44LDIuNjUsMi42NSwwLDAsMCwyLjY1LTIuNzhBMi42OSwyLjY5LDAsMCwwLDExOC45LDg2LjQ0WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEyOC4xNiw4OC42YzEuNjYuNCwyLjUyLDEsMi41MiwyLjMxLDAsMS40OC0xLjE1LDIuMzUtMi44LDIuMzVBNC44Miw0LjgyLDAsMCwxLDEyNC42MSw5MmwuODMtMWEzLjYsMy42LDAsMCwwLDIuNDcsMWMuODYsMCwxLjM5LS4zOSwxLjM5LTFzLS4zMS0uODctMS43Ny0xLjIxYy0xLjY3LS40LTIuNjEtLjg5LTIuNjEtMi4zNWEyLjQsMi40LDAsMCwxLDIuNjgtMi4yOSw0LjM3LDQuMzcsMCwwLDEsMi44NSwxbC0uNzQsMWEzLjU3LDMuNTcsMCwwLDAtMi4xMy0uODFjLS44MSwwLTEuMjguNDItMS4yOCwxUzEyNi42Niw4OC4yNCwxMjguMTYsODguNloiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMzguNzMsODYuNTRoLTQuNDR2MmgzLjk0djEuMjNoLTMuOTR2Mi4xMWg0LjV2MS4yM2gtNS44OFY4NS4zaDUuODJaIj48L3BhdGg+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTQ2LjEsOTMuMTVsLTEuOTMtMi43M2gtMS43MnYyLjczaC0xLjM4Vjg1LjNoMy40OWMxLjgxLDAsMi45MiwxLDIuOTIsMi40OWEyLjM1LDIuMzUsMCwwLDEtMS44NywyLjM5bDIuMTIsM1ptLTEuNjUtNi41OWgtMnYyLjYzaDJjMSwwLDEuNjItLjUxLDEuNjItMS4zMlMxNDUuNDcsODYuNTYsMTQ0LjQ1LDg2LjU2WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTE1My4zOSw5My4yOWE0LjA2LDQuMDYsMCwxLDEsNC4xMS00LjA3QTQsNCwwLDAsMSwxNTMuMzksOTMuMjlabTAtNi44NWEyLjY1LDIuNjUsMCwwLDAtMi42NSwyLjc4LDIuNjksMi42OSwwLDAsMCwyLjY3LDIuOCwyLjY1LDIuNjUsMCwwLDAsMi42NC0yLjc4QTIuNjksMi42OSwwLDAsMCwxNTMuMzksODYuNDRaIj48L3BhdGg+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAxLjUxLDg1LjNIOTguNDJ2MS4yNmgzYzEsMCwxLjY5LjQ4LDEuNjksMS40MXMtLjY1LDEuNDItMS42OSwxLjQyaC0zdjMuNzZIOTkuOFY5MC42M2gxLjU1YzEuNzMsMCwzLjE0LS45MiwzLjE0LTIuNjlDMTA0LjQ5LDg2LjM0LDEwMy4zNCw4NS4zLDEwMS41MSw4NS4zWiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQzLjg2LDkwLjYzSDQyLjN2Mi41Mkg0MC45M1Y4NS4zMUg0NGMxLjgzLDAsMywxLDMsMi42M0M0Nyw4OS43MSw0NS41OSw5MC42Myw0My44Niw5MC42M1ptMC00LjA3SDQyLjN2Mi44M2gxLjYxYzEsMCwxLjY5LS41NywxLjY5LTEuNDJTNDQuOTQsODYuNTYsNDMuOTEsODYuNTZaIj48L3BhdGg+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNTUuMzYsOTMuMTVINTMuOWwtLjc5LTEuODlINDkuNGwtLjgxLDEuODlINDcuMThsMy40NS03LjloMS4yOFpNNTEuMjUsODYuOSw0OS45LDkwaDIuN1oiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02Mi4xOSw5My4xNWwtMS45My0yLjczSDU4LjUzdjIuNzNINTcuMTVWODUuMzFoMy41YzEuODEsMCwyLjkyLDEsMi45MiwyLjQ5YTIuMzQsMi4zNCwwLDAsMS0xLjg4LDIuMzhsMi4xMiwzWm0tMS42NS02LjU5aC0yVjg5LjJoMmMxLDAsMS42MS0uNTIsMS42MS0xLjMzUzYxLjU2LDg2LjU2LDYwLjU0LDg2LjU2WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTY5LDkzLjE1SDY3LjZWODYuNThINjUuMTFWODUuMzFoNi4zN3YxLjI3SDY5WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTgwLjQ4LDkzLjI5YTQuMDYsNC4wNiwwLDEsMSw0LjEyLTQuMDdBNCw0LDAsMCwxLDgwLjQ4LDkzLjI5Wm0wLTYuODVhMi42NSwyLjY1LDAsMCwwLTIuNjUsMi43OEEyLjY5LDIuNjksMCwwLDAsODAuNSw5MmEyLjY1LDIuNjUsMCwwLDAsMi42NS0yLjc4QTIuNjksMi42OSwwLDAsMCw4MC40OCw4Ni40NFoiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05Mi42NCw4Ni41Nkg4OC4xN1Y4OC43aDRWOTBoLTR2My4xOUg4Ni43OVY4NS4zMWg1Ljg1WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE0Mi43NywxLjE2bC0xLjQyLDEuNDNhOC45NCw4Ljk0LDAsMCwxLDMuNzYsMy44cTEuMjcsMi43NiwxLjI4LDkuMzdWMThIMTMzVjEzLjg0YTE0LjUzLDE0LjUzLDAsMCwwLS4xOS0yLjY5bC00LjU1LDQuNTdhNi4zMiw2LjMyLDAsMCwwLC42MywyLjEzcS43MSwxLjQxLDQuMDcsMy4zOSw5LjYzLDUuNzMsMTIuMTMsOS4zOXQyLjUsMTEuODJxMCw1Ljk0LTEuMzgsOC43NGExMC45NCwxMC45NCwwLDAsMS01LjM3LDQuNzEsMTYuMTIsMTYuMTIsMCwwLDEtMS44Mi43NGgxMy4xVjEuMTZaIj48L3BhdGg+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjE4Ni40OCAxLjE3IDE3OC4yMiAyNi4yMSAxODcuMjcgNTYuNjQgMTg3LjI2IDU2LjY0IDE4Ny4yNiA1Ni42NCAxOTYuNzMgNTYuNjQgMTk2LjczIDEuMTYgMTg2LjQ4IDEuMTciPjwvcG9seWdvbj48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTY2LjU0IDEuMTcgMTY2LjU0IDIyLjcyIDE3Mi45NSAxLjE3IDE2Ni41NCAxLjE3Ij48L3BvbHlnb24+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjE2Ni41NCAzMi44NiAxNjYuNTQgNTYuNjQgMTcyLjQxIDU2LjY0IDE2Ni41NCAzMi44NiI+PC9wb2x5Z29uPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTExNi4zNCw1MGEyOC44MywyOC44MywwLDAsMS0xLjI2LTkuNjNWMzYuNzZoMTMuMzl2Ni43NWMwLDIuMDguMTksMy40Mi41Nyw0YTIuMTgsMi4xOCwwLDAsMCwyLC44OSwyLjMzLDIuMzMsMCwwLDAsMi4xNC0xLjEzLDYuNCw2LjQsMCwwLDAsLjcxLTMuMzVxMC00LjkxLTEuMzQtNi40MWE0Mi4xOCw0Mi4xOCwwLDAsMC02Ljc1LTUsNjYuNTMsNjYuNTMsMCwwLDEtNy4xMy01LjE3LDEwLjIsMTAuMiwwLDAsMS0xLTFsLTcuNzQsNy43NmE2Mi4zLDYyLjMsMCwwLDEsLjMsNy45MlY1Ni42NEgxMjQuMWExNi41OCwxNi41OCwwLDAsMS0yLjM5LTFBMTAuNzgsMTAuNzgsMCwwLDEsMTE2LjM0LDUwWiI+PC9wYXRoPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSI5Ni44NSA0Ny4yMyA5Mi40NiA1MS42MiA5Mi40NiA1Ni42NCA5Mi40NiA1Ni42NSA5Ni44NSA1Ni42NSA5Ni44NSA1Ni42NCA5Ni44NSA0Ny4yMyI+PC9wb2x5Z29uPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxMy43NiAzMS40MiAyMS4yNiA1Ni42NCAzMy45IDU2LjY0IDMzLjkgMS4xNyAyMS44NCAxLjE3IDIxLjg0IDI2LjE0IDEzLjc2IDEuMTcgMS43IDEuMTcgMS43IDU2LjY0IDEzLjc2IDU2LjY0IDEzLjc2IDMxLjQyIj48L3BvbHlnb24+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNzIuNjYsMzMuNjV2LTkuNWExMTQuODQsMTE0Ljg0LDAsMCwwLS40Mi0xMkExMy4zMSwxMy4zMSwwLDAsMCw2NCwxLjQ2LDIwLjg5LDIwLjg5LDAsMCwwLDU2LDBhMjAuNDEsMjAuNDEsMCwwLDAtOC4yMywxLjU0QTEzLjMyLDEzLjMyLDAsMCwwLDQyLjE1LDZhMTMuMTgsMTMuMTgsMCwwLDAtMi40Nyw2LjM2LDExNy45LDExNy45LDAsMCwwLS40LDExLjgzdjkuNWExMTQuNzEsMTE0LjcxLDAsMCwwLC40MiwxMkExMy4zLDEzLjMsMCwwLDAsNDgsNTYuMzVhMTkuMTgsMTkuMTgsMCwwLDAsNC43NCwxLjI0bDE5LjkyLTIwUTcyLjY2LDM1LjgsNzIuNjYsMzMuNjVaTTU4LjIzLDQwLjkxYTI3LjA4LDI3LjA4LDAsMCwxLS40MSw2LjIsMS43NywxLjc3LDAsMCwxLTEuODksMS4zLDEuNzEsMS43MSwwLDAsMS0xLjgzLTEuMTMsMjUuNjksMjUuNjksMCwwLDEtLjM5LTZWMTUuNDJxMC00LjI5LjYtNS4xNkEyLDIsMCwwLDEsNTYsOS4zOWExLjcsMS43LDAsMCwxLDEuNzYsMS4wOCwxNywxNywwLDAsMSwuNDMsNC45NVoiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik05Mi40NiwxMC42NWE1LjM2LDUuMzYsMCwwLDEsMy40NS44MywzLjE3LDMuMTcsMCwwLDEsLjg0LDEuOTVMMTA2LjE2LDRhOS4yMyw5LjIzLDAsMCwwLTQuMDktMnEtMy42MS0uNzgtMTMuODItLjc5SDc4djMxTDkyLjQ2LDE3LjcyWiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTExNS40NiwyMS45NGwuMi0uMTdMMTM2LjQ4Ljg5bC4xNS0uMTlhMjcsMjcsMCwwLDAtNi4zNC0uNywyMC45MiwyMC45MiwwLDAsMC04Ljc3LDEuNjYsMTAuODgsMTAuODgsMCwwLDAtNS4yNiw0LjYxcS0xLjY0LDIuOTQtMS42Myw5LjMyQTIxLjI2LDIxLjI2LDAsMCwwLDExNS40NiwyMS45NFoiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05Mi4zOSw0NS4wN2wuMDctLjA3VjMxLjYzYzIsMCwzLjIyLjM1LDMuNjgsMS4wNnMuNzEsMi41NC43MSw1LjUxdjIuNGwuMS0uMDlMMTA3LjM5LDMwbC4wNy0uMDdhMTIuNjcsMTIuNjcsMCwwLDAtNS4xNi0yLjI2cTQuNzMtLjQ1LDYuMzMtMi42OGMxLjA4LTEuNDgsMS42MS00LjM4LDEuNjEtOC43QTIyLjk0LDIyLjk0LDAsMCwwLDEwOSw3LjgxTDk3LjY0LDE5LjE1bC00LjU4LDQuNTlMNzgsMzguODFWNTYuNjRoMi44MmwuMDctLjA4WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTcyLjM2LDQ0LjUxbC0uMTcuMjJMNTkuNDksNTcuNGwtLjE3LjE5YTE4LjUzLDE4LjUzLDAsMCwwLDQuODgtMS4zMywxMy4yMywxMy4yMywwLDAsMCw4LjA2LTEwLjc4QzcyLjMsNDUuMTksNzIuMzMsNDQuODYsNzIuMzYsNDQuNTFaIj48L3BhdGg+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAuNiw3Ni4yYTIuOTEsMi45MSwwLDAsMCwxLjE2LTIuMzYsMi43MywyLjczLDAsMCwwLTEuMDYtMi4yMSw2Ljg5LDYuODksMCwwLDAtMi41Ny0xLDQuODQsNC44NCwwLDAsMCwyLjM3LTEuMTQsMi4zMywyLjMzLDAsMCwwLC42Ny0xLjY0LDIuOTEsMi45MSwwLDAsMC0uNTItMS42NkEzLjIxLDMuMjEsMCwwLDAsOS4yMSw2NWE4LjY3LDguNjcsMCwwLDAtMy4xLS4zOUgwdi4zMmEzLjE0LDMuMTQsMCwwLDEsMS4yLjE2LDEsMSwwLDAsMSwuNDYuNDMsNC4yNyw0LjI3LDAsMCwxLC4xMiwxLjMxdjguMjhhNC4xLDQuMSwwLDAsMS0uMTIsMS4zLjk0Ljk0LDAsMCwxLS40NS40M0EyLjc5LDIuNzksMCwwLDEsMCw3N3YuMzJINi40OEE2LjQ2LDYuNDYsMCwwLDAsMTAuNiw3Ni4yWk00Ljc3LDY1LjMxYTUsNSwwLDAsMSwyLC4yOCwyLjA4LDIuMDgsMCwwLDEsMSwuODNBMi43NiwyLjc2LDAsMCwxLDgsNjcuODJhMi43MSwyLjcxLDAsMCwxLS4zNCwxLjQsMi4zLDIuMywwLDAsMS0xLC44NSw0Ljg1LDQuODUsMCwwLDEtMiwuM1pNNSw3Ni4zN2ExLDEsMCwwLDEtLjI2LS43NnYtLjQ2bDAtNC4wOGE2LjI4LDYuMjgsMCwwLDEsMi4xNy4yOCwyLDIsMCwwLDEsMS4xLDEsMy40NiwzLjQ2LDAsMCwxLC4zNywxLjZBMi44NywyLjg3LDAsMCwxLDgsNzUuMzNhMi4yMywyLjIzLDAsMCwxLS45NSwxLDIuODgsMi44OCwwLDAsMS0xLjM2LjMzQTEsMSwwLDAsMSw1LDc2LjM3WiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTM2LDc3LjMzVjc3YTEuNTcsMS41NywwLDAsMS0uODgtLjMyLDYsNiwwLDAsMS0uODQtMWwtMS4yMS0xLjctMS44My0yLjU3YTQuMjEsNC4yMSwwLDAsMCwxLjgtLjg4LDMuMDUsMy4wNSwwLDAsMCwxLTIuMzQsMy4xNSwzLjE1LDAsMCwwLS42OC0yLDMuNDIsMy40MiwwLDAsMC0xLjc0LTEuMTksMTMuMTUsMTMuMTUsMCwwLDAtMy4zOS0uMzJIMjIuMzV2LjMyYTMuMjMsMy4yMywwLDAsMSwxLjIxLjE2LDEsMSwwLDAsMSwuNDUuNDMsMy44NywzLjg3LDAsMCwxLC4xMywxLjMxdjguMjhhMy43MiwzLjcyLDAsMCwxLS4xMywxLjMuOTQuOTQsMCwwLDEtLjQ1LjQzLDIuNzYsMi43NiwwLDAsMS0xLjIxLjE3di4zMkgyOC45Vjc3YTMsMywwLDAsMS0xLjItLjE2LjkuOSwwLDAsMS0uNDUtLjQzLDMuODMsMy44MywwLDAsMS0uMTMtMS4zMVY3MS41NEgyOEwzMS4xLDc2bDEsMS4zOFptLTUuMzgtNy41OGExLjkxLDEuOTEsMCwwLDEtMSwuODUsNiw2LDAsMCwxLTIsLjI0aC0uNTRWNjUuMzFoMWEzLDMsMCwwLDEsMi4yMi42OUEyLjksMi45LDAsMCwxLDMxLDY4LjEzLDMuMTEsMy4xMSwwLDAsMSwzMC42Niw2OS43NVoiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01Ny4wNyw3NC44LDUyLjUyLDY0LjM4aC0uMThMNDcuOCw3NC41MmE3LjMyLDcuMzIsMCwwLDEtMS4wOSwxLjkyLDEuODYsMS44NiwwLDAsMS0xLjEyLjU3di4zMmg0LjIzVjc3YTMuNTcsMy41NywwLDAsMS0xLjI1LS4yMy44NC44NCwwLDAsMS0uNDMtLjc5LDIuNzEsMi43MSwwLDAsMSwuMjYtMUw0OSw3My43NGg0LjQ4bC42NywxLjU2Yy4xOC40Mi4yNy42Ni4yOS43MWExLjQ4LDEuNDgsMCwwLDEsMCwuMzUuNTMuNTMsMCwwLDEtLjIuNDQsMS45MywxLjkzLDAsMCwxLTEsLjIxaC0uMjZ2LjMyaDYuMTFWNzdhMS40MiwxLjQyLDAsMCwxLS45LS4zNEE2LjQ5LDYuNDksMCwwLDEsNTcuMDcsNzQuOFpNNDkuMjcsNzNsMi00LjM4TDUzLjEyLDczWiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTY5LjEyLDY0LjYxdi4zMmEyLjE5LDIuMTksMCwwLDEsLjg5LjE5LDIuNjcsMi42NywwLDAsMSwuNzEuN2wuMy4zN3Y5YTIsMiwwLDAsMS0uNDEsMS40MSwyLjA5LDIuMDksMCwwLDEtMS40Ny40M3YuMzJoNC41NFY3N2gtLjMxYTEuOTMsMS45MywwLDAsMS0xLjE3LS4zOCwxLjczLDEuNzMsMCwwLDEtLjUxLTEuNDZWNjdsOC41OSwxMC42MWguMzNWNjdhMy44NiwzLjg2LDAsMCwxLC4xNS0xLjI5LDEuMSwxLjEsMCwwLDEsLjQzLS41NSwzLjIsMy4yLDAsMCwxLDEuMDgtLjI3di0uMzJINzguMDZ2LjMyYTEuNzksMS43OSwwLDAsMSwxLjUxLjU0QTIuNjEsMi42MSwwLDAsMSw3OS45MSw2N3Y1LjRsLTYuMjctNy44M1oiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMDEuNSw2NC45M2ExLjgzLDEuODMsMCwwLDEsMS41Mi41NCwyLjYyLDIuNjIsMCwwLDEsLjMzLDEuNTd2NS40bC02LjI3LTcuODNIOTIuNTZ2LjMyYTIuMTUsMi4xNSwwLDAsMSwuODkuMTksMi41MywyLjUzLDAsMCwxLC43MS43bC4zLjM3djlhMiwyLDAsMCwxLS40MSwxLjQxLDIuMDgsMi4wOCwwLDAsMS0xLjQ2LjQzdi4zMmg0LjUzVjc3aC0uMzFhMS45MywxLjkzLDAsMCwxLTEuMTctLjM4LDEuNzMsMS43MywwLDAsMS0uNTEtMS40NlY2N2w4LjU5LDEwLjYxaC4zM1Y2N2EzLjg2LDMuODYsMCwwLDEsLjE1LTEuMjksMS4xNiwxLjE2LDAsMCwxLC40My0uNTUsMy4yNywzLjI3LDAsMCwxLDEuMDgtLjI3di0uMzJIMTAxLjVaIj48L3BhdGg+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTI1LjI1LDY0LjkzYTIuODksMi44OSwwLDAsMSwxLjA3LjE3LjgzLjgzLDAsMCwxLC41OC44MywyLjA4LDIuMDgsMCwwLDEtLjEuNmMtLjA3LjIzLS4yNi43LS41NiwxLjM4bC0yLjUxLDUuNjNMMTIxLDY3LjIzcS0uNDQtMS0uNTEtMS4yNmExLjMsMS4zLDAsMCwxLS4wNy0uNC40Ni40NiwwLDAsMSwuMjEtLjQyLDIsMiwwLDAsMSwxLjEzLS4yMmguMnYtLjMyaC02LjA3di4zMmExLjUzLDEuNTMsMCwwLDEsMSwuNDFBMTMsMTMsMCwwLDEsMTE4LDY3LjUxbDQuMzIsMTAuMTFoLjMyTDEyNyw2Ny45YTEwLjQxLDEwLjQxLDAsMCwxLDEuMTctMi4yMiwyLjA4LDIuMDgsMCwwLDEsMS4yMy0uNzV2LS4zMmgtNC4xNFoiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNDkuMjcsNzUuODFhNC42Niw0LjY2LDAsMCwxLTIuODcuODJoLS43N2ExLjU3LDEuNTcsMCwwLDEtLjc5LS4xNS44LjgsMCwwLDEtLjM0LS4zOSw1Ljg3LDUuODcsMCwwLDEtLjA4LTEuMjhWNzEuMjJhMy4yOCwzLjI4LDAsMCwxLDEuNDEuMjQsMi4wNSwyLjA1LDAsMCwxLC44NS45Myw0LjcxLDQuNzEsMCwwLDEsLjQ4LDEuNzhoLjMzVjY3LjUxaC0uMzNhNC41NSw0LjU1LDAsMCwxLS43LDIuMjQsMi4wNywyLjA3LDAsMCwxLTEuNzkuNzdoLS4yNVY2NS4zNGgxLjM3YTcuNyw3LjcsMCwwLDEsMiwuMTcsMi44NCwyLjg0LDAsMCwxLDEuNC44OCw0LjQ5LDQuNDksMCwwLDEsLjc3LDJoLjMyVjY0LjYxSDEzOS41OXYuMzJIMTQwYTEuNTUsMS41NSwwLDAsMSwxLC4yNy44OS44OSwwLDAsMSwuMzUuNTEsNi43OCw2Ljc4LDAsMCwxLDAsMS4wN3Y4LjM5YTMuNzksMy43OSwwLDAsMS0uMTEsMS4xOS44NC44NCwwLDAsMS0uMzcuNDUsMS43OCwxLjc4LDAsMCwxLS44OS4yaC0uNDJ2LjMyaDExbC41Ny00aC0uMzRBNC41OCw0LjU4LDAsMCwxLDE0OS4yNyw3NS44MVoiPjwvcGF0aD48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNzMuOTEsNzUuNjJsLTMtNC4yN2E0LjIzLDQuMjMsMCwwLDAsMS43OS0uODgsMywzLDAsMCwwLDEtMi4zNCwzLjE0LDMuMTQsMCwwLDAtLjY3LTIsMy40OSwzLjQ5LDAsMCwwLTEuNzUtMS4xOSwxMy4xNSwxMy4xNSwwLDAsMC0zLjM5LS4zMkgxNjJ2LjMyYTMuMTQsMy4xNCwwLDAsMSwxLjIuMTYuOS45LDAsMCwxLC40NS40MywzLjg3LDMuODcsMCwwLDEsLjEzLDEuMzF2OC4yOGEzLjcyLDMuNzIsMCwwLDEtLjEzLDEuMy44Ni44NiwwLDAsMS0uNDUuNDNBMi43NCwyLjc0LDAsMCwxLDE2Miw3N3YuMzJoNi41NVY3N2EzLDMsMCwwLDEtMS4yMS0uMTYuOS45LDAsMCwxLS40NS0uNDMsNC4xMSw0LjExLDAsMCwxLS4xMy0xLjMxVjcxLjU0aC44NWw0LjExLDUuNzloNFY3N2ExLjYsMS42LDAsMCwxLS44OC0uMzJBNy4xOCw3LjE4LDAsMCwxLDE3My45MSw3NS42MlptLTMuNjUtNS44N2EyLDIsMCwwLDEtMSwuODUsNi4xNSw2LjE1LDAsMCwxLTIsLjI0aC0uNTRWNjUuMzFoMWEzLDMsMCwwLDEsMi4yMS42OSwyLjksMi45LDAsMCwxLC42OSwyLjEzQTMuMTEsMy4xMSwwLDAsMSwxNzAuMjYsNjkuNzVaIj48L3BhdGg+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTk0LjIxLDY0LjkzYTEuODMsMS44MywwLDAsMSwxLjUyLjU0LDIuNjIsMi42MiwwLDAsMSwuMzMsMS41N3Y1LjRsLTYuMjctNy44M2gtNC41MnYuMzJhMi4xNSwyLjE1LDAsMCwxLC44OS4xOSwyLjUzLDIuNTMsMCwwLDEsLjcxLjdsLjMuMzd2OWExLjkzLDEuOTMsMCwwLDEtLjQyLDEuNDEsMiwyLDAsMCwxLTEuNDUuNDN2LjMyaDQuNTNWNzdoLS4zMWExLjkzLDEuOTMsMCwwLDEtMS4xNy0uMzgsMS43MywxLjczLDAsMCwxLS41MS0xLjQ2VjY3bDguNTksMTAuNjFoLjMzVjY3YTMuODYsMy44NiwwLDAsMSwuMTUtMS4yOSwxLjE2LDEuMTYsMCwwLDEsLjQzLS41NSwzLjIxLDMuMjEsMCwwLDEsMS4wOS0uMjd2LS4zMmgtNC4yMloiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPiA=" alt="Norsk Brannvern" style="width:148px;height:auto;display:block;">
+      <button id="btnSwitchProfile" class="icon-btn press" style="width:32px;height:32px;color:var(--ink-soft);">${ICONS.settings}</button>
+    </div>
+    <div style="font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:2px;">${PROFILE_LABEL[state.profileType]||''}</div>
+    <div style="font-size:12.5px;color:var(--ink-soft);margin-bottom:18px;line-height:1.4;">${RESPONSIBILITY[state.profileType]||''}</div>
+
+    <button id="btnEmergency" class="press" style="width:100%;text-align:left;cursor:pointer;border:none;background:var(--red);border-radius:18px;padding:20px;margin-bottom:22px;display:flex;align-items:center;gap:14px;box-shadow:0 6px 0 var(--red-dark);">
+      <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a2.5 2.5 0 0 0 2.5-2.5c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7.5 7.5 0 1 1-15 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      </div>
+      <div>
+        <div class="display" style="font-size:22px;font-weight:700;color:#fff;line-height:1.1;">Brenner det?</div>
+        <div class="display" style="font-size:19px;font-weight:700;color:#fff;line-height:1.2;margin-top:4px;">Ring 110 her</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,0.8);margin-top:3px;">(din posisjon deles)</div>
+      </div>
+    </button>
+
+    <div class="eyebrow">Sjekkliste</div>
+    ${featureRow('bell','Røykvarslere', worstSmoke, 'smoke')}
+    ${featureRow('gauge','Pulverapparat', worstPowder, 'powder')}
+    ${featureRow('square','Brannteppe', blanketStatus, 'blanket')}
+    ${featureRow('spray','Slokkeskum', foamStatus, 'foam')}
+
+    ${(state.profileType==='borettslag' || state.profileType==='sameie') ? `
+    <div class="eyebrow" style="margin-top:16px;">Fellesareal</div>
+    ${COMMON_CHECKS.map(cfg=>{
+      const c = state.commonChecks[cfg.key];
+      const status = commonCheckStatus(c, cfg.months);
+      return featureRow(cfg.icon, cfg.title, status.label, 'common', cfg.key);
+    }).join('')}
+    ` : ''}
+
+    <div class="eyebrow" style="margin-top:16px;">Mer</div>
+    ${featureRow('book','Tips til brannvern', 'Gode vaner i hverdagen', 'tips', undefined, true)}
+  `;
+  document.getElementById('btnEmergency').onclick = openEmergency;
+  document.getElementById('btnSwitchProfile').onclick = ()=>{ state.profileType=null; persist(); render(); };
+  el.querySelectorAll('[data-nav]').forEach(b=> b.onclick = ()=> nav(b.getAttribute('data-nav'), b.getAttribute('data-param')||undefined) );
+}
+function featureRow(icon, title, subtitle, navId, param, accent){
+  return `<button class="${accent?'feature-row-accent':'feature-row'} press" data-nav="${navId}"${param?` data-param="${param}"`:''}>
+    <div class="icon-box">${ICONS[icon]}</div>
+    <div style="flex:1;min-width:0;">
+      <div class="title">${title}</div>
+      <div class="subtitle">${subtitle}</div>
+    </div>
+    <span style="color:${accent?'rgba(255,255,255,0.75)':'var(--grey)'};">${ICONS.chevronRight}</span>
+  </button>`;
+}
+function sectionHeader(title){
+  return `<div class="section-header">
+    <button id="btnBack" class="icon-btn press" style="width:34px;height:34px;">${ICONS.chevronLeft}</button>
+    <h2>${title}</h2>
+  </div>`;
+}
+
+function renderSmoke(){
+  const el = document.getElementById('view-smoke');
+  const dets = state.smokeDetectors;
+  el.innerHTML = sectionHeader('Røykvarslere') +
+    `<p style="font-size:13.5px;color:var(--ink-soft);margin-top:-10px;margin-bottom:16px;">Registrer når du sist byttet batteri. Vi foreslår sjekk hvert år.</p>` +
+    (dets.length===0 ? `<div class="card" style="text-align:center;color:var(--grey);font-size:13.5px;margin-bottom:14px;">Ingen røykvarslere lagt til enda.</div>` : '') +
+    dets.map(d=>{
+      const nextCheck = d.lastChanged ? addYears(d.lastChanged,1) : '';
+      const status = statusFrom(nextCheck);
+      return `<div class="card" style="margin-bottom:12px;" data-id="${d.id}">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;">
+          <div style="display:flex;align-items:flex-end;gap:6px;flex:1;min-width:0;">
+            <span style="color:var(--grey);flex-shrink:0;">${ICONS.pencil}</span>
+            <input type="text" class="detector-name" data-field="name" value="${escapeAttr(d.name)}" placeholder="F.eks. Røykvarsler stue">
+          </div>
+          <button class="press btn-delete" style="border:none;background:transparent;cursor:pointer;padding:4px;color:var(--grey);">${ICONS.trash}</button>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="field">
+            <div class="field-label">Sist byttet batteri</div>
+            <input type="date" data-field="lastChanged" value="${d.lastChanged||''}">
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:12.5px;color:var(--ink-soft);">Bør sjekkes: ${fmtDate(nextCheck)}</span>
+          ${pillHtml(status)}
+        </div>
+      </div>`;
+    }).join('') +
+    `<button id="btnAddDetector" class="dashed-btn press">${ICONS.plus} Legg til røykvarsler</button>`;
+
+  el.querySelector('#btnBack').onclick = ()=> nav('home');
+  document.getElementById('btnAddDetector').onclick = ()=>{
+    state.smokeDetectors.push({id:uid(), name:'', lastChanged:''});
+    persist(); renderSmoke();
+  };
+  el.querySelectorAll('.card[data-id]').forEach(card=>{
+    const id = card.getAttribute('data-id');
+    card.querySelector('.btn-delete').onclick = ()=>{
+      state.smokeDetectors = state.smokeDetectors.filter(d=>d.id!==id);
+      persist(); renderSmoke();
+    };
+    card.querySelectorAll('[data-field]').forEach(inp=>{
+      inp.addEventListener('change', ()=>{
+        const det = state.smokeDetectors.find(d=>d.id===id);
+        det[inp.getAttribute('data-field')] = inp.value;
+        persist(); renderSmoke();
+      });
+      inp.addEventListener('input', ()=>{
+        if(inp.getAttribute('data-field')==='name'){
+          const det = state.smokeDetectors.find(d=>d.id===id);
+          det.name = inp.value; persist();
+        }
+      });
+    });
+  });
+}
+
+function renderPowder(){
+  const el = document.getElementById('view-powder');
+  const items = state.powderExtinguishers;
+  el.innerHTML = sectionHeader('Pulverapparat') +
+    `<p style="font-size:13.5px;color:var(--ink-soft);margin-top:-10px;margin-bottom:16px;">Registrer status på hvert apparat. Vi foreslår service hvert 5. år.</p>` +
+    (items.length===0 ? `<div class="card" style="text-align:center;color:var(--grey);font-size:13.5px;margin-bottom:14px;">Ingen pulverapparat lagt til enda.</div>` : '') +
+    items.map(p=>{
+      const nextService = p.lastService ? addYears(p.lastService,5) : '';
+      const status = statusFrom(nextService);
+      return `<div class="card" style="margin-bottom:12px;" data-id="${p.id}">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-bottom:10px;">
+          <div style="display:flex;align-items:flex-end;gap:6px;flex:1;min-width:0;">
+            <span style="color:var(--grey);flex-shrink:0;">${ICONS.pencil}</span>
+            <input type="text" class="detector-name" data-field="name" value="${escapeAttr(p.name)}" placeholder="F.eks. Pulverapparat gang">
+          </div>
+          <button class="press btn-delete" style="border:none;background:transparent;cursor:pointer;padding:4px;color:var(--grey);">${ICONS.trash}</button>
+        </div>
+        <div class="field">
+          <div class="field-label">Når snudde du den sist?</div>
+          <input type="date" data-field="lastFlipped" value="${p.lastFlipped||''}">
+        </div>
+        <div class="field">
+          <div class="field-label">Er trykket i orden?</div>
+          <div class="toggle3 pPressure">
+            <button data-val="ja" class="${p.pressureOk==='ja'?'active':''}">Ja</button>
+            <button data-val="nei" class="${p.pressureOk==='nei'?'active':''}">Nei</button>
+            <button data-val="usikker" class="${p.pressureOk==='usikker'?'active':''}">Usikker</button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Når var forrige service?</div>
+          <input type="date" data-field="lastService" value="${p.lastService||''}">
+        </div>
+        <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-size:12.5px;color:var(--ink-soft);">Neste service</div>
+            <div style="font-size:15px;font-weight:700;">${fmtDate(nextService)}</div>
+          </div>
+          ${pillHtml(status)}
+        </div>
+      </div>`;
+    }).join('') +
+    `<button id="btnAddPowder" class="dashed-btn press">${ICONS.plus} Legg til pulverapparat</button>
+    <p style="font-size:12px;color:var(--grey);margin-top:10px;line-height:1.5;">Basert på vanlig 5-års serviceintervall. Sjekk etiketten på ditt apparat for eksakt frist.</p>`;
+
+  el.querySelector('#btnBack').onclick = ()=> nav('home');
+  document.getElementById('btnAddPowder').onclick = ()=>{
+    state.powderExtinguishers.push({id:uid(), name:'', lastFlipped:'', pressureOk:null, lastService:''});
+    persist(); renderPowder();
+  };
+  el.querySelectorAll('.card[data-id]').forEach(card=>{
+    const id = card.getAttribute('data-id');
+    const item = state.powderExtinguishers.find(x=>x.id===id);
+    card.querySelector('.btn-delete').onclick = ()=>{
+      state.powderExtinguishers = state.powderExtinguishers.filter(x=>x.id!==id);
+      persist(); renderPowder();
+    };
+    card.querySelectorAll('[data-field]').forEach(inp=>{
+      inp.addEventListener('change', ()=>{
+        item[inp.getAttribute('data-field')] = inp.value;
+        persist(); renderPowder();
+      });
+      inp.addEventListener('input', ()=>{
+        if(inp.getAttribute('data-field')==='name'){
+          item.name = inp.value; persist();
+        }
+      });
+    });
+    card.querySelectorAll('.pPressure button').forEach(b=>{
+      b.onclick = ()=>{ item.pressureOk = b.getAttribute('data-val'); persist(); renderPowder(); };
+    });
+  });
+}
+
+function renderBlanket(){
+  const el = document.getElementById('view-blanket');
+  const b = state.blanket;
+  el.innerHTML = sectionHeader('Brannteppe') +
+    `<div class="card">
+      <div class="field-label">Vet du hvor du har brannteppet ditt?</div>
+      <div class="toggle3" id="bKnows" style="margin-top:8px;">
+        <button data-val="ja" class="${b.knows===true?'active':''}">Ja</button>
+        <button data-val="nei" class="${b.knows===false?'active':''}">Nei</button>
+      </div>
+      ${b.knows===true ? `<div class="field" style="margin-top:12px;">
+        <div class="field-label">Hvor er det plassert?</div>
+        <input type="text" id="bLocation" placeholder="F.eks. kjøkkenskap" value="${escapeAttr(b.location)}">
+      </div>` : ''}
+      ${b.knows===false ? `<a href="https://norskbrannvern.no/nettbutikk/nyhet-brannteppe-120x120-silikonbelagt/" target="_blank" rel="noopener noreferrer" class="order-card" style="margin-top:12px;">
+        <div style="display:flex;align-items:center;gap:10px;color:var(--amber);">${ICONS.bag}<span>Bestill brannteppe</span></div>
+        <span style="color:var(--amber);">${ICONS.chevronRight}</span>
+      </a>` : ''}
+    </div>`;
+
+  el.querySelector('#btnBack').onclick = ()=> nav('home');
+  el.querySelectorAll('#bKnows button').forEach(btn=> btn.onclick = ()=>{ b.knows = btn.getAttribute('data-val')==='ja'; persist(); renderBlanket(); } );
+  const loc = document.getElementById('bLocation');
+  if(loc) loc.oninput = ()=>{ b.location = loc.value; persist(); };
+}
+
+function renderFoam(){
+  const el = document.getElementById('view-foam');
+  const f = state.foam;
+  const status = statusFrom(f.expires);
+  el.innerHTML = sectionHeader('Slokkeskum') +
+    `<div class="card">
+      <div class="field-label">Vet du hvor du har slokkeskummet ditt?</div>
+      <div class="toggle3" id="fKnows" style="margin-top:8px;">
+        <button data-val="ja" class="${f.knows===true?'active':''}">Ja</button>
+        <button data-val="nei" class="${f.knows===false?'active':''}">Nei</button>
+      </div>
+      ${f.knows===true ? `<div class="field" style="margin-top:12px;">
+        <div class="field-label">Hvor er det plassert?</div>
+        <input type="text" id="fLocation" placeholder="F.eks. bod" value="${escapeAttr(f.location)}">
+      </div>` : ''}
+      ${f.knows===false ? `<a href="https://norskbrannvern.no/nettbutikk/110-slokkeskum-multipro/" target="_blank" rel="noopener noreferrer" class="order-card" style="margin-top:12px;">
+        <div style="display:flex;align-items:center;gap:10px;color:var(--amber);">${ICONS.bag}<span>Bestill slokkeskum</span></div>
+        <span style="color:var(--amber);">${ICONS.chevronRight}</span>
+      </a>` : ''}
+    </div>
+    <div style="height:12px;"></div>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Kjøpt</div>
+        <input type="date" id="fPurchased" value="${f.purchased||''}">
+      </div>
+      <div class="field">
+        <div class="field-label">Utløper</div>
+        <input type="date" id="fExpires" value="${f.expires||''}">
+      </div>
+      ${(!f.expires && f.purchased) ? `<button id="fSuggest" class="link-btn press">Foreslå utløpsdato (kjøpt + 5 år)</button>` : ''}
+      <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:13px;color:var(--ink-soft);">Bør byttes innen</div>
+        ${pillHtml(status)}
+      </div>
+    </div>`;
+
+  el.querySelector('#btnBack').onclick = ()=> nav('home');
+  el.querySelectorAll('#fKnows button').forEach(btn=> btn.onclick = ()=>{ f.knows = btn.getAttribute('data-val')==='ja'; persist(); renderFoam(); } );
+  const loc = document.getElementById('fLocation');
+  if(loc) loc.oninput = ()=>{ f.location = loc.value; persist(); };
+  document.getElementById('fPurchased').onchange = e=>{ f.purchased=e.target.value; persist(); renderFoam(); };
+  document.getElementById('fExpires').onchange = e=>{ f.expires=e.target.value; persist(); renderFoam(); };
+  const sug = document.getElementById('fSuggest');
+  if(sug) sug.onclick = ()=>{ f.expires = addYears(f.purchased,5); persist(); renderFoam(); };
+}
+
+const TIPS = [
+  { title:'Test røykvarsleren en gang i måneden', body:'Trykk på testknappen og bytt batteri minst én gang i året, gjerne i forbindelse med Røykvarslerens dag i desember.' },
+  { title:'Ha en avtalt møteplass', body:'Bli enige om hvor familien eller beboerne møtes utenfor bygget dersom det oppstår brann, slik at dere raskt kan telle opp.' },
+  { title:'Rydd rømningsveier', body:'Sjekk jevnlig at trapper, ganger og balkonger er fri for gjenstander som kan hindre en rask evakuering.' },
+  { title:'Kjenn slokkeutstyret ditt', body:'Vet du hvor brannslukningsapparatet og brannteppet er plassert – og hvordan de brukes – sparer du dyrebare sekunder.' },
+  { title:'Vær ekstra obs ved matlaging', body:'De fleste boligbranner starter på kjøkkenet. Ikke forlat komfyren mens du steker, og hold brannteppet i nærheten.' },
+  { title:'Sjekk det elektriske anlegget', body:'Overbelastede stikkontakter og gamle skjøteledninger er en vanlig brannårsak – få anlegget kontrollert med jevne mellomrom.' },
+];
+function renderTips(){
+  const el = document.getElementById('view-tips');
+  el.innerHTML = sectionHeader('Tips til brannvern') +
+    TIPS.map((t,i)=>`<div class="card" style="margin-bottom:10px;display:flex;gap:12px;">
+      <div style="width:30px;height:30px;border-radius:9px;background:var(--paper);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--ink-soft);">${i+1}</div>
+      <div>
+        <div style="font-size:14.5px;font-weight:700;margin-bottom:3px;">${t.title}</div>
+        <div style="font-size:13px;color:var(--ink-soft);line-height:1.5;">${t.body}</div>
+      </div>
+    </div>`).join('');
+  el.querySelector('#btnBack').onclick = ()=> nav('home');
+}
+
+function renderCommon(){
+  const el = document.getElementById('view-common');
+  const cfg = COMMON_CHECKS.find(c=>c.key===activeCommonCheck);
+  const c = state.commonChecks[cfg.key];
+  const status = commonCheckStatus(c, cfg.months);
+  el.innerHTML = sectionHeader(cfg.title) +
+    `<p style="font-size:13.5px;color:var(--ink-soft);margin-top:-10px;margin-bottom:16px;">${cfg.desc}</p>` +
+    `<div class="card">
+      <div class="field">
+        <div class="field-label">Sist sjekket</div>
+        <input type="date" id="ccDate" value="${c.lastChecked||''}">
+      </div>
+      <div class="field">
+        <div class="field-label">${cfg.question}</div>
+        <div class="toggle3" id="ccOk">
+          <button data-val="ja" class="${c.ok==='ja'?'active':''}">Ja</button>
+          <button data-val="nei" class="${c.ok==='nei'?'active':''}">Nei</button>
+          <button data-val="usikker" class="${c.ok==='usikker'?'active':''}">Usikker</button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Notat (valgfritt)</div>
+        <input type="text" id="ccNote" placeholder="F.eks. hva som bør følges opp" value="${escapeAttr(c.note)}">
+      </div>
+      <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:13px;color:var(--ink-soft);">Status</div>
+        ${pillHtml(status)}
+      </div>
+    </div>`;
+
+  el.querySelector('#btnBack').onclick = ()=> nav('home');
+  document.getElementById('ccDate').onchange = e=>{ c.lastChecked=e.target.value; persist(); renderCommon(); };
+  document.getElementById('ccNote').oninput = e=>{ c.note=e.target.value; persist(); };
+  el.querySelectorAll('#ccOk button').forEach(b=> b.onclick = ()=>{ c.ok = b.getAttribute('data-val'); persist(); renderCommon(); } );
+}
+
+function escapeAttr(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+// ---------- onboarding ----------
+document.querySelectorAll('.onboard-option').forEach(btn=>{
+  btn.querySelector('.icon-box').innerHTML = btn.getAttribute('data-profile')==='borettslag' ? ICONS.building : btn.getAttribute('data-profile')==='sameie' ? ICONS.users : ICONS.home;
+  btn.onclick = ()=>{
+    state.profileType = btn.getAttribute('data-profile');
+    persist();
+    render();
+  };
+});
+
+// ---------- emergency sheet ----------
+function openEmergency(){
+  document.getElementById('emergency').classList.add('open');
+  document.getElementById('posLabel').textContent = 'Del posisjon med nødetatene';
+}
+document.getElementById('closeEmergency').onclick = ()=> document.getElementById('emergency').classList.remove('open');
+document.getElementById('sharePosition').onclick = ()=>{
+  const label = document.getElementById('posLabel');
+  if(!navigator.geolocation){ label.textContent = 'Posisjon ikke tilgjengelig her'; return; }
+  label.textContent = 'Henter posisjon …';
+  navigator.geolocation.getCurrentPosition(
+    ()=>{ label.textContent = 'Posisjon delt'; },
+    ()=>{ label.textContent = 'Posisjon ikke tilgjengelig her'; },
+    { timeout: 4000 }
+  );
+};
+
+// ---------- init ----------
+render();
+</script>
+</body>
+</html>
