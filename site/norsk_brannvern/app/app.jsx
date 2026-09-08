@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {
   Flame, Phone, MapPin, X, Plus, Trash2, ChevronLeft, ShoppingBag,
   Info, Check, AlertTriangle, Settings, Home, Building2, Users,
-  BellRing, Gauge, Square, SprayCan, BookOpen, ChevronRight, Loader2,
+  BellRing, Gauge, Square, SprayCan, BookOpen, ChevronRight,
   Waves, LogOut, Archive, BatteryCharging, Pencil
 } from 'lucide-react';
 
@@ -291,19 +291,8 @@ function Onboarding({ onSelect }) {
 // ---------- Emergency sheet ----------
 
 function EmergencySheet({ onClose }) {
-  const [posState, setPosState] = useState('idle');
-
-  const sharePosition = () => {
-    setPosState('loading');
-    if (!navigator.geolocation) {
-      setPosState('unavailable');
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      () => setPosState('shared'),
-      () => setPosState('unavailable'),
-      { timeout: 4000 }
-    );
+  const showPrototypeNotice = () => {
+    alert('Dette er bare en prototype');
   };
 
   return (
@@ -328,21 +317,20 @@ function EmergencySheet({ onClose }) {
           </button>
         </div>
 
-        <a href="tel:110" className="nb-btn-press" style={{
-          marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-          background: C.red, color: '#fff', textDecoration: 'none',
-          borderRadius: 14, padding: '16px 18px', fontSize: 19, fontWeight: 700,
+        <button onClick={showPrototypeNotice} className="nb-btn-press" style={{
+          marginTop: 16, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+          background: C.red, color: '#fff', border: 'none', textDecoration: 'none',
+          borderRadius: 14, padding: '16px 18px', fontSize: 19, fontWeight: 700, cursor: 'pointer',
         }}>
           <Phone size={20} /> Ring 110 nå
-        </a>
+        </button>
 
-        <button onClick={sharePosition} className="nb-btn-press" style={{
+        <button onClick={showPrototypeNotice} className="nb-btn-press" style={{
           marginTop: 10, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9,
           background: C.card, border: `1px solid ${C.line}`, color: C.ink,
           borderRadius: 14, padding: '13px 18px', fontSize: 15, fontWeight: 600, cursor: 'pointer',
         }}>
-          {posState === 'loading' ? <Loader2 size={17} className="nb-spin" /> : <MapPin size={17} />}
-          {posState === 'shared' ? 'Posisjon delt' : posState === 'unavailable' ? 'Posisjon ikke tilgjengelig her' : 'Del posisjon med nødetatene'}
+          <MapPin size={17} /> Del posisjon med nødetatene
         </button>
 
         <p style={{ fontSize: 12, color: C.grey, marginTop: 12, lineHeight: 1.5 }}>
@@ -398,7 +386,7 @@ function Home_({ profileType, onNav, onOpenEmergency, onSwitchProfile, smokeDete
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#FFFFFF', margin: '-20px -20px 20px -20px', padding: '16px 20px', borderRadius: '26px 26px 0 0' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#FFFFFF', margin: '0 -20px 20px -20px', padding: '16px 20px', borderRadius: 0 }}>
         <img src={LOGO_DATA_URI} alt="Norsk Brannvern" style={{ width: 148, height: 'auto', display: 'block' }} />
         <button onClick={onSwitchProfile} aria-label="Bytt profil" className="nb-btn-press" style={{
           width: 32, height: 32, borderRadius: 9, border: `1px solid ${C.line}`,
@@ -839,6 +827,9 @@ export default function App() {
         background: C.paper, borderRadius: 26, border: `1px solid ${C.line}`,
         padding: 20, boxSizing: 'border-box', overflow: 'hidden',
       }}>
+        <div style={{ background: '#FFD100', margin: '-20px -20px 0 -20px', padding: '6px 20px', borderRadius: '26px 26px 0 0', textAlign: 'center' }}>
+          <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: 1.5, color: '#000' }}>PROTOTYPE</span>
+        </div>
         {loading ? (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 660, color: C.grey, fontSize: 14 }}>
             Laster …
@@ -859,22 +850,34 @@ export default function App() {
               />
             )}
             {view === 'smoke' && (
-              <SmokeView detectors={smokeDetectors} setDetectors={setSmokeDetectors} onBack={() => setView('home')} />
+              <div style={{ paddingTop: 16 }}>
+                <SmokeView detectors={smokeDetectors} setDetectors={setSmokeDetectors} onBack={() => setView('home')} />
+              </div>
             )}
             {view === 'powder' && (
-              <PowderView items={powderExtinguishers} setItems={setPowderExtinguishers} onBack={() => setView('home')} />
+              <div style={{ paddingTop: 16 }}>
+                <PowderView items={powderExtinguishers} setItems={setPowderExtinguishers} onBack={() => setView('home')} />
+              </div>
             )}
             {view === 'blanket' && (
-              <BlanketView blanket={blanket} setBlanket={setBlanket} onBack={() => setView('home')} />
+              <div style={{ paddingTop: 16 }}>
+                <BlanketView blanket={blanket} setBlanket={setBlanket} onBack={() => setView('home')} />
+              </div>
             )}
             {view === 'foam' && (
-              <FoamView foam={foam} setFoam={setFoam} onBack={() => setView('home')} />
+              <div style={{ paddingTop: 16 }}>
+                <FoamView foam={foam} setFoam={setFoam} onBack={() => setView('home')} />
+              </div>
             )}
             {view === 'common' && activeCommonCheck && (
-              <CommonCheckView checkKey={activeCommonCheck} commonChecks={commonChecks} setCommonChecks={setCommonChecks} onBack={() => setView('home')} />
+              <div style={{ paddingTop: 16 }}>
+                <CommonCheckView checkKey={activeCommonCheck} commonChecks={commonChecks} setCommonChecks={setCommonChecks} onBack={() => setView('home')} />
+              </div>
             )}
             {view === 'tips' && (
-              <TipsView onBack={() => setView('home')} />
+              <div style={{ paddingTop: 16 }}>
+                <TipsView onBack={() => setView('home')} />
+              </div>
             )}
           </>
         )}
