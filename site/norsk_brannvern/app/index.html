@@ -100,12 +100,12 @@
   }
   .toggle3 button.active{background:var(--ink);border-color:var(--ink);color:#fff;}
   .sheet-backdrop{
-    position:absolute;inset:0;background:rgba(27,26,23,0.55);
-    display:none;align-items:flex-end;z-index:30;border-radius:26px;
+    position:fixed;inset:0;background:rgba(27,26,23,0.55);
+    display:none;align-items:flex-end;justify-content:center;z-index:30;
   }
   .sheet-backdrop.open{display:flex;}
   .sheet{
-    width:100%;background:var(--paper);border-radius:22px 22px 0 0;
+    width:100%;max-width:400px;background:var(--paper);border-radius:22px 22px 0 0;
     padding:22px 20px 26px;box-sizing:border-box;
   }
   .drag-handle{width:36px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 18px;}

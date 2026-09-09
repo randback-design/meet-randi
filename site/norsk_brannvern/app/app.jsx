@@ -248,11 +248,11 @@ function Onboarding({ onSelect }) {
   ];
   return (
     <div style={{
-      position: 'absolute', inset: 0, background: 'rgba(27,26,23,0.55)',
-      display: 'flex', alignItems: 'flex-end', zIndex: 30, borderRadius: 26,
+      position: 'fixed', inset: 0, background: 'rgba(27,26,23,0.55)',
+      display: 'flex', alignItems: 'flex-end', justifyContent: 'center', zIndex: 30,
     }}>
       <div style={{
-        width: '100%', background: C.paper, borderRadius: '22px 22px 0 0',
+        width: '100%', maxWidth: 400, background: C.paper, borderRadius: '22px 22px 0 0',
         padding: '26px 20px 24px', boxSizing: 'border-box',
       }}>
         <div style={{ width: 36, height: 4, background: C.line, borderRadius: 4, margin: '0 auto 18px' }} />
@@ -297,11 +297,11 @@ function EmergencySheet({ onClose }) {
 
   return (
     <div style={{
-      position: 'absolute', inset: 0, background: 'rgba(27,26,23,0.6)',
-      display: 'flex', alignItems: 'flex-end', zIndex: 40, borderRadius: 26,
+      position: 'fixed', inset: 0, background: 'rgba(27,26,23,0.6)',
+      display: 'flex', alignItems: 'flex-end', justifyContent: 'center', zIndex: 40,
     }}>
       <div style={{
-        width: '100%', background: C.paper, borderRadius: '22px 22px 0 0',
+        width: '100%', maxWidth: 400, background: C.paper, borderRadius: '22px 22px 0 0',
         padding: '22px 20px 26px', boxSizing: 'border-box',
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 6 }}>
