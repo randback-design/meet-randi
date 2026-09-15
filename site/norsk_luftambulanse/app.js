@@ -86,6 +86,7 @@ function goHatt(idx){
   hattIdx = idx;
   const scroll = document.getElementById('hattScroll');
   if(!scroll) return;
+  if(!scroll.querySelector('img')) return;
   const imgW = scroll.querySelector('img').offsetWidth + 24;
   scroll.scrollTo({left: idx * imgW, behavior:'smooth'});
   document.querySelectorAll('#hattDots .car-nav-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
@@ -151,16 +152,18 @@ function initSwipe(){
 
 // ── FAQ ──
 const mainQA = [
-  {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer og innholdsprodusent med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell og tekstlig kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt), og jeg er også veldig glad i å skrive.<br><br>Dessuten er jeg kreativ, strukturert og glad i tempo og mange baller i luften. Og så er jeg mamma, kjæreste og hundeeier. Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
-  {q:"Hvorfor søker du på denne jobben?", type:"text", text:"Å få jobbe med å fortelle historiene bak et fagmiljø som redder liv hver eneste dag, er noe jeg synes høres dypt meningsfullt ut. Jeg har alltid vært opptatt av hvordan godt innhold kan gjøre kompliserte temaer forståelige og engasjerende, og jeg liker godt tanken på å jobbe tett med fagfolk for å finne og formidle de gode historiene – fra forskning og innovasjon til enkeltmenneskers møte med akuttmedisin.<br><br>Jeg trives med bredden rollen legger opp til: artikler, nettsider, sosiale medier, og muligheten til å bidra inn i noe så spennende som en fagpodkast. Kombinasjonen av redaksjonelt arbeid og kommunikasjonsrådgivning er akkurat den typen variasjon jeg liker best.", media:[]},
-  {q:"Få høre litt om innhold du har produsert da!", type:"text", text:"Jeg har produsert innhold for mange ulike målgrupper gjennom de siste 20 årene, men målet har alltid vært det samme: å få folk til å stoppe opp, lese, klikke eller komme tilbake.<br><br>I Egmont var jeg nettredaktør for Julia og jobbet også med donald.no. Jeg skrev artikler, laget quizzer og konkurranser, modererte forum og utviklet innhold for barn og unge. Mye av jobben handlet om å finne riktig tone for målgruppen, og skrive tekster som faktisk ble lest til siste ord.<br><br>I VG jobbet jeg i et in-house-byrå, der vi utviklet kreative annonsekonsepter med animasjoner, spill og interaktive løsninger.<br><br>I Allente produserte jeg blant annet landingssider, nyhetsbrev, innhold til sosiale medier og video, og jobbet mye med A/B-testing for å finne de løsningene som fungerte best.", media:[]},
-  {q:"Hva mener du er det viktigste du kan bidra med hos oss?", type:"text", text:"Jeg tror det viktigste jeg kan bidra med er evnen til å ta et komplisert tema og gjøre det forståelig og engasjerende, uten å miste presisjonen – noe jeg vet er avgjørende når man formidler fagstoff innen akuttmedisin. Å finne riktig tone og de riktige ordene for en sak er noe jeg bruker mye tid på.<br><br>Jeg har bred erfaring med innholdsproduksjon, som gjør at jeg kan se helheten og produsere mye selv: skrive, redigere bilder og video, og bidra på tvers av flater og formater – fra kortere SoMe-innhold til lengre artikler.<br><br>Jeg er strukturert og vant til å levere på flere prosjekter samtidig, og jeg liker godt å samarbeide tett med fagpersoner for å sikre at innholdet er både engasjerende og faglig korrekt.", media:[]},
-  {q:"Har du erfaring med foto, video eller podkast?", type:"text", text:"Video har jeg god erfaring med – jeg klipper selv, og har blant annet ansvar for video- og fotoproduksjon til Trollskogen teater, der jeg dokumenterer og lager innhold rundt hver forestilling. Jeg er også vant til å jobbe i Adobe Premiere og After Effects.<br><br>Podkast har jeg ikke produsert selv ennå, men jeg er nysgjerrig og lærer raskt nye systemer og arbeidsflyter. Jeg tenker at researcharbeidet og historiejakten bak en episode – å finne den gode vinkelen og de rette kildene – ligner mye på det jeg allerede gjør i annen innholdsproduksjon, så det kunne vært spennende å sette meg mer inn i det tekniske rundt lyd.", media:[]},
-  {q:"Hvordan er erfaringen din med pressearbeid?", type:"text", text:"Jeg har begrenset erfaring med direkte pressekontakt, men har samarbeidet tett med en rekke eksterne partnere og levert kommunikasjonsmateriell til flere flater og kampanjer. Jeg er komfortabel med å ta kontakt med mennesker, enten det er på telefon eller e-post, og ser på relasjonsbygging som en naturlig del av kommunikasjonsarbeidet – noe jeg gjerne vil bygge videre på i denne rollen.", media:[]},
-  {q:"Hvilke programmer jobber du i?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Mer om dette ser dere i en egen blokk lengre ned på denne siden.<br><br>Jeg er også glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com (prosjektstyring) og Bannerflow (annonseproduksjon) på min siste arbeidsplass.", media:[]},
-  {q:"Når kan du eventuelt starte i ny jobb?", type:"text", text:"Jeg er fleksibel og kan starte på kort varsel.<br><br>Etter en større nedbemanning i Allente er jeg nå på jakt etter nye utfordringer. I mellomtiden fyller jeg dagene med å lære nye ting, blant annet AI og animasjon. Har dere lyst til å se en arbeidsprøve på noe spesielt, lager jeg gjerne det.", media:[]},
-  {q:"Alle snakker om AI. Hva er dine tanker om det?", type:"text", text:"Jeg bruker AI som et arbeidsverktøy der det er hensiktsmessig – til idéutvikling, research, korrektur og effektivisering av arbeidsflyten. Samtidig er jeg opptatt av at innholdet fortsatt skal ha et menneskelig preg og høres ut som meg. Denne nettsiden er laget ved hjelp av mange timer med vibe-coding i Claude, men all tekst er skrevet av meg selv.", media:[]},
-  {q:"Hvordan kontakter vi deg?", type:"text", text:"Ring meg på 97 72 03 15, eller send en mail til backmarkrandi@gmail.com", media:[]}
+  {q:"Så... hvem er du da?", type:"video", text:"Jeg er Randi – grafisk designer, og \"markedsperson\" med 20 års erfaring fra mediebransjen, og en bred kompetanse innen visuell kommunikasjon. Jeg liker å lage innhold som faktisk blir lagt merke til (og brukt), og jeg er også veldig glad i å skrive.<br><br>Dessuten er jeg kreativ, sosial, leken og ganske glad i tempo og mange baller i luften – uten at det går på bekostning av mitt behov for god orden, struktur og overblikk. 🎨 ✅<br><br>Og så er jeg mamma, samboer, hundeeier og en ivrig konsert- og teatergjenger. 🎵 Mer om meg i denne animasjonsfilmen jeg har laget:", media:[{type:"video",vimeoId:"1187345684",vimeoHash:"f8b46e121d"}]},
+  {q:"Hvorfor søker du på denne jobben?", type:"text", text:"Museum og kulturformidling er noe jeg har et nært forhold til – jeg bidrar mye i Trollskogen Teater sin PR-gruppe på fritiden, og jeg og familien er veldig glade i å gå på arrangementer, museer, teater og konserter.<br><br>Så tanken på å formidle levende kulturarv til over 500 000 besøkende i året treffer meg rett i hjertet. Jeg liker godt at rollen kombinerer strategi (publiseringsplaner, innsikt, analyse) med å faktisk stå og filme, klippe og publisere selv – det er akkurat den kombinasjonen av overblikk og operativt arbeid jeg trives best med.", media:[]},
+  {q:"Hva mener du er det viktigste du kan bidra med hos oss?", type:"text", text:"Jeg tror det viktigste jeg kan bidra med er å kombinere struktur med kreativitet – jeg liker å lage gode publiseringsplaner, samtidig som jeg selv kan stå for det meste av produksjonen: skrive, filme, redigere, illustrere og publisere.<br><br>Jeg har grunnleggende kjennskap til analyse og A/B-testing fra Allente, og er nysgjerrig på hvordan innhold også bør tilpasses AI-drevne plattformer.", media:[]},
+  {q:"Hvor mye erfaring har du med filming og redigering?", type:"text", text:"Dette er noe av det jeg liker veldig godt å jobbe med. Jeg klipper video i Premiere Pro og After Effects, filmer gjerne med mobilen eller klipper video andre har filmet med kamera.<br><br>Jeg har jobbet med alt fra korte SoMe-klipp til lengre videoer, blant annet en showcase-video for Allente etter en kampanje (Se arbeidsprøver). Jeg er også glad i å lede en produksjon fra manus til ferdig klipp, i samarbeid med fotografer og andre fagfolk om det trengs.", media:[]},
+  {q:"Hva annet kan du?", type:"text", text:"Jeg kan klippe video, lage enkle animasjoner, illustrere, redigere bilder, lage konsepter, idémyldre, holde workshops, lage innsalgspresentasjoner, og mye mer. Og jeg deler gjerne musikktips og hjelper til å orge festligheter. 🎉", media:[]},
+  {q:"Hvordan er erfaringen din med analyse?", type:"text", text:"Jeg har erfaring med å følge med på trafikk og resultater fra digitale flater, og har både i Egmont og Canal Digital/Allente jobbet tett med kollegaer som hadde analyse og optimalisering som fagfelt. Jeg har også vært involvert i A/B-testing og brukt innsikt til å justere innhold og løsninger underveis.<br><br>Dette er et område jeg gjerne vil jobbe enda mer med. Jeg liker tanken på å ikke bare lage godt innhold, men også finne ut hva som faktisk fungerer, lære av det og gjøre mer av det.", media:[]},
+  {q:"Programmer?", type:"text", text:"Jeg jobber i de fleste av de store programmene i Adobe CC: Photoshop, InDesign, Illustrator, Premiere og After Effects. Jeg er glad i å lære nye programmer og verktøy, og har bidratt til å implementere både Monday.com og Bannerflow i Allente (min siste arbeidsplass).", media:[]},
+  {q:"Er du god til å snakke engelsk?", type:"text", text:"Joa, på min forrige arbeidsplass var det daglige møter der vi alle snakket engelsk, og jeg skriver også ganske godt. Jeg er i hvert fall komfortabel med å snakke engelsk og håper det er good enough? 😉 🇬🇧", media:[]},
+  {q:"Og AI, som alle snakker om for tiden?", type:"text", text:"Jeg skal innrømme at jeg var skeptisk til AI i starten. Alle de rare bildene av mennesker som så helt like ut og hadde seks fingre gjorde meg ikke akkurat overbevist. 😅 Men gamet har endret seg ganske kraftig.<br><br>Nå bruker jeg AI nesten daglig og synes det er skikkelig spennende å teste hva teknologien kan brukes til. Jeg har blant annet begynt å lage små apper og verktøy for å løse ting i hverdagen, og denne nettsiden har jeg laget ved hjelp av Claude og ganske mange timer med prompts.<br><br>Samtidig er jeg opptatt av at AI skal være et verktøy, ikke ta over stemmen eller kreativiteten. Jeg liker å skrive selv, tenke selv og lage ting selv. AI kan bare hjelpe meg å gjøre det litt smartere.", media:[]},
+  {q:"Hva med det sosiale?", type:"text", text:"Jeg bidrar med humor, godt humør, tørre ordspill, musikktips og engasjement.<br><br>I min forrige jobb satt jeg mange år i sosialkomitéen, og bidro til at miljøet på jobb var godt – og at det ble både sommerfest og julebord. 🎉", media:[]},
+  {q:"Når kan du eventuelt starte i ny jobb?", type:"text", text:"Jeg er ganske fleksibel når det kommer til oppstart. For noen måneder siden ble jeg rammet av en nedbemanning i min forrige jobb, da et eierskifte i Allente førte til at ca. halvparten måtte gå. Nå er jeg superklar for nye utfordringer og oppgaver, og kan starte på relativt kort varsel.", media:[]},
+  {q:"Hvordan kontakter vi deg?", type:"text", text:"97 72 03 15. Eller send en mail til backmarkrandi@gmail.com 📩", media:[]}
 ];
 
 const typeIcons = {
@@ -202,30 +205,6 @@ const portfolioCases = [
     thumbImg: "/portfolio/video/Showcase.jpg"
   },
   {
-    tag: "Visuell profil",
-    title: "Merkevarebygging – Allente",
-    desc: "Da Canal Digital og Viasat slo seg sammen og ble Allente, begynte en stor jobb med å bygge et helt nytt brand.",
-    problem: "Da Allente ble lansert i 2020, måtte vi i markedsavdelingen bygge kjennskap til et helt nytt brand. Hvordan få folk til å skjønne at Canal Digital og Viasat nå er Allente?",
-    body: "Jeg jobbet som en av flere grafiske designere i markedsavdelingen gjennom hele merkevarebyggingen – og omsatte den nye visuelle profilen som ble til i tett samarbeid med byrå, til kampanjer, SoMe, nyhetsbrev, landingssider og partnermateriell. Det tok tid, prøving og justering, men i dag står Allente sterkt i markedet, som en av de store aktørene innen TV-distribusjon.",
-    results: ["Bidro til konsistent visuelt uttrykk på tvers av alle kanaler","Bygget opp maler og systemer som team bruker den dag i dag"],
-    chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
-    mediaType: "multi",
-    media: [
-      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
-      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
-      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
-      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
-      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
-      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
-      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
-      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
-      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
-      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
-    ],
-    thumbBg: "#b8e5d9",
-    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
-  },
-  {
     tag: "PR og markedsføring",
     title: "PR for teater – Trollskogen",
     desc: "Jeg engasjerer meg veldig i Trollskogen teater, der jeg har to barn som spiller, og lager alt av grafisk materiell.",
@@ -249,6 +228,47 @@ const portfolioCases = [
     ],
     thumbBg: "#e3f4f0",
     thumbImg: "/portfolio/teater/Peter_Pan_thumb.jpg"
+  },
+  {
+    tag: "Illustrasjon",
+    title: "Illustrasjoner – Finn roen",
+    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
+    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
+    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
+    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
+    chips: ["Illustrator"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+    ],
+    thumbBg: "#ffffff",
+    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
+  },
+  {
+    tag: "Visuell profil",
+    title: "Merkevarebygging – Allente",
+    desc: "Da Canal Digital og Viasat slo seg sammen og ble Allente, begynte en stor jobb med å bygge et helt nytt brand.",
+    problem: "Da Allente ble lansert i 2020, måtte vi i markedsavdelingen bygge kjennskap til et helt nytt brand. Hvordan få folk til å skjønne at Canal Digital og Viasat nå er Allente?",
+    body: "Jeg jobbet som en av flere grafiske designere i markedsavdelingen gjennom hele merkevarebyggingen – og omsatte den nye visuelle profilen som ble til i tett samarbeid med byrå, til kampanjer, SoMe, nyhetsbrev, landingssider og partnermateriell. Det tok tid, prøving og justering, men i dag står Allente sterkt i markedet, som en av de store aktørene innen TV-distribusjon.",
+    results: ["Bidro til konsistent visuelt uttrykk på tvers av alle kanaler","Bygget opp maler og systemer som team bruker den dag i dag"],
+    chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
+      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
+      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
+      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
+      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
+      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
+      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
+      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
+      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
+    ],
+    thumbBg: "#b8e5d9",
+    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
   }
 ];
 
@@ -318,7 +338,7 @@ function openModal(i){
     modalCarIdx = 0;
     const slides = c.media.map(m => {
       let inner = '';
-      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      if(m.type==='vimeo')      inner = `<iframe src="${m.src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen${(m.ratio||m.maxWidth)?` style="${m.ratio?`aspect-ratio:${m.ratio};`:''}${m.maxWidth?`max-width:${m.maxWidth}px;`:''}"`:''}></iframe>`;
       else if(m.type==='image') inner = `<img src="${m.src}" alt="${m.label||''}">`;
       else                      inner = `<div class="placeholder-slide" style="background:${m.bg||'var(--t3)'}">${m.label||'Bilde/video kommer'}</div>`;
       return `<div class="modal-carousel-slide${m.type==='vimeo'?' video-slide':''}${m.portrait?' portrait-video':''}">${inner}</div>`;
@@ -355,131 +375,6 @@ function openModal(i){
   document.body.style.overflow = 'hidden';
   const mct = document.getElementById('modalCarTrack');
   if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
-}
-
-// ── TEKSTPRØVER ──
-const textSamples = [
-  {
-    tag: "Filmanmeldelser",
-    title: "Anmeldelser – Ready Player One & Wonder Park",
-    context: "To filmanmeldelser skrevet i en mer resonnerende, personlig tone enn den kommersielle SoMe-teksten – viser en annen side av skrivestilen min.",
-    excerpt: "En film signert Steven Spielberg er ofte verdt en kikk. Og her blir man ikke skuffet.",
-    channels: [
-      {
-        label: "Ready Player One (2018)",
-        text: "<span class='text-title-lg'>Ready Player One (2018)</span>\n\n<strong>Regissør:</strong> Steven Spielberg | IMDb: 7.5\n\nVirtuell virkelighet. Fremtid. Spill. Retro. Action. Vennskap\n\nEn film signert Steven Spielberg er ofte verdt en kikk. Og her blir man ikke skuffet. Det at handlingen er lagt litt fram i tid, til 2045, og at over halve filmens forløp foregår i en virtuell virkelighet plasserer den i Sci-fi-kategorien. Men vi er et godt stykke fra både Star Wars og X-Men her, altså. I bunn og grunn handler det om spillglede, ekte mennesker og ekte følelser.\n\n<strong>En virtuell virkelighetsflukt</strong>\nDet har ikke gått så bra med verden fram til 2045. Folk bor nå i brakker, det er mye bråk og kriminalitet – i det hele tatt er livet ganske stusslig. Derfor rømmer menneskene så ofte de kan inn i den virtuelle verdenen Oasis, skapt av spill-geniene James Halliday og Ogden Morrow. I Oasis kan man være akkurat den man vil, og det er der man treffer venner, kjøper seg kule ting, og går på diskotek. Halliday var selve hjernen bak spillet. Han var ung på 80-tallet, og har bygget inn drøssevis av referanser fra sin ungdomstid i Oasis. Når den eksentriske grunnleggeren blir syk og dør, testamenterer han livsverket sitt til vinneren av et episk spill i Oasis.\n\n<strong>Jakten på en arvtager</strong>\nEn av dem som lever livet sitt i Oasis, og elsker hver minste bit av spillets univers, er Wade Watts. Han er en foreldreløs ungdom som bor under dårlige kår hos tanten sin og hennes voldelige kjæreste. Han har flere venner i Oasis, og er blant de ivrigste når det gjelder kunnskap om spillet, dets grunnlegger, og 80-talls kultur. Wade, eller Parzival som han kaller seg i Oasis, drømmer selvfølgelig om å bli den som arver Hallidays livsverk. Han tilbringer så mye tid som mulig alene i et skur med VR-brillene og bodysuiten på. Men det er mange som ønsker å bli Oasis nye eier, og slett ikke alle har gode hensikter.\n\n<strong>Proppfull av henvisninger</strong>\nDenne filmen er en actionfylt godtepose for den som liker gamle PC-spill, ikoniske filmer som «The Shining» og «Back to the Future», action og spenning. Det dukker opp kjente filmfigurer som Jernkjempen og King Kong, og spillkarakterer fra klassiske Street Fighter og nyere Overwatch.\n\nDet er ganske tøft egentlig, hvordan denne filmen evner å blande VR og framtidens teknologi, med 80- og 90-tallsklær, Duran Duran, og gamle PC-spill med pixlete grafikk, og få det hele til å framstå så helhetlig. Filmen er også mesterlig produsert, og animasjon, grafikk og ekte bilder er mikset sammen så sømløst at man knapt ofrer overgangene en tanke."
-      },
-      {
-        label: "Wonder Park (2019)",
-        text: "<span class='text-title-lg'>Wonder Park (2019)</span>\n\n<strong>Regissør:</strong> Dylan Brown | IMDb: 5.8\n\nAnimasjon. Fantasi. Barndom. Eventyr. Sorg. Følelser\n\nWonder Park ser kanskje ut som en berg-og-dalbane med latter og moro på coveret, men den er så mye mer enn det, og langt fra så lystig som en skulle tro. Fornøyelsesparker har gjerne attraksjoner for både store og små, for den fartsgale, og for den som helst bare vil spise sukkerspinn og se seg rundt. Det samme kan man si om denne filmen. Den treffer godt både hos femåringen, 10-åringen, og mor og far – på ulike plan.\n\n<strong>Ablegøyer, action og alvor</strong>\nJune er en fantasifull, livlig og kreativ jente. Det hun elsker mest her i verden er å leke fornøyelsespark sammen med mammaen sin, som er like full av ideer og påfunn som henne selv. De klipper, limer, monterer og finner på historier. Hele huset er fullt av deres karuseller, boder og vannsklier. Og i Junes hode blir parken og dyrene som driver den sprell levende og helt så ekte som det går an. Men så blir Junes mamma syk. Så alvorlig syk blir hun at hun er nødt til å reise fra June og pappaen i lang tid for å få behandling.\n\n<strong>Vakkert om fantasi og følelser</strong>\nNår mammaen reiser, skjønner den voksne tilskuer at denne filmen ikke bare er en morsom tegnefilm, men at den har en alvorligere undertone. Og det blir mørkere – både i Junes sinn og i fornøyelsesparken. June klarer ikke komme på en eneste ny idé, og en dag pakker hun vekk alle modellene og utklippene som fyller huset. Hun vil passe på pappaen sin isteden. Bekymring og tungsinn har dyttet bort fantasien og skapetrangen. Det hjelper ikke hvor mye barna i gata maser om å bygge berg-og-dalbane i hagen.\n\n<strong>Trøbbel i liksomland</strong>\nUten Junes påfunn går det dårlig med fornøyelsesparken. Den er faktisk i ferd med å bli revet i fillebiter av onde skapninger. Heldigvis oppdager den lille jenta det i siste sekund og får ryddet opp, slik at dette blir en film som ender godt på alle vis.\n\nFor de minste barna er dette kanskje bare en film som er morsom og spennende, men de litt større vil nok også få med seg budskapet; følelsene våre virker inn på alt, og noen ganger må man selv gå grundig til verks for å få finne igjen gleden når livet byr på utfordringer."
-      }
-    ]
-  },
-  {
-    tag: "Barnematmerkevare (case)",
-    title: "Lanseringstekst – bakemikser",
-    context: "Skrevet som del av en kreativ case-oppgave for en anonymisert barnematmerkevare, i forbindelse med lansering av en ny produktlinje.",
-    excerpt: "Vi vokser! Og det har jo vært planen hele veien. 🌱",
-    channels: [
-      {
-        label: "LinkedIn",
-        text: "Vi vokser! Og det har jo vært planen hele veien. 🌱\n\nVi vil være det sunne, økologiske og allergivennlige alternativet i barnemathylla – med produkter laget av rene råvarer og ingredienser man faktisk kjenner igjen.\n\nSamtidig håper vi å inspirere flere til å tenke litt annerledes om barnemat. Derfor deler vi også oppskrifter, tips og kunnskap underveis.\n\nOg nå har det kommet noe nytt i hylla fra oss 👀\n\nNemlig bakemikser! De fås i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nMed bare 2–3 ekstra ingredienser hjemme kan du lage sunn og smakfull bakst på under 30 minutter. Enklere for de voksne, skikkelig godt for mini – og perfekt både til frokost, matpakke og fest. 🎉"
-      },
-      {
-        label: "Nyhetsbrev (før lansering)",
-        text: "<strong>Sunne, velsmakede nyheter på vei!</strong>\n\nDu kan tro vi gleder oss til noe som skal skje om bare noen få uker … Da lanserer vi nemlig en helt ny produktserie i barnemathylla!\n\nKan du gjette hva det er? 🔍🤗\n\nVi ville holdt et øye med innboksen framover, om vi var deg. Kanskje feirer vi nyheten med en konkurranse?"
-      },
-      {
-        label: "Nyhetsbrev (etter lansering)",
-        text: "<strong>Noen nyheter er så bra at de fortjener konfetti! 🎉</strong>\n\nEndelig kan vi slippe katta ut av sekken … eller rettere sagt bakemiksen ut av posen!\n\nNå er våre sunne, velsmakende og festlige nyheter å finne i barnemathylla, og du kan lage havremuffins, speltvafler og grøtpinner til mini (og resten av familien) på rekordtid.\n\nPosene er like fargerike og glade som alle våre andre produkter – og selvfølgelig like fulle av næring og smak. Du finner dem i de fleste dagligvarebutikker, samt hos utvalgte nettbutikker.\n\nVinn en fest-pakke 🥳\nHar du lyst til å teste bakemiksene, og nyte resultatet mens du har party-hatt på hodet og konfetti i sofaen?\n\nTipp på hvor lang tid det tar fra du åpner en pakke speltvafler til du kan servere den første vaffelplaten, og bli med i trekningen av denne supre fest-pakka.\n\n⚪ Ca 5 minutter ⚪ Ca 25 minutter ⚪ Ca 40 minutter\n\nSvar sendes til oss på e-post. Vi trekker 5 heldige vinnere, som blir kontaktet på e-post 18. september."
-      },
-      {
-        label: "SoMe (korte varianter)",
-        text: "<strong>Variant 1</strong>\nEndelig kan vi slippe katta... eller snarere bakemiksen ut av posen! Det er nemlig nyheten vi har gledet oss til å dele; bakemiks for sunn, enkel og ikke minst velsmakende snacks til de små (og store)\n\n<strong>Variant 2</strong>\nEndelig kan vi slippe nyheten! Vi lanserer bakemikser, og snart kan du finne denne freshe pakken med muffinsmiks i barnemathyllen!"
-      }
-    ]
-  },
-  {
-    tag: "Allente (reell tekst)",
-    title: "Allente-stipendet",
-    context: "Skrevet i forbindelse med Allente-stipendet, en støtteordning for breddeidrett i Norge. Ikke anonymisert – dette er egne tekster skrevet i jobb hos Allente.",
-    excerpt: "De to store TV-distributørene Canal Digital og Viasat Consumer slo seg sammen i fjor, og har blitt til Allente.",
-    channels: [
-      {
-        label: "Programtekst (norsk)",
-        text: "<strong>De to store TV-distributørene Canal Digital og Viasat Consumer slo seg sammen i fjor, og har blitt til Allente. All Entertainment. De samler all underholdning på ett sted og tilbyr TV, streaming og bredbånd til over en million mennesker i hele Norden.</strong>\n\nI sommer startet de opp et helt nytt stipend, Allente-stipendet, med formål om å dele ut kjærkomne bidrag til breddeidretten i Norge.\n\nAlle idrettslag og klubber kan søke midler fra stipendet, uavhengig av idrettsgren, alder på utøvere eller funksjonsevne. Et lag drømmer kanskje om en varmepumpe til klubbhuset, et annet trenger nye drakter, eller ønsker å reise sammen på den cupen som vil bli et minne for livet. Behovene i idrettsnorge er mange.\n\nFørste frist for å søke Allente-stipendet var 1. september, og det kom inn massevis av gode søknader. En jury har valgt ut flere gode vinnere og her i (navn på program) vil vi følge opp disse og se hvordan midlene fra Allente vil bidra til å spre litt ekstra idrettsglede rundt om i Norge."
-      },
-      {
-        label: "Intranett (engelsk)",
-        text: "<strong>🏀👟ALLENTE-STIPENDET – Update ⚽🎾</strong>\n\nThe six winners of the first round of our new scholarship are now starting to get their projects going. It's so exciting to see! We will keep you posted about how Allente has supported the winners with tournament contributions, sports equipment, team building and even a brand new kitchen in the club house. Amedia is producing content articles and videos about the winners distributed in the local newspapers.\n\nHere's the first winner; Romerike Kyokushin Karateklubb. They had lost a lot of members during the pandemic, and needed some help with the recruiting. 🥋🥋🥋\n\nhttps://www.rb.no/vis/annonse/allente-romerike-karateklubb/"
-      }
-    ]
-  }
-];
-
-function buildTextSamples(){
-  const grid = document.getElementById('textSampleGrid');
-  if(!grid) return;
-  grid.innerHTML = textSamples.map((t,i) => `
-    <div class="text-sample-card" onclick="openTextModal(${i})">
-      <div class="text-sample-tag">${t.tag}</div>
-      <div class="text-sample-title">${t.title}</div>
-      <div class="text-sample-context">${t.context}</div>
-      <div class="text-sample-excerpt"><span class="text-sample-excerpt-inner">${t.excerpt}</span></div>
-      <span class="text-sample-see-more">${t.channels.length > 1 ? `Se ${t.channels.length} kanalvarianter` : 'Les hele teksten'}</span>
-    </div>
-  `).join('');
-}
-
-function openTextModal(i){
-  const t = textSamples[i];
-  let mediaHtml = '';
-  if(t.channels.length > 1){
-    modalCarIdx = 0;
-    const slides = t.channels.map(c =>
-      `<div class="modal-carousel-slide text-slide"><div class="text-channel-label">${c.label}</div><div class="text-sample-modal-body">${c.text}</div><div class="scroll-hint hidden"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>Scroll for mer</div></div>`
-    ).join('');
-    const dots = t.channels.map((_,si) => `<button class="car-nav-dot${si===0?' active':''}" onclick="goModalSlide(${si})" aria-label="Side ${si+1}"></button>`).join('');
-    mediaHtml = `<div class="modal-carousel-wrap">
-      <div class="modal-carousel-track-outer">
-        <div class="modal-carousel-track-clip">
-          <div class="modal-carousel-track" id="modalCarTrack">${slides}</div>
-        </div>
-      </div>
-      <div class="car-nav">
-        <button class="car-nav-btn" onclick="stepModalSlide(-1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6l4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="car-nav-dots" id="modalCarDots">${dots}</div>
-        <button class="car-nav-btn" onclick="stepModalSlide(1)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-    </div>`;
-  } else {
-    mediaHtml = `<div class="text-channel-label">${t.channels[0].label}</div><div class="text-sample-modal-body">${t.channels[0].text}</div><div class="scroll-hint hidden"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>Scroll for mer</div>`;
-  }
-  document.getElementById('modalContent').innerHTML = `
-    <div class="modal-tag">${t.tag}</div>
-    <div class="modal-title">${t.title}</div>
-    <div class="modal-problem"><div class="modal-problem-label">Kontekst</div><div class="modal-problem-text">${t.context}</div></div>
-    ${mediaHtml}
-  `;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  const mct = document.getElementById('modalCarTrack');
-  if(mct) addSwipe(mct.parentElement, ()=>stepModalSlide(1), ()=>stepModalSlide(-1));
-  initScrollHints();
-}
-
-function initScrollHints(){
-  document.querySelectorAll('#modalContent .text-sample-modal-body').forEach(box => {
-    const hint = box.nextElementSibling;
-    if(!hint || !hint.classList.contains('scroll-hint')) return;
-    const update = () => {
-      const overflowing = box.scrollHeight > box.clientHeight + 4;
-      const atBottom = box.scrollTop + box.clientHeight >= box.scrollHeight - 4;
-      hint.classList.toggle('hidden', !overflowing || atBottom);
-    };
-    update();
-    box.addEventListener('scroll', update, {passive:true});
-  });
 }
 
 function goModalSlide(idx){
@@ -525,7 +420,6 @@ buildHeroContact();
 buildTimeline();
 buildSkills();
 buildPortfolio();
-buildTextSamples();
 buildRefCarousel();
 initSwipe();
 
