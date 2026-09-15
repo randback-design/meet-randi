@@ -229,6 +229,47 @@ const portfolioCases = [
     thumbBg: "#e3f4f0",
     thumbImg: "/portfolio/teater/Peter_Pan_thumb.jpg"
   },
+  {
+    tag: "Illustrasjon",
+    title: "Illustrasjoner – Finn roen",
+    desc: "En liten serie med illustrasjoner laget i Illustrator. Målet var å lage bilder som utstråler ro og mindfulness.",
+    problem: "Hvordan skape en serie med illustrasjoner som utstråler ro og mindfulness i ulike situasjoner. Jeg ønsket å utforske en tegnestil med rene flater og skygger, og også en fargebruk som gjør at uttrykket føles «nedpå» og ekte.",
+    body: "Illustrasjonene er laget i Illustrator med fokus på enkle former, rolige farger og en stemning som inviterer til å puste ut.",
+    results: ["Utforsket ny tegnestil med rene flater og skygger","Bygget en sammenhengende serie med felles uttrykk"],
+    chips: ["Illustrator"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/illustrasjon/Sacco.jpg", label:"Sacco"},
+      {type:"image", src:"/portfolio/illustrasjon/Te.jpg", label:"Te"},
+      {type:"image", src:"/portfolio/illustrasjon/Yoga.jpg", label:"Yoga"}
+    ],
+    thumbBg: "#ffffff",
+    thumbImg: "/portfolio/illustrasjon/Sacco_thumb.jpg"
+  },
+  {
+    tag: "Visuell profil",
+    title: "Merkevarebygging – Allente",
+    desc: "Da Canal Digital og Viasat slo seg sammen og ble Allente, begynte en stor jobb med å bygge et helt nytt brand.",
+    problem: "Da Allente ble lansert i 2020, måtte vi i markedsavdelingen bygge kjennskap til et helt nytt brand. Hvordan få folk til å skjønne at Canal Digital og Viasat nå er Allente?",
+    body: "Jeg jobbet som en av flere grafiske designere i markedsavdelingen gjennom hele merkevarebyggingen – og omsatte den nye visuelle profilen som ble til i tett samarbeid med byrå, til kampanjer, SoMe, nyhetsbrev, landingssider og partnermateriell. Det tok tid, prøving og justering, men i dag står Allente sterkt i markedet, som en av de store aktørene innen TV-distribusjon.",
+    results: ["Bidro til konsistent visuelt uttrykk på tvers av alle kanaler","Bygget opp maler og systemer som team bruker den dag i dag"],
+    chips: ["InDesign","Photoshop","Illustrator","SoMe","Kampanje"],
+    mediaType: "multi",
+    media: [
+      {type:"image", src:"/portfolio/allente/Allente1.png", label:"Allente 1"},
+      {type:"image", src:"/portfolio/allente/Allente2.jpg", label:"Allente 2"},
+      {type:"image", src:"/portfolio/allente/Allente3.jpg", label:"Allente 3"},
+      {type:"image", src:"/portfolio/allente/Allente4.jpg", label:"Allente 4"},
+      {type:"image", src:"/portfolio/allente/Allente5.png", label:"Allente 5"},
+      {type:"image", src:"/portfolio/allente/Allente6.jpg", label:"Allente 6"},
+      {type:"image", src:"/portfolio/allente/Allente7.jpg", label:"Allente 7"},
+      {type:"image", src:"/portfolio/allente/Allente8.jpg", label:"Allente 8"},
+      {type:"image", src:"/portfolio/allente/Allente9.png", label:"Allente 9"},
+      {type:"image", src:"/portfolio/allente/Allente10.jpg", label:"Allente 10"}
+    ],
+    thumbBg: "#b8e5d9",
+    thumbImg: "/portfolio/allente/Allente_thumb.jpg"
+  }
 ];
 
 function buildPortfolio(){
